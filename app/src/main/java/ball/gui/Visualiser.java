@@ -1,4 +1,4 @@
-package ball;
+package ball.gui;
 
 public class Visualiser extends Thread {
     private Visual frame;

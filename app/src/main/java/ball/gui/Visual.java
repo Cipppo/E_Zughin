@@ -1,4 +1,4 @@
-package ball;
+package ball.gui;
 
 import java.awt.Graphics;
 import java.awt.Color;
