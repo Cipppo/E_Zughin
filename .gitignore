@@ -33,5 +33,5 @@ bin/
 
 .project/
 .metadata/
-.classpath/
+#.classpath
 .settings/
