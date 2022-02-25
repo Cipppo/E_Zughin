@@ -31,7 +31,7 @@ public class Ball extends Thread {
         var initialVelocity = rand.nextDouble() * (MAX_VELOCITY - MIN_VELOCITY) + MIN_VELOCITY;
         trajectory = new Trajectory(angle, initialVelocity);
         this.bounds = new Boundary(0, 0, 1, 1);
-        this.actualPosition = new Pos2D(this.bounds.x0, this.bounds.y1);
+        this.actualPosition = new Pos2D(this.bounds.x0 - 0.5, this.bounds.y1);
         this.initialPosition = new Pos2D(actualPosition.x, actualPosition.y);
         this.velocity = this.trajectory.getXYVelocity();
 
@@ -43,6 +43,8 @@ public class Ball extends Thread {
      *      -try to disassemble this class (thread delegation scares me) and build an entity and follow SRP
      *          meaning that one class will handle movement and time, and another one is more like a structure that 
      *          stores velocity values, (got to implement dimensions in the space), positions and maybe traj.
+     *      -Need to implement starting Y value, and how to handle the first launch without compromising 
+     *      	initial velocity; (I think this could be optional);
      */
     
     /*
