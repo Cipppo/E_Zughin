@@ -10,9 +10,6 @@ import java.awt.Font;
 import ball.physics.Pos2D;
 
 public class Visual extends JFrame {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private VisualPanel panel;
@@ -36,9 +33,6 @@ public class Visual extends JFrame {
 	}
     
     public class VisualPanel extends JPanel {
-        /**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 		private Pos2D position;
@@ -61,11 +55,11 @@ public class Visual extends JFrame {
                 int x = (int)( position.x * WINDOW_SIZE_X );
                 int y = (int)( position.y * WINDOW_SIZE_Y - 100 );
                 //System.out.println("EFFECTIVE-POSITION (" + x + ", " + y + ")");
-                g.drawOval(x, y, 50, 50);
+                g.fillOval(x, y, 50, 50);
             }
 
 			g2.setFont(usedFont);
-			g2.setColor(Color.BLUE);
+			g2.setColor(Color.RED);
 		}
 
 		public void updatePositions(Pos2D pos) {
