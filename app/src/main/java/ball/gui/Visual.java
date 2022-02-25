@@ -10,7 +10,12 @@ import java.awt.Font;
 import ball.physics.Pos2D;
 
 public class Visual extends JFrame {
-    private VisualPanel panel;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private VisualPanel panel;
 	
 	private static final int WINDOW_SIZE_X = 800;
 	private static final int WINDOW_SIZE_Y = 600;
@@ -31,7 +36,12 @@ public class Visual extends JFrame {
 	}
     
     public class VisualPanel extends JPanel {
-        private Pos2D position;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		private Pos2D position;
 
 	    private Font usedFont;
 	    
