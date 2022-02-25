@@ -2,7 +2,9 @@ package ball.physics;
 
 
 /**
- * got to implent serializable for thread support
+ * Got to implement space occupation by this entity 
+ *  (maybe creating an interface "Entity" for the 
+ *  main charachter, bird and this ball);
  */
 public class Pos2D {
     public double x;
