@@ -34,7 +34,7 @@ public class Ball {
         var initialVelocity = rand.nextDouble() * (MAX_VELOCITY - MIN_VELOCITY) + MIN_VELOCITY;
         trajectory = new Trajectory(angle, initialVelocity);
         this.bounds = new Boundary(0, 0, 1, 1);
-        this.actualPosition = new Pos2D(this.bounds.x0 - 0.5, this.bounds.y1);
+        this.actualPosition = new Pos2D(this.bounds.x0, this.bounds.y1);
         this.initialPosition = new Pos2D(actualPosition.x, actualPosition.y);
         this.velocity = this.trajectory.getXYVelocity();
     }
@@ -50,7 +50,7 @@ public class Ball {
      */
 
     public synchronized void updatePos() {
-        time.inc(0.3);
+        time.inc(0.1);
         this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.getX();
         this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.getY() 
                                                             - (0.5*GRAVITY*Math.pow(this.time.getY(), 2)));
@@ -61,15 +61,15 @@ public class Ball {
     private void checkConstraints() {
         if(this.actualPosition.y > bounds.y1) {
             this.applyConstraints(bounds.y1, 0);
-        } else if (this.actualPosition.y < bounds.y0 + 0.1) {
-            this.applyConstraints(bounds.y0 + 0.1, 0);
-        } else if (this.actualPosition.x > bounds.x1 - 0.1) {
-            this.applyConstraints(bounds.x1 - 0.1, 1);
+        } else if (this.actualPosition.y < bounds.y0) {
+            this.applyConstraints(bounds.y0, 0);
+        } else if (this.actualPosition.x > bounds.x1 - 0.05) {
+            this.applyConstraints(bounds.x1 - 0.05, 1);
         } else if (this.actualPosition.x < bounds.x0) {
             this.applyConstraints(bounds.x0, 1);
         }
     }
-    
+
     // gotta find something better than that int
     private void applyConstraints(double bound, int axis) {
         if (axis == 0) {
