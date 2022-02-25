@@ -1,18 +1,21 @@
-package ball;
+package ball.ballAgent;
 
+import ball.Boundary;
 import ball.physics.*;
 
 import java.util.Random;
 
-
 /**
- * It has to be a thread in the future
+ * This is the structure of the ball, described by:
+ *      - A trajectory
+ *      - A two dimensional position
  */
-public class Ball extends Thread {
+public class Ball {
     private Trajectory trajectory;
     private Pos2D actualPosition;
     private Velocity2D velocity;
-    private final double gravity = 9.81;
+
+    private static final double GRAVITY = 9.81;
     private Time time = new Time(0.0, 0.0);
     private Boundary bounds;
     private Pos2D initialPosition;
@@ -34,7 +37,6 @@ public class Ball extends Thread {
         this.actualPosition = new Pos2D(this.bounds.x0 - 0.5, this.bounds.y1);
         this.initialPosition = new Pos2D(actualPosition.x, actualPosition.y);
         this.velocity = this.trajectory.getXYVelocity();
-
     }
     /**
      * Need to implement thread support and consequently:
@@ -46,50 +48,37 @@ public class Ball extends Thread {
      *      -Need to implement starting Y value, and how to handle the first launch without compromising 
      *      	initial velocity; (I think this could be optional);
      */
-    
-    /*
-    @Override
-    public void run() {
-        try {
-            while(!this.stop) {
-                this.updatePos();
-                Thread.sleep(20);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void terminate() {
-        this.stop = true;
-    }
-    */
 
     public synchronized void updatePos() {
         time.inc(0.3);
-        this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.x;
-        this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.y - (0.5*gravity*Math.pow(this.time.y, 2)));
-        this.applyConstraints();
-        //System.out.println(this.actualPosition + " \t time: " + this.time + " \t "+ this.velocity);
+        this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.getX();
+        this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.getY() 
+                                                            - (0.5*GRAVITY*Math.pow(this.time.getY(), 2)));
+        this.checkConstraints();
     }
 
-    // this should be cleand
-    private void applyConstraints() {
+    // this should be cleaned
+    private void checkConstraints() {
         if(this.actualPosition.y > bounds.y1) {
-            this.initialPosition.y = bounds.y1;
-            this.time.y = 0.0;
-            this.velocity.vy = -this.velocity.vy;
+            this.applyConstraints(bounds.y1, 0);
         } else if (this.actualPosition.y < bounds.y0 + 0.1) {
-            this.initialPosition.y = bounds.y0 + 0.1;
-            this.time.y = 0.0;
-            this.velocity.vy = -this.velocity.vy;
+            this.applyConstraints(bounds.y0 + 0.1, 0);
         } else if (this.actualPosition.x > bounds.x1 - 0.1) {
-            this.initialPosition.x = bounds.x1 - 0.1;
-            this.time.x = 0.0;
-            this.velocity.vx = -this.velocity.vx;
+            this.applyConstraints(bounds.x1 - 0.1, 1);
         } else if (this.actualPosition.x < bounds.x0) {
-            this.initialPosition.x = bounds.x0;
-            this.time.x = 0.0;
+            this.applyConstraints(bounds.x0, 1);
+        }
+    }
+    
+    // gotta find something better than that int
+    private void applyConstraints(double bound, int axis) {
+        if (axis == 0) {
+            this.initialPosition.y = bound;
+            this.time.resetY();
+            this.velocity.vy = -this.velocity.vy;
+        } else {
+            this.initialPosition.x = bound;
+            this.time.resetX();
             this.velocity.vx = -this.velocity.vx;
         }
     }
