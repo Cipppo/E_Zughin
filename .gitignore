@@ -35,3 +35,4 @@ bin/
 .metadata/
 .classpath
 .settings/
+app/.classpath
