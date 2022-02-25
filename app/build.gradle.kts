@@ -30,12 +30,6 @@ application {
     mainClass.set("E_Zughin.App")
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
-    }
-}
-
 javafx {
 	version = "17"
     modules("javafx.controls", "javafx.fxml")
