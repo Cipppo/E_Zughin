@@ -1,5 +1,6 @@
 package ball;
 
+import ball.ballAgent.Ball;
 import ball.gui.Visual;
 
 public class Main {
