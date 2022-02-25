@@ -1,21 +1,10 @@
 package ball;
 
-import ball.ballAgent.Ball;
-import ball.gui.Visual;
+import ball.gui.Visualiser;
 
 public class Main {
     public static void main(String[] args) {
-        Ball ball = new Ball();
-        Visual view = new Visual();
-        view.setVisible(true);
-        while(true) {
-            ball.updatePos();
-            try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            view.updatePosition(ball.getCurrentPosition());
-        }
+        Visualiser visual = new Visualiser();
+        visual.start();
     }
 }
