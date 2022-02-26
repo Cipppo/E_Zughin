@@ -50,7 +50,7 @@ public class Ball {
      */
 
     public synchronized void updatePos() {
-        time.inc(0.1);
+        time.inc(0.2);
         this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.getX();
         this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.getY() 
                                                             - (0.5*GRAVITY*Math.pow(this.time.getY(), 2)));
