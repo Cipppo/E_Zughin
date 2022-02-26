@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Font;
 
+import java.util.List;
+
 import ball.physics.Pos2D;
 
 public class Visual extends JFrame {
@@ -28,15 +30,14 @@ public class Visual extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
-	public void updatePosition(Pos2D pos) {
+	public void updatePosition(List<Pos2D> pos) {
 		panel.updatePositions(pos);
 	}
     
     public class VisualPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
 
-		private Pos2D position;
-
+		private List<Pos2D> positions;
 	    private Font usedFont;
 	    
 	    public VisualPanel() {
@@ -51,19 +52,23 @@ public class Visual extends JFrame {
 
     		g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 			
-            if (position != null) {
-                int x = (int)( position.x * WINDOW_SIZE_X );
-                int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
-                //System.out.println("EFFECTIVE-POSITION (" + x + ", " + y + ")");
-                g.fillOval(x, y, 50, 50);
-            }
+            synchronized (this) {
+				if (positions != null) {
+					for(final var position : positions) {
+						int x = (int)( position.x * WINDOW_SIZE_X );
+						int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
+						//System.out.println("EFFECTIVE-POSITION (" + x + ", " + y + ")");
+						g.fillOval(x, y, 50, 50);
+					}
+				}
+			}
 
 			g2.setFont(usedFont);
 			g2.setColor(Color.RED);
 		}
 
-		public void updatePositions(Pos2D pos) {
-		    position = pos;
+		public void updatePositions(List<Pos2D> pos) {
+		    positions = pos;
 			repaint();
 		}
     }

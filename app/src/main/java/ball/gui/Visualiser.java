@@ -1,27 +1,34 @@
 package ball.gui;
 
 import ball.ballAgent.BallAgent;
-
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
 /**
  * This makes the BallAgent communicate with the Visual
  */
 public class Visualiser extends Thread {
     private final Visual frame;
-    private final BallAgent agent;
+    private final List<BallAgent> balls;
 
-    public Visualiser() {
+    public Visualiser(int ballsToGenerate) {
         this.frame = new Visual();
         this.frame.setVisible(true);
-        this.agent = new BallAgent();
+        this.balls = new ArrayList<>();
+        for (int i = 0; i < ballsToGenerate; i++) {
+            this.balls.add(new BallAgent());
+        }
     }
 
 
     @Override
     public void run() {
         try {
-            this.agent.start();
+            this.balls.forEach(t -> t.start());
             while(true) {
-                this.frame.updatePosition(this.agent.getBallPosition());
+                this.frame.updatePosition(this.balls.stream()
+                        .map(t -> t.getBallPosition())
+                        .collect(Collectors.toList()));
             }
         } catch (Exception e) {
             e.printStackTrace();
