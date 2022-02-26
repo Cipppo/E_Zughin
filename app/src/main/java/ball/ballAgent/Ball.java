@@ -5,6 +5,11 @@ import ball.physics.*;
 
 import java.util.Random;
 
+enum Axis {
+	XAXIS,
+	YAXIS;
+}
+
 /**
  * This is the structure of the ball, described by:
  *      - A trajectory
@@ -40,8 +45,6 @@ public class Ball {
     }
     /**
      * Need to implement thread support and consequently:
-     *      -a class for handling view/model interactions (update ball position -> draw ball position)
-     *          already created Visualiser class, need to change name of that and all Guis components;
      *      -try to disassemble this class (thread delegation scares me) and build an entity and follow SRP
      *          meaning that one class will handle movement and time, and another one is more like a structure that 
      *          stores velocity values, (got to implement dimensions in the space), positions and maybe traj.
@@ -60,19 +63,19 @@ public class Ball {
     // this should be cleaned
     private void checkConstraints() {
         if(this.actualPosition.y > bounds.y1) {
-            this.applyConstraints(bounds.y1, 0);
+            this.applyConstraints(bounds.y1, Axis.YAXIS);
         } else if (this.actualPosition.y < bounds.y0) {
-            this.applyConstraints(bounds.y0, 0);
+            this.applyConstraints(bounds.y0, Axis.YAXIS);
         } else if (this.actualPosition.x > bounds.x1 - 0.05) {
-            this.applyConstraints(bounds.x1 - 0.05, 1);
+            this.applyConstraints(bounds.x1 - 0.05, Axis.XAXIS);
         } else if (this.actualPosition.x < bounds.x0) {
-            this.applyConstraints(bounds.x0, 1);
+            this.applyConstraints(bounds.x0, Axis.XAXIS);
         }
     }
 
     // gotta find something better than that int
-    private void applyConstraints(double bound, int axis) {
-        if (axis == 0) {
+    private void applyConstraints(double bound, Axis axis) {
+        if (axis == Axis.YAXIS) {
             this.initialPosition.y = bound;
             this.time.resetY();
             this.velocity.vy = -this.velocity.vy;
