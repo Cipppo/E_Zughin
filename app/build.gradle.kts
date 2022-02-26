@@ -9,7 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
-    id("org.openjfx.javafxplugin") version "0.0.12"
+    // id("org.openjfx.javafxplugin") version "0.0.12"
 }
 
 repositories {
@@ -30,7 +30,7 @@ application {
     mainClass.set("E_Zughin.App")
 }
 
-javafx {
-	version = "17"
-    modules("javafx.controls", "javafx.fxml")
-}
+// javafx {
+// 	version = "17"
+//     modules("javafx.controls", "javafx.fxml")
+// }
