@@ -10,11 +10,14 @@ import java.util.ArrayList;
 public class Visualiser extends Thread {
     private final Visual frame;
     private final List<BallAgent> balls;
-
+    
+    
     public Visualiser(int ballsToGenerate) {
         this.frame = new Visual();
         this.frame.setVisible(true);
         this.balls = new ArrayList<>();
+        
+        
         for (int i = 0; i < ballsToGenerate; i++) {
             this.balls.add(new BallAgent());
         }
@@ -33,5 +36,15 @@ public class Visualiser extends Thread {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public synchronized List<BallAgent> getBalls() {
+    	return this.balls;
+    }
+    
+    public synchronized void removeBall() {
+    	var ball = this.balls.get(this.balls.size() - 1);
+    	ball.terminate();
+    	this.balls.remove(ball);
     }
 }
