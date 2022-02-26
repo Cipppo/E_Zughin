@@ -10,7 +10,7 @@ public class BallAgent extends Thread {
     private boolean stop;
 
     public BallAgent() {
-        this.ball = new Ball();
+        this.ball = BallFactory.randomVelAndAngleBall();
         this.stop = false;
     }
 

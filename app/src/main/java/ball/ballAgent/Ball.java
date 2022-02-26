@@ -3,9 +3,6 @@ package ball.ballAgent;
 import ball.Boundary;
 import ball.physics.*;
 
-import java.awt.Dimension;
-import java.util.Random;
-
 enum Axis {
 	XAXIS,
 	YAXIS;
@@ -21,6 +18,7 @@ enum Axis {
  *      -TODO: generate random x position and at a fixed height Y
  *      -TODO: create a timer for suspension of balls during pre-game phase
  *      -TODO: implement function that splits ball into other two with opposite Velocity2D.vx
+ *      -(OPTIONAL)TODO: making a factory of balls;
  */
 
 /**
@@ -31,35 +29,25 @@ enum Axis {
 public class Ball {
     private Trajectory trajectory;
     private Pos2D actualPosition;
-    private Velocity2D velocity;
-
-    private Time time = new Time(0.0, 0.0);
     private Pos2D initialPosition;
-    //private boolean stop = false;
-
-    private static final double GRAVITY = 9.81;
-    // all temporary boundaries
-    private static final double MAX_ANGLE = 80;
-    private static final double MIN_ANGLE = 50;
-    private static final double MAX_VELOCITY = 150;
-    private static final double MIN_VELOCITY = 80;
-
-
-    public Ball() {
-        Random rand = new Random();
-        var angle = rand.nextDouble() * (MAX_ANGLE - MIN_ANGLE) + MIN_ANGLE;
-        var initialVelocity = rand.nextDouble() * (MAX_VELOCITY - MIN_VELOCITY) + MIN_VELOCITY;
-        trajectory = new Trajectory(angle, initialVelocity);
-        this.actualPosition = new Pos2D(Boundary.X0.getValue(), Boundary.Y1.getValue(), Dimensions.FATHER);
-        this.initialPosition = new Pos2D(actualPosition.x, actualPosition.y, Dimensions.FATHER);
-        this.velocity = this.trajectory.getXYVelocity();
+    private final Velocity2D velocity;
+    private Time time = new Time(0.0, 0.0);
+    private final double gravity;
+    
+    
+    public Ball(Trajectory trajectory, Pos2D position, double gravity) {
+    	this.trajectory = trajectory;
+    	this.actualPosition = position;
+    	this.initialPosition = new Pos2D(position.x, position.y, position.getDimension());
+    	this.velocity = this.trajectory.getXYVelocity();
+    	this.gravity = gravity;
     }
 
     public synchronized void updatePos() {
         time.inc(0.2);
         this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.getX();
         this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.getY() 
-                                                            - (0.5*GRAVITY*Math.pow(this.time.getY(), 2)));
+                                                            - (0.5*gravity*Math.pow(this.time.getY(), 2)));
         this.checkConstraints();
     }
 
