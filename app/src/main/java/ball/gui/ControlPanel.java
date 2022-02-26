@@ -8,6 +8,7 @@ public class ControlPanel extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private JButton separateOne;
+	@SuppressWarnings("unused")
 	private Visualiser visual;
 	
 	public ControlPanel(Visualiser visual) {
