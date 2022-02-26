@@ -2,9 +2,9 @@ package ball;
 
 import ball.gui.Visualiser;
 
-public class Main {
+public class Test {
     public static void main(String[] args) {
-        Visualiser visual = new Visualiser(10);
+        Visualiser visual = new Visualiser(3);
         visual.start();
     }
 }
