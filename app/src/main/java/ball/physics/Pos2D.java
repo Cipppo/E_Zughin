@@ -1,26 +1,25 @@
 package ball.physics;
 
-
 /**
  * Got to implement space occupation by this entity 
  *  (maybe creating an interface "Entity" for the 
- *  main charachter, bird and this ball);
+ *  main character, bird and this ball);
+ *  TODO: modify to private fields please
  */
 public class Pos2D {
     public double x;
     public double y;
+    private final Dimensions dimension;
 
-    public Pos2D(double x, double y) {
+    
+    public Pos2D(final double x, final double y, Dimensions dimension) {
         this.x = x;
         this.y = y;
+        this.dimension = dimension;
     }
 
-    public Pos2D sum(Pos2D p2) {
-        return new Pos2D(this.x + p2.x, this.y + p2.y);
-    }
-
-    public Pos2D sub(Pos2D p2) {
-        return new Pos2D(this.x - p2.x, this.y - p2.y);
+    public Dimensions getDimension() {
+    	return this.dimension;
     }
 
     @Override
