@@ -57,7 +57,6 @@ public class Visual extends JFrame {
 					for(final var position : positions) {
 						int x = (int)( position.x * WINDOW_SIZE_X );
 						int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
-						//System.out.println("EFFECTIVE-POSITION (" + x + ", " + y + ")");
 						g.fillOval(x, y, 50, 50);
 					}
 				}
