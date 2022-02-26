@@ -2,9 +2,6 @@ package ball.physics;
 
 import java.util.function.Function;
 
-/**
- * Got to implent serializable for thread support
- */
 public class Trajectory {
     private double theta;
     private double initialVelocity;
