@@ -10,13 +10,14 @@ import java.util.ArrayList;
 public class Visualiser extends Thread {
     private final Visual frame;
     private final List<BallAgent> balls;
+    private boolean stop;
     
     
     public Visualiser(int ballsToGenerate) {
         this.frame = new Visual();
         this.frame.setVisible(true);
         this.balls = new ArrayList<>();
-        
+        this.stop = false;
         
         for (int i = 0; i < ballsToGenerate; i++) {
             this.balls.add(new BallAgent());
@@ -29,9 +30,13 @@ public class Visualiser extends Thread {
         try {
             this.balls.forEach(t -> t.start());
             while(true) {
-                this.frame.updatePosition(this.balls.stream()
+                if(!this.stop) {
+                    this.frame.updatePosition(this.balls.stream()
                         .map(t -> t.getBallPosition())
                         .collect(Collectors.toList()));
+                } else {
+                    Thread.sleep(30);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,10 +46,28 @@ public class Visualiser extends Thread {
     public synchronized List<BallAgent> getBalls() {
     	return this.balls;
     }
-    
-    public synchronized void removeBall() {
-    	var ball = this.balls.get(this.balls.size() - 1);
-    	ball.terminate();
-    	this.balls.remove(ball);
+    //Maybe try to create an ad Hoc exception
+    public synchronized void duplicatation() {
+        if (!this.balls.isEmpty()) {
+            this.stop = true;
+            var ball = this.balls.get(0);
+            try { 
+                var children = ball.duplicate();
+                if (!children.isEmpty()) {
+                    for (final var i : children) {
+                        var newAgent = new BallAgent(i);
+                        this.balls.add(newAgent);
+                        newAgent.start();                    
+                    }
+                }
+                ball.terminate();
+                this.balls.remove(ball);
+            } catch (IllegalStateException e) {
+                ball.terminate();
+                this.balls.remove(ball);
+            }
+            
+            this.stop = false;
+        }
     }
 }
