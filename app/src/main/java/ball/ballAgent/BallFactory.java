@@ -27,10 +27,23 @@ public class BallFactory {
         
         return completeBall(angle, initialVelocity, pos, 9.81);
 	}
+
+	/**
+	 * 
+	 * @return a ball with random X and Y values.
+	 */
+	public static Ball randomPos() {
+		Random rand = new Random();
+		var angle = rand.nextDouble() * (MAX_ANGLE - MIN_ANGLE) + MIN_ANGLE;
+		var initialVelocity = rand.nextDouble() * (MAX_VELOCITY - MIN_VELOCITY) + MIN_VELOCITY;
+
+		Pos2D pos = new Pos2D(rand.nextDouble(), Boundary.Y1.getValue() / 2, Dimensions.FATHER);
+		return completeBall(angle, initialVelocity, pos, 9.81);
+	}
 	
 	/**
 	 * 
-	 * @return a ball with specified parameters
+	 * @return a ball with specified parameters.
 	 */
 	public static Ball completeBall(double angle, double initialVelocity, Pos2D position, double gravity) {
 		Trajectory traj = new Trajectory(angle, initialVelocity);
