@@ -49,7 +49,13 @@ public class BallFactory {
 		Trajectory traj = new Trajectory(angle, initialVelocity);
 		return new Ball(traj, position, gravity);
 	}
-
+	/**
+	 * 
+	 * @param ball
+	 * 			the father ball
+	 * @return
+	 * 			a child ball
+	 */
 	public static Ball fromFatherBall(final Ball ball) {
 		Pos2D newPos = new Pos2D(
 			ball.getCurrentPosition().x,
