@@ -57,7 +57,8 @@ public class Visual extends JFrame {
 	                for(final var position : positions) {
 	                    int x = (int)( position.x * WINDOW_SIZE_X );
 	                    int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
-	                    g.fillOval(x, y, 50, 50);
+	                    g.fillOval(x, y, (int)(50 * position.getDimension().getValue())
+						, (int)(50 * position.getDimension().getValue()));
 	                }
 	            }
 	        }
