@@ -2,6 +2,7 @@ package ball.ballAgent;
 
 import ball.Boundary;
 import ball.physics.*;
+import ball.utils.Pair;
 
 enum Axis {
 	XAXIS,
@@ -79,4 +80,14 @@ public class Ball {
     public synchronized Pos2D getCurrentPosition() {
         return this.actualPosition;
     }
+
+    public synchronized Trajectory getTrajectory() {
+        return this.trajectory;
+    }
+
+    public  synchronized Velocity2D getVelocity() {
+        return this.velocity;
+    }
+
+    
 }
