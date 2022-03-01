@@ -2,7 +2,6 @@ package ball.ballAgent;
 
 import ball.Boundary;
 import ball.physics.*;
-import ball.utils.Pair;
 
 enum Axis {
 	XAXIS,
