@@ -19,14 +19,14 @@ public class ControlPanel extends JFrame {
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		this.separateOne = new JButton("explode a ball");
+		this.separateOne = new JButton("Duplicate a ball");
 		
 		JPanel pane = new JPanel();
 		pane.add(this.separateOne);
 		this.add(pane);
 		
 		this.separateOne.addActionListener(t -> {
-			visual.removeBall();
+			visual.duplicatation();
 		});
 	}
 }
