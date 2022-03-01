@@ -2,8 +2,8 @@ package ball.physics;
 
 public enum Dimensions {
 	FATHER(1.0),
-	SON(0.50),
-	GRANDSON(0.25);
+	SON(0.85),
+	GRANDSON(0.50);
 
 	private final double n;
 
@@ -11,7 +11,7 @@ public enum Dimensions {
 		this.n = n;
 	}
 
-	private double getValue() {
+	public double getValue() {
 		return this.n;
 	}
 
