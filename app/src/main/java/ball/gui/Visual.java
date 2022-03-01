@@ -45,31 +45,31 @@ public class Visual extends JFrame {
 			usedFont = new Font("Verdana", Font.PLAIN, 24);
 		}
 
-		public void paint(Graphics g) {
-			Graphics2D g2 = (Graphics2D) g;
-    		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    		g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+	    public void paint(Graphics g) {
+	        Graphics2D g2 = (Graphics2D) g;
+	        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
-    		g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
-			
-            synchronized (this) {
-				if (positions != null) {
-					for(final var position : positions) {
-						int x = (int)( position.x * WINDOW_SIZE_X );
-						int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
-						g.fillOval(x, y, 50, 50);
-					}
-				}
-			}
+	        g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 
-			g2.setFont(usedFont);
-			g2.setColor(Color.RED);
-		}
+	        synchronized (this) {
+	            if (positions != null) {
+	                for(final var position : positions) {
+	                    int x = (int)( position.x * WINDOW_SIZE_X );
+	                    int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
+	                    g.fillOval(x, y, 50, 50);
+	                }
+	            }
+	        }
 
-		public void updatePositions(List<Pos2D> pos) {
-		    positions = pos;
-			repaint();
-		}
+	        g2.setFont(usedFont);
+	        g2.setColor(Color.RED);
+	    }
+
+	    public void updatePositions(List<Pos2D> pos) {
+	        positions = pos;
+	        repaint();
+	    }
     }
 }
 
