@@ -20,4 +20,12 @@ public class Trajectory {
     private double angularSpeed(double v0, double theta, Function<Double, Double> func) {
         return v0 * func.apply(Math.toRadians(theta));
     }
+
+    public double getAngle() {
+        return this.theta;
+    }
+    
+    public double getInitialVelocity() {
+        return this.initialVelocity;
+    }
 }

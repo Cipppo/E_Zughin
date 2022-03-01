@@ -22,6 +22,9 @@ public class Pos2D {
     	return this.dimension;
     }
 
+    public void setDimensions(final Dimensions dim) {
+    }
+
     @Override
     public String toString() {
         return "Pos(" + this.x + ", " + this.y + ")";
