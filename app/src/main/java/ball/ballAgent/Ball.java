@@ -10,15 +10,7 @@ enum Axis {
 
 /**
  * Need to implement thread support and consequently:
- *      -TODO: try to disassemble this class (thread delegation scares me) and build an entity and follow SRP
- *          meaning that one class will handle movement and time, and another one is more like a structure that 
- *          stores velocity values, (got to implement dimensions in the space), positions and maybe traj.
- *      -TODO: Need to implement starting Y value, and how to handle the first launch without compromising 
- *      	initial velocity; (I think this could be optional);
- *      -TODO: generate random x position and at a fixed height Y
  *      -TODO: create a timer for suspension of balls during pre-game phase
- *      -TODO: implement function that splits ball into other two with opposite Velocity2D.vx
- *      -(OPTIONAL)TODO: making a factory of balls;
  */
 
 /**
