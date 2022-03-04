@@ -51,8 +51,8 @@ public class Gui extends JFrame{
 
         synchronized (this){
             Polygon p = new Polygon();
-            int x = this.guy.getPositions().getX();
-            int y = this.guy.getPositions().getY();
+            int x = this.guy.getPositions().x;
+            int y = this.guy.getPositions().y;
 
             p.addPoint(x, y);
             p.addPoint(x, y + DIM);

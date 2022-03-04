@@ -35,7 +35,7 @@ public class Guy {
         }
     }
 
-    public Pos2D getPosition(){
+    public Pos2D getPositions(){
         return this.pos;
     }
 
