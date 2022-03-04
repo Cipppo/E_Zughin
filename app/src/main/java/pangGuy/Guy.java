@@ -8,38 +8,35 @@ import pangGuy.utilities.*;
 
 public class Guy {
 
-    private int x;
-    private int y;
+    Pos2D pos;
 
 
     public Guy(int x, int y ){
-        this.x = x;
-        this.y = y;
+        pos = new Pos2D(x, y);
     }
 
     
     public void move(Directions d){
         switch (d) {
             case DOWN:
-                this.y++;
+                this.pos.y++;
                 break;
             case UP:
-                this.y--;
+                this.pos.y--;
                 break;
             case LEFT:
-                this.x--;
+                this.pos.x--;
                 break;
             case RIGHT:
-                this.x++;
+                this.pos.x++;
                 break;
             default:
                 break;
         }
     }
 
-    public Pair<Integer> getPositions(){
-        return new Pair<Integer>(this.x, this.y);
-
+    public Pos2D getPosition(){
+        return this.pos;
     }
 
 
