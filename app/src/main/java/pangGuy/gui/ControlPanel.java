@@ -5,10 +5,13 @@ import javax.swing.JButton;
 
 public class ControlPanel extends JFrame{
 
-    private static final int SIZEX = 50;
-    private static final int SIZEY = 50;
+    private static final int SIZEX = 100;
+    private static final int SIZEY = 100;
 
-    private JButton jb = new JButton("Down");
+    private JButton down = new JButton("Down");
+    private JButton up = new JButton("Up");
+    private JButton left = new JButton("Left");
+    private JButton right = new JButton("right");
     private Gui gui;
 
     public ControlPanel(Gui gui){
@@ -16,15 +19,13 @@ public class ControlPanel extends JFrame{
         this.setSize(SIZEX, SIZEY);
         this.setName("Control Panel");
         
-        jb.addActionListener(e -> {
+        down.addActionListener(e -> {
             this.gui.update();
         });
 
-        /*TODO
-        Add buttons in order to move the entity by the principal ways 
-         */
-        this.getContentPane().add(this.jb);
 
+        this.getContentPane().add(this.down);
+        
         this.setVisible(true);
     }
     
