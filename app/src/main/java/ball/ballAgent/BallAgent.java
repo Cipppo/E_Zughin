@@ -11,11 +11,13 @@ import ball.physics.Pos2D;
 public class BallAgent extends Thread {
     private final Ball ball;
     private boolean stop;
+    private boolean paused;
 
     public BallAgent() {
         //this.ball = BallFactory.randomVelAndAngleBall();
         this.ball = BallFactory.randomPos();
         this.stop = false;
+        this.paused = false;
     }
 
     public BallAgent(final Ball ball) {
@@ -27,11 +29,14 @@ public class BallAgent extends Thread {
     public void run() {
         try {
             while(!this.stop) {
+                while(this.paused) {
+                    Thread.sleep(200);
+                }
                 this.ball.updatePos();
                 Thread.sleep(20);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e) { 
+            System.out.println("An exception occurred: " + e.getMessage());
         }
     }
 
@@ -60,5 +65,13 @@ public class BallAgent extends Thread {
         } else {
             throw new IllegalStateException();
         }
+    }
+
+    public synchronized void pause() {
+        this.paused = true;
+    }
+
+    public synchronized void restart() {
+        this.paused = false;
     }
 }
