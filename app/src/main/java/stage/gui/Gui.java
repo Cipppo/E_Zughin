@@ -2,7 +2,6 @@ package stage.gui;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import stage.utils.*;
 import stage.components.*;
@@ -14,8 +13,8 @@ public class Gui extends JFrame{
 	 */
 	private static final long serialVersionUID = -4255916723363898550L;
 	
-	private final int width = CenterOnDefaultScreen.center().get("width");
-	private final int heigth = CenterOnDefaultScreen.center().get("heigth");
+	private final int width = CenterOnDefaultScreen.center().width;
+	private final int heigth = CenterOnDefaultScreen.center().height;
 
 	public Gui() {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
