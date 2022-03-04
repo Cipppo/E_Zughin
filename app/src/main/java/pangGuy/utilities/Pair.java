@@ -1,7 +1,7 @@
 package pangGuy.utilities;
 
 public class Pair<T> {
-    
+
     private T x;
     private T y;
 
