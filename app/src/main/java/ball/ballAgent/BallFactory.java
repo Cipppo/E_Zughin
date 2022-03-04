@@ -19,7 +19,8 @@ public class BallFactory {
 	private static final double EARTH_GRAVITY = 9.81;
 	
 	/**
-	 * 
+	 * Creates a ball with a random angle, a random initialVelocity
+	 * and with Earth's gravitational force; 
 	 * @param pos
 	 * 			initial position of the ball
 	 * @return a new ball with random angle, initialVelocity and Earth gravity.
@@ -33,8 +34,9 @@ public class BallFactory {
 	}
 
 	/**
-	 * 
-	 * @return a ball with random X and Y values.
+	 * Creates a ball with random X values and starting from the 
+	 * top of the stage.
+	 * @return a random position ball.
 	 */
 	public static Ball randomPos() {
 		Random rand = new Random();
@@ -43,6 +45,13 @@ public class BallFactory {
 	}
 
 	/**
+	 * Creates a ball from scratch, with given specific parameters.
+	 * 
+	 * @param angle
+	 * @param initialVelocity
+	 * @param position 
+	 * 			the inital position
+	 * @param gravity
 	 * 
 	 * @return a ball with specified parameters.
 	 */
@@ -51,7 +60,10 @@ public class BallFactory {
 		return new Ball(traj, position, gravity);
 	}
 	/**
-	 * 
+	 * Creates a Ball with same values of the father (initialVelocity,
+	 * angle, position) but the updated Value of Dimensions, meaning that
+	 * a FATHER given as argument will craete two SONs ans
+	 * a SON will create two GRANDSONs.
 	 * @param ball
 	 * 			the father ball
 	 * @return

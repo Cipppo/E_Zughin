@@ -14,7 +14,6 @@ public class BallAgent extends Thread {
     private boolean paused;
 
     public BallAgent() {
-        //this.ball = BallFactory.randomVelAndAngleBall();
         this.ball = BallFactory.randomPos();
         this.stop = false;
         this.paused = false;
@@ -30,7 +29,7 @@ public class BallAgent extends Thread {
         try {
             while(!this.stop) {
                 while(this.paused) {
-                    Thread.sleep(200);
+                    Thread.sleep(200);//Don't know now how to handle this, tried to reduce CPU bounding as much as possibile
                 }
                 this.ball.updatePos();
                 Thread.sleep(20);
@@ -70,7 +69,10 @@ public class BallAgent extends Thread {
     public synchronized void pause() {
         this.paused = true;
     }
-
+    /**
+     * Maybe try to implement a version with a specific time to wait before resuming;
+     * it comes useful in the implementation of a Pause Menu and a 3-2-1 timer when closing.
+     */
     public synchronized void restart() {
         this.paused = false;
     }
