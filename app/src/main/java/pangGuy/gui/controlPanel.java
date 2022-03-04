@@ -3,7 +3,7 @@ package pangGuy.gui;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 
-public class controlPanel extends JFrame{
+public class ControlPanel extends JFrame{
 
     private static final int SIZEX = 50;
     private static final int SIZEY = 50;
@@ -11,7 +11,7 @@ public class controlPanel extends JFrame{
     private JButton jb = new JButton();
     private Gui gui;
 
-    public controlPanel(Gui gui){
+    public ControlPanel(Gui gui){
         this.gui = gui;
         this.setSize(SIZEX, SIZEY);
         this.setName("Control Panel");
