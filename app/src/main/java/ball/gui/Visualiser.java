@@ -46,7 +46,9 @@ public class Visualiser extends Thread {
     public synchronized List<BallAgent> getBalls() {
     	return this.balls;
     }
+    
     //Maybe try to create an ad Hoc exception
+    //Need to clean this mess
     public synchronized void duplicatation() {
         if (!this.balls.isEmpty()) {
             this.stop = true;
@@ -68,6 +70,28 @@ public class Visualiser extends Thread {
             }
             
             this.stop = false;
+        }
+    }
+
+    /**
+     * Pause/Freeze all balls
+     */
+    public synchronized void pauseAll() {
+        if (!this.balls.isEmpty()) {
+            this.balls.forEach(t -> {
+                t.pause();
+            });
+        }
+    }
+
+    /**
+     * Resume all balls that are freezed
+     */
+    public void resumeAll() {
+        if(!this.balls.isEmpty()) {
+            this.balls.forEach(t -> {
+                t.restart();
+            });
         }
     }
 }
