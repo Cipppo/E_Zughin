@@ -5,8 +5,9 @@ import java.util.Random;
 import ball.Boundary;
 import ball.physics.*;
 /**
- * TODO: add a method for creating a ball from given initialVelocity 
- * used by duplicate method; need to define were to put that duplication(Ball || BallAgent)
+ * Generator of Various kind of Balls, mostly used by testing cases
+ * 
+ * TODO: try to remove static maybe, discuss it with collegues;
  */
 public class BallFactory {
 	
