@@ -1,6 +1,7 @@
 package ball.gui;
 
 import java.awt.Graphics;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.*;
 import java.awt.Graphics2D;
@@ -26,7 +27,7 @@ public class Visual extends JFrame {
 		setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
 		setResizable(false);
 		panel = new VisualPanel();
-		getContentPane().add(panel);
+		this.add(panel, BorderLayout.CENTER);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 

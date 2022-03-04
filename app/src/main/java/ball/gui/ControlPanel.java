@@ -1,11 +1,12 @@
 package ball.gui;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
-
-public class ControlPanel extends JFrame {
+/**
+ * Testing control panel for calling major function of Balls.
+ */
+public class ControlPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JButton separateOne;
@@ -18,11 +19,7 @@ public class ControlPanel extends JFrame {
 	public ControlPanel(Visualiser visual) {
 		this.visual = visual;
 		
-		this.setTitle("Control Panel");
 		this.setSize(250, 130);
-		this.setResizable(false);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 		this.separateOne = new JButton("Duplicate a ball");
 		this.stopAll = new JButton("Stop all Balls");
 		this.resumeAll = new JButton("Resume all Balls");

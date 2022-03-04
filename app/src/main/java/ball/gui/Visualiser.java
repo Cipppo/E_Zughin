@@ -3,18 +3,24 @@ package ball.gui;
 import ball.ballAgent.BallAgent;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 /**
  * This makes the BallAgent communicate with the Visual
+ * When implementing GUI with collegues, remove CONTROL PANEL
+ * Its purpose it's only for Testing reasons.
  */
 public class Visualiser extends Thread {
     private final Visual frame;
+    private final ControlPanel controlPane;
     private final List<BallAgent> balls;
     private boolean stop;
     
     
     public Visualiser(int ballsToGenerate) {
         this.frame = new Visual();
+        this.controlPane = new ControlPanel(this);
+        this.frame.add(this.controlPane, BorderLayout.NORTH);
         this.frame.setVisible(true);
         this.balls = new ArrayList<>();
         this.stop = false;
@@ -46,7 +52,6 @@ public class Visualiser extends Thread {
     public synchronized List<BallAgent> getBalls() {
     	return this.balls;
     }
-    
     //Maybe try to create an ad Hoc exception
     //Need to clean this mess
     public synchronized void duplicatation() {
