@@ -4,11 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
-
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import pangGuy.Guy;
+import pangGuy.utilities.Directions;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
@@ -21,10 +19,10 @@ public class Gui extends JFrame{
     
     private static final int SIZEX = 800;
     private static final int SIZEY = 600;
-    private JButton jb = new JButton("OKOKKOKOKOKOK");
+    private static final int DIM = 100;
     
-    private int x = 100;
-    private int y = 100;
+    private final Guy guy = new Guy(100, 100);
+
 
     
     public Gui() {
@@ -53,19 +51,22 @@ public class Gui extends JFrame{
 
         synchronized (this){
             Polygon p = new Polygon();
-            p.addPoint(this.x, this.y);
-            p.addPoint(this.x, this.y + 100);
-            p.addPoint(this.x + 100, this.y + 100);
-            p.addPoint(this.x + 100, this.y);
+            int x = this.guy.getPositions().getX();
+            int y = this.guy.getPositions().getY();
+
+            p.addPoint(x, y);
+            p.addPoint(x, y + DIM);
+            p.addPoint(x + DIM, y + DIM);
+            p.addPoint(x + DIM, y);
             g.drawPolygon(p);
 
         }
     
     }
 
-    public void update(){
+    public void update(Directions d){
         //this.removeAll();
         this.repaint();
-        this.y = this.y+10;
+        this.guy.move(d);
     }
 }
