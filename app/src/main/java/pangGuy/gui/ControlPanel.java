@@ -29,6 +29,17 @@ public class ControlPanel extends JFrame{
             this.gui.update(Directions.DOWN);
         });
 
+        up.addActionListener(e -> {
+            this.gui.update(Directions.UP);
+        });
+
+        left.addActionListener(e -> {
+            this.gui.update(Directions.LEFT);
+        });
+
+        right.addActionListener(e -> {
+            this.gui.update(Directions.RIGHT);
+        });
         
 
 
