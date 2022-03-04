@@ -4,7 +4,9 @@ import pangGuy.gui.*;
 public class Main {
     
     public static void main(String[] args) {
-       new Gui();
+      Gui gui = new Gui();
+      ControlPanel cp = new ControlPanel(gui);
+       
    }
     
 }
