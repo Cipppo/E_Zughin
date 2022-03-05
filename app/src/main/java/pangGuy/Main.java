@@ -8,7 +8,7 @@ public class Main {
       Gui gui = new Gui();
 
       
-      ControlPanel cp = new ControlPanel(gui);
+      //ControlPanel cp = new ControlPanel(gui);
        
    }
     
