@@ -24,4 +24,8 @@ public class Shape {
         return new Pair<Integer>((int)r.getWidth(), (int)r.getHeight());
     }
     
+    public Rectangle getRectangle(){
+        return this.r;
+    }
+
 }
