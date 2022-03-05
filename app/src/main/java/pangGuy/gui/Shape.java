@@ -3,6 +3,7 @@ package pangGuy.gui;
 import java.awt.Rectangle;
 
 import pangGuy.utilities.Pos2D;
+import pangGuy.utilities.Pair;
 
 public class Shape {
 
@@ -18,5 +19,9 @@ public class Shape {
         return new Pos2D((int)r.getX(), (int) r.getY());
     }
 
+
+    public Pair<Integer> getDimensions(){
+        return new Pair<Integer>((int)r.getWidth(), (int)r.getHeight());
+    }
     
 }
