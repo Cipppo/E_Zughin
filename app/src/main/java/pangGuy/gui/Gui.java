@@ -25,7 +25,8 @@ public class Gui extends JFrame{
 
     private final Shape shape = new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT);
     private final Actor actor = new Actor(this.shape);
-    
+    private final ActionFactory factory = new ActionFactory();
+    private final ActionApplier aa = new ActionApplier(this.actor, this.factory);
 
     
     public Gui() {
@@ -33,15 +34,20 @@ public class Gui extends JFrame{
         this.setTitle("Pang Guy gui");
         this.setLayout(null);
         this.add(this.actor);
-
+        
         
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.update();
         this.setVisible(true);  
         
         
     }
 
 
-
+    private void update(){
+        this.remove(this.actor);
+        this.add(this.actor);
+        System.out.println("Performed");
+    }
    
 }
