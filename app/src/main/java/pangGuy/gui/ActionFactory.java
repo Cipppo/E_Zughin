@@ -9,27 +9,83 @@ public class ActionFactory {
 
     private class upAction extends AbstractAction{
 
-        private Shape s;
+        private Actor a;
 
-        public upAction(Shape s){
-            this.s = s;
+        public upAction(Actor a){
+            this.a = a;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            s.getRectangle().setLocation(s.getPos().x, s.getPos().y-1);
-            System.out.println(s.getPos().y);
+            a.setLocation(a.getX(), a.getY() - 1);
+            System.out.println("UP");
         }
         
     }
-    
 
 
+    private class rightAction extends AbstractAction{
+        
+        private Actor a;
 
-    public upAction getUpAction(Shape s){
-        return new upAction(s);
+        public rightAction(Actor a){
+            this.a = a;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            a.setLocation(a.getX() + 1, a.getY());
+            System.out.println("RIGHT");
+        }
+
     }
 
+    private class leftAction extends AbstractAction{
 
+        private Actor a;
+
+        public leftAction(Actor a){
+            this.a = a;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            a.setLocation(a.getX() - 1, a.getY());
+            System.out.println("LEFT");
+        }
+        
+    }
+
+    private class downAction extends AbstractAction{
+        
+        private Actor a;
+
+        public downAction(Actor a){
+            this.a = a;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            a.setLocation(a.getX(), a.getY() + 1);
+            System.out.println("DOWN");
+        }
+
+    }
+
+    public upAction getUpAction(Actor a){
+        return new upAction(a);
+    }
+
+    public rightAction getRightAction(Actor a){
+        return new rightAction(a);
+    }
+
+    public leftAction getLeftAction(Actor a){
+        return new leftAction(a);
+    }
+
+    public downAction getDownAction(Actor a){
+        return new downAction(a);
+    }
 
 }
