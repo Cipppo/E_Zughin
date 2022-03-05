@@ -21,7 +21,7 @@ public class Gui extends JFrame{
     private static final int HEIGHT = 100;
 
     
-    private final Guy guy = new Guy(STARTX, STARTY);
+    //private final Guy guy = new Guy(STARTX, STARTY);
 
     private final Shape shape = new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT);
     private final Actor actor = new Actor(this.shape);
@@ -37,17 +37,9 @@ public class Gui extends JFrame{
         
         
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.update();
         this.setVisible(true);  
         
         
-    }
-
-
-    private void update(){
-        this.remove(this.actor);
-        this.add(this.actor);
-        System.out.println("Performed");
     }
    
 }
