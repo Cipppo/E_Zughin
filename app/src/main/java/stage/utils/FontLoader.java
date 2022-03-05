@@ -1,3 +1,21 @@
+/**
+ * Loads a Font file and returns it as a Font Object.
+ * 
+ * @param fontFilePath (String) Full path and file name of the font to load.<br>
+ * 
+ * @param fontStyle (Integer) The Font Style to use for the loaded font, for 
+ * example:<pre>
+ * 
+ *      Font.PLAIN
+ *      Font.BOLD
+ *      Font.ITALIC
+ *      Font.BOLDITALIC</pre>
+ * 
+ * @param fontSize (Integer) The desired size of font.<br>
+ * 
+ * @return (Font) A Font Object
+ */
+
 package stage.utils;
 
 import java.awt.Font;
@@ -6,11 +24,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class FontLoader {
     
     public static Font load(){
-    	String fontFilePath = "src\\main\\resources\\Retro Gaming.ttf";
+    	String fontFilePath = Paths.get("src", "main", "resources", "Retro Gaming.ttf").toString();
     	int fontStyle = Font.BOLD;
     	int fontSize = CenterOnDefaultScreen.center().height*2/100;
         Font font = null;

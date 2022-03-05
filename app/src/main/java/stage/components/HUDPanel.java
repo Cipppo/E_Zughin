@@ -2,7 +2,7 @@ package stage.components;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.JPanel;
 import stage.utils.CenterOnDefaultScreen;
 
@@ -16,12 +16,12 @@ public class HUDPanel extends JPanel{
 	private final int heigth = CenterOnDefaultScreen.center().height;
 
 	public HUDPanel() {	
-		this.setLayout(new BorderLayout());
+		this.setLayout(new GridLayout(4, 4));
 		this.setBackground(Color.black);
 		this.setPreferredSize(new Dimension(width, heigth*10/100));
 
-		this.add(new PlayerOneLabel(), BorderLayout.BEFORE_FIRST_LINE);
-		this.add(new ScoreLabel()); //cosí non va bene, bisogna fare un grid layout e in quello inserire tutti i label
+		this.add(new PlayerOneLabel(), 0, 0);
+		this.add(new ScoreLabel(), 1, 1);
 	}
 
 }

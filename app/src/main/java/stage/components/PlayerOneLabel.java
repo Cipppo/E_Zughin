@@ -3,7 +3,6 @@ package stage.components;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import stage.utils.CenterOnDefaultScreen;
 import stage.utils.FontLoader;
 
 import java.awt.Color;
