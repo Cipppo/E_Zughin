@@ -40,8 +40,9 @@ public class Visualiser extends Thread {
                     this.frame.updatePosition(this.balls.stream()
                         .map(t -> t.getBallPosition())
                         .collect(Collectors.toList()));
+                    Thread.sleep(20);
                 } else {
-                    Thread.sleep(30);
+                    Thread.sleep(20);
                 }
             }
         } catch (Exception e) {
