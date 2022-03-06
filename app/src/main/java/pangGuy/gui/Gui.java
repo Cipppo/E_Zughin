@@ -11,8 +11,8 @@ public class Gui extends JFrame{
 
     private static final long serialVersionUID = 1L;
     
-    private static final int SIZEX = 800;
-    private static final int SIZEY = 600;
+    private static final int SIZEX = 1000;
+    private static final int SIZEY = 1000;
 
     private static final int STARTX = 100;
     private static final int STARTY = 100;
@@ -42,6 +42,7 @@ public class Gui extends JFrame{
         
         
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setResizable(false);
         this.setVisible(true);  
         
         
