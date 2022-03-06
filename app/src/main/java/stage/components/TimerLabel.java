@@ -11,11 +11,15 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import stage.utils.CenterOnDefaultScreen;
-import stage.utils.FontLoader;
+import stage.utils.MainFontLoader;
 
 public class TimerLabel extends JPanel{
 
-    private final Font gameFont = FontLoader.load();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8265734918486724201L;
+	private final Font gameFont = MainFontLoader.load();
     private final JLabel timerLabel = new JLabel("TIME: 90");
     private final int width = CenterOnDefaultScreen.center().width;
 	private final int heigth = CenterOnDefaultScreen.center().height;

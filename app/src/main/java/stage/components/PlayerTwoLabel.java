@@ -5,11 +5,15 @@ import java.awt.Color;
 
 import javax.swing.JLabel;
 
-import stage.utils.FontLoader;
+import stage.utils.MainFontLoader;
 
 public class PlayerTwoLabel extends JLabel{
     
-    private final Font gameFont = FontLoader.load();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7671139190971480369L;
+	private final Font gameFont = MainFontLoader.load();
 	
 	public PlayerTwoLabel() {
 		this.setText("PLAYER 2");

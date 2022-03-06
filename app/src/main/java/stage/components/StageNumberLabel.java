@@ -5,11 +5,15 @@ import java.awt.Color;
 
 import javax.swing.JLabel;
 
-import stage.utils.FontLoader;
+import stage.utils.MainFontLoader;
 
 public class StageNumberLabel extends JLabel{
     
-    Font gameFont = FontLoader.load();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5270799471560968663L;
+	Font gameFont = MainFontLoader.load();
     
     public StageNumberLabel(){
         this.setText("10-28 STAGE");

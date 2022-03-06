@@ -1,7 +1,7 @@
 package stage.components;
 
 import javax.swing.JLabel;
-import stage.utils.FontLoader;
+import stage.utils.MainFontLoader;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,7 +12,7 @@ public class P1ScoreLabel extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = -4318974631726686466L;
-	Font gameFont = FontLoader.load();
+	Font gameFont = MainFontLoader.load();
 
 	public P1ScoreLabel() {
         this.setText("123345");
