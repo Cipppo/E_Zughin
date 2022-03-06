@@ -29,12 +29,12 @@ import java.nio.file.Paths;
 public class FontLoader {
     
     public static Font load(){
-    	String fontFilePath = Paths.get("src", "main", "resources", "Retro Gaming.ttf").toString();
+    	String fontFilePath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "Retro Gaming.ttf").toString();
     	int fontStyle = Font.BOLD;
     	int fontSize = CenterOnDefaultScreen.center().height*2/100;
         Font font = null;
         int fontTypeResource = Font.TRUETYPE_FONT;
-        
+
         if((fontFilePath == null || fontFilePath.isEmpty()) || fontSize < 1) {
             throw new IllegalArgumentException("load() Method Error! Arguments " +
                                                 "passed to this method must contain a file path or a numerical " +
@@ -46,7 +46,7 @@ public class FontLoader {
                    new File(fontFilePath))).deriveFont(fontStyle, fontSize);
         }
         catch (FileNotFoundException ex) {
-            System.out.println("FileNotFoundException");
+            System.out.println("FileNotFoundException: " + fontFilePath);
         }
         catch (FontFormatException | IOException ex) {
             System.out.println("Exception thrown");
