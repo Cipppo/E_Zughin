@@ -1,9 +1,9 @@
 package pangGuy.gui;
 
 import javax.swing.JFrame;
-import pangGuy.Guy;
-import pangGuy.utilities.Pos2D;
 
+import pangGuy.utilities.Pos2D;
+import pangGuy.utilities.Pair;
 
 
 
@@ -23,9 +23,14 @@ public class Gui extends JFrame{
     
     //private final Guy guy = new Guy(STARTX, STARTY);
 
-    private final Shape shape = new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT);
-    private final Actor actor = new Actor(this.shape);
+   private final Shape shape = new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT);
+
+    private final BoundChecker bChecker = new BoundChecker(new Pair<Integer>(0, SIZEX),
+     new Pair<Integer>(0, SIZEY));
+
+    private final Actor actor = new Actor(this.shape, this.bChecker);
     private final ActionFactory factory = new ActionFactory();
+    
     private final ActionApplier aa = new ActionApplier(this.actor, this.factory);
 
     
