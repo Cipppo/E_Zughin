@@ -12,6 +12,7 @@ public class MainPanel extends JPanel{
 
 	public MainPanel() {
 		this.setBackground(Color.gray);
+		this.add(new TimerLabel());
 	}
 
 }

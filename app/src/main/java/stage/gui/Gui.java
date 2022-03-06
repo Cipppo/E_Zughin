@@ -27,7 +27,7 @@ public class Gui extends JFrame{
 		this.add(new HUDPanel(), BorderLayout.SOUTH);
 		this.add(new MainPanel(), BorderLayout.CENTER);
 		this.setVisible(true);
-		
+
 	}
 	
 }
