@@ -16,11 +16,11 @@ import stage.utils.FontLoader;
 public class TimerLabel extends JPanel{
 
     private final Font gameFont = FontLoader.load();
-    private final JLabel timerLabel = new JLabel("");
+    private final JLabel timerLabel = new JLabel("TIME: 90");
     private final int width = CenterOnDefaultScreen.center().width;
 	private final int heigth = CenterOnDefaultScreen.center().height;
 
-    private int secondsRemaining = 91;
+    private int secondsRemaining = 90;
     private Timer timer;
 
     public TimerLabel() {
