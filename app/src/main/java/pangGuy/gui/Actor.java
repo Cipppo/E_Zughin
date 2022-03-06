@@ -28,10 +28,12 @@ public class Actor extends JLabel{
 
     
     public void changeLocation(Pos2D pos){
-        if(bChecker.isInside(pos, this.s.getDimensions().getX(), this.s.getDimensions().getY()));{
+        if(bChecker.isInside(pos, this.s.getDimensions().getX(), this.s.getDimensions().getY())){
             super.setLocation(pos.x, pos.y);
             this.s = new Shape(pos, this.s.getDimensions().getX(), 
             this.s.getDimensions().getY());
+        }else{
+            System.out.println("OUT");
         }
     }
 
