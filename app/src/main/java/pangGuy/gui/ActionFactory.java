@@ -6,6 +6,8 @@ import javax.swing.AbstractAction;
 
 public class ActionFactory {
 
+    private static final int SPEED = 2;
+
 
     private class upAction extends AbstractAction{
 
@@ -17,7 +19,7 @@ public class ActionFactory {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.setLocation(a.getX(), a.getY() - 1);
+            a.setLocation(a.getX(), a.getY() - SPEED);
             System.out.println("UP");
         }
         
@@ -34,7 +36,7 @@ public class ActionFactory {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.setLocation(a.getX() + 1, a.getY());
+            a.setLocation(a.getX() + SPEED, a.getY());
             System.out.println("RIGHT");
         }
 
@@ -50,7 +52,7 @@ public class ActionFactory {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.setLocation(a.getX() - 1, a.getY());
+            a.setLocation(a.getX() - SPEED, a.getY());
             System.out.println("LEFT");
         }
         
@@ -66,7 +68,7 @@ public class ActionFactory {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.setLocation(a.getX(), a.getY() + 1);
+            a.setLocation(a.getX(), a.getY() + SPEED);
             System.out.println("DOWN");
         }
 
