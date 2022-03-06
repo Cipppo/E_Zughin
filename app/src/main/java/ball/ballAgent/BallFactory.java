@@ -59,6 +59,7 @@ public class BallFactory {
 		Trajectory traj = new Trajectory(angle, initialVelocity);
 		return new Ball(traj, position, gravity);
 	}
+	
 	/**
 	 * Creates a Ball with same values of the father (initialVelocity,
 	 * angle, position) but the updated Value of Dimensions, meaning that
@@ -80,7 +81,6 @@ public class BallFactory {
 			ball.getTrajectory().getAngle(),
 			ball.getTrajectory().getInitialVelocity(),
 			newPos,
-			EARTH_GRAVITY
-		);
+			EARTH_GRAVITY);
 	}
 }
