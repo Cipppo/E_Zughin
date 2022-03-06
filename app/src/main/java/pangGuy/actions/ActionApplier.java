@@ -1,6 +1,8 @@
-package pangGuy.gui;
+package pangGuy.actions;
 
 import javax.swing.KeyStroke;
+
+import pangGuy.gui.Actor;
 
 public class ActionApplier{
 

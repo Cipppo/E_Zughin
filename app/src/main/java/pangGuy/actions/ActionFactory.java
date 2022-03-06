@@ -1,9 +1,10 @@
-package pangGuy.gui;
+package pangGuy.actions;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
+import pangGuy.gui.Actor;
 import pangGuy.utilities.Pos2D;
 
 public class ActionFactory {
