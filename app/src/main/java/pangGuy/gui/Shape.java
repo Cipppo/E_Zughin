@@ -28,4 +28,9 @@ public class Shape {
         return this.r;
     }
 
+    @Override
+    public String toString(){
+        return "(" + this.getRectangle().toString() + ")";
+    }
+
 }
