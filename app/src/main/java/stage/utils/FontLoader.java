@@ -24,12 +24,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FontLoader {
     
     public static Font load(){
-    	String fontFilePath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "Retro Gaming.ttf").toString();
+    	Path root = FileSystems.getDefault().getPath("").toAbsolutePath();
+    	System.out.println(root);
+    	String fontFilePath = Paths.get(root.toString(), "src", "main", "resources", "Retro Gaming.ttf").toString();
     	int fontStyle = Font.BOLD;
     	int fontSize = CenterOnDefaultScreen.center().height*2/100;
         Font font = null;
