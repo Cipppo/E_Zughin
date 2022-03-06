@@ -4,9 +4,11 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
+import pangGuy.utilities.Pos2D;
+
 public class ActionFactory {
 
-    private static final int SPEED = 2;
+    private static final int SPEED = 5;
 
 
     private class upAction extends AbstractAction{
@@ -19,8 +21,9 @@ public class ActionFactory {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.setLocation(a.getX(), a.getY() - SPEED);
+            a.changeLocation(new Pos2D(a.getX(), a.getY() - SPEED));
             System.out.println("UP");
+            System.out.println(a.getShape().toString());
         }
         
     }
@@ -36,8 +39,9 @@ public class ActionFactory {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.setLocation(a.getX() + SPEED, a.getY());
+            a.changeLocation(new Pos2D(a.getX() + SPEED, a.getY()));
             System.out.println("RIGHT");
+            System.out.println(a.getShape().toString());
         }
 
     }
@@ -52,8 +56,9 @@ public class ActionFactory {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.setLocation(a.getX() - SPEED, a.getY());
+            a.changeLocation(new Pos2D(a.getX() - SPEED, a.getY()));
             System.out.println("LEFT");
+            System.out.println(a.getShape().toString());
         }
         
     }
@@ -68,8 +73,9 @@ public class ActionFactory {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.setLocation(a.getX(), a.getY() + SPEED);
+            a.changeLocation(new Pos2D(a.getX(), a.getY() + SPEED));
             System.out.println("DOWN");
+            System.out.println(a.getShape().toString());
         }
 
     }
