@@ -10,6 +10,7 @@ public class TimeFreeze extends Thread implements PowerUp {
     private int timeElapsed;
     private boolean isActivated;
     private final Visualiser context;
+    
     public TimeFreeze(Visualiser context) {
         this.isActivated = false;
         this.timeElapsed = 0;

@@ -13,8 +13,8 @@ public class ControlPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JButton separateOne;
-	private JButton stopAll;
-	private JButton resumeAll;
+	//private JButton stopAll;
+	//private JButton resumeAll;
 	private JButton timeFreeze;
 
 	@SuppressWarnings("unused")
@@ -25,8 +25,8 @@ public class ControlPanel extends JPanel {
 		
 		this.setSize(250, 130);
 		this.separateOne = new JButton("Duplicate a ball");
-		this.stopAll = new JButton("Stop all Balls");
-		this.resumeAll = new JButton("Resume all Balls");
+		//this.stopAll = new JButton("Stop all Balls");
+		//this.resumeAll = new JButton("Resume all Balls");
 		this.timeFreeze = new JButton("Time Freeze(3 sec)");
 
 		JPanel pane = new JPanel();
