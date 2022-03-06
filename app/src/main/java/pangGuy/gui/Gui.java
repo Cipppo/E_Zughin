@@ -3,6 +3,8 @@ package pangGuy.gui;
 import javax.swing.JFrame;
 
 import pangGuy.utilities.Pos2D;
+import pangGuy.actions.ActionApplier;
+import pangGuy.actions.ActionFactory;
 import pangGuy.utilities.Pair;
 
 
