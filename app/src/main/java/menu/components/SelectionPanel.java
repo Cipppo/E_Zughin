@@ -14,7 +14,8 @@ public class SelectionPanel extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = 2928014517775593930L;
-	Font gameFont = MainFontLoader.load();
+	MainFontLoader fontLoader = new MainFontLoader();
+	Font gameFont = fontLoader.load();
     
     public SelectionPanel() {
         this.setText("---");

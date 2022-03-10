@@ -14,7 +14,8 @@ public class SubtitlePanel extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = -5425263161796580824L;
-	Font gameFont = MainFontLoader.load();
+	MainFontLoader fontLoader = new MainFontLoader(2);
+	Font gameFont = fontLoader.load();
 	    
     public SubtitlePanel() {
         this.setText("ARCADE RETRO-GAME");

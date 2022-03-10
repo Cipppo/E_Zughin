@@ -14,7 +14,8 @@ public class HallOfFamePanel extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = -5582360522433197786L;
-	Font gameFont = MainFontLoader.load();
+	MainFontLoader fontLoader = new MainFontLoader(4);
+	Font gameFont = fontLoader.load();
     
     public HallOfFamePanel() {
         this.setText("HALL OF FAME");

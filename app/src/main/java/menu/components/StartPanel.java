@@ -14,7 +14,8 @@ public class StartPanel extends JLabel {
 	 * 
 	 */
 	private static final long serialVersionUID = -8430588428621513653L;
-	Font gameFont = MainFontLoader.load();
+	MainFontLoader fontLoader = new MainFontLoader(4);
+	Font gameFont = fontLoader.load();
     
     public StartPanel() {
         this.setText("START");

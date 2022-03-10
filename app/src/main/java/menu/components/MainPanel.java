@@ -12,7 +12,7 @@ public class MainPanel extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 3036609648280707540L;
-	private final int rows = 4;
+	private final int rows = 5;
 	private final int columns = 3;
 
 	public MainPanel() {
@@ -27,12 +27,12 @@ public class MainPanel extends JPanel{
 		}
 		this.setBackground(Color.black);
 		
-		MainPanel[0][1].add(new TitlePanel());
-		MainPanel[1][1].add(new SubtitlePanel());
-		MainPanel[2][1].add(new StartPanel());
-		MainPanel[2][0].add(new SelectionPanel());
-		MainPanel[2][2].add(new SelectionPanel());
-		MainPanel[3][1].add(new HallOfFamePanel());
+		MainPanel[1][1].add(new TitlePanel());
+		MainPanel[2][1].add(new SubtitlePanel());
+		MainPanel[3][1].add(new StartPanel());
+		MainPanel[3][0].add(new SelectionPanel());
+		MainPanel[3][2].add(new SelectionPanel());
+		MainPanel[4][1].add(new HallOfFamePanel());
 	}
 
 }
