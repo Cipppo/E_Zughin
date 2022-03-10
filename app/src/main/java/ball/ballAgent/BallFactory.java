@@ -17,6 +17,7 @@ public class BallFactory {
     private static final double MIN_VELOCITY = 80;
 
 	private static final double EARTH_GRAVITY = 9.81;
+	private static final double MOON_GRAVITY = 1.62;
 	
 	/**
 	 * Creates a ball with a random angle, a random initialVelocity
@@ -42,6 +43,17 @@ public class BallFactory {
 		Random rand = new Random();
 		Pos2D pos = new Pos2D(rand.nextDouble(), Boundary.Y1.getValue() / 2, Dimensions.FATHER);
 		return randomVelAndAngleBall(pos);
+	}
+
+	public static Ball moonBall() {
+		var ball = randomPos();
+		return completeBall(
+			ball.getTrajectory().getAngle(),
+			ball.getTrajectory().getInitialVelocity(),
+			new Pos2D(ball.getCurrentPosition().x,
+				ball.getCurrentPosition().y,
+				ball.getCurrentPosition().getDimension())
+			, MOON_GRAVITY);
 	}
 
 	/**
