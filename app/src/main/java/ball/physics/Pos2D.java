@@ -5,6 +5,7 @@ package ball.physics;
  *  (maybe creating an interface "Entity" for the 
  *  main character, bird and this ball);
  *  TODO: modify to private fields please
+ *  TODO: add a copy-of method for avoiding verbose creation in factory
  */
 public class Pos2D {
     public double x;
