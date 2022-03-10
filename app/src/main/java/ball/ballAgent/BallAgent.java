@@ -15,6 +15,7 @@ public class BallAgent extends Thread {
 
     public BallAgent() {
         this.ball = BallFactory.randomPos();
+        //this.ball = BallFactory.moonBall();
         this.stop = false;
         this.paused = false;
     }
@@ -29,10 +30,10 @@ public class BallAgent extends Thread {
         try {
             while(!this.stop) {
                 while(this.paused) {
-                    Thread.sleep(200);//Don't know now how to handle this, tried to reduce CPU bounding as much as possibile
+                    Thread.sleep(20);//Don't know now how to handle this, tried to reduce CPU bounding as much as possibile
                 }
                 this.ball.updatePos();
-                Thread.sleep(20);
+                Thread.sleep(10);
             }
         } catch (Exception e) { 
             System.out.println("An exception occurred: " + e.getMessage());
