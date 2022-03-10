@@ -14,7 +14,7 @@ public class FindDirectory {
 
 	public static Path find() {
 		List<Path> resourcePath = new ArrayList<>();
-		Path path = Paths.get(System.getProperty("user.dir"));
+		Path path = Paths.get(System.getProperty("user.home"));
 		try(Stream<Path> subPaths = Files.walk(path)) {
 			resourcePath = subPaths.filter(e -> e.toString()
 					.contains("resources" + File.separator + "Retro Gaming.ttf"))
