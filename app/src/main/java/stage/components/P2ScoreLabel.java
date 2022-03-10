@@ -13,7 +13,8 @@ public class P2ScoreLabel extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = 6364855665482369354L;
-	Font gameFont = MainFontLoader.load();
+	MainFontLoader fontLoader = new MainFontLoader();
+	Font gameFont = fontLoader.load();
 
 	public P2ScoreLabel() {
         this.setText("1453");

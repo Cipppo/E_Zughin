@@ -12,7 +12,8 @@ public class P1ScoreLabel extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = -4318974631726686466L;
-	Font gameFont = MainFontLoader.load();
+	MainFontLoader fontLoader = new MainFontLoader();
+	Font gameFont = fontLoader.load();
 
 	public P1ScoreLabel() {
         this.setText("123345");

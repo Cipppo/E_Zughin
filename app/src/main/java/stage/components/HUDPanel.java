@@ -30,7 +30,7 @@ public class HUDPanel extends JPanel{
 				this.add(HUDPanel[m][n]);
 			}
 		}
-		this.setPreferredSize(new Dimension(width, heigth*10/100));
+		this.setPreferredSize(new Dimension(width, heigth*12/100));
 
 		AddAllLabels.add(HUDPanel);
 	}

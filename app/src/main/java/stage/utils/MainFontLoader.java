@@ -6,17 +6,28 @@ import java.io.IOException;
 
 public class MainFontLoader {
     
+	private int fontSizePercentage = 0;
 	
-    public static Font load(){
+	public MainFontLoader(int fontSizePercentage) {
+		this.fontSizePercentage = fontSizePercentage;
+	}
+	
+	public MainFontLoader() {
+		this.fontSizePercentage = 2;
+	}
+	
+    public Font load(){
+    	SecondaryFontLoader fontLoader = new SecondaryFontLoader(fontSizePercentage);
+    	
         try (var fontIn = MainFontLoader.class.getResourceAsStream("/Retro Gaming.ttf")) {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, fontIn).deriveFont(Font.BOLD, CenterOnDefaultScreen.center().height*2/100);
+            Font font = Font.createFont(Font.TRUETYPE_FONT, fontIn).deriveFont(Font.BOLD, CenterOnDefaultScreen.center().height*this.fontSizePercentage/100);
             return font;
           } catch (FontFormatException e) {
             System.out.println("FontFormatException: ");
             e.printStackTrace();
         } catch (IOException e) {
             System.out.println("IOException: Font not found in bin directory, taking it from resources");
-            return SecondaryFontLoader.load();
+            return fontLoader.load();
         }
         return new Font("Arial", Font.BOLD, 14);
     }

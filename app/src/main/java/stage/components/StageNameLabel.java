@@ -12,7 +12,8 @@ public class StageNameLabel extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = -5278165653375956068L;
-	Font gameFont = MainFontLoader.load();
+	MainFontLoader fontLoader = new MainFontLoader();
+	Font gameFont = fontLoader.load();
     
     public StageNameLabel() {
         this.setText("MT. KEIRIN");

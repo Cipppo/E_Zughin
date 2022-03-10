@@ -12,7 +12,8 @@ public class PlayerOneLabel extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = 7887201380127912727L;
-	private final Font gameFont = MainFontLoader.load();
+	MainFontLoader fontLoader = new MainFontLoader();
+	Font gameFont = fontLoader.load();
 	
 	public PlayerOneLabel() {
 		this.setText("PLAYER 1");

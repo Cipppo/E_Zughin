@@ -19,7 +19,8 @@ public class TimerLabel extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 8265734918486724201L;
-	private final Font gameFont = MainFontLoader.load();
+	MainFontLoader fontLoader = new MainFontLoader();
+	Font gameFont = fontLoader.load();
     private final JLabel timerLabel = new JLabel("TIME: 90");
     private final int width = CenterOnDefaultScreen.center().width;
 	private final int heigth = CenterOnDefaultScreen.center().height;

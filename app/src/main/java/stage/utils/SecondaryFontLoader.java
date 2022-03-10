@@ -26,11 +26,21 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SecondaryFontLoader {
+	
+	private final int fontSizePercentage;
+	
+	public SecondaryFontLoader(int fontSizePercentage) {
+		this.fontSizePercentage = fontSizePercentage;
+	}
+	
+	public SecondaryFontLoader() {
+		this.fontSizePercentage = 2;
+	}
 
-    public static Font load() {
+    public Font load() {
         String fontFilePath = FindDirectory.find().toString();
         int fontStyle = Font.BOLD;
-        int fontSize = CenterOnDefaultScreen.center().height*2/100;
+        int fontSize = CenterOnDefaultScreen.center().height*this.fontSizePercentage/100;
         Font font = null;
         int fontTypeResource = Font.TRUETYPE_FONT;
     
