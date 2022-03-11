@@ -1,8 +1,10 @@
 package ball.gui;
 
+import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.awt.BorderLayout;
 import java.awt.Color;
+
 import javax.swing.*;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -52,17 +54,23 @@ public class Visual extends JFrame {
 	        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
 	        g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
-
+			ImageLoader imLoader = new ImageLoader();
+			BufferedImage image = null;
 	        synchronized (this) {
 	            if (positions != null) {
 	                for(final var position : positions) {
 	                    int x = (int)( position.x * WINDOW_SIZE_X );
 	                    int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
-	                    g.fillOval(x, y, (int)(50 * position.getDimension().getValue())
-						, (int)(50 * position.getDimension().getValue()));
+						image = imLoader.getImageFromDimensions(position.getDimension());
+						g2.drawImage(image, x, y, this);
+						//g2.drawOval(x, y, (int)(image.getWidth() * position.getDimension().getValue()), (int)(image.getHeight() * position.getDimension().getValue()));
+	                    //g.fillOval(x, y, (int)(50 * position.getDimension().getValue())
+						//, (int)(50 * position.getDimension().getValue()));
 	                }
 	            }
 	        }
+
+			g2.dispose();
 
 	        g2.setFont(usedFont);
 	        g2.setColor(Color.RED);

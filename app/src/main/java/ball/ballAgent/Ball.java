@@ -36,7 +36,7 @@ public class Ball {
     }
 
     public synchronized void updatePos() {
-        time.inc(0.2);
+        time.inc(0.09);
         this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.getX();
         this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.getY() 
                                                             - (0.5*gravity*Math.pow(this.time.getY(), 2)));
@@ -45,11 +45,11 @@ public class Ball {
 
     // this should be cleaned
     private void checkConstraints() {
-        if(this.actualPosition.y > Boundary.Y1.getValue()) {
-            this.applyConstraints(Boundary.Y1.getValue(), Axis.YAXIS);
+        if(this.actualPosition.y > Boundary.Y1.getValue() - 0.07) {
+            this.applyConstraints(Boundary.Y1.getValue() - 0.07, Axis.YAXIS);
         } else if (this.actualPosition.y < Boundary.Y0.getValue()) {
             this.applyConstraints(Boundary.Y0.getValue(), Axis.YAXIS);
-        } else if (this.actualPosition.x > Boundary.X1.getValue() - 0.05) {
+        } else if (this.actualPosition.x > Boundary.X1.getValue() - 0.05 ) {
             this.applyConstraints(Boundary.X1.getValue() - 0.05, Axis.XAXIS);
         } else if (this.actualPosition.x < Boundary.X0.getValue()) {
             this.applyConstraints(Boundary.X0.getValue(), Axis.XAXIS);
