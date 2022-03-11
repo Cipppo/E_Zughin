@@ -16,7 +16,7 @@ public class TitlePanel extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = -9143946569687691268L;
-	MainFontLoader fontLoader = new MainFontLoader(8);
+	MainFontLoader fontLoader = new MainFontLoader(11);
 	Font gameFont = fontLoader.load();
     
     public TitlePanel() {
