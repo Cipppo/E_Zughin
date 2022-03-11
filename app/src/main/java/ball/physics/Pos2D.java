@@ -6,6 +6,8 @@ package ball.physics;
  *  main character, bird and this ball);
  *  TODO: modify to private fields please
  *  TODO: add a copy-of method for avoiding verbose creation in factory
+ *  TODO: add a mehod for having area occupied by this entyty (could be useful for
+ *  view (checking borders) and for checking collisions beetween balls and charachter);
  */
 public class Pos2D {
     public double x;
