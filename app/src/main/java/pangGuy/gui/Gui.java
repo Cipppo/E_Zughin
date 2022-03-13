@@ -2,6 +2,11 @@ package pangGuy.gui;
 
 import javax.swing.JFrame;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.JPanel;
+
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.Pos2D;
 import pangGuy.actions.ActionApplier;
@@ -41,13 +46,24 @@ public class Gui extends JFrame{
     private final ActionFactory factory = new ActionFactory();
     private final ActionApplier aa = new ActionApplier(this.actor,this.moover, this.factory);
 
+    private final JPanel back = new JPanel(null);
+    
     
     public Gui() {
         this.setSize(SIZEX, SIZEY);
         this.setTitle("Pang Guy gui");
-        this.setLayout(null);
-        this.add(this.gun);
-        this.add(this.actor);
+        this.getContentPane().setLayout(new BorderLayout());
+        
+        
+        this.back.setBounds(new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT).getRectangle());
+        this.back.setBackground(Color.RED);
+        this.back.add(this.actor, BorderLayout.CENTER);
+        this.back.add(this.gun);
+        
+        this.add(back);
+
+
+        
         
         
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
