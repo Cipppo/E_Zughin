@@ -24,5 +24,8 @@ public class Moover {
         }
     }
 
+    public Pos2D getCurrentPos(){
+        return this.actor.getShape().getPos();
+    }
     
 }
