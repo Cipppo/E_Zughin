@@ -2,10 +2,12 @@ package pangGuy.gui;
 
 import javax.swing.JFrame;
 
+import pangGuy.utilities.Pair;
 import pangGuy.utilities.Pos2D;
 import pangGuy.actions.ActionApplier;
 import pangGuy.actions.ActionFactory;
-import pangGuy.utilities.Pair;
+import pangGuy.gun.Gun;
+
 
 
 
@@ -30,16 +32,20 @@ public class Gui extends JFrame{
     private final BoundChecker bChecker = new BoundChecker(new Pair<Integer>(0, SIZEX),
      new Pair<Integer>(0, SIZEY));
 
-    private final Actor actor = new Actor(this.shape, this.bChecker);
-    private final ActionFactory factory = new ActionFactory();
+    private final Actor actor = new Actor(this.shape);
+    private final Gun gun = new Gun(this.actor);
+
+    private final Moover moover = new Moover(this.actor, this.gun, this.bChecker);
     
-    private final ActionApplier aa = new ActionApplier(this.actor, this.factory);
+    private final ActionFactory factory = new ActionFactory();
+    private final ActionApplier aa = new ActionApplier(this.actor,this.moover, this.factory);
 
     
     public Gui() {
         this.setSize(SIZEX, SIZEY);
         this.setTitle("Pang Guy gui");
         this.setLayout(null);
+        this.add(this.gun);
         this.add(this.actor);
         
         
