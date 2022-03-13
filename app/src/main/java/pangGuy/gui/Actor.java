@@ -24,8 +24,6 @@ public class Actor extends JLabel{
         super.setBounds(this.s.getRectangle());
         super.setOpaque(true);
         
-
-        
     }
 
     
