@@ -16,13 +16,14 @@ public class Gui extends JFrame{
     private static final long serialVersionUID = 1L;
     
     private static final int SIZEX = 1000;
-    private static final int SIZEY = 1000;
+    private static final int SIZEY = 500;
 
-    private static final int STARTX = 100;
-    private static final int STARTY = 100;
-
+    
     private static final int WIDTH = 50;
     private static final int HEIGHT = 100;
+
+    private static final int STARTX = SIZEX / 2;
+    private static final int STARTY = (SIZEY - 35) - HEIGHT;
 
     
     //private final Guy guy = new Guy(STARTX, STARTY);
