@@ -10,7 +10,7 @@ import pangGuy.gun.Gun;
 
 
 
-
+@SuppressWarnings("unused")
 public class Gui extends JFrame{
 
     private static final long serialVersionUID = 1L;
