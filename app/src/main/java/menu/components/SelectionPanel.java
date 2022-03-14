@@ -1,15 +1,14 @@
 package menu.components;
 
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
-import javax.swing.JLabel;
+import java.awt.event.*;
+import javax.swing.*;
 
 import javax.swing.JPanel;
 
+
 import java.awt.Color;
+//import java.awt.Desktop.Action;
 
 import stage.utils.MainFontLoader;
 
@@ -24,18 +23,32 @@ public class SelectionPanel extends JPanel{
 	private final JLabel selectionPanel = new JLabel();
 	private int seconds = 0;
 	private Timer timer;
+	private boolean IsUpLastAction = true;
+	
     
     public SelectionPanel() {
-    	selectionPanel.setText("_");
+    	selectionPanel.setText("-");
     	selectionPanel.setFont(gameFont);
-    	selectionPanel.setForeground(Color.green);
-
+    	selectionPanel.setForeground(Color.BLACK);
     	this.setBackground(Color.BLACK);
+    	this.add(selectionPanel);
     	
-		this.add(selectionPanel);
+    	/*upAction = new UpAction();
+    	downAction = new DownAction();
+    	selectionPanel.getInputMap().put(KeyStroke.getKeyStroke('w'), "upAction");
+    	selectionPanel.getActionMap().put("upAction", upAction);
+    	selectionPanel.getInputMap().put(KeyStroke.getKeyStroke('s'), "downAction");
+    	selectionPanel.getActionMap().put("downAction", downAction);*/
+
+    	
+    	
 		simpleTimer();
 		timer.start();
     }	
+    
+    public void setLastAction(boolean last) {
+    	this.IsUpLastAction = last;
+    }
 	
     public void simpleTimer() {
 
@@ -44,7 +57,7 @@ public class SelectionPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 seconds++;
-                if (seconds % 2 == 0) {
+                if (seconds % 2 == 0 && IsUpLastAction) {
     				selectionPanel.setForeground(Color.green);
     			}else {
     				selectionPanel.setForeground(Color.black);
