@@ -35,25 +35,11 @@ public class MainPanel extends JPanel{
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 0;
-		container.gridy = 2;
-		container.gridwidth = 1;
-		MainPanel.add(new StartPanel(), container);
-		
-		/*container.fill = GridBagConstraints.HORIZONTAL ;
-		container.gridx = 1;
-		container.gridy = 2;
-		MainPanel.add(new SelectionPanel(), container);*/
-		
-		container.fill = GridBagConstraints.HORIZONTAL ;
-		container.gridx = 0;
 		container.gridy = 3;
-		container.gridwidth = 2;
-		MainPanel.add(new HallOfFamePanel(), container);
+		container.gridwidth = 5;
+		container.gridheight = 2;
+		MainPanel.add(new NavigationPanel(), container);
 		
-		container.fill = GridBagConstraints.HORIZONTAL ;
-		container.gridx = 3;
-		container.gridy = 3;
-		MainPanel.add(new SelectionPanel(), container);
 		
 
 		this.setBackground(Color.BLACK);
