@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import pangGuy.gui.Actor;
+import pangGuy.gui.Moover;
 import pangGuy.utilities.Pos2D;
 
 public class ActionFactory {
@@ -14,17 +14,17 @@ public class ActionFactory {
 
     private class upAction extends AbstractAction{
 
-        private Actor a;
+        private Moover m;
 
-        public upAction(Actor a){
-            this.a = a;
+        public upAction(Moover m){
+            this.m = m;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.changeLocation(new Pos2D(a.getX(), a.getY() - SPEED));
+            m.move(new Pos2D(m.getCurrentPos().x, m.getCurrentPos().y - SPEED));
             System.out.println("UP");
-            System.out.println(a.getShape().toString());
+            
         }
         
     }
@@ -32,68 +32,68 @@ public class ActionFactory {
 
     private class rightAction extends AbstractAction{
         
-        private Actor a;
+        private Moover m;
 
-        public rightAction(Actor a){
-            this.a = a;
+        public rightAction(Moover m){
+            this.m = m;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.changeLocation(new Pos2D(a.getX() + SPEED, a.getY()));
+            m.move(new Pos2D(m.getCurrentPos().x + SPEED, m.getCurrentPos().y));
             System.out.println("RIGHT");
-            System.out.println(a.getShape().toString());
+            
         }
 
     }
 
     private class leftAction extends AbstractAction{
 
-        private Actor a;
+        private Moover m;
 
-        public leftAction(Actor a){
-            this.a = a;
+        public leftAction(Moover m){
+            this.m = m;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.changeLocation(new Pos2D(a.getX() - SPEED, a.getY()));
+            m.move(new Pos2D(m.getCurrentPos().x - SPEED, m.getCurrentPos().y));
             System.out.println("LEFT");
-            System.out.println(a.getShape().toString());
+            
         }
         
     }
 
     private class downAction extends AbstractAction{
         
-        private Actor a;
+        private Moover m;
 
-        public downAction(Actor a){
-            this.a = a;
+        public downAction(Moover m){
+            this.m = m;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            a.changeLocation(new Pos2D(a.getX(), a.getY() + SPEED));
+            m.move(new Pos2D(m.getCurrentPos().x,m.getCurrentPos().y + SPEED));
             System.out.println("DOWN");
-            System.out.println(a.getShape().toString());
+            
         }
 
     }
 
-    public upAction getUpAction(Actor a){
+    public upAction getUpAction(Moover a){
         return new upAction(a);
     }
 
-    public rightAction getRightAction(Actor a){
+    public rightAction getRightAction(Moover a){
         return new rightAction(a);
     }
 
-    public leftAction getLeftAction(Actor a){
+    public leftAction getLeftAction(Moover a){
         return new leftAction(a);
     }
 
-    public downAction getDownAction(Actor a){
+    public downAction getDownAction(Moover a){
         return new downAction(a);
     }
 
