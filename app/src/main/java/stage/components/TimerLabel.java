@@ -55,4 +55,8 @@ public class TimerLabel extends JPanel{
         });
     }
 
+    public Timer getTimer() {
+        return this.timer;
+    }
+
 }
