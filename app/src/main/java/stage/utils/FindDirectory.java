@@ -1,6 +1,5 @@
 package stage.utils;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,9 +14,11 @@ public class FindDirectory {
 	public static Path find() {
 		List<Path> resourcePath = new ArrayList<>();
 		Path path = Paths.get(System.getProperty("user.home"));
+		Path fontDirectory = Paths.get("app", "src", "main", "resources", "Retro Gaming.ttf");
+		
 		try(Stream<Path> subPaths = Files.walk(path)) {
 			resourcePath = subPaths.filter(e -> e.toString()
-					.contains("resources" + File.separator + "Retro Gaming.ttf"))
+					.contains(fontDirectory.toString()))
 					.collect(Collectors.toList());
 		} catch (IOException e) {
 			e.printStackTrace();
