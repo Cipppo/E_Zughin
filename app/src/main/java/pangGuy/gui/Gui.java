@@ -12,6 +12,7 @@ import pangGuy.utilities.Pos2D;
 import pangGuy.actions.ActionApplier;
 import pangGuy.actions.ActionFactory;
 import pangGuy.gun.Gun;
+import pangGuy.gun.Raiser;
 
 
 
@@ -40,6 +41,8 @@ public class Gui extends JFrame{
 
     private final Actor actor = new Actor(this.shape);
     public final Gun gun = new Gun(this.actor);
+
+    public final Raiser raiser = new Raiser(this.gun, this.bChecker);
 
     private final Moover moover = new Moover(this.actor, this.gun, this.bChecker);
     
