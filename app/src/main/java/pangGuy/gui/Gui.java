@@ -13,6 +13,7 @@ import pangGuy.actions.ActionApplier;
 import pangGuy.actions.ActionFactory;
 import pangGuy.gun.Gun;
 import pangGuy.gun.Raiser;
+import pangGuy.gun.GunRaiser;
 
 
 
@@ -39,10 +40,12 @@ public class Gui extends JFrame{
     private final BoundChecker bChecker = new BoundChecker(new Pair<Integer>(0, SIZEX),
      new Pair<Integer>(0, SIZEY));
 
+    
     private final Actor actor = new Actor(this.shape);
-    public final Gun gun = new Gun(this.actor);
 
+    public final Gun gun = new Gun(this.actor);
     public final Raiser raiser = new Raiser(this.gun, this.bChecker);
+    public final GunRaiser gunRaiser = new GunRaiser(this.gun, this.bChecker);
 
     private final Moover moover = new Moover(this.actor, this.gun, this.bChecker);
     
