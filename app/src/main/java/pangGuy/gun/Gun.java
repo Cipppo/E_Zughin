@@ -49,7 +49,7 @@ public class Gun extends JPanel{
     public void raise(){
 
         Pos2D newPos = new Pos2D(this.s.getPos().x, this.s.getPos().y - SPEED);
-        this.s = new Shape(newPos, this.s.getDimensions().getX(), this.s.getDimensions().getY() + 1);
+        this.s = new Shape(newPos, this.s.getDimensions().getX(), this.s.getDimensions().getY() + SPEED);
         super.setBounds(this.s.getRectangle());
         System.out.println(this.s.getPos().toString());
 
