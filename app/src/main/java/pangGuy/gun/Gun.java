@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import pangGuy.gui.Actor;
 
+
 public class Gun extends JPanel{
 
     private final Actor a;
@@ -18,6 +19,7 @@ public class Gun extends JPanel{
     public Gun(Actor actor){
         this.a = actor;
         this.s = new Shape(this.a.getShape().getPos(), 10, 2);
+
 
         super.setBounds(this.s.getRectangle());
         super.setBackground(Color.green);
@@ -33,7 +35,12 @@ public class Gun extends JPanel{
         }
     }
 
+    public Pos2D getPos(){
+        return this.s.getPos();
+    }
+
     public void raise(){
+        /*
         this.isMovable = false;
         while(this.s.getPos().y > 0 ){
             Pos2D newPos = new Pos2D(this.s.getPos().x , this.s.getPos().y -1);
@@ -41,10 +48,21 @@ public class Gun extends JPanel{
             super.setBounds(this.s.getRectangle());
             System.out.println(this.s.getPos().toString());
         }
-        
+        */
 
+        Pos2D newPos = new Pos2D(this.s.getPos().x, this.s.getPos().y - 1);
+        this.s = new Shape(newPos, this.s.getDimensions().getX(), this.s.getDimensions().getY() + 1);
+        super.setBounds(this.s.getRectangle());
+        System.out.println(this.s.getPos().toString());
     }
 
+    public void setUnMovable(){
+        this.isMovable = false;
+    }
+
+    public void setMovable(){
+        this.isMovable = true;
+    }
 
 
 }
