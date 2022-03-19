@@ -50,7 +50,7 @@ public class Gui extends JFrame{
     private final Moover moover = new Moover(this.actor, this.gun, this.bChecker);
     
     private final ActionFactory factory = new ActionFactory();
-    private final ActionApplier aa = new ActionApplier(this.actor,this.moover, this.factory);
+    private final ActionApplier aa = new ActionApplier(this.actor,this.moover, this.factory, this.gunRaiser);
 
     
     
