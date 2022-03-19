@@ -28,6 +28,12 @@ public class BoundChecker {
     }
 
 
-
+    public boolean isExtendible(Pos2D pos){
+        if(pos.x > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }
