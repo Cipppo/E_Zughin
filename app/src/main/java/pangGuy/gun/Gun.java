@@ -16,6 +16,7 @@ public class Gun extends JPanel{
 
     private static final int WIDTH = 10;
     private static final int HEIGHT = 2;
+    private static final int SPEED = 4;
 
     private final Actor a;
     private Shape s;
@@ -47,7 +48,7 @@ public class Gun extends JPanel{
 
     public void raise(){
 
-        Pos2D newPos = new Pos2D(this.s.getPos().x, this.s.getPos().y - 1);
+        Pos2D newPos = new Pos2D(this.s.getPos().x, this.s.getPos().y - SPEED);
         this.s = new Shape(newPos, this.s.getDimensions().getX(), this.s.getDimensions().getY() + 1);
         super.setBounds(this.s.getRectangle());
         System.out.println(this.s.getPos().toString());
