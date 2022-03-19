@@ -39,28 +39,24 @@ public class Gui extends JFrame{
      new Pair<Integer>(0, SIZEY));
 
     private final Actor actor = new Actor(this.shape);
-    private final Gun gun = new Gun(this.actor);
+    public final Gun gun = new Gun(this.actor);
 
     private final Moover moover = new Moover(this.actor, this.gun, this.bChecker);
     
     private final ActionFactory factory = new ActionFactory();
     private final ActionApplier aa = new ActionApplier(this.actor,this.moover, this.factory);
 
-    private final JPanel back = new JPanel(null);
+    
     
     
     public Gui() {
         this.setSize(SIZEX, SIZEY);
         this.setTitle("Pang Guy gui");
-        this.getContentPane().setLayout(new BorderLayout());
+        this.getContentPane().setLayout(null);
+        this.add(this.gun);
+        this.add(this.actor);
         
         
-        this.back.setBounds(new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT).getRectangle());
-        this.back.setBackground(Color.RED);
-        this.back.add(this.actor, BorderLayout.CENTER);
-        this.back.add(this.gun);
-        
-        this.add(back);
 
 
         
