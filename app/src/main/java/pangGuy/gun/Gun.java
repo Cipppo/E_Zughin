@@ -21,6 +21,7 @@ public class Gun extends JPanel{
     private Shape s;
     private boolean isMovable = true;
 
+
     public Gun(Actor actor){
         this.a = actor;
         this.s = new Shape(this.a.getShape().getPos(), WIDTH, HEIGHT);
@@ -66,5 +67,8 @@ public class Gun extends JPanel{
         super.setBounds(this.s.getRectangle());
     }
 
+    public boolean getMovable(){
+        return this.isMovable;
+    }
 
 }
