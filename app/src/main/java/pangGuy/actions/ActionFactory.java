@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 import pangGuy.gui.Moover;
+import pangGuy.gun.GunRaiser;
 import pangGuy.utilities.Pos2D;
 
 public class ActionFactory {
@@ -81,6 +82,21 @@ public class ActionFactory {
 
     }
 
+    private class shootAction extends AbstractAction{
+
+        private GunRaiser g;
+
+        public shootAction(GunRaiser g){
+            this.g = g;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            g.raise();
+        }
+
+    }
+
     public upAction getUpAction(Moover a){
         return new upAction(a);
     }
@@ -97,4 +113,7 @@ public class ActionFactory {
         return new downAction(a);
     }
 
+    public shootAction getShootAction(GunRaiser g){
+        return new shootAction(g);
+    }
 }
