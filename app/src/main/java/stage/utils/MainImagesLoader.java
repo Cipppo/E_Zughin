@@ -13,7 +13,7 @@ public class MainImagesLoader {
 		SecondaryImagesLoader imagesLoader = new SecondaryImagesLoader();
 		
 		
-		try(var imageIn = MainImagesLoader.class.getResourceAsStream("/" + resourceName)) {
+		try(var imageIn = MainImagesLoader.class.getResourceAsStream(File.separator + resourceName)) {
 			image = ImageIO.read(new File(imageIn.toString()));
 			return image;
 		} catch (IOException e1) {
