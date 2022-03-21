@@ -2,6 +2,7 @@ package stage.components;
 
 import javax.swing.JPanel;
 
+import pauseMenu.components.ExitButton;
 import pauseMenu.components.PauseButton;
 import pauseMenu.components.PausePanel;
 
@@ -23,6 +24,7 @@ public class MainPanel extends JPanel{
 		this.add(timer, BorderLayout.NORTH);
 		this.add(pausePanel, BorderLayout.CENTER);
 		new PauseButton(this, pausePanel, timer);
+		new ExitButton(this, pausePanel);
 	}
 
 }

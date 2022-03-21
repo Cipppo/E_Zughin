@@ -13,41 +13,31 @@ import stage.components.TimerLabel;
 public class PauseButton {
 
     private boolean pause = false;
-    private int coolDownTimer;
     
     public PauseButton(JPanel mainPanel, JPanel pausePanel, TimerLabel timer) {
 
         KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
         mainPanel.getInputMap().put(escKey, "Esc");
         mainPanel.getActionMap().put("Esc", new AbstractAction(){
+        	
+		private static final long serialVersionUID = -534997922777581539L;
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!pause){
-                    pausePanel.setVisible(true);
-                    timer.getTimer().stop();
-                    pause = true;
-                } else {
-                    pausePanel.setVisible(false);
-                    coolDown();
-                    timer.getTimer().start();
-                    pause = false;
-                }
-            }
-        });
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            setVisibility(pausePanel, timer);
+        }
+    });
     }
 
-    private void coolDown() {
-        coolDownTimer = 3;
-        while(coolDownTimer != 0) {
-            System.out.println(coolDownTimer);
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-            coolDownTimer--;
+    public void setVisibility(JPanel pausePanel, TimerLabel timer) {
+    	if(!pause){
+            pausePanel.setVisible(true);
+            timer.getTimer().stop();
+            pause = true;
+        } else {
+            pausePanel.setVisible(false);
+            timer.getTimer().start();
+            pause = false;
         }
     }
-    
 }
