@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.util.List;
 
 import ball.physics.Pos2D;
+import stage.utils.MainImagesLoader;
 
 public class Visual extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -55,13 +56,15 @@ public class Visual extends JFrame {
 
 	        g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 			ImageLoader imLoader = new ImageLoader();
-			BufferedImage image = null;
+			MainImagesLoader loader = new MainImagesLoader();
+			//BufferedImage image = null;
 	        synchronized (this) {
 	            if (positions != null) {
 	                for(final var position : positions) {
 	                    int x = (int)( position.x * WINDOW_SIZE_X );
 	                    int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
-						image = imLoader.getImageFromDimensions(position.getDimension());
+						String icon = imLoader.getFileNameGivenDimension(position.getDimension());
+						BufferedImage image = loader.load(icon);
 						g2.drawImage(image, x, y, this);
 						//g2.drawOval(x, y, (int)(image.getWidth() * position.getDimension().getValue()), (int)(image.getHeight() * position.getDimension().getValue()));
 	                    //g.fillOval(x, y, (int)(50 * position.getDimension().getValue())

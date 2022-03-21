@@ -26,7 +26,7 @@ public class ImageLoader {
         return image;
     }
 
-    private String getFileNameGivenDimension(Dimensions dim) {
+    public String getFileNameGivenDimension(Dimensions dim) {
         switch (dim) {
             case FATHER:
                 return "ballFather.png";
