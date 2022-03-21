@@ -11,10 +11,10 @@ import java.util.stream.Stream;
 
 public class FindDirectory {
 
-	public static Path find() {
+	public static Path find(String fileName) {
 		List<Path> resourcePath = new ArrayList<>();
-		Path path = Paths.get(System.getProperty("user.home"));
-		Path fontDirectory = Paths.get("app", "src", "main", "resources", "Retro Gaming.ttf");
+		Path path = Paths.get(System.getProperty("user.dir"));
+		Path fontDirectory = Paths.get("app", "src", "main", "resources", fileName);
 		
 		try(Stream<Path> subPaths = Files.walk(path)) {
 			resourcePath = subPaths.filter(e -> e.toString()
