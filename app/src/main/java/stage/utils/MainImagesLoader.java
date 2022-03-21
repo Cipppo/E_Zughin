@@ -19,6 +19,8 @@ public class MainImagesLoader {
 		} catch (IOException e1) {
 			System.out.println("IOException: Image not found in bin directory, taking it from resources");
 			return imagesLoader.load(resourceName);
+		} catch (NullPointerException e2) {
+			return imagesLoader.load(resourceName);
 		}
 	}
 }
