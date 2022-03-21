@@ -14,11 +14,10 @@ public class FindDirectory {
 	public static Path find(String fileName) {
 		List<Path> resourcePath = new ArrayList<>();
 		Path path = Paths.get(System.getProperty("user.dir"));
-		Path fontDirectory = Paths.get("app", "src", "main", "resources", fileName);
 		
 		try(Stream<Path> subPaths = Files.walk(path)) {
 			resourcePath = subPaths.filter(e -> e.toString()
-					.contains(fontDirectory.toString()))
+					.contains(fileName))
 					.collect(Collectors.toList());
 		} catch (IOException e) {
 			e.printStackTrace();
