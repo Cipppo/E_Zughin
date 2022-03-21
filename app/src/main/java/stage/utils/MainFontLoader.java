@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class MainFontLoader {
     
-	private int fontSizePercentage = 0;
+	private int fontSizePercentage;
 	
 	public MainFontLoader(int fontSizePercentage) {
 		this.fontSizePercentage = fontSizePercentage;
@@ -22,7 +22,7 @@ public class MainFontLoader {
         try (var fontIn = MainFontLoader.class.getResourceAsStream("/Retro Gaming.ttf")) {
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontIn).deriveFont(Font.BOLD, CenterOnDefaultScreen.center().height*this.fontSizePercentage/100);
             return font;
-          } catch (FontFormatException e) {
+        } catch (FontFormatException e) {
             System.out.println("FontFormatException: ");
             e.printStackTrace();
         } catch (IOException e) {

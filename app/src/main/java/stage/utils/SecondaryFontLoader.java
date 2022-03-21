@@ -38,7 +38,7 @@ public class SecondaryFontLoader {
 	}
 
     public Font load() {
-        String fontFilePath = FindDirectory.find().toString();
+        String fontFilePath = FindDirectory.find("Retro Gaming.ttf").toString();
         int fontStyle = Font.BOLD;
         int fontSize = CenterOnDefaultScreen.center().height*this.fontSizePercentage/100;
         Font font = null;
@@ -46,8 +46,8 @@ public class SecondaryFontLoader {
     
         if((fontFilePath == null || fontFilePath.isEmpty()) || fontSize < 1) {
             throw new IllegalArgumentException("load() Method Error! Arguments " +
-                                                "passed to this method must contain a file path or a numerical " +
-                                                "value other than 0!" + System.lineSeparator());
+                                                "passed to this method must contain a file path" 
+                                                + System.lineSeparator());
         }
     
         try {
@@ -58,7 +58,7 @@ public class SecondaryFontLoader {
             System.out.println("FileNotFoundException: " + fontFilePath);
         }
         catch (FontFormatException | IOException ex) {
-            System.out.println("Exception thrown");
+            ex.printStackTrace();
         }
         return font;
     }
