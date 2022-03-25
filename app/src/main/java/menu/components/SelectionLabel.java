@@ -12,7 +12,7 @@ import java.awt.Color;
 
 import stage.utils.MainFontLoader;
 
-public class SelectionPanel extends JPanel{
+public class SelectionLabel extends JPanel{
 
 	/**
 	 * 
@@ -26,8 +26,8 @@ public class SelectionPanel extends JPanel{
 	private boolean IsUpLastAction = true;
 	
     
-    public SelectionPanel() {
-    	selectionPanel.setText("-");
+    public SelectionLabel() {
+    	selectionPanel.setText("_");
     	selectionPanel.setFont(gameFont);
     	selectionPanel.setForeground(Color.BLACK);
     	this.setBackground(Color.BLACK);
