@@ -13,20 +13,21 @@ import java.awt.Font;
 import java.util.List;
 
 import ball.physics.Pos2D;
-import stage.utils.MainImagesLoader;
 
 public class Visual extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private VisualPanel panel;
+	private ImageLoader iLoader;
 	
 	private static final int WINDOW_SIZE_X = 800;
 	private static final int WINDOW_SIZE_Y = 600;
 
 	
-	public Visual() {
+	public Visual(ImageLoader iLoader) {
 		setTitle("Bouncing Balls");
         
+		this.iLoader = iLoader;
 		setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
 		setResizable(false);
 		panel = new VisualPanel();
@@ -55,17 +56,14 @@ public class Visual extends JFrame {
 	        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
 	        g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
-			ImageLoader imLoader = new ImageLoader();
-			MainImagesLoader loader = new MainImagesLoader();
-			//BufferedImage image = null;
+
 	        synchronized (this) {
 	            if (positions != null) {
 	                for(final var position : positions) {
 	                    int x = (int)( position.x * WINDOW_SIZE_X );
 	                    int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
-						String icon = imLoader.getFileNameGivenDimension(position.getDimension());
-						BufferedImage image = loader.load(icon);
-						g2.drawImage(image, x, y, this);
+						
+						g2.drawImage(iLoader.getBallImage(position), x, y, this);
 						//g2.drawOval(x, y, (int)(image.getWidth() * position.getDimension().getValue()), (int)(image.getHeight() * position.getDimension().getValue()));
 	                    //g.fillOval(x, y, (int)(50 * position.getDimension().getValue())
 						//, (int)(50 * position.getDimension().getValue()));
@@ -83,6 +81,10 @@ public class Visual extends JFrame {
 	        positions = pos;
 	        repaint();
 	    }
+
+		public synchronized void ImagePaint(BufferedImage image) {
+
+		}
     }
 }
 
