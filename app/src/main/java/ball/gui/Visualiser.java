@@ -16,12 +16,11 @@ public class Visualiser extends Thread {
     private final Visual frame;
     private final ControlPanel controlPane;
     private final List<BallAgent> balls;
-    private final ImageLoader iLoader = new ImageLoader();
     private boolean stop;
     
     
     public Visualiser(int ballsToGenerate) {
-        this.frame = new Visual(iLoader);
+        this.frame = new Visual();
         this.controlPane = new ControlPanel(this);
         this.frame.add(this.controlPane, BorderLayout.NORTH);
         this.frame.setVisible(true);
@@ -31,10 +30,6 @@ public class Visualiser extends Thread {
         for (int i = 0; i < ballsToGenerate; i++) {
             this.balls.add(new BallAgent());
         }
-        
-        this.balls.forEach(t -> {
-            iLoader.setBallImage(t.getBallPosition());
-        });
     }
 
 
@@ -72,7 +67,6 @@ public class Visualiser extends Thread {
                     for (final var i : children) {
                         var newAgent = new BallAgent(i);
                         this.balls.add(newAgent);
-                        this.iLoader.setBallImage(newAgent.getBallPosition());
                         newAgent.start();                    
                     }
                 }

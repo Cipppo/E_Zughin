@@ -24,10 +24,10 @@ public class Visual extends JFrame {
 	private static final int WINDOW_SIZE_Y = 600;
 
 	
-	public Visual(ImageLoader iLoader) {
+	public Visual() {
 		setTitle("Bouncing Balls");
         
-		this.iLoader = iLoader;
+		this.iLoader = new ImageLoader();
 		setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
 		setResizable(false);
 		panel = new VisualPanel();
@@ -63,7 +63,7 @@ public class Visual extends JFrame {
 	                    int x = (int)( position.x * WINDOW_SIZE_X );
 	                    int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
 						
-						g2.drawImage(iLoader.getBallImage(position), x, y, this);
+						g2.drawImage(iLoader.getBallImage(position.getDimension()), x, y, this);
 						//g2.drawOval(x, y, (int)(image.getWidth() * position.getDimension().getValue()), (int)(image.getHeight() * position.getDimension().getValue()));
 	                    //g.fillOval(x, y, (int)(50 * position.getDimension().getValue())
 						//, (int)(50 * position.getDimension().getValue()));

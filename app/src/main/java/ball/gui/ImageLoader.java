@@ -1,7 +1,6 @@
 package ball.gui;
 
 import ball.physics.Dimensions;
-import ball.physics.Pos2D;
 import stage.utils.MainImagesLoader;
 
 import java.util.Map;
@@ -15,16 +14,22 @@ import java.awt.image.BufferedImage;
  */
 public class ImageLoader {
 
-    private Map<Pos2D, BufferedImage> entries = new HashMap<>();
+    private Map<Dimensions, BufferedImage> entries = new HashMap<>();
     private MainImagesLoader loader = new MainImagesLoader();
 
-    public void setBallImage(Pos2D ball) {
-        String spriteName = this.getFileNameGivenDimension(ball.getDimension());
+    public ImageLoader() {
+        this.fillIamgesCache(Dimensions.FATHER);
+        this.fillIamgesCache(Dimensions.SON);
+        this.fillIamgesCache(Dimensions.GRANDSON);
+    }
+
+    private void fillIamgesCache(Dimensions dim) {
+        String spriteName = this.getFileNameGivenDimension(dim);
         BufferedImage image = loader.load(spriteName);
-        this.entries.put(ball, image);
+        this.entries.put(dim, image);
     }
     
-    public BufferedImage getBallImage(Pos2D ball) {
+    public BufferedImage getBallImage(Dimensions ball) {
         return this.entries.get(ball);
     }
 
