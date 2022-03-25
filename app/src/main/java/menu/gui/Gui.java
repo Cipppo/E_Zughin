@@ -1,6 +1,7 @@
 package menu.gui;
 
 import java.awt.BorderLayout;
+import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
 
@@ -18,7 +19,7 @@ public class Gui extends JFrame{
 	private final int width = CenterOnDefaultScreen.center().width;
 	private final int heigth = CenterOnDefaultScreen.center().height;
 
-	public Gui() {
+	public Gui() throws FileNotFoundException {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.setSize(width*70/100, heigth*70/100);
