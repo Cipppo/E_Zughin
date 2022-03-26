@@ -2,17 +2,6 @@ package ball.ballAgent;
 
 import ball.Boundary;
 import ball.physics.*;
-
-enum Axis {
-	XAXIS,
-	YAXIS;
-}
-
-/**
- * Need to implement thread support and consequently:
- *      -TODO: create a timer for suspension of balls during pre-game phase
- */
-
 /**
  * This is the structure of the ball, described by:
  *      - A trajectory
