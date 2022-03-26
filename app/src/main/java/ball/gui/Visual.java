@@ -10,6 +10,7 @@ import java.awt.RenderingHints;
 import java.util.List;
 
 import ball.physics.Pos2D;
+import ball.physics.Dimensions;
 
 public class Visual extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -66,5 +67,9 @@ public class Visual extends JFrame {
 	        repaint();
 	    }
     }
+
+	public int getBallImageDiameter(Dimensions dim) {
+		return this.iLoader.getBallImage(dim).getHeight();
+	}
 }
 
