@@ -40,24 +40,11 @@ public class Ball {
         this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.getX();
         this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.getY() 
                                                             - (0.5*gravity*Math.pow(this.time.getY(), 2)));
-        this.checkConstraints();
+        //System.out.println(this.actualPosition);
     }
 
-    // this should be cleaned
-    private void checkConstraints() {
-        if(this.actualPosition.y > Boundary.Y1.getValue() - 0.07) {
-            this.applyConstraints(Boundary.Y1.getValue() - 0.07, Axis.YAXIS);
-        } else if (this.actualPosition.y < Boundary.Y0.getValue()) {
-            this.applyConstraints(Boundary.Y0.getValue(), Axis.YAXIS);
-        } else if (this.actualPosition.x > Boundary.X1.getValue() - 0.05 ) {
-            this.applyConstraints(Boundary.X1.getValue() - 0.05, Axis.XAXIS);
-        } else if (this.actualPosition.x < Boundary.X0.getValue()) {
-            this.applyConstraints(Boundary.X0.getValue(), Axis.XAXIS);
-        }
-    }
-
-    private void applyConstraints(double bound, Axis axis) {
-        if (axis == Axis.YAXIS) {
+    public synchronized void applyConstraints(double bound, Boundary axis) {
+        if (axis == Boundary.Y0 || axis == Boundary.Y1) {
             this.initialPosition.y = bound;
             this.time.resetY();
             this.velocity.vy = -this.velocity.vy;
@@ -79,6 +66,4 @@ public class Ball {
     public  synchronized Velocity2D getVelocity() {
         return this.velocity;
     }
-
-    
 }
