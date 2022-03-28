@@ -44,6 +44,7 @@ public class Gui extends JFrame{
     private final Actor actor = new Actor(this.shape);
 
     public final Gun gun = new Gun(this.actor);
+
     public final Raiser raiser = new Raiser(this.gun, this.bChecker);
     public final GunRaiser gunRaiser = new GunRaiser(this.gun, this.bChecker);
 
