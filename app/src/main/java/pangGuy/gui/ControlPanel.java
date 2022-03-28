@@ -23,7 +23,7 @@ public class ControlPanel extends JFrame{
         this.setName("Control Panel");
         
         this.jb.addActionListener(e -> {
-            this.gui.gunRaiser.raise();
+            this.gui.dGun.run();
         });
 
         this.add(jb);
