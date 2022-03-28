@@ -1,18 +1,16 @@
 package ball.gui;
 
-import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 import javax.swing.*;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Font;
 
 import java.util.List;
 
 import ball.physics.Pos2D;
+import ball.physics.Dimensions;
 
 public class Visual extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -26,7 +24,6 @@ public class Visual extends JFrame {
 	
 	public Visual() {
 		setTitle("Bouncing Balls");
-        
 		this.iLoader = new ImageLoader();
 		setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
 		setResizable(false);
@@ -41,13 +38,9 @@ public class Visual extends JFrame {
     
     public class VisualPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
-
 		private List<Pos2D> positions;
-	    private Font usedFont;
-	    
 	    public VisualPanel() {
 			setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
-			usedFont = new Font("Verdana", Font.PLAIN, 24);
 		}
 
 	    public void paint(Graphics g) {
@@ -62,29 +55,21 @@ public class Visual extends JFrame {
 	                for(final var position : positions) {
 	                    int x = (int)( position.x * WINDOW_SIZE_X );
 	                    int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
-						
 						g2.drawImage(iLoader.getBallImage(position.getDimension()), x, y, this);
-						//g2.drawOval(x, y, (int)(image.getWidth() * position.getDimension().getValue()), (int)(image.getHeight() * position.getDimension().getValue()));
-	                    //g.fillOval(x, y, (int)(50 * position.getDimension().getValue())
-						//, (int)(50 * position.getDimension().getValue()));
 	                }
 	            }
 	        }
-
 			g2.dispose();
-
-	        g2.setFont(usedFont);
-	        g2.setColor(Color.RED);
 	    }
 
 	    public void updatePositions(List<Pos2D> pos) {
 	        positions = pos;
 	        repaint();
 	    }
-
-		public synchronized void ImagePaint(BufferedImage image) {
-
-		}
     }
+
+	public int getBallImageDiameter(Dimensions dim) {
+		return this.iLoader.getBallImage(dim).getHeight();
+	}
 }
 

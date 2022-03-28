@@ -1,6 +1,8 @@
 package ball.gui;
 
 import ball.ballAgent.BallAgent;
+import ball.controller.ConstraintCheck;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.awt.BorderLayout;
@@ -17,6 +19,7 @@ public class Visualiser extends Thread {
     private final ControlPanel controlPane;
     private final List<BallAgent> balls;
     private boolean stop;
+    private final ConstraintCheck checker;
     
     
     public Visualiser(int ballsToGenerate) {
@@ -26,6 +29,8 @@ public class Visualiser extends Thread {
         this.frame.setVisible(true);
         this.balls = new ArrayList<>();
         this.stop = false;
+        this.checker = new ConstraintCheck(this.frame.getSize().getWidth()
+                        , this.frame.getSize().getHeight());
         
         for (int i = 0; i < ballsToGenerate; i++) {
             this.balls.add(new BallAgent());
@@ -39,12 +44,16 @@ public class Visualiser extends Thread {
             this.balls.forEach(t -> t.start());
             while(true) {
                 if(!this.stop) {
+                    this.balls.forEach(t -> this.checker
+                            .checkConstraints(
+                                t, this.frame.getBallImageDiameter(t.getBallPosition().getDimension()))
+                                );
                     this.frame.updatePosition(this.balls.stream()
                         .map(t -> t.getBallPosition())
                         .collect(Collectors.toList()));
-                    Thread.sleep(20);
+                    Thread.sleep(10);
                 } else {
-                    Thread.sleep(20);
+                    Thread.sleep(10);
                 }
             }
         } catch (Exception e) {

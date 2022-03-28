@@ -41,7 +41,7 @@ public class BallFactory {
 	 */
 	public static Ball randomPos() {
 		Random rand = new Random();
-		Pos2D pos = new Pos2D(rand.nextDouble(), Boundary.Y1.getValue() / 2, Dimensions.FATHER);
+		Pos2D pos = new Pos2D(rand.nextDouble(), Boundary.Y0.getValue(), Dimensions.FATHER);
 		return randomVelAndAngleBall(pos);
 	}
 
