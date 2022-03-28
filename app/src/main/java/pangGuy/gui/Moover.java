@@ -16,11 +16,12 @@ public class Moover {
         this.bc = bc;
     }
 
-    public void move(Pos2D pos){
+    public void move(Pos2D pos, Directions dir){
         if(bc.isInside(pos, this.actor.getShape().getDimensions().getX(),
         this.actor.getShape().getDimensions().getY())){
             this.actor.changeLocation(pos);
             this.gun.changeLocation(pos);
+            this.gun.changeDir(dir);
         }
     }
 
