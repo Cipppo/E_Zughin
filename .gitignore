@@ -36,3 +36,4 @@ bin/
 .classpath
 .settings/
 app/.classpath
+.DS_Store
