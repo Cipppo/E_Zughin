@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 
 import javax.swing.JPanel;
 
-public class MainPanel extends JPanel{
+public class HoFMainPanel extends JPanel{
 	
 	
 	/**
@@ -15,7 +15,7 @@ public class MainPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 4822473142531885639L;
 
-	public MainPanel() throws FileNotFoundException {
+	public HoFMainPanel() throws FileNotFoundException {
 		JPanel mainPanel = new JPanel(new GridBagLayout());
 		GridBagConstraints container = new GridBagConstraints();
 		mainPanel.setLayout(new GridBagLayout());
@@ -36,5 +36,6 @@ public class MainPanel extends JPanel{
 		mainPanel.setBackground(Color.black);
 		this.setBackground(Color.black);
 		this.add(mainPanel);
+		this.setVisible(false);
 	}
 }

@@ -8,7 +8,7 @@ import java.awt.Color;
 
 import stage.utils.MainFontLoader;
 
-public class HallOfFamePanel extends JLabel{
+public class HallOfFameLabel extends JLabel{
 
 	/**
 	 * 
@@ -17,7 +17,7 @@ public class HallOfFamePanel extends JLabel{
 	MainFontLoader fontLoader = new MainFontLoader(4);
 	Font gameFont = fontLoader.load();
     
-    public HallOfFamePanel() {
+    public HallOfFameLabel() {
         this.setText("HALL OF FAME");
 		this.setForeground(Color.white);
 		this.setFont(gameFont);

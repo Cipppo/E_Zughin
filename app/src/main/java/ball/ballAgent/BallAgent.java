@@ -2,6 +2,7 @@ package ball.ballAgent;
 
 import java.util.List;
 
+import ball.Boundary;
 import ball.physics.Dimensions;
 import ball.physics.Pos2D;
 
@@ -33,7 +34,7 @@ public class BallAgent extends Thread {
                     Thread.sleep(20);//Don't know now how to handle this, tried to reduce CPU bounding as much as possibile
                 }
                 this.ball.updatePos();
-                Thread.sleep(10);
+                Thread.sleep(15);
             }
         } catch (Exception e) { 
             System.out.println("An exception occurred: " + e.getMessage());
@@ -76,5 +77,9 @@ public class BallAgent extends Thread {
      */
     public synchronized void restart() {
         this.paused = false;
+    }
+
+    public void applyConstraints(double d, Boundary x0) {
+        this.ball.applyConstraints(d, x0);
     }
 }

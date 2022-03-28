@@ -8,7 +8,7 @@ import java.awt.Color;
 
 import stage.utils.MainFontLoader;
 
-public class StartPanel extends JLabel {
+public class StartLabel extends JLabel {
 	
 	/**
 	 * 
@@ -17,7 +17,7 @@ public class StartPanel extends JLabel {
 	MainFontLoader fontLoader = new MainFontLoader(4);
 	Font gameFont = fontLoader.load();
     
-    public StartPanel() {
+    public StartLabel() {
         this.setText("START");
 		this.setForeground(Color.white);
 		this.setFont(gameFont);

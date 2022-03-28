@@ -8,20 +8,19 @@ import java.awt.Color;
 
 import stage.utils.MainFontLoader;
 
-public class TitlePanel extends JLabel{
-    
-    
-	
+public class SubtitleLabel extends JLabel{
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -9143946569687691268L;
-	MainFontLoader fontLoader = new MainFontLoader(11);
+	private static final long serialVersionUID = -5425263161796580824L;
+	MainFontLoader fontLoader = new MainFontLoader(7);
 	Font gameFont = fontLoader.load();
-    
-    public TitlePanel() {
-        this.setText("PANG");
+	    
+    public SubtitleLabel() {
+        this.setText("ARCADE RETRO-GAME");
 		this.setForeground(Color.magenta);
 		this.setFont(gameFont);
     }
+	
 }

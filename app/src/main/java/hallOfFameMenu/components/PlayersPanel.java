@@ -38,8 +38,11 @@ public class PlayersPanel extends JPanel{
 		
 		Players p1 = new Players();
 		p1.Read();
-		/*p1.add(new Player("EZMI"));
-		p1.Save();*/
+		Player p = new Player("GIGI");
+		p.setScore(1500);
+		p1.add(p);
+		p1.Sort();
+		p1.Save();
 		
 		for(int i = 0; i < p1.get(); i++) {
 			String elem = Integer.toString(i+1);
@@ -67,7 +70,7 @@ public class PlayersPanel extends JPanel{
 			container.gridx = 3;
 			container.gridy = 1+i;
 			container.ipadx = 120;
-			playersPanel.add(new GenericLabel("yy/mm/dd"),  container);
+			playersPanel.add(new GenericLabel(p1.get(i).getDate()),  container);
 		}
 		
 		playersPanel.setBackground(Color.black);
