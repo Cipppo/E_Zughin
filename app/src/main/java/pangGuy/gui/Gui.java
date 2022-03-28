@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.Pos2D;
+import powerUp.DoubleGun;
 import pangGuy.actions.ActionApplier;
 import pangGuy.actions.ActionFactory;
 import pangGuy.gun.Gun;
@@ -54,7 +55,7 @@ public class Gui extends JFrame{
     private final ActionFactory factory = new ActionFactory();
     private final ActionApplier aa = new ActionApplier(this.actor,this.moover, this.factory, this.gunRaiser);
 
-    
+    public final DoubleGun dGun = new DoubleGun(this.gunRaiser);
     
     
     public Gui() {
