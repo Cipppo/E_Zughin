@@ -1,8 +1,10 @@
 package pangGuy.gun;
 
 import pangGuy.gui.Shape;
+import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
-
+import pangGuy.utilities.PosConverter;
+import pangGuy.utilities.Pair;
 import java.awt.Color;
 
 import javax.swing.JPanel;
@@ -21,11 +23,12 @@ public class Gun extends JPanel{
     private final Actor a;
     private Shape s;
     private boolean isMovable = true;
-
+    private Directions direction;
 
     public Gun(Actor actor){
         this.a = actor;
         this.s = new Shape(this.a.getShape().getPos(), WIDTH, HEIGHT);
+        this.direction = Directions.LEFT;
 
 
         super.setBounds(this.s.getRectangle());
@@ -55,6 +58,17 @@ public class Gun extends JPanel{
 
     }
 
+    public void changeDir(Directions dir){
+        if(this.isMovable){
+            PosConverter conv = new PosConverter(new Pair<Integer>(WIDTH, HEIGHT), this.a);
+            
+            this.s = new Shape(conv.getPos(dir), WIDTH, HEIGHT);
+            super.setLocation(conv.getPos(dir).x, conv.getPos(dir).y);
+            
+        }
+        this.direction = dir;
+    }
+
     public void setUnMovable(){
         this.isMovable = false;
     }
@@ -64,12 +78,15 @@ public class Gun extends JPanel{
     }
 
     public void restore(){
-        this.s = new Shape(this.a.getShape().getPos(), WIDTH, HEIGHT);
+        PosConverter conv = new PosConverter(new Pair<Integer>(WIDTH, HEIGHT), this.a);
+        this.s = new Shape(conv.getPos(this.direction), WIDTH, HEIGHT);
         super.setBounds(this.s.getRectangle());
     }
 
     public boolean getMovable(){
         return this.isMovable;
     }
+
+
 
 }
