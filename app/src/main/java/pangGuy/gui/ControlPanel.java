@@ -4,11 +4,13 @@ package pangGuy.gui;
 
 import javax.swing.JFrame;
 
+import pangGuy.gun.GunRaiser;
+import powerUp.DoubleGun;
 
-
+import javax.swing.GrayFilter;
 import javax.swing.JButton;
 
-
+@SuppressWarnings("unused")
 public class ControlPanel extends JFrame{
 
     private static final int SIZEX = 300;
@@ -16,14 +18,16 @@ public class ControlPanel extends JFrame{
 
     private JButton jb = new JButton("Raise");
     private Gui gui;
+    private GunRaiser gRaiser;
 
     public ControlPanel(Gui gui){
         this.gui = gui;
+        this.gRaiser = gui.gunRaiser;
         this.setSize(SIZEX, SIZEY);
         this.setName("Control Panel");
         
         this.jb.addActionListener(e -> {
-            this.gui.dGun.run();
+            new DoubleGun(this.gRaiser).start();
         });
 
         this.add(jb);
