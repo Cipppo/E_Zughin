@@ -8,11 +8,13 @@ public class Moover {
 
     private final Actor actor;
     private final Gun gun;
+    private final Gun gun2;
     private final BoundChecker bc;
 
-    public Moover(Actor actor, Gun gun, BoundChecker bc){
+    public Moover(Actor actor, Gun gun, Gun gun2, BoundChecker bc){
         this.actor = actor;
         this.gun = gun;
+        this.gun2 = gun2;
         this.bc = bc;
     }
 
@@ -22,6 +24,8 @@ public class Moover {
             this.actor.changeLocation(pos);
             this.gun.changeLocation(pos);
             this.gun.changeDir(dir);
+            this.gun2.changeLocation(pos);
+            this.gun2.changeDir(dir);
         }
     }
 
