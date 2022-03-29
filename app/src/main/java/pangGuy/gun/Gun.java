@@ -25,15 +25,15 @@ public class Gun extends JPanel{
     private boolean isMovable = true;
     private Directions direction;
 
-    public Gun(Actor actor){
+    public Gun(Actor actor, Color color){
         this.a = actor;
         this.s = new Shape(this.a.getShape().getPos(), WIDTH, HEIGHT);
         this.direction = Directions.LEFT;
 
 
         super.setBounds(this.s.getRectangle());
-        super.setBackground(Color.green);
-        super.setForeground(Color.green);
+        super.setBackground(color);
+        super.setForeground(color);
         super.setOpaque(true);
         
     }
