@@ -29,7 +29,7 @@ public class DoubleGun extends Thread implements PowerUp{
         }
             System.out.println("Finished");
             this.gunRaiser.deactivateSecondGun();
-
+            this.timeElapsed = 0;
     }
 
     @Override
