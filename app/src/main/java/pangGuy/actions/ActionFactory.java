@@ -25,7 +25,7 @@ public class ActionFactory {
         @Override
         public void actionPerformed(ActionEvent e) {
             m.move(new Pos2D(m.getCurrentPos().x + SPEED, m.getCurrentPos().y), Directions.RIGHT);
-            System.out.println("RIGHT");
+            //System.out.println("RIGHT");
             
         }
 
@@ -42,7 +42,7 @@ public class ActionFactory {
         @Override
         public void actionPerformed(ActionEvent e) {
             m.move(new Pos2D(m.getCurrentPos().x - SPEED, m.getCurrentPos().y), Directions.LEFT);
-            System.out.println("LEFT");
+            //System.out.println("LEFT");
             
         }
         

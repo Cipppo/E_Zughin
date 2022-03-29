@@ -20,7 +20,7 @@ public class BoundChecker {
     public boolean isInside(Pos2D pos ,int width, int height){
         if(pos.x >= this.x.getX() && pos.x + width <= this.x.getY()){
             if(pos.y >= this.y.getX() && pos.y + height <= this.y.getY() - 35){
-                System.out.println("PERFORMED");
+                //System.out.println("PERFORMED");
                 return true;
             }
         }
