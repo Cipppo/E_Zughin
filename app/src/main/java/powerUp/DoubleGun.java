@@ -11,7 +11,7 @@ public class DoubleGun extends Thread implements PowerUp{
     public DoubleGun(GunRaiser gunRaiser){
         this.gunRaiser = gunRaiser;
         this.timeElapsed = 0;
-        this.duration = 3;
+        this.duration = 15;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class DoubleGun extends Thread implements PowerUp{
                 System.out.print(".");
                 Thread.sleep(1000);
             }catch(Exception e){
-                System.out.println("Thread.sleep() Exception: " + e.getMessage());
+                System.out.println("\nThread.sleep() Exception: " + e.getMessage());
             }
             this.timeElapsed++;
         }
