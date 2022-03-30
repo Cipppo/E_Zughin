@@ -6,11 +6,7 @@ public interface Bullet {
     
     Pos2D getPos();
 
-    void setPos();
-
-    void setMovable();
-
-    void setUnMovable();
+    void setPos(Pos2D pos);
 
     boolean isMovable();
 
