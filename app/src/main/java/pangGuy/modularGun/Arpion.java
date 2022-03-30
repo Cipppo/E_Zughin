@@ -51,11 +51,11 @@ public class Arpion extends JPanel implements Bullet {
         }
     }
 
-    private void setUnMovable(){
+    public void setUnMovable(){
         this.isMovable = false;
     }
 
-    private void setMovable(){
+    public void setMovable(){
         this.isMovable = true;
     }
 
@@ -72,8 +72,18 @@ public class Arpion extends JPanel implements Bullet {
     }
 
     @Override
-    public void shoot() {
-
+    public void raise() {
+        Pos2D newPos = new Pos2D(this.s.getPos().x, this.s.getPos().y - SPEED);
+        this.s = new Shape(newPos, this.s.getDimensions().getX(), this.s.getDimensions().getY() + SPEED);
+        super.setBounds(this.s.getRectangle());        
+    }
+    
+    public void changeDir(Directions dir){
+        if(this.isMovable){
+            PosConverter conv = new PosConverter(new Pair<Integer>(WIDTH, HEIGHT), this.actor);
+            this.setPos(conv.getPos(dir));
+        }
+        this.direction = dir;
     }
     
 }
