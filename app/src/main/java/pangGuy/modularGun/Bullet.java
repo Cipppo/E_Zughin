@@ -12,7 +12,7 @@ public interface Bullet {
 
     void restore();
 
-    void shoot();
+    void raise();
 
 
 }
