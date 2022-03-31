@@ -4,10 +4,9 @@ import ball.ballAgent.BallAgent;
 import ball.controller.ConstraintCheck;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 import java.awt.BorderLayout;
-
-import java.util.ArrayList;
 
 /**
  * This makes the BallAgent communicate with the Visual
@@ -17,7 +16,11 @@ import java.util.ArrayList;
 public class Visualiser extends Thread {
     private final Visual frame;
     private final ControlPanel controlPane;
-    private final List<BallAgent> balls;
+    /**
+     * Very useful for handling java.util.ConcurrentModificationException
+     */
+    private final CopyOnWriteArrayList<BallAgent> balls;
+
     private boolean stop;
     private final ConstraintCheck checker;
     
@@ -27,7 +30,7 @@ public class Visualiser extends Thread {
         this.controlPane = new ControlPanel(this);
         this.frame.add(this.controlPane, BorderLayout.NORTH);
         this.frame.setVisible(true);
-        this.balls = new ArrayList<>();
+        this.balls = new CopyOnWriteArrayList<>();
         this.stop = false;
         this.checker = new ConstraintCheck(this.frame.getSize().getWidth()
                         , this.frame.getSize().getHeight());
@@ -44,13 +47,16 @@ public class Visualiser extends Thread {
             this.balls.forEach(t -> t.start());
             while(true) {
                 if(!this.stop) {
-                    this.balls.forEach(t -> this.checker
-                            .checkConstraints(
-                                t, this.frame.getBallImageDiameter(t.getBallPosition().getDimension()))
-                                );
                     this.frame.updatePosition(this.balls.stream()
                         .map(t -> t.getBallPosition())
                         .collect(Collectors.toList()));
+                    for (final var t : this.balls) {
+                        this.checker
+                            .checkConstraints(t, this.frame.getBallImageDiameter(t.getBallPosition().getDimension()));
+                        if (this.checker.checkEnemyCollision(this.frame.getGuy(), t)) {
+                            this.duplicatation(t);
+                        }
+                    }
                     Thread.sleep(10);
                 } else {
                     Thread.sleep(10);
@@ -66,10 +72,9 @@ public class Visualiser extends Thread {
     }
     //Maybe try to create an ad Hoc exception
     //Need to clean this mess
-    public synchronized void duplicatation() {
+    public synchronized void duplicatation(BallAgent ball) {
         if (!this.balls.isEmpty()) {
             this.stop = true;
-            var ball = this.balls.get(0);
             try { 
                 var children = ball.duplicate();
                 if (!children.isEmpty()) {
