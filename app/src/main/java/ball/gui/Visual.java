@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.BorderLayout;
 
 import javax.swing.*;
+
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
@@ -11,6 +12,8 @@ import java.util.List;
 
 import ball.physics.Pos2D;
 import ball.physics.Dimensions;
+import ball.physics.Entity;
+import ball.testing.Enemy;
 
 public class Visual extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -39,8 +42,12 @@ public class Visual extends JFrame {
     public class VisualPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
 		private List<Pos2D> positions;
-	    public VisualPanel() {
+
+		private Enemy enemy;
+	    
+		public VisualPanel() {
 			setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
+			this.enemy = new Enemy(WINDOW_SIZE_X / 2, WINDOW_SIZE_Y / 2, 60);
 		}
 
 	    public void paint(Graphics g) {
@@ -59,6 +66,8 @@ public class Visual extends JFrame {
 	                }
 	            }
 	        }
+			g2.fillOval((int)this.enemy.getPosition().x, (int)this.enemy.getPosition().y
+						, this.enemy.getSize(), this.enemy.getSize());
 			g2.dispose();
 	    }
 
@@ -66,10 +75,18 @@ public class Visual extends JFrame {
 	        positions = pos;
 	        repaint();
 	    }
+
+		public Entity getGuy() {
+			return this.enemy;
+		}
     }
 
 	public int getBallImageDiameter(Dimensions dim) {
 		return this.iLoader.getBallImage(dim).getHeight();
 	}
+
+    public Entity getGuy() {
+        return panel.getGuy();
+    }
 }
 
