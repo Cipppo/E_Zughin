@@ -43,7 +43,7 @@ public class Pos2D {
      * @return
      *      the size of the ball
      */
-    private int getDiamterFromDimension() {
+    private int getRadiusFromDimension() {
         switch (this.dimension) {
             case FATHER:
                 this.radius = 50;
@@ -61,8 +61,9 @@ public class Pos2D {
 
     public int getRadius() {
         if (this.radius == 0) {
-            return this.getDiamterFromDimension();
+            return this.getRadiusFromDimension();
         }
         return this.radius;
     }
+
 }
