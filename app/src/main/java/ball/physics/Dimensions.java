@@ -3,7 +3,8 @@ package ball.physics;
 public enum Dimensions {
 	FATHER(1.0),
 	SON(0.85),
-	GRANDSON(0.50);
+	GRANDSON(0.50),
+	NONE(0.0);
 
 	private final double n;
 
