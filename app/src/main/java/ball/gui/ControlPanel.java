@@ -37,10 +37,10 @@ public class ControlPanel extends JPanel {
 		pane.add(this.timeFreeze, BorderLayout.SOUTH);
 		
 		this.add(pane);
-		
-		this.separateOne.addActionListener(t -> {
-			visual.duplicatation();
-		});
+		this.separateOne.setEnabled(false);
+		// this.separateOne.addActionListener(t -> {
+		// 	visual.duplicatation();
+		// });
 		/*
 		this.stopAll.addActionListener(t -> {
 			visual.pauseAll();
