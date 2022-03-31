@@ -1,23 +1,16 @@
 package hallOfFameMenu.components;
 
-import java.awt.Color;
-import java.awt.Font;
+import menu.utils.SecondaryLabel;
 
-import javax.swing.JLabel;
-
-import stage.utils.MainFontLoader;
-
-public class NicknameTitleLabel extends JLabel{
+public class SubtitlesLabel extends SecondaryLabel{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1953141241408051372L;
-	MainFontLoader fontLoader = new MainFontLoader(3);
-	Font gameFont = fontLoader.load();
 	
-	public NicknameTitleLabel() {
-		this.setText("NICKNAME");
-		this.setForeground(Color.GREEN);
-		this.setFont(gameFont);
+	public SubtitlesLabel(String text) {
+		this.setText(text);
+		this.setSSize(3);
+		this.setFont(this.getGameFont());
 	}
 }

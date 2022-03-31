@@ -1,23 +1,14 @@
 package hallOfFameMenu.components;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Label;
+import menu.utils.GenericLabel;
 
-import stage.utils.MainFontLoader;
-
-public class GenericLabel extends Label{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8922618576263627976L;
-	MainFontLoader fontLoader = new MainFontLoader(3);
-	Font gameFont = fontLoader.load();
+public class DataLabel extends GenericLabel{
 	
-	public GenericLabel(String text) {
+
+	private static final long serialVersionUID = -6018524334211006731L;
+	
+	public DataLabel(String text) {
 		this.setText(text);
-		this.setForeground(Color.WHITE);
-		this.setFont(gameFont);
+		this.setFont(this.getGameFont());
 	}
 }
