@@ -1,7 +1,7 @@
 package pangGuy.modularGun;
 
 import java.awt.Color;
-import java.util.Collection;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.List;
@@ -58,6 +58,11 @@ public class GunSet {
     }
 
 
+    public void moveGuns(){
+        if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.DOUBLE_ARPION){
+            
+        }
+    }
 
     
 }
