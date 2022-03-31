@@ -46,7 +46,7 @@ public class BallAgent extends Thread {
     }
 
     public synchronized Pos2D getBallPosition() {
-        return this.ball.getCurrentPosition();
+        return this.ball.getPosition();
     }
 
     //Absolutaly to be cleaned
@@ -61,7 +61,7 @@ public class BallAgent extends Thread {
     }
 
     private Ball generateBall() {
-        if (this.ball.getCurrentPosition().getDimension() != Dimensions.GRANDSON) {
+        if (this.ball.getPosition().getDimension() != Dimensions.GRANDSON) {
             return BallFactory.fromFatherBall(this.ball);
         } else {
             throw new IllegalStateException();
