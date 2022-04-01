@@ -23,7 +23,7 @@ public class Ball implements Entity {
     	this.initialPosition = new Pos2D(position.x, position.y, position.getDimension());
     	this.velocity = this.trajectory.getXYVelocity();
     	this.gravity = gravity;
-        this.size = this.getPosition().getRadius();
+        this.size = this.getPosition().getDiameter();
     }
 
     public synchronized void updatePos() {
