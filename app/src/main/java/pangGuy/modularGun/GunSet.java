@@ -2,7 +2,7 @@ package pangGuy.modularGun;
 
 import java.awt.Color;
 
-import java.util.HashSet;
+
 import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import pangGuy.gui.Actor;
 import pangGuy.gui.BoundChecker;
 import pangGuy.gui.Field;
 
-public class GunSet extends Thread{
+public class GunSet{
 
     private final List<Bullet> arpions;
     //private final Bullet gun; TODO after gun implementation
@@ -75,30 +75,6 @@ public class GunSet extends Thread{
     public List<Bullet> getArpions(){
         return this.arpions;
     }
-
-
-    @Override
-    public void run(){
-        var shootingGun = this.getShootingGun();
-        if(!shootingGun.isEmpty()){
-            if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.DOUBLE_ARPION){
-                try{
-                    shootingGun.get().setUnMovable();
-                    while(this.bc.isExtendible(shootingGun.get().getPos())){
-                        shootingGun.get().raise();
-                        Thread.sleep(20);
-                    }
-                    shootingGun.get().restore();
-                    shootingGun.get().setMovable();
-                }catch(Exception e){
-                    System.out.println("An error occured: " + e.getMessage());
-                }
-            }
-        }else{
-            System.out.println("No usable guns!");
-        }
-    }
-
 
     
 }
