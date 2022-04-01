@@ -87,4 +87,10 @@ public class Arpion extends JPanel implements Bullet {
         this.direction = dir;
     }
     
+    @Override 
+    public String toString(){
+        return "Movable: " + this.isMovable() + "Position: " + this.s.getPos();
+    }
+
+
 }
