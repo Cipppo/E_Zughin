@@ -62,8 +62,8 @@ public class GunSet {
         if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.DOUBLE_ARPION){
             for(Bullet i : this.arpions){
                 i.setPos(this.actor.getShape().getPos());
-                //i.changeDir()
-                //Need to get Direction from Actor
+                i.changeDir(this.actor.getDir());
+                
             }
         }
     }
