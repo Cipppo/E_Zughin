@@ -13,7 +13,7 @@ import javax.swing.GrayFilter;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-
+import pangGuy.modularGun.GunSet;
 @SuppressWarnings("unused")
 public class ControlPanel extends JFrame{
 
@@ -22,12 +22,12 @@ public class ControlPanel extends JFrame{
 
     private JButton jb = new JButton("Raise");
     private Gui gui;
-    private GunRaiser gRaiser;
+    private GunSet gSet;
     private JLabel label = new JLabel("Status");
 
     public ControlPanel(Gui gui){
         this.gui = gui;
-        this.gRaiser = gui.gunRaiser;
+        this.gSet = gui.gSet;
 
         
 
@@ -35,7 +35,7 @@ public class ControlPanel extends JFrame{
         this.setName("Control Panel");
         
         this.jb.addActionListener(e -> {
-            new DoubleGun(this.gRaiser).start();
+            new DoubleGun(this.gSet).start();
             new Banner(this.jb).start();
         });
 
