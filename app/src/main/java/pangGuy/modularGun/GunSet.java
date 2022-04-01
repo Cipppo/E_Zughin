@@ -76,5 +76,13 @@ public class GunSet{
         return this.arpions;
     }
 
+    public void shoot(){
+        var shootingGun = this.getShootingGun();
+        if(!shootingGun.isEmpty()){
+            new Trigger(shootingGun.get(), bc).start();
+        }else{
+            System.out.println("There are no usable guns!");
+        }
+    }
     
 }
