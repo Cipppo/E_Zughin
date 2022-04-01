@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import pangGuy.gui.Moover;
+
 import pangGuy.gun.GunRaiser;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
