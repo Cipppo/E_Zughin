@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import pangGuy.gui.Actor;
+import pangGuy.gui.BoundChecker;
+import pangGuy.gui.Field;
 
 public class GunSet extends Thread{
 
@@ -17,12 +19,14 @@ public class GunSet extends Thread{
     //private final Bullet gun; TODO after gun implementation
     private final Actor actor;
     private GunTypes currentGun;
+    private final BoundChecker bc;
 
-    public GunSet(Actor actor){
+    public GunSet(Actor actor, Field field){
         this.arpions = new ArrayList<Bullet>(
             Set.of(new Arpion(actor, Color.green), new Arpion(actor, Color.RED))
         );
 
+        this.bc = new BoundChecker(field.getSizeX(), field.getSizeY());
         this.actor = actor;
         this.currentGun = GunTypes.ARPION;
     }
@@ -54,7 +58,7 @@ public class GunSet extends Thread{
                 shootingGun = getSingleArpion();
             }
         }
-        return shootingGun;        //GONNA DELETE IT ASAP, I JUST NEED IT AS A PATCH FOR THE "GUN" BULLET MISSING
+        return shootingGun;       
     }
 
 
@@ -77,9 +81,21 @@ public class GunSet extends Thread{
     public void run(){
         var shootingGun = this.getShootingGun();
         if(!shootingGun.isEmpty()){
-            try{
-                shootingGun.
+            if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.DOUBLE_ARPION){
+                try{
+                    shootingGun.get().setUnMovable();
+                    while(this.bc.isExtendible(shootingGun.get().getPos())){
+                        shootingGun.get().raise();
+                        Thread.sleep(20);
+                    }
+                    shootingGun.get().restore();
+                    shootingGun.get().setMovable();
+                }catch(Exception e){
+                    System.out.println("An error occured: " + e.getMessage());
+                }
             }
+        }else{
+            System.out.println("No usable guns!");
         }
     }
 
