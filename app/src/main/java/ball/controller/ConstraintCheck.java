@@ -2,7 +2,9 @@ package ball.controller;
 
 import ball.Boundary;
 import ball.ballAgent.BallAgent;
-
+import ball.physics.Entity;
+import ball.physics.Pos2D;
+import ball.utils.Pair;
 public class ConstraintCheck {
     private final double width;
     private final double height;
@@ -30,5 +32,20 @@ public class ConstraintCheck {
         } else if (y <= -1) {
             t.applyConstraints(Boundary.Y0.getValue() + 0.005, Boundary.Y0);
         }
+    }
+
+    public boolean checkEnemyCollision(Entity entity, BallAgent ball) {
+        var bPos = new Pos2D(ball.getBallPosition().x * this.width
+                        , ball.getBallPosition().y *  this.height
+                        , ball.getBallPosition().getDimension());
+        var ePos = entity.getPosition();
+        
+        return isCollision(bPos, ePos, bPos.getRadius() + ePos.getRadius());
+    }
+
+    public boolean isCollision(Pos2D ball, Pos2D entity, int delta) {
+        Pair<Integer> aCenter = new Pair<Integer>((int)(ball.x + ball.getRadius()), (int)(ball.y + ball.getRadius()));
+        Pair<Integer> bCenter = new Pair<Integer>((int)(entity.x + ball.getRadius()), (int)(entity.y + entity.getRadius() + 150));
+        return ((int)Math.hypot(aCenter.getX() - bCenter.getX(), aCenter.getY() - bCenter.getY()) <= delta);
     }
 }

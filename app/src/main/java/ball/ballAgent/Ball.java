@@ -7,13 +7,14 @@ import ball.physics.*;
  *      - A trajectory
  *      - A two dimensional position
  */
-public class Ball {
+public class Ball implements Entity {
     private Trajectory trajectory;
     private Pos2D actualPosition;
     private Pos2D initialPosition;
     private final Velocity2D velocity;
     private Time time = new Time(0.0, 0.0);
     private final double gravity;
+    private final int size;
     
     
     public Ball(Trajectory trajectory, Pos2D position, double gravity) {
@@ -22,6 +23,7 @@ public class Ball {
     	this.initialPosition = new Pos2D(position.x, position.y, position.getDimension());
     	this.velocity = this.trajectory.getXYVelocity();
     	this.gravity = gravity;
+        this.size = this.getPosition().getRadius();
     }
 
     public synchronized void updatePos() {
@@ -43,9 +45,14 @@ public class Ball {
             this.velocity.vx = -this.velocity.vx;
         }
     }
-
-    public synchronized Pos2D getCurrentPosition() {
+    @Override
+    public synchronized Pos2D getPosition() {
         return this.actualPosition;
+    }
+
+    @Override
+    public int getSize() {
+        return this.size;
     }
 
     public synchronized Trajectory getTrajectory() {

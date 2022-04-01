@@ -13,12 +13,17 @@ public class Pos2D {
     public double x;
     public double y;
     private final Dimensions dimension;
+    private int radius;
 
-    
-    public Pos2D(final double x, final double y, Dimensions dimension) {
+    public Pos2D(final double x, final double y, Dimensions dimension, int radius) {
         this.x = x;
         this.y = y;
         this.dimension = dimension;
+        this.radius = radius;
+    }
+
+    public Pos2D(final double x, final double y, Dimensions dimension) {
+        this(x, y, dimension, 0);
     }
 
     public Dimensions getDimension() {
@@ -32,4 +37,33 @@ public class Pos2D {
     public String toString() {
         return "Pos(" + this.x + ", " + this.y + ")";
     }
+
+    /**
+     * Dimension Based on PNGs dimensions
+     * @return
+     *      the size of the ball
+     */
+    private int getRadiusFromDimension() {
+        switch (this.dimension) {
+            case FATHER:
+                this.radius = 50;
+                return 50;
+            case SON:
+                this.radius = 41;
+                return 41;
+            case GRANDSON:
+                this.radius = 25;
+                return 25;
+            default:
+                return 0;
+        }
+    }
+
+    public int getRadius() {
+        if (this.radius == 0) {
+            return this.getRadiusFromDimension();
+        }
+        return this.radius;
+    }
+
 }

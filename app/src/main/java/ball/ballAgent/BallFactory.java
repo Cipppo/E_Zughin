@@ -50,9 +50,9 @@ public class BallFactory {
 		return completeBall(
 			ball.getTrajectory().getAngle(),
 			ball.getTrajectory().getInitialVelocity(),
-			new Pos2D(ball.getCurrentPosition().x,
-				ball.getCurrentPosition().y,
-				ball.getCurrentPosition().getDimension())
+			new Pos2D(ball.getPosition().x,
+				ball.getPosition().y,
+				ball.getPosition().getDimension())
 			, MOON_GRAVITY);
 	}
 
@@ -84,9 +84,9 @@ public class BallFactory {
 	 */
 	public static Ball fromFatherBall(final Ball ball) {
 		Pos2D newPos = new Pos2D(
-			ball.getCurrentPosition().x,
-			ball.getCurrentPosition().y,
-			Dimensions.getChild(ball.getCurrentPosition().getDimension())
+			ball.getPosition().x,
+			ball.getPosition().y,
+			Dimensions.getChild(ball.getPosition().getDimension())
 		);
 		
 		return completeBall(

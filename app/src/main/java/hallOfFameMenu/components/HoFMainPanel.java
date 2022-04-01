@@ -23,7 +23,7 @@ public class HoFMainPanel extends JPanel{
 		container.fill = GridBagConstraints.HORIZONTAL;
 		container.gridx = 0;
 		container.gridy = 0;
-		mainPanel.add(new TitleLabel(),  container);
+		mainPanel.add(new TitleLabel("HALL OF FAME"),  container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL;
 		container.gridx = 0;

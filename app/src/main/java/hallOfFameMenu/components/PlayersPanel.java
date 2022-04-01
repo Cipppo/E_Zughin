@@ -24,23 +24,26 @@ public class PlayersPanel extends JPanel{
 		container.fill = GridBagConstraints.HORIZONTAL;
 		container.gridx = 1;
 		container.ipadx = 120;
-		playersPanel.add(new NicknameTitleLabel(),  container);
+		playersPanel.add(new SubtitlesLabel("NICKNAME"),  container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL;
 		container.gridx = 2;
 		container.ipadx = 120;
-		playersPanel.add(new ScoreTitleLabel(),  container);
+		playersPanel.add(new SubtitlesLabel("SCORE"),  container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL;
 		container.gridx = 3;
 		container.ipadx = 120;
-		playersPanel.add(new DateTitleLabel(),  container);
+		playersPanel.add(new SubtitlesLabel("DATE"),  container);
 		
 		Players p1 = new Players();
 		p1.Read();
-		Player p = new Player("GIGI");
-		p.setScore(1500);
+		Player p = new Player("G3");
+		p.setScore(150);
 		p1.add(p);
+		Player p2 = new Player("G2");
+		p2.setScore(150);
+		p1.add(p2);
 		p1.Sort();
 		p1.Save();
 		
@@ -52,25 +55,25 @@ public class PlayersPanel extends JPanel{
 			container.gridx = 0;
 			container.gridy = 1+i;
 			container.ipadx = 120;
-			playersPanel.add(new GenericLabel(elem),  container);
+			playersPanel.add(new DataLabel(elem),  container);
 			
 			container.fill = GridBagConstraints.HORIZONTAL;
 			container.gridx = 1;
 			container.gridy = 1+i;
 			container.ipadx = 120;
-			playersPanel.add(new GenericLabel(p1.get(i).getNickname()),  container);
+			playersPanel.add(new DataLabel(p1.get(i).getNickname()),  container);
 			
 			container.fill = GridBagConstraints.HORIZONTAL;
 			container.gridx = 2;
 			container.gridy = 1+i;
 			container.ipadx = 120;
-			playersPanel.add(new GenericLabel(score),  container);
+			playersPanel.add(new DataLabel(score),  container);
 			
 			container.fill = GridBagConstraints.HORIZONTAL;
 			container.gridx = 3;
 			container.gridy = 1+i;
 			container.ipadx = 120;
-			playersPanel.add(new GenericLabel(p1.get(i).getDate()),  container);
+			playersPanel.add(new DataLabel(p1.get(i).getDate()),  container);
 		}
 		
 		playersPanel.setBackground(Color.black);
