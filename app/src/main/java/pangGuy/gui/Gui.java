@@ -55,7 +55,7 @@ public class Gui extends JFrame{
     
     private final ActionFactory factory = new ActionFactory();
     private final Field field = new Field(0, SIZEX, 0, SIZEY);
-    private final GunSet gSet = new GunSet(this.actor, this.field);
+    public final GunSet gSet = new GunSet(this.actor, this.field);
 
     private final ActionApplier aa = new ActionApplier(this.actor, this.gSet, this.field);
 
