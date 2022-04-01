@@ -54,8 +54,8 @@ public class Gui extends JFrame{
     private final Moover moover = new Moover(this.actor, this.gun, this.gun2, this.bChecker);
     
     private final ActionFactory factory = new ActionFactory();
-    private final GunSet gSet = new GunSet(this.actor, this.field);
     private final Field field = new Field(0, SIZEX, 0, SIZEY);
+    private final GunSet gSet = new GunSet(this.actor, this.field);
 
     private final ActionApplier aa = new ActionApplier(this.actor, this.gSet, this.field);
 
