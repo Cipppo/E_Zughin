@@ -17,5 +17,8 @@ public interface Bullet {
 
     public void changeDir(Directions dir);
 
+    public void setUnMovable();
+
+    public void setMovable();
 
 }
