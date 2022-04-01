@@ -1,5 +1,6 @@
 package pangGuy.modularGun;
 
+import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
 
 public interface Bullet {
@@ -13,6 +14,8 @@ public interface Bullet {
     void restore();
 
     void raise();
+
+    public void changeDir(Directions dir);
 
 
 }
