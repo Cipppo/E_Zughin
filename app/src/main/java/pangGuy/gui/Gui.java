@@ -14,6 +14,7 @@ import pangGuy.actions.ActionApplier;
 import pangGuy.actions.ActionFactory;
 import pangGuy.gun.Gun;
 import pangGuy.gun.Raiser;
+import pangGuy.modularGun.GunSet;
 import pangGuy.gun.GunRaiser;
 
 
@@ -55,15 +56,16 @@ public class Gui extends JFrame{
     private final ActionFactory factory = new ActionFactory();
     private final ActionApplier aa = new ActionApplier(this.actor,this.moover, this.factory, this.gunRaiser);
 
-
+    private final GunSet gSet = new GunSet(this.actor);
     
     
     public Gui() {
         this.setSize(SIZEX, SIZEY);
         this.setTitle("Pang Guy gui");
         this.getContentPane().setLayout(null);
-        this.add(this.gun);
-        this.add(gun2);
+        this.gSet.getArpions().forEach(e -> {
+            this.add((JPanel) e);
+        });
         this.add(this.actor);
         
         
