@@ -74,15 +74,15 @@ public class ActionFactory {
 
     private class shootAction extends AbstractAction{
 
-        private GunRaiser g;
+        private GunSet g;
 
-        public shootAction(GunRaiser g){
+        public shootAction(GunSet g){
             this.g = g;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            g.raise();
+            g.shoot();
         }
 
     }
@@ -97,7 +97,7 @@ public class ActionFactory {
         return new leftAction(actor, guns, bc);
     }
 
-    public shootAction getShootAction(GunRaiser g){
+    public shootAction getShootAction(GunSet g){
         return new shootAction(g);
     }
 }
