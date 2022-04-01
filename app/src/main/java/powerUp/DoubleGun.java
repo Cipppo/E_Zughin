@@ -1,15 +1,16 @@
 package powerUp;
 
-import pangGuy.gun.GunRaiser;
 
+import pangGuy.modularGun.GunSet;
+import pangGuy.modularGun.GunTypes;
 public class DoubleGun extends Thread implements PowerUp{
 
-    private final GunRaiser gunRaiser;
+    private final GunSet gSet;
     private int timeElapsed;
     private int duration;
 
-    public DoubleGun(GunRaiser gunRaiser){
-        this.gunRaiser = gunRaiser;
+    public DoubleGun(GunSet gSet){
+        this.gSet = gSet;
         this.timeElapsed = 0;
         this.duration = 15;
     }
@@ -17,10 +18,10 @@ public class DoubleGun extends Thread implements PowerUp{
     @Override
     public void run(){
         System.out.println("Double Gun Enabled");
-        this.gunRaiser.activateSecondGun();
+        this.gSet.setGunType(GunTypes.DOUBLE_ARPION);
         while(!this.isActive()){
             try{
-                System.out.print(".");
+                //System.out.print(".");
                 Thread.sleep(1000);
             }catch(Exception e){
                 System.out.println("\nThread.sleep() Exception: " + e.getMessage());
@@ -28,7 +29,7 @@ public class DoubleGun extends Thread implements PowerUp{
             this.timeElapsed++;
         }
             System.out.println("Finished");
-            this.gunRaiser.deactivateSecondGun();
+            this.gSet.setGunType(GunTypes.ARPION);
             this.timeElapsed = 0;
     }
 

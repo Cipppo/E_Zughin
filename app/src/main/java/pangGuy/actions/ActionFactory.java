@@ -4,10 +4,11 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import pangGuy.gui.Moover;
-import pangGuy.gun.GunRaiser;
+import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
+import pangGuy.gui.Actor;
+import pangGuy.gui.BoundChecker;
 
 public class ActionFactory {
 
@@ -16,16 +17,27 @@ public class ActionFactory {
 
     private class rightAction extends AbstractAction{
         
-        private Moover m;
+        private final Actor actor;
+        private final GunSet guns;
+        private final BoundChecker bc;
 
-        public rightAction(Moover m){
-            this.m = m;
+        public rightAction(Actor actor, GunSet guns, BoundChecker bc){
+            this.actor = actor;
+            this.guns = guns;
+            this.bc = bc;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            m.move(new Pos2D(m.getCurrentPos().x + SPEED, m.getCurrentPos().y), Directions.RIGHT);
+            //m.move(new Pos2D(m.getCurrentPos().x + SPEED, m.getCurrentPos().y), Directions.RIGHT);
             //System.out.println("RIGHT");
+            var pos = this.actor.getShape().getPos();
+            if(bc.isInside(new Pos2D(pos.x + SPEED, pos.y), this.actor.getShape().getDimensions().getX(), 
+            this.actor.getShape().getDimensions().getY())){
+                    this.actor.changeLocation(new Pos2D(pos.x + SPEED, pos.y));
+                    this.actor.setDir(Directions.RIGHT);
+                    this.guns.moveGuns();
+                }
             
         }
 
@@ -33,47 +45,58 @@ public class ActionFactory {
 
     private class leftAction extends AbstractAction{
 
-        private Moover m;
+        private final Actor actor;
+        private final GunSet guns;
+        private final BoundChecker bc;
 
-        public leftAction(Moover m){
-            this.m = m;
+        public leftAction(Actor actor, GunSet guns, BoundChecker bc){
+            this.actor = actor;
+            this.guns = guns;
+            this.bc = bc;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            m.move(new Pos2D(m.getCurrentPos().x - SPEED, m.getCurrentPos().y), Directions.LEFT);
+            //m.move(new Pos2D(m.getCurrentPos().x - SPEED, m.getCurrentPos().y), Directions.LEFT);
             //System.out.println("LEFT");
-            
+            var pos = this.actor.getShape().getPos();
+            if(bc.isInside(new Pos2D(pos.x - SPEED, pos.y), this.actor.getShape().getDimensions().getX(), 
+            this.actor.getShape().getDimensions().getY())){
+                    this.actor.changeLocation(new Pos2D(pos.x - SPEED, pos.y));
+                    this.actor.setDir(Directions.LEFT);
+                    this.guns.moveGuns();
+                }
         }
         
     }
 
     private class shootAction extends AbstractAction{
 
-        private GunRaiser g;
+        private GunSet g;
 
-        public shootAction(GunRaiser g){
+        public shootAction(GunSet g){
             this.g = g;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            g.raise();
+            g.shoot();
+            
         }
 
     }
 
 
 
-    public rightAction getRightAction(Moover a){
-        return new rightAction(a);
+    public rightAction getRightAction(Actor actor, GunSet guns, BoundChecker bc){
+        return new rightAction(actor, guns, bc);
     }
 
-    public leftAction getLeftAction(Moover a){
-        return new leftAction(a);
+    public leftAction getLeftAction(Actor actor, GunSet guns, BoundChecker bc){
+        return new leftAction(actor, guns, bc);
     }
 
-    public shootAction getShootAction(GunRaiser g){
+    public shootAction getShootAction(GunSet g){
         return new shootAction(g);
     }
 }

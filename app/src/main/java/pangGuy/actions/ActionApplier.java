@@ -3,23 +3,27 @@ package pangGuy.actions;
 import javax.swing.KeyStroke;
 
 import pangGuy.gui.Actor;
-
-import pangGuy.gui.Moover;
-import pangGuy.gun.GunRaiser;
+import pangGuy.gui.BoundChecker;
+import pangGuy.gui.Field;
+import pangGuy.modularGun.GunSet;
 
 public class ActionApplier{
 
-    public ActionApplier(Actor a, Moover m,  ActionFactory f, GunRaiser g){
+    private final ActionFactory f = new ActionFactory();
 
-        a.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "leftAction");
-        a.getActionMap().put("leftAction", f.getLeftAction(m));
+    public ActionApplier(Actor a, GunSet g, Field field){
+
+        BoundChecker bc = new BoundChecker(field.getSizeX(), field.getSizeY());
 
         a.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightAction");
-        a.getActionMap().put("rightAction", f.getRightAction(m));
-
+        a.getActionMap().put("rightAction", f.getRightAction(a, g, bc));
+        
+        a.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "leftAction");
+        a.getActionMap().put("leftAction", f.getLeftAction(a, g, bc));
+    
         a.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "shootAction");
         a.getActionMap().put("shootAction", f.getShootAction(g));
-        
+      
     }
 
 
