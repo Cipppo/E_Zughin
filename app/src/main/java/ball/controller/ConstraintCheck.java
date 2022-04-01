@@ -40,12 +40,13 @@ public class ConstraintCheck {
                         , ball.getBallPosition().getDimension());
         var ePos = entity.getPosition();
         
-        return isCollision(bPos, ePos, bPos.getRadius() + ePos.getRadius());
+        return isCollision(bPos, ePos, bPos.getDiameter() + ePos.getDiameter());
     }
 
     public boolean isCollision(Pos2D ball, Pos2D entity, int delta) {
-        Pair<Integer> aCenter = new Pair<Integer>((int)(ball.x + ball.getRadius()), (int)(ball.y + ball.getRadius()));
-        Pair<Integer> bCenter = new Pair<Integer>((int)(entity.x + ball.getRadius()), (int)(entity.y + entity.getRadius() + 150));
+        Pair<Integer> aCenter = new Pair<Integer>((int)(ball.x + (ball.getDiameter() / 2)), (int)(ball.y + (ball.getDiameter() / 2) ));
+        Pair<Integer> bCenter = new Pair<Integer>((int)(entity.x + (ball.getDiameter() / 2)), (int)(entity.y + (entity.getDiameter() / 2) + 130));
+        System.out.println(aCenter + " " + bCenter) ;
         return ((int)Math.hypot(aCenter.getX() - bCenter.getX(), aCenter.getY() - bCenter.getY()) <= delta);
     }
 }
