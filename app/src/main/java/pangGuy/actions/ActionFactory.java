@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-
-import pangGuy.gun.GunRaiser;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
@@ -83,6 +81,7 @@ public class ActionFactory {
         @Override
         public void actionPerformed(ActionEvent e) {
             g.shoot();
+            
         }
 
     }
