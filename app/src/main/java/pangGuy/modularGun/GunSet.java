@@ -47,7 +47,7 @@ public class GunSet {
     
 
 
-    public Set<Bullet> getShootingGun(){
+    private Set<Bullet> getShootingGun(){
         Set<Bullet> shootingGuns = new HashSet<>();
         if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.DOUBLE_ARPION){
             if(!this.getSingleArpion().isEmpty()){
