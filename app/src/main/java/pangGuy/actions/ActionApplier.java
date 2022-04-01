@@ -5,10 +5,8 @@ import javax.swing.KeyStroke;
 import pangGuy.gui.Actor;
 import pangGuy.gui.BoundChecker;
 import pangGuy.gui.Field;
-import pangGuy.gui.Moover;
-import pangGuy.gun.GunRaiser;
 import pangGuy.modularGun.GunSet;
-import pangGuy.utilities.Pair;
+
 public class ActionApplier{
 
     private final ActionFactory f = new ActionFactory();
