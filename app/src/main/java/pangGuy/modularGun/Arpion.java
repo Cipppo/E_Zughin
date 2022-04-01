@@ -78,6 +78,7 @@ public class Arpion extends JPanel implements Bullet {
         super.setBounds(this.s.getRectangle());        
     }
     
+    @Override
     public void changeDir(Directions dir){
         if(this.isMovable){
             PosConverter conv = new PosConverter(new Pair<Integer>(WIDTH, HEIGHT), this.actor);
