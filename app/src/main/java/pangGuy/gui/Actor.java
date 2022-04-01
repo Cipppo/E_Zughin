@@ -51,5 +51,6 @@ public class Actor extends JLabel{
         this.direction = dir;
     }
 
+    
 
 }
