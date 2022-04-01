@@ -59,7 +59,7 @@ public class Pos2D {
         }
     }
 
-    public int getRadius() {
+    public int getDiameter() {
         if (this.radius == 0) {
             return this.getDiamterFromDimension();
         }
