@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import pangGuy.gui.Actor;
 
-public class GunSet {
+public class GunSet extends Thread{
 
     private final List<Bullet> arpions;
     //private final Bullet gun; TODO after gun implementation
@@ -47,14 +47,14 @@ public class GunSet {
     
 
 
-    private Set<Bullet> getShootingGun(){
-        Set<Bullet> shootingGuns = new HashSet<>();
+    private Optional<Bullet> getShootingGun(){
+        Optional<Bullet> shootingGun = Optional.empty();
         if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.DOUBLE_ARPION){
             if(!this.getSingleArpion().isEmpty()){
-                shootingGuns.add(getSingleArpion().get());
+                shootingGun = getSingleArpion();
             }
         }
-        return null;        //GONNA DELETE IT ASAP, I JUST NEED IT AS A PATCH FOR THE "GUN" BULLET MISSING
+        return shootingGun;        //GONNA DELETE IT ASAP, I JUST NEED IT AS A PATCH FOR THE "GUN" BULLET MISSING
     }
 
 
@@ -71,5 +71,18 @@ public class GunSet {
     public List<Bullet> getArpions(){
         return this.arpions;
     }
+
+
+    @Override
+    public void run(){
+        var shootingGun = this.getShootingGun();
+        if(!shootingGun.isEmpty()){
+            try{
+                shootingGun.
+            }
+        }
+    }
+
+
     
 }
