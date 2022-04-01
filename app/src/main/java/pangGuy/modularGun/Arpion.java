@@ -67,7 +67,7 @@ public class Arpion extends JPanel implements Bullet {
     @Override
     public void restore() {
         PosConverter conv = new PosConverter(new Pair<Integer>(WIDTH, HEIGHT), this.actor);
-        this.shapeUpdater(conv.getPos(this.direction));
+        this.s = new Shape(conv.getPos(this.direction), WIDTH, HEIGHT);
         super.setBounds(this.s.getRectangle());
     }
 
