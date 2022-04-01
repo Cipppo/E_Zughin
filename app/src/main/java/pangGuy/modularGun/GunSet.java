@@ -20,7 +20,7 @@ public class GunSet {
 
     public GunSet(Actor actor){
         this.arpions = new ArrayList<Bullet>(
-            Set.of(new Arpion(actor, Color.green), new Arpion(actor, Color.orange))
+            Set.of(new Arpion(actor, Color.green), new Arpion(actor, Color.RED))
         );
 
         this.actor = actor;
@@ -68,5 +68,8 @@ public class GunSet {
         }
     }
 
+    public List<Bullet> getArpions(){
+        return this.arpions;
+    }
     
 }
