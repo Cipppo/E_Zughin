@@ -48,7 +48,9 @@ public class GunSet{
         return Optional.empty();
     }
 
-    
+    public void setGunType(GunTypes type){
+        this.currentGun = type;
+    }
 
 
     private Optional<Bullet> getShootingGun(){
