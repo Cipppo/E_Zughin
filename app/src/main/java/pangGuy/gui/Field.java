@@ -24,6 +24,7 @@ public class Field {
         return this.sizeY;
     }
 
+    
 
 
 }
