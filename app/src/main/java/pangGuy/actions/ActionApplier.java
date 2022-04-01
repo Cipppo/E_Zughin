@@ -20,12 +20,10 @@ public class ActionApplier{
         
         a.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "leftAction");
         a.getActionMap().put("leftAction", f.getLeftAction(a, g, bc));
-        /*
-
-        
+    
         a.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "shootAction");
         a.getActionMap().put("shootAction", f.getShootAction(g));
-        */
+      
     }
 
 
