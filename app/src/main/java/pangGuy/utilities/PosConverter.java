@@ -15,13 +15,13 @@ public class PosConverter {
 
 
     private Pos2D getLeftPos(){
-        return this.actor.getShape().getPos();
+        return this.actor.getShape().getLeftFoot();
     }
 
 
     private Pos2D getRightPos(){
-        int x = (this.actor.getShape().getPos().x + this.actor.getShape().getDimensions().getX()) - this.dimensions.getX();
-        int y = this.actor.getShape().getPos().y;
+        int x = (this.actor.getShape().getLeftFoot().x + this.actor.getShape().getDimensions().getX()) - this.dimensions.getX();
+        int y = this.actor.getShape().getLeftFoot().y;
         return new Pos2D(x, y);
     }
 
