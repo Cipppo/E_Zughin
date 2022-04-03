@@ -25,7 +25,7 @@ public class Arpion extends JPanel implements Bullet {
     public Arpion(Actor actor, Color color){
         super();
         this.actor = actor;
-        this.s = new Shape(this.actor.getShape().getPos(), WIDTH, HEIGHT);
+        this.s = new Shape(this.actor.getShape().getLeftFoot(), WIDTH, HEIGHT);
         this.direction = Directions.LEFT;
         this.isMovable = true;
 
