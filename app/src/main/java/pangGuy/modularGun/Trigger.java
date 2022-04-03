@@ -7,10 +7,12 @@ public class Trigger extends Thread{
     
     private final Bullet bullet;
     private final BoundChecker bc;
+    private final  long waitTime;
 
-    public Trigger(Bullet bullet, BoundChecker bc){
+    public Trigger(Bullet bullet, BoundChecker bc, long waitTime){
         this.bullet = bullet;
         this.bc = bc;
+        this.waitTime = waitTime;
     }
 
     @Override
@@ -21,6 +23,7 @@ public class Trigger extends Thread{
                 this.bullet.raise();
                 Thread.sleep(20);
             }
+            Thread.sleep(this.waitTime);
             this.bullet.restore();
             this.bullet.setMovable();
         }catch(Exception e){
