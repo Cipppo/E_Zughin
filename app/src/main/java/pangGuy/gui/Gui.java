@@ -34,11 +34,6 @@ public class Gui extends JFrame{
     private static final int STARTX = SIZEX / 2;
     private static final int STARTY = (SIZEY - 35) - HEIGHT;
 
-    
-    //private final Guy guy = new Guy(STARTX, STARTY);
-
-    private final Shape shape = new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT);
-
     public final Actor actor = new Actor(new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT));
     
     private final Field field = new Field(0, SIZEX, 0, SIZEY);
