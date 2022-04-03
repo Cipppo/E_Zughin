@@ -29,7 +29,7 @@ public class DoubleGun extends Thread implements PowerUp{
             this.timeElapsed++;
         }
             System.out.println("Double Gun: Finished");
-            this.gSet.setGunType(GunTypes.ARPION);
+            this.gSet.resetGunType(GunTypes.DOUBLE_ARPION);
             this.timeElapsed = 0;
     }
 
