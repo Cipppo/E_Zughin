@@ -17,7 +17,7 @@ public class DoubleGun extends Thread implements PowerUp{
 
     @Override
     public void run(){
-        System.out.println("Double Gun Enabled");
+        System.out.println("Double Gun: Active");
         this.gSet.setGunType(GunTypes.DOUBLE_ARPION);
         while(!this.isActive()){
             try{
@@ -28,7 +28,7 @@ public class DoubleGun extends Thread implements PowerUp{
             }
             this.timeElapsed++;
         }
-            System.out.println("Finished");
+            System.out.println("Double Gun: Finished");
             this.gSet.setGunType(GunTypes.ARPION);
             this.timeElapsed = 0;
     }
