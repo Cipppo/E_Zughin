@@ -20,7 +20,7 @@ public class ControlPanel extends JFrame{
     private static final int SIZEX = 300;
     private static final int SIZEY = 300;
 
-    private JButton jb = new JButton("Raise");
+    private JButton jb = new JButton("Double Arpion: not Active");
     private Gui gui;
     private GunSet gSet;
     private JLabel label = new JLabel("Status");
@@ -33,6 +33,7 @@ public class ControlPanel extends JFrame{
 
         this.setSize(SIZEX, SIZEY);
         this.setName("Control Panel");
+        this.jb.setBackground(Color.red);
         
         this.jb.addActionListener(e -> {
             new DoubleGun(this.gSet).start();
@@ -63,8 +64,10 @@ public class ControlPanel extends JFrame{
             
             try{
                 this.jb.setBackground(Color.green);
+                this.jb.setText("Double Arpion: Active");
                 Thread.sleep(15000);
-                this.jb.setBackground(Color.gray);
+                this.jb.setBackground(Color.RED);
+                this.jb.setText("Double Arpion: not Active");
             }catch(Exception e){
                 System.out.println("\nThread.sleep() Exception: " + e.getMessage());
             }
