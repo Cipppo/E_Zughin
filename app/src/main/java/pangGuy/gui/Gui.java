@@ -37,23 +37,10 @@ public class Gui extends JFrame{
     
     //private final Guy guy = new Guy(STARTX, STARTY);
 
-   private final Shape shape = new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT);
+    private final Shape shape = new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT);
 
-    private final BoundChecker bChecker = new BoundChecker(new Pair<Integer>(0, SIZEX),
-     new Pair<Integer>(0, SIZEY));
-
+    public final Actor actor = new Actor(new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT));
     
-    public final Actor actor = new Actor(this.shape);
-
-    public final Gun gun = new Gun(this.actor, Color.green);
-    public final Gun gun2 = new Gun(this.actor, Color.ORANGE);
-
-    public final Raiser raiser = new Raiser(this.gun, this.bChecker);
-    public final GunRaiser gunRaiser = new GunRaiser(this.gun, this.gun2, this.bChecker);
-
-    private final Moover moover = new Moover(this.actor, this.gun, this.gun2, this.bChecker);
-    
-    private final ActionFactory factory = new ActionFactory();
     private final Field field = new Field(0, SIZEX, 0, SIZEY);
     public final GunSet gSet = new GunSet(this.actor, this.field);
 
