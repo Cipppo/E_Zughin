@@ -16,7 +16,7 @@ import pangGuy.gui.Field;
 public class GunSet{
 
     private final List<Bullet> arpions;
-    //private final Bullet gun; TODO after gun implementation
+    
     private final Actor actor;
     private GunTypes currentGun;
     private final BoundChecker bc;
@@ -55,23 +55,23 @@ public class GunSet{
 
     private Optional<Bullet> getShootingGun(){
         Optional<Bullet> shootingGun = Optional.empty();
-        if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.DOUBLE_ARPION){
-            if(!this.getSingleArpion().isEmpty()){
-                shootingGun = getSingleArpion();
-            }
+    
+        if(!this.getSingleArpion().isEmpty()){
+            shootingGun = getSingleArpion();
         }
+    
         return shootingGun;       
     }
 
 
     public void moveGuns(){
-        if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.DOUBLE_ARPION){
-            for(Bullet i : this.arpions){
-                i.setPos(this.actor.getShape().getPos());
-                i.changeDir(this.actor.getDir());
-                
-            }
+        
+        for(Bullet i : this.arpions){
+            i.setPos(this.actor.getShape().getPos());
+            i.changeDir(this.actor.getDir());
+            
         }
+        
     }
 
     public List<Bullet> getArpions(){

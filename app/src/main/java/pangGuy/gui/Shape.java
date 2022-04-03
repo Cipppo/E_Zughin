@@ -28,6 +28,11 @@ public class Shape {
         return this.r;
     }
 
+    public Pos2D getLeftFoot(){
+        Pos2D mainPos = this.getPos();
+        return new Pos2D(mainPos.x, mainPos.y + (int) this.r.getHeight());
+    }
+
     @Override
     public String toString(){
         return "(" + this.getRectangle().toString() + ")";
