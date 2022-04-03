@@ -34,7 +34,7 @@ public class GunSet{
     }
 
     private Optional<Bullet> getSingleArpion(){
-        if(this.currentGun == GunTypes.ARPION){
+        if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.STICKY_ARPION){
             if(this.arpions.get(0).isMovable()){
                 return Optional.of(this.arpions.get(0));
             }else{
