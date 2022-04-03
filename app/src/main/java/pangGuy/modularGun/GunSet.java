@@ -15,6 +15,8 @@ import pangGuy.gui.Field;
 
 public class GunSet{
 
+    private final static long WAIT = 2000;
+
     private final List<Bullet> arpions;
     
     private final Actor actor;
@@ -81,7 +83,11 @@ public class GunSet{
     public void shoot(){
         var shootingGun = this.getShootingGun();
         if(!shootingGun.isEmpty()){
-            new Trigger(shootingGun.get(), bc).start();
+            if(this.currentGun == GunTypes.STICKY_ARPION){
+                new Trigger(shootingGun.get(), bc, WAIT).start();
+            }else{
+                new Trigger(shootingGun.get(), bc, 0).start();
+            }
         }else{
             System.out.println("There are no usable guns!");
         }
