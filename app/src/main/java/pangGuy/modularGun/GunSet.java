@@ -54,6 +54,12 @@ public class GunSet{
         this.currentGun = type;
     }
 
+    public void resetGunType(GunTypes caller){
+        if(caller == this.currentGun){
+            this.currentGun = GunTypes.ARPION;
+        }
+    }
+
 
     private Optional<Bullet> getShootingGun(){
         Optional<Bullet> shootingGun = Optional.empty();
