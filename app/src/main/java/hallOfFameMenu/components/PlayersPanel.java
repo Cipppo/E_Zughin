@@ -38,12 +38,9 @@ public class PlayersPanel extends JPanel{
 		
 		Players p1 = new Players();
 		p1.Read();
-		Player p = new Player("G3");
-		p.setScore(150);
-		p1.add(p);
-		Player p2 = new Player("G2");
-		p2.setScore(150);
-		p1.add(p2);
+		//Player p = new Player("PORCODIO");
+		//p.setScore(1500);
+		//p1.add(p);
 		p1.Sort();
 		p1.Save();
 		
