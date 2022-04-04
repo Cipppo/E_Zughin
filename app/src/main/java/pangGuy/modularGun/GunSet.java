@@ -4,6 +4,7 @@ import java.awt.Color;
 
 
 import java.util.Set;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import java.util.Optional;
 import pangGuy.gui.Actor;
 import pangGuy.gui.BoundChecker;
 import pangGuy.gui.Field;
+import pangGuy.utilities.Directions;
 
 public class GunSet{
 
@@ -25,7 +27,7 @@ public class GunSet{
 
     public GunSet(Actor actor, Field field){
         this.arpions = new ArrayList<Bullet>(
-            Set.of(new Arpion(actor, Color.green), new Arpion(actor, Color.RED))
+            Set.of(new Arpion(), new Arpion())
         );
 
         this.bc = new BoundChecker(field.getSizeX(), field.getSizeY());
@@ -35,14 +37,14 @@ public class GunSet{
 
     private Optional<Bullet> getSingleArpion(){
         if(this.currentGun == GunTypes.ARPION || this.currentGun == GunTypes.STICKY_ARPION){
-            if(this.arpions.get(0).isMovable()){
+            if(this.arpions.get(0).getStatus() == Status.IDLE){
                 return Optional.of(this.arpions.get(0));
             }else{
                 return Optional.empty();
             }
         }else if(this.currentGun == GunTypes.DOUBLE_ARPION){
             for(Bullet i : this.arpions){
-                if(i.isMovable()){
+                if(i.getStatus() == Status.IDLE){
                     return Optional.of(i);
                 }
             }
@@ -72,14 +74,11 @@ public class GunSet{
     }
 
 
-    public void moveGuns(){
-        
+    public void setDirections(Directions dir){
         for(Bullet i : this.arpions){
-            i.setPos(this.actor.getShape().getPos());
-            i.changeDir(this.actor.getDir());
+            i.changeDir(dir);
             
         }
-        
     }
 
     public List<Bullet> getArpions(){
