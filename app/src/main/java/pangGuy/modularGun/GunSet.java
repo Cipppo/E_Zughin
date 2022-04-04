@@ -56,7 +56,7 @@ public class GunSet{
     }
 
 
-    private Optional<Bullet> getShootingGun(){
+    public Optional<Bullet> getShootingGun(){
         Optional<Bullet> shootingGun = Optional.empty();
     
         if(!this.getSingleArpion().isEmpty()){
