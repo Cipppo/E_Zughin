@@ -12,8 +12,10 @@ public class Arpion implements Bullet {
     
     private Status status;
     private Directions direction;
+    private int waitTime;
 
     public Arpion(){
+        this.waitTime = 0;
         this.status = Status.IDLE;
         this.direction = Directions.LEFT;
     }
@@ -41,6 +43,16 @@ public class Arpion implements Bullet {
     @Override 
     public Status getStatus(){
         return this.status;
+    }
+
+    @Override
+    public int getWaitTime() {
+        return this.waitTime;
+    }
+
+    @Override
+    public void setWaitTime(int newWaitTime){
+        this.waitTime = newWaitTime;
     }
 
     @Override 
