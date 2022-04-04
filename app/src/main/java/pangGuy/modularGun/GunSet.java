@@ -21,17 +21,16 @@ public class GunSet{
 
     private final List<Bullet> arpions;
     
-    private final Actor actor;
+
     private GunTypes currentGun;
     private final BoundChecker bc;
 
-    public GunSet(Actor actor, Field field){
+    public GunSet(Field field){
         this.arpions = new ArrayList<Bullet>(
             Set.of(new Arpion(), new Arpion())
         );
 
         this.bc = new BoundChecker(field.getSizeX(), field.getSizeY());
-        this.actor = actor;
         this.currentGun = GunTypes.ARPION;
     }
 
