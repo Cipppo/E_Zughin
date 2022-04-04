@@ -21,6 +21,9 @@ public class Hero {
         this.gSet.setDirections(dir);
     }
 
+    public Directions getDirection(){
+        return this.direction;
+    }
 
     public void move(Directions dir){
         switch (dir) {
@@ -34,5 +37,6 @@ public class Hero {
                 this.updateDirection(dir);
         }
     }
+
 
 }
