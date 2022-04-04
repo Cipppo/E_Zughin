@@ -1,6 +1,6 @@
 package pangGuy.modularGun;
 
-import java.awt.Color;
+
 
 
 import java.util.Set;
@@ -9,10 +9,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 import java.util.Optional;
-
-
-import pangGuy.gui.BoundChecker;
-import pangGuy.gui.Field;
 import pangGuy.utilities.Directions;
 
 public class GunSet{
@@ -28,8 +24,6 @@ public class GunSet{
         this.arpions = new ArrayList<Bullet>(
             Set.of(new Arpion(), new Arpion())
         );
-
-        this.setDirections(Directions.LEFT);
 
         this.currentGun = GunTypes.ARPION;
     }
