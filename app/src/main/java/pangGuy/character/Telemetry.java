@@ -52,6 +52,20 @@ public class Telemetry {
     }
 
 
+    public void deleteEntry(Bullet bullet){
+        var inPair = this.getPair(bullet);
+        if(inPair == this.time1){
+            Timer timer = inPair.get().getY();
+            timer.stopTimer();
+            this.time1 = Optional.empty();
+        }else if(inPair == this.time2){
+            Timer timer = inPair.get().getY();
+            timer.stopTimer();
+            this.time2 = Optional.empty();
+        }
+        
+    }
+
 
 
 
