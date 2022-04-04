@@ -9,7 +9,11 @@ public interface Bullet {
 
     void raise();
 
-    public void changeDir(Directions dir);
+    Status getStatus();
+
+    Directions getDirection();
+
+    void changeDir(Directions dir);
 
 
 }
