@@ -11,6 +11,8 @@ public interface Bullet {
 
     Status getStatus();
 
+    void setStatus(Status status);
+
     Directions getDirection();
 
     int getWaitTime();
