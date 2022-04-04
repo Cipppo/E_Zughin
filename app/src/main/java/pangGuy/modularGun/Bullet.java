@@ -13,6 +13,10 @@ public interface Bullet {
 
     Directions getDirection();
 
+    int getWaitTime();
+
+    void setWaitTime(int newWaitTime);
+
     void changeDir(Directions dir);
 
 
