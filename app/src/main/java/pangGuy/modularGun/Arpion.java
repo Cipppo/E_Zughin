@@ -60,5 +60,11 @@ public class Arpion implements Bullet {
         return "Status:" + this.status + "Direction: " + this.direction;
     }
 
+    @Override
+    public void setStatus(Status status) {
+        this.status = status;
+        
+    }
+
 
 }
