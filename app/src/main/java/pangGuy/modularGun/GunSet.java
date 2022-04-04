@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import java.util.Optional;
 
-import pangGuy.gui.Actor;
+
 import pangGuy.gui.BoundChecker;
 import pangGuy.gui.Field;
 import pangGuy.utilities.Directions;
@@ -23,14 +23,14 @@ public class GunSet{
     
 
     private GunTypes currentGun;
-    private final BoundChecker bc;
 
-    public GunSet(Field field){
+    public GunSet(){
         this.arpions = new ArrayList<Bullet>(
             Set.of(new Arpion(), new Arpion())
         );
 
-        this.bc = new BoundChecker(field.getSizeX(), field.getSizeY());
+        this.setDirections(Directions.LEFT);
+
         this.currentGun = GunTypes.ARPION;
     }
 
@@ -84,6 +84,7 @@ public class GunSet{
         return this.arpions;
     }
 
+    /*
     public void shoot(){
         var shootingGun = this.getShootingGun();
         if(!shootingGun.isEmpty()){
@@ -96,5 +97,6 @@ public class GunSet{
             System.out.println("There are no usable guns!");
         }
     }
+    */
     
 }
