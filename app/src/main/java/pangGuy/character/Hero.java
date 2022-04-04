@@ -16,6 +16,11 @@ public class Hero {
         this.gSet = new GunSet();
     }
 
+    private void updateDirection(Directions dir){
+        this.direction = dir;
+        this.gSet.setDirections(dir);
+    }
+
 
     public void move(Directions dir){
         switch (dir) {
@@ -25,6 +30,8 @@ public class Hero {
             case LEFT:
                 this.pos = new Pos2D(pos.y - 1, pos.y);
                 break;
+            default:
+                this.updateDirection(dir);
         }
     }
 
