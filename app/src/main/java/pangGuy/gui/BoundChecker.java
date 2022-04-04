@@ -8,10 +8,10 @@ import pangGuy.utilities.Pair;
 
 public class BoundChecker {
 
-    private Pair<Integer> x;
-    private Pair<Integer> y;
+    private Pair<Integer, Integer> x;
+    private Pair<Integer, Integer>  y;
 
-    public BoundChecker(Pair<Integer> x, Pair<Integer> y){
+    public BoundChecker(Pair<Integer, Integer>  x, Pair<Integer, Integer>  y){
         this.x = x;
         this.y = y;
     }

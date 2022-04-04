@@ -20,8 +20,8 @@ public class Shape {
     }
 
 
-    public Pair<Integer> getDimensions(){
-        return new Pair<Integer>((int)r.getWidth(), (int)r.getHeight());
+    public Pair<Integer, Integer> getDimensions(){
+        return new Pair<Integer, Integer>((int)r.getWidth(), (int)r.getHeight());
     }
     
     public Rectangle getRectangle(){

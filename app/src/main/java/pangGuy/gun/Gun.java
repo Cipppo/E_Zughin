@@ -60,7 +60,7 @@ public class Gun extends JPanel{
 
     public void changeDir(Directions dir){
         if(this.isMovable){
-            PosConverter conv = new PosConverter(new Pair<Integer>(WIDTH, HEIGHT), this.a);
+            PosConverter conv = new PosConverter(new Pair<Integer, Integer> (WIDTH, HEIGHT), this.a);
             
             this.s = new Shape(conv.getPos(dir), WIDTH, HEIGHT);
             super.setLocation(conv.getPos(dir).x, conv.getPos(dir).y);

@@ -1,11 +1,11 @@
 package pangGuy.utilities;
 
-public class Pair<T> {
+public class Pair<T, E> {
 
     private T x;
-    private T y;
+    private E y;
 
-    public Pair(T x, T y) {
+    public Pair(T x, E y) {
         this.x = x;
         this.y = y;
     }
@@ -14,7 +14,7 @@ public class Pair<T> {
         return this.x;
     }
 
-    public T getY() {
+    public E getY() {
         return this.y;
     }
 
