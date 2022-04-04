@@ -2,10 +2,10 @@ package pangGuy.gui;
 
 import java.awt.Color;
 
-import javax.swing.JComponent;
+
 import javax.swing.JPanel;
 
-import pangGuy.utilities.Directions;
+
 import pangGuy.utilities.Pos2D;
 
 public class HeroComponent extends JPanel{
