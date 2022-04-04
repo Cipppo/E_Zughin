@@ -78,7 +78,7 @@ public class Gun extends JPanel{
     }
 
     public void restore(){
-        PosConverter conv = new PosConverter(new Pair<Integer>(WIDTH, HEIGHT), this.a);
+        PosConverter conv = new PosConverter(new Pair<Integer, Integer> (WIDTH, HEIGHT), this.a);
         this.s = new Shape(conv.getPos(this.direction), WIDTH, HEIGHT);
         super.setBounds(this.s.getRectangle());
     }
