@@ -1,11 +1,6 @@
 package pangGuy.modularGun;
 
 import pangGuy.utilities.Directions;
-import pangGuy.utilities.Pos2D;
-import pangGuy.utilities.PosConverter;
-import pangGuy.utilities.Pair;
-import pangGuy.gui.Actor;
-
 
 public class Arpion implements Bullet {
 
@@ -38,6 +33,16 @@ public class Arpion implements Bullet {
         this.direction = dir;
     }
     
+    @Override
+    public Directions getDirection(){
+        return this.direction;
+    }
+
+    @Override 
+    public Status getStatus(){
+        return this.status;
+    }
+
     @Override 
     public String toString(){
         return "Status:" + this.status + "Direction: " + this.direction;
