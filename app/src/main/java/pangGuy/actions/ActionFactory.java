@@ -5,11 +5,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 import pangGuy.gui.Visual;
-import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.StepsApplier;
-import pangGuy.gui.Actor;
 import pangGuy.gui.BoundChecker;
 import pangGuy.character.Hero;
 public class ActionFactory {
@@ -33,43 +31,41 @@ public class ActionFactory {
         public void actionPerformed(ActionEvent e) {
             Pos2D actualHeroPos = h.getPosition();
             var axisHeroPos = new StepsApplier(v.getStartPos()).convertHeroPosition(actualHeroPos);
-            if(this.bc.isInside(new Pos2D(axisHeroPos.x + 1, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
+            if(this.bc.isInside(new Pos2D(axisHeroPos.x + SPEED, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
                         this.v.getHeroComponent().getShape().getDimensions().getY())){
                             this.h.move(Directions.RIGHT);
-                            this.v.getHeroComponent().changeLocation(new Pos2D(axisHeroPos.x + 1, axisHeroPos.y));
+                            this.v.getHeroComponent().changeLocation(new Pos2D(axisHeroPos.x + SPEED, axisHeroPos.y));
                         }
         }
 
     }
 
-    /*
+    
     private class leftAction extends AbstractAction{
 
-        private final Actor actor;
-        private final GunSet guns;
+        private final Visual v;
+        private final Hero h;
         private final BoundChecker bc;
 
-        public leftAction(Actor actor, GunSet guns, BoundChecker bc){
-            this.actor = actor;
-            this.guns = guns;
+        public leftAction(Visual v, Hero h, BoundChecker bc){
+            this.v = v;
+            this.h = h;
             this.bc = bc;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            //m.move(new Pos2D(m.getCurrentPos().x - SPEED, m.getCurrentPos().y), Directions.LEFT);
-            //System.out.println("LEFT");
-            var pos = this.actor.getShape().getPos();
-            if(bc.isInside(new Pos2D(pos.x - SPEED, pos.y), this.actor.getShape().getDimensions().getX(), 
-            this.actor.getShape().getDimensions().getY())){
-                    this.actor.changeLocation(new Pos2D(pos.x - SPEED, pos.y));
-                    this.actor.setDir(Directions.LEFT);
-                    this.guns.moveGuns();
-                }
+            Pos2D actualHeroPos = h.getPosition();
+            var axisHeroPos = new StepsApplier(v.getStartPos()).convertHeroPosition(actualHeroPos);
+            if(this.bc.isInside(new Pos2D(axisHeroPos.x - SPEED, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
+                    this.v.getHeroComponent().getShape().getDimensions().getY())){
+                        this.h.move(Directions.LEFT);
+                        this.v.getHeroComponent().changeLocation(new Pos2D(axisHeroPos.x - SPEED, axisHeroPos.y));
+                    }
         }
         
     }
-    */
+    
     /*
     private class shootAction extends AbstractAction{
 
@@ -94,11 +90,12 @@ public class ActionFactory {
         return new rightAction(v, h, bc);
     }
 
-    /*
-    public leftAction getLeftAction(Actor actor, GunSet guns, BoundChecker bc){
-        return new leftAction(actor, guns, bc);
+    
+    public leftAction getLeftAction(Visual v, Hero h, BoundChecker bc){
+        return new leftAction(v, h, bc);
     }
 
+    /*
     public shootAction getShootAction(GunSet g){
         return new shootAction(g);
     }
