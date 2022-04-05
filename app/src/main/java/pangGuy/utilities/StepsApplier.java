@@ -3,7 +3,7 @@ package pangGuy.utilities;
 public class StepsApplier {
 
     private static final int HERO_STEP = 5;
-    private static final int BULLET_STEP = 4;
+    private static final int BULLET_STEP = 5;
 
     private Pos2D startPos;
 
