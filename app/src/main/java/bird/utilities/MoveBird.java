@@ -1,5 +1,6 @@
 package bird.utilities;
 
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -17,8 +18,8 @@ public class MoveBird extends Thread{
     private static final int SIZEX = CenterOnDefaultScreen.center().width*70/100;
     private static final int SIZEY = CenterOnDefaultScreen.center().height*70/100;
 
-    private static final int WIDTH = CenterOnDefaultScreen.center().width*5/100;
-    private static final int HEIGHT = CenterOnDefaultScreen.center().width*2/100;;
+    private static final int WIDTH = CenterOnDefaultScreen.center().width*3/100;
+    private static final int HEIGHT = CenterOnDefaultScreen.center().width*3/100;;
 
     private static final int STARTY = 0;
 
@@ -32,6 +33,7 @@ public class MoveBird extends Thread{
     private int startX;
     private final Random random = new Random();
     private final ActionFactory actionFactory = new ActionFactory();
+    private Directions dir;
 
     public MoveBird(JFrame frame) {
         this.frame = frame;
@@ -41,8 +43,9 @@ public class MoveBird extends Thread{
     public void run() {
         while(true) {
 
-            this.startX = this.randomDirectionChooser() == Directions.RIGHT ? 0 : SIZEX - WIDTH;
-            this.shape = new Shape(new Pos2D(startX, STARTY), WIDTH, HEIGHT);
+            this.dir = this.randomDirectionChooser();
+            this.startX = this.dir == Directions.RIGHT ? 0 : SIZEX - WIDTH;
+            this.shape = new Shape(new Pos2D(startX, STARTY), WIDTH, HEIGHT, Optional.of(dir));
             this.actor = new Actor(this.shape);
             this.moover = new Mover(this.actor, bc);
 
@@ -85,5 +88,13 @@ public class MoveBird extends Thread{
         } else {
             return Directions.LEFT;
         }
+    }
+
+    public Actor getActor() {
+        return this.actor;
+    }
+
+    public int getStartX() {
+        return this.startX;
     }
 }
