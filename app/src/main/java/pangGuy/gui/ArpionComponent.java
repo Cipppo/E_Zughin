@@ -1,5 +1,6 @@
 package pangGuy.gui;
 
+import pangGuy.utilities.Bound;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.Pos2D;
@@ -16,11 +17,11 @@ public class ArpionComponent extends JPanel{
     private static final int HEIGHT = 2;
 
     private Shape s;
-    private final int serialNumber;
+    private Bound bound;
 
-    public ArpionComponent(Color color, Pos2D startpos, int serial){
+    public ArpionComponent(Color color, Pos2D startpos){
         this.s = new Shape(startpos, WIDTH, HEIGHT);
-        this.serialNumber = serial;
+        this.bound = new Bound();
 
         super.setBackground(color);
         super.setForeground(color);
@@ -42,6 +43,10 @@ public class ArpionComponent extends JPanel{
         PosConverter posConverter = new PosConverter(new Pair<Integer,Integer>(WIDTH, HEIGHT), shape);
         this.changeLocation(posConverter.getPos(dir));
 
+    }
+
+    public Bound getBound(){
+        return this.bound;
     }
 
 }
