@@ -21,5 +21,9 @@ public interface Bullet {
 
     void changeDir(Directions dir);
 
+    void step();
+
+    int getStepsDone();
+
 
 }
