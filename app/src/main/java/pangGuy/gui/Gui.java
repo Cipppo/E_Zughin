@@ -55,8 +55,7 @@ public class Gui extends JFrame{
     End (Maybe)
     */
 
-    //Comment
-
+    
     public Gui() {
         this.setSize(SIZEX, SIZEY);
         this.setTitle("Pang Guy gui");
