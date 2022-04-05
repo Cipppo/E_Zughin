@@ -10,7 +10,7 @@ import pangGuy.utilities.Pair;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 
-
+import pangGuy.modularGun.Bullet;
 
 public class Visual {
     
@@ -36,13 +36,17 @@ public class Visual {
     public void move(Pos2D pos){
         this.hero.changeLocation(pos);
         this.getArpions().forEach(e -> {
-            e.setLocation(this.hero.getShape().getPos().x, this.hero.getShape().getPos().y);
+            if(e.getStatus() == Status.IDLE){
+                e.setLocation(this.hero.getShape().getPos().x, this.hero.getShape().getPos().y);
+            }
         });
     }
 
     public void setDirection(Directions dir){
         this.getArpions().forEach(e -> {
-            e.setDirection(dir, this.hero.getShape());
+            if(e.getStatus() == Status.IDLE){
+                e.setDirection(dir, this.hero.getShape());
+            }
         });
     }
 
@@ -71,6 +75,16 @@ public class Visual {
 
         return Optional.empty();
 
+    }
+
+    public void restoreBullet(ArpionComponent bullet, Pos2D charPos, Directions dir){
+        for(ArpionComponent i : this.getArpions()){
+            if(i == bullet){
+                i.changeLocation(new Pos2D(charPos.x, charPos.y));
+                i.setStatus(Status.IDLE);
+                i.setDirection(dir, this.hero.getShape());
+            }
+        }
     }
 
     
