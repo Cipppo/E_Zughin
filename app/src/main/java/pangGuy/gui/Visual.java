@@ -14,9 +14,13 @@ public class Visual {
     private List<ArpionComponent> arpions;
     private Pair<Integer, Integer> bounds;
 
+    private Pos2D startPosition;
+
     public Visual(Pos2D startPos, Pair<Integer, Integer> bounds){
         this.hero = new HeroComponent(startPos);
-        
+        this.startPosition = startPos;
+
+
         this.bounds = bounds;
         this.arpions = new ArrayList<>(List.of(
             new ArpionComponent(Color.red, this.hero.getShape().getLeftFoot()),
@@ -36,5 +40,9 @@ public class Visual {
 
     public Pair<Integer, Integer> getBounds(){
         return this.bounds;
+    }
+
+    public Pos2D getStartPos(){
+        return this.startPosition;
     }
 }
