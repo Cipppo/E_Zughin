@@ -22,7 +22,7 @@ public class GunSet{
 
     public GunSet(){
         this.arpions = new ArrayList<Bullet>(
-            Set.of(new Arpion(), new Arpion())
+            Set.of(new Arpion(1), new Arpion(2))
         );
 
         this.currentGun = GunTypes.ARPION;
