@@ -48,6 +48,15 @@ public class Gui extends JFrame{
     private Hero hero = new Hero();
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     
+    /*
+    understand why gun are not added 
+    Implement all the gun logic 
+    Sprites :O
+    End (Maybe)
+    */
+
+
+
     public Gui() {
         this.setSize(SIZEX, SIZEY);
         this.setTitle("Pang Guy gui");
