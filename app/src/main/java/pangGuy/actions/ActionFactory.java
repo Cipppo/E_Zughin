@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 import pangGuy.gui.Visual;
+import pangGuy.modularGun.Trigger;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.StepsApplier;
@@ -35,7 +36,7 @@ public class ActionFactory {
                         this.v.getHeroComponent().getShape().getDimensions().getY())){
                             this.h.move(Directions.RIGHT);
                             this.v.move(new Pos2D(axisHeroPos.x + SPEED, axisHeroPos.y));
-                            this.v.setDirection(Directions.RIGHT);
+                            this.v.setDirection(this.h.getDirection());
                         }
         }
 
@@ -62,7 +63,7 @@ public class ActionFactory {
                     this.v.getHeroComponent().getShape().getDimensions().getY())){
                         this.h.move(Directions.LEFT);  
                         this.v.move(new Pos2D(axisHeroPos.x - SPEED,  axisHeroPos.y));
-                        this.v.setDirection(Directions.LEFT);
+                        this.v.setDirection(this.h.getDirection());
                     }
         }
         
@@ -84,8 +85,11 @@ public class ActionFactory {
         @Override
         public void actionPerformed(ActionEvent e) {
             var shootingGun = this.h.getGset().getShootingGun();
+            var shootingGunComponent = this.v.getFreeComponent();
             if(!shootingGun.isEmpty()){
-                
+                new Trigger(shootingGun.get(), shootingGunComponent.get(), this.v, this.bc, this.h).start();
+            }else{
+                System.out.println("no");
             }
 
             
@@ -105,9 +109,9 @@ public class ActionFactory {
         return new leftAction(v, h, bc);
     }
 
-    /*
-    public shootAction getShootAction(GunSet g){
-        return new shootAction(g);
+    
+    public shootAction getShootAction(Visual v, Hero h, BoundChecker bc){
+        return new shootAction(v, h, bc);
     }
-    */
+    
 }
