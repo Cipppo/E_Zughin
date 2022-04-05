@@ -25,8 +25,8 @@ public class Visual {
 
         this.bounds = bounds;
         this.arpions = new ArrayList<>(List.of(
-            new ArpionComponent(Color.red, this.hero.getShape().getPos()),
-            new ArpionComponent(Color.green, this.hero.getShape().getPos()))
+            new ArpionComponent(Color.red, this.hero.getShape().getLeftFoot()),
+            new ArpionComponent(Color.green, this.hero.getShape().getLeftFoot()))
         );
         
     }
@@ -35,6 +35,12 @@ public class Visual {
         this.hero.changeLocation(pos);
         this.getArpions().forEach(e -> {
             e.setLocation(this.hero.getShape().getPos().x, this.hero.getShape().getPos().y);
+        });
+    }
+
+    public void setDirection(Directions dir){
+        this.getArpions().forEach(e -> {
+            e.setDirection(dir, this.hero.getShape());
         });
     }
 
@@ -53,6 +59,8 @@ public class Visual {
     public Pos2D getStartPos(){
         return this.startPosition;
     }
+
+
 
     
 }
