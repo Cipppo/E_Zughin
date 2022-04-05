@@ -6,6 +6,8 @@ import java.util.List;
 
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.Pair;
+import pangGuy.utilities.Directions;
+
 
 
 public class Visual {
@@ -23,12 +25,18 @@ public class Visual {
 
         this.bounds = bounds;
         this.arpions = new ArrayList<>(List.of(
-            new ArpionComponent(Color.red, this.hero.getShape().getLeftFoot()),
-            new ArpionComponent(Color.green, this.hero.getShape().getLeftFoot()))
+            new ArpionComponent(Color.red, this.hero.getShape().getPos()),
+            new ArpionComponent(Color.green, this.hero.getShape().getPos()))
         );
         
     }
 
+    public void move(Pos2D pos){
+        this.hero.changeLocation(pos);
+        this.getArpions().forEach(e -> {
+            e.setLocation(this.hero.getShape().getPos().x, this.hero.getShape().getPos().y);
+        });
+    }
 
     public HeroComponent getHeroComponent(){
         return this.hero;
@@ -45,4 +53,6 @@ public class Visual {
     public Pos2D getStartPos(){
         return this.startPosition;
     }
+
+    
 }
