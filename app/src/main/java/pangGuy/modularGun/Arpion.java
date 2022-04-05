@@ -14,12 +14,14 @@ public class Arpion implements Bullet {
     private Directions direction;
     private int waitTime;
     private int steps;
+    private final int serialNumber;
 
-    public Arpion(){
+    public Arpion(int serialNumber){
         this.waitTime = 0;
         this.status = Status.IDLE;
         this.direction = Directions.LEFT;
         this.steps = 0;
+        this.serialNumber = serialNumber;
     }
 
     @Override
@@ -73,6 +75,11 @@ public class Arpion implements Bullet {
     @Override 
     public int getStepsDone(){
         return this.steps;
+    }
+
+    @Override
+    public int getSerialNumber(){
+        return this.serialNumber;
     }
     
     @Override 
