@@ -1,7 +1,7 @@
 package pangGuy.character;
 
 import pangGuy.modularGun.GunSet;
-import pangGuy.modularGun.Status;
+
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
 

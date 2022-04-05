@@ -10,7 +10,7 @@ import pangGuy.utilities.Pair;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 
-import pangGuy.modularGun.Bullet;
+
 
 public class Visual {
     

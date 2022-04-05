@@ -4,7 +4,7 @@ import pangGuy.character.Hero;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.BoundChecker;
 import pangGuy.gui.Visual;
-import pangGuy.utilities.Pair;
+
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.StepsApplier;
 public class Trigger extends Thread{
