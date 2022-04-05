@@ -16,13 +16,9 @@ public class ArpionComponent extends JPanel{
     private static final int HEIGHT = 2;
 
     private Shape s;
-    //private Directions direction;
-    //private Status status;
 
     public ArpionComponent(Color color, Pos2D startpos){
         this.s = new Shape(startpos, WIDTH, HEIGHT);
-        //this.direction = Directions.LEFT;
-        //this.status = Status.IDLE;
 
         super.setBackground(color);
         super.setForeground(color);
