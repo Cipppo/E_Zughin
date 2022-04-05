@@ -16,9 +16,11 @@ public class ArpionComponent extends JPanel{
     private static final int HEIGHT = 2;
 
     private Shape s;
+    private final int serialNumber;
 
-    public ArpionComponent(Color color, Pos2D startpos){
+    public ArpionComponent(Color color, Pos2D startpos, int serial){
         this.s = new Shape(startpos, WIDTH, HEIGHT);
+        this.serialNumber = serial;
 
         super.setBackground(color);
         super.setForeground(color);
