@@ -15,10 +15,13 @@ public class TestingKeyListener extends JPanel implements KeyListener{
 
 	private static final long serialVersionUID = 7141694249033633519L;
 	private HoFMainPanel HoF = new HoFMainPanel();
+	private DataLabel ciao;
 	
 	public TestingKeyListener(Gui gui) throws FileNotFoundException{
 		gui.addKeyListener(this);
-		this.add(new DataLabel("porcodio"));
+		//this.add(new DataLabel(""));
+		this.ciao = new DataLabel("porcodio");
+		this.add(this.ciao);
 		this.setBackground(Color.black);
 		//this.add(HoF);
 		//HoF.setVisible(true);
@@ -41,8 +44,9 @@ public class TestingKeyListener extends JPanel implements KeyListener{
 		// TODO Auto-generated method stub
 		String c = "" + e.getKeyChar();
 		
-		this.add(new DataLabel(c));
-		this.setBackground(Color.PINK);
+		this.ciao.setText(c);
+		//this.add(new DataLabel(c));
+		//this.setBackground(Color.PINK);
 		System.out.println("you released button: " + c);
 		
 	}

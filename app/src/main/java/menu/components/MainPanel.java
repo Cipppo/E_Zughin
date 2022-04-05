@@ -4,11 +4,10 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import hallOfFameMenu.components.DataLabel;
-import hallOfFameMenu.components.HoFMainPanel;
-import hallOfFameMenu.components.SubtitlesLabel;
+import hallOfFameMenu.components.*;
 import menu.gui.Gui;
 import menu.utils.GenericLabel;
+import menu.utils.NicknameInput;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -40,9 +39,8 @@ public class MainPanel extends JPanel implements KeyListener{
 	private StartLabel start = new StartLabel();
 	private HallOfFameLabel hf = new HallOfFameLabel();
 	private JPanel panel;
-	private int cont = 0;
 	private GridBagConstraints container;
-
+	private NicknameInput nick;
 	
 	public MainPanel(Gui gui) throws FileNotFoundException{
 		 
@@ -69,16 +67,6 @@ public class MainPanel extends JPanel implements KeyListener{
 		container.gridwidth = 10;
 		panel.add(subtitle, container);
 		
-		/*s1.setVisible(false);
-		t1.setVisible(false);
-		HoF.setVisible(true);
-		/*container.fill = GridBagConstraints.HORIZONTAL ;
-		container.gridx = 0;
-		container.gridy = 3;
-		container.gridwidth = 5;
-		container.gridheight = 2;
-		MainPanel.add(new NavigationPanel(), container);*/
-		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 0;
 		container.gridy = 2;
@@ -89,6 +77,7 @@ public class MainPanel extends JPanel implements KeyListener{
 		container.gridx = 1;
 		container.gridy = 2;
 		panel.add(s1, container);
+		s1.setVisible(false); //attenzione
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 0;
@@ -96,11 +85,11 @@ public class MainPanel extends JPanel implements KeyListener{
 		container.gridwidth = 3;
 		panel.add(hf, container);
 		
-		container.fill = GridBagConstraints.HORIZONTAL ;
+		/*container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 3;
 		container.gridy = 3;
 		s2.setLastAction(false);
-		panel.add(s2, container);
+		panel.add(s2, container);*/
 		
 
 		this.addKeyListener(this);
@@ -121,16 +110,6 @@ public class MainPanel extends JPanel implements KeyListener{
     	this.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "enterAction");
     	this.getActionMap().put("enterAction", enterAction);
 	}
-	
-	public void InsertName(char c) {
-		String s = "" + c;
-		this.container.fill = GridBagConstraints.HORIZONTAL ;
-		this.container.gridx = cont;
-		this.container.gridy = 3;
-		this.panel.add(new DataLabel("srticazzi"), container);
-		this.cont++;
-		System.out.println("arrrivati");
-	}
 		
 	public class UpAction extends AbstractAction{
 
@@ -142,8 +121,8 @@ public class MainPanel extends JPanel implements KeyListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(enterCheck == false) {
-				s1.setLastAction(true);
-				s2.setLastAction(false);
+				start.setLastAction(true);
+				hf.setLastAction(false);
 				selectionVar = 0;
 			}
 			
@@ -162,8 +141,8 @@ public class MainPanel extends JPanel implements KeyListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(enterCheck == false) {
-				s2.setLastAction(true);
-				s1.setLastAction(false);
+				start.setLastAction(false);
+				hf.setLastAction(true);
 				selectionVar = 1;
 			}
 			
@@ -189,15 +168,26 @@ public class MainPanel extends JPanel implements KeyListener{
 			
 			s1.setVisible(false);
 			s2.setVisible(false);
-			start.setVisible(false);
-			hf.setVisible(false);
+			//start.setVisible(false);
+			//hf.setVisible(false);
 			if (selectionVar == 0) {
 				selectionVar = 2;
-				container.fill = GridBagConstraints.HORIZONTAL ;
+				/*container.fill = GridBagConstraints.HORIZONTAL ;
 				container.gridx = 0;
 				container.gridy = 2;
 				container.gridwidth = 1;
-				panel.add(new DataLabel("PORCODIOOOO"), container);
+				DataLabel insert = new DataLabel("INSERT NAME:");
+				insert.setGSize(4);
+				insert.setFont(insert.getGameFont());
+				panel.add(insert, container);*/
+				start.setT("INSERT NAME:");
+				
+				selectionVar = 2;
+				container.fill = GridBagConstraints.HORIZONTAL ;
+				container.gridx = 1;
+				container.gridy = 2;
+				nick = new NicknameInput();
+				panel.add(nick, container);
 			}else
 			if(selectionVar == 1) {
 				HoF.setVisible(true);
@@ -224,11 +214,15 @@ public class MainPanel extends JPanel implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (selectionVar == 2) {
-			
-			
-			
-			System.out.println("you released keyz button: " + e.getKeyChar());
-			this.InsertName(e.getKeyChar());
+			int check = e.getKeyCode();
+			if (check == 10) {
+				nick.enterInput();
+			}else
+			if(check == 8){
+				nick.deleteChar();
+			}else {
+				nick.addChar(e.getKeyChar());
+			}
 		}
 		//System.out.println("you released keyz button: " + e.getKeyChar());
 	}

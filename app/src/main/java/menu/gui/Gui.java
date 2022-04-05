@@ -35,9 +35,9 @@ public class Gui extends JFrame implements KeyListener{
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		
-		//this.mainPanel = new MainPanel(this);
-		test = new TestingKeyListener(this);
-		this.add(test, BorderLayout.CENTER);
+		this.mainPanel = new MainPanel(this);
+		//test = new TestingKeyListener(this);
+		this.add(mainPanel, BorderLayout.CENTER);
 		//this.addKeyListener(this);
 		
 		this.setVisible(true);
