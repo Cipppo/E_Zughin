@@ -12,6 +12,7 @@ import pangGuy.utilities.Pos2D;
 import powerUp.DoubleGun;
 import pangGuy.actions.ActionApplier;
 import pangGuy.actions.ActionFactory;
+import pangGuy.character.Hero;
 import pangGuy.gun.Gun;
 import pangGuy.gun.Raiser;
 import pangGuy.modularGun.GunSet;
@@ -43,18 +44,26 @@ public class Gui extends JFrame{
     private final ActionApplier aa = new ActionApplier(this.actor, this.gSet, this.field);
     */
 
-    
-    
+    private Visual visual = new Visual(new Pos2D(STARTX, STARTY), new Pair<Integer, Integer>(SIZEX, SIZEY));
+    private Hero hero = new Hero();
+    private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     
     public Gui() {
         this.setSize(SIZEX, SIZEY);
         this.setTitle("Pang Guy gui");
         this.getContentPane().setLayout(null);
-        this.gSet.getArpions().forEach(e -> {
-            this.add((JPanel) e);
-        });
-        this.add(this.actor);
+
+
         
+
+        
+        this.visual.getArpions().forEach(e -> {
+            this.add(e);
+        });
+        
+        this.add(visual.getHeroComponent());
+
+
         
 
 
