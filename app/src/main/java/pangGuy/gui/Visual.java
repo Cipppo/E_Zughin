@@ -3,9 +3,11 @@ package pangGuy.gui;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.Pair;
+import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 
 
@@ -60,7 +62,16 @@ public class Visual {
         return this.startPosition;
     }
 
+    public Optional<ArpionComponent> getFreeComponent(){
+        for(ArpionComponent i : this.getArpions()){
+            if(i.getStatus() == Status.IDLE){
+                return Optional.of(i);
+            }
+        }
 
+        return Optional.empty();
+
+    }
 
     
 }
