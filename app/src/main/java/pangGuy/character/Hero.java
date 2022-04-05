@@ -38,7 +38,7 @@ public class Hero {
                 this.pos = new Pos2D(pos.x + 1, pos.y);
                 break;
             case LEFT:
-                this.pos = new Pos2D(pos.y - 1, pos.y);
+                this.pos = new Pos2D(pos.x - 1, pos.y);
                 break;
             default:
                 this.updateDirection(dir);
