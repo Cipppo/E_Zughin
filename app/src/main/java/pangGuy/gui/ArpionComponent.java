@@ -1,6 +1,6 @@
 package pangGuy.gui;
 
-import pangGuy.utilities.Bound;
+
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.Pos2D;
