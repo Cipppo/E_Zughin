@@ -15,7 +15,8 @@ import javax.swing.JPanel;
 public class ArpionComponent extends JPanel{
     
     private static final int WIDTH = 10;
-    private static final int HEIGHT = 2;
+    private static final int HEIGHT = 600;
+    private static final int SPEED = 5;
 
     private Shape s;
     private Status status;
@@ -46,6 +47,10 @@ public class ArpionComponent extends JPanel{
 
     }
 
+    public void raise(){
+        this.changeLocation(new Pos2D(this.getShape().getPos().x, this.getShape().getPos().y - SPEED));
+    }
+
     public Status getStatus(){
         return this.status;
     }
@@ -53,6 +58,7 @@ public class ArpionComponent extends JPanel{
     public void setStatus(Status status){
         this.status = status;
     }
+    
 
 
 }
