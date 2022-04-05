@@ -27,14 +27,23 @@ public class Arpion implements Bullet {
     @Override
     public void restore() {
         this.steps = 0;
-        this.status = Status.IDLE;
     }
 
     @Override
     public void raise() {
-        this.status = Status.RISING;
+        this.steps++;
+    }
+
+    @Override
+    public void lock(){
+        this.setStatus(Status.RISING);
     }
     
+    @Override
+    public void unlock(){
+        this.setStatus(Status.IDLE);
+    }
+
     @Override
     public void changeDir(Directions dir){
         this.direction = dir;
@@ -60,16 +69,9 @@ public class Arpion implements Bullet {
         this.waitTime = newWaitTime;
     }
 
-    
-    @Override
-    public void setStatus(Status status) {
+    private void setStatus(Status status) {
         this.status = status;
         
-    }
-
-    @Override
-    public void step(){
-        this.steps ++;
     }
 
     @Override 
