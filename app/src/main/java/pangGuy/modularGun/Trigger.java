@@ -5,20 +5,21 @@ import pangGuy.gui.BoundChecker;
 
 public class Trigger extends Thread{
     
-    private final Bullet bullet;
-    private final BoundChecker bc;
-    private final  long waitTime;
+    //private final Bullet bullet;
+    //private final BoundChecker bc;
+    //private final  long waitTime;
 
     public Trigger(Bullet bullet, BoundChecker bc, long waitTime){
-        this.bullet = bullet;
-        this.bc = bc;
-        this.waitTime = waitTime;
+        //this.bullet = bullet;
+        //this.bc = bc;
+        //this.waitTime = waitTime;
     }
 
     @Override
     public void run(){
+        /*
         try{
-            this.bullet.setUnMovable();
+            this.bullet.setStatus(Status.RISING);
             while(this.bc.isExtendible(this.bullet.getPos())){
                 this.bullet.raise();
                 Thread.sleep(20);
@@ -29,6 +30,7 @@ public class Trigger extends Thread{
         }catch(Exception e){
             System.out.println("An error occured: " + e.getMessage());
         }
+        */
     }
 
 }
