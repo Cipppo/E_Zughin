@@ -59,7 +59,7 @@ public class ActionFactory {
             var axisHeroPos = new StepsApplier(v.getStartPos()).convertHeroPosition(actualHeroPos);
             if(this.bc.isInside(new Pos2D(axisHeroPos.x - SPEED, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
                     this.v.getHeroComponent().getShape().getDimensions().getY())){
-                        this.h.move(Directions.LEFT);
+                        this.h.move(Directions.LEFT);  
                         this.v.getHeroComponent().changeLocation(new Pos2D(axisHeroPos.x - SPEED, axisHeroPos.y));
                     }
         }
