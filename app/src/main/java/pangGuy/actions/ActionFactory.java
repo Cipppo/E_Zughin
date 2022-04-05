@@ -34,7 +34,8 @@ public class ActionFactory {
             if(this.bc.isInside(new Pos2D(axisHeroPos.x + SPEED, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
                         this.v.getHeroComponent().getShape().getDimensions().getY())){
                             this.h.move(Directions.RIGHT);
-                            this.v.getHeroComponent().changeLocation(new Pos2D(axisHeroPos.x + SPEED, axisHeroPos.y));
+                            this.v.move(new Pos2D(axisHeroPos.x + SPEED, axisHeroPos.y));
+                            this.v.setDirection(Directions.RIGHT);
                         }
         }
 
@@ -60,7 +61,9 @@ public class ActionFactory {
             if(this.bc.isInside(new Pos2D(axisHeroPos.x - SPEED, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
                     this.v.getHeroComponent().getShape().getDimensions().getY())){
                         this.h.move(Directions.LEFT);  
-                        this.v.getHeroComponent().changeLocation(new Pos2D(axisHeroPos.x - SPEED, axisHeroPos.y));
+                        //this.v.getHeroComponent().changeLocation(new Pos2D(axisHeroPos.x - SPEED, axisHeroPos.y));
+                        this.v.move(new Pos2D(axisHeroPos.x - SPEED,  axisHeroPos.y));
+                        this.v.setDirection(Directions.LEFT);
                     }
         }
         
