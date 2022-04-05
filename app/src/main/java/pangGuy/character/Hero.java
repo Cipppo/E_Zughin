@@ -59,4 +59,8 @@ public class Hero {
         return this.telemetry;
     }
 
+    public GunSet getGset(){
+        return this.gSet;
+    }
+
 }
