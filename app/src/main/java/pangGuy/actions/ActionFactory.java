@@ -68,24 +68,32 @@ public class ActionFactory {
         
     }
     
-    /*
+
     private class shootAction extends AbstractAction{
 
-        private GunSet g;
+        private final Visual v;
+        private final Hero h;
+        private final BoundChecker bc;
 
-        public shootAction(GunSet g){
-            this.g = g;
+        public shootAction(Visual v, Hero h, BoundChecker bc){
+            this.v = v;
+            this.h = h;
+            this.bc = bc;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            g.shoot();
+            var shootingGun = this.h.getGset().getShootingGun();
+            if(!shootingGun.isEmpty()){
+                
+            }
+
             
         }
 
     }
 
-    */
+
 
 
     public rightAction getRightAction(Visual v, Hero h, BoundChecker bc){
