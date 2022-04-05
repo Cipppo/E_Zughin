@@ -13,7 +13,7 @@ import pangGuy.utilities.Directions;
 
 public class GunSet{
 
-    private final static long WAIT = 2000;
+    //private final static long WAIT = 2000;
 
     private final List<Bullet> arpions;
     
