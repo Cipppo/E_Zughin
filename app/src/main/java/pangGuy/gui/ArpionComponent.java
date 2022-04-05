@@ -17,11 +17,9 @@ public class ArpionComponent extends JPanel{
     private static final int HEIGHT = 2;
 
     private Shape s;
-    private Bound bound;
 
     public ArpionComponent(Color color, Pos2D startpos){
         this.s = new Shape(startpos, WIDTH, HEIGHT);
-        this.bound = new Bound();
 
         super.setBackground(color);
         super.setForeground(color);
@@ -43,10 +41,6 @@ public class ArpionComponent extends JPanel{
         PosConverter posConverter = new PosConverter(new Pair<Integer,Integer>(WIDTH, HEIGHT), shape);
         this.changeLocation(posConverter.getPos(dir));
 
-    }
-
-    public Bound getBound(){
-        return this.bound;
     }
 
 }

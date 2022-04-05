@@ -1,6 +1,6 @@
 package pangGuy.modularGun;
 
-import pangGuy.utilities.Bound;
+
 import pangGuy.utilities.Directions;
 
 
@@ -25,8 +25,6 @@ public interface Bullet {
     void step();
 
     int getStepsDone();
-
-    Bound getBound();
 
 
 }
