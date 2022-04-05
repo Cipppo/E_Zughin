@@ -1,7 +1,7 @@
 package pangGuy.modularGun;
 
 import pangGuy.utilities.Directions;
-
+import pangGuy.utilities.Bound;
 public class Arpion implements Bullet {
 
     /*
@@ -14,14 +14,14 @@ public class Arpion implements Bullet {
     private Directions direction;
     private int waitTime;
     private int steps;
-    private final int serialNumber;
+    private Bound bound;
 
-    public Arpion(int serialNumber){
+    public Arpion(){
         this.waitTime = 0;
         this.status = Status.IDLE;
         this.direction = Directions.LEFT;
         this.steps = 0;
-        this.serialNumber = serialNumber;
+        this.bound = new Bound();
     }
 
     @Override
@@ -78,8 +78,8 @@ public class Arpion implements Bullet {
     }
 
     @Override
-    public int getSerialNumber(){
-        return this.serialNumber;
+    public Bound getBound(){
+        return this.bound;
     }
     
     @Override 
