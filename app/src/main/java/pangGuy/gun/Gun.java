@@ -60,7 +60,7 @@ public class Gun extends JPanel{
 
     public void changeDir(Directions dir){
         if(this.isMovable){
-            PosConverter conv = new PosConverter(new Pair<Integer, Integer> (WIDTH, HEIGHT), this.a);
+            PosConverter conv = new PosConverter(new Pair<Integer, Integer> (WIDTH, HEIGHT), this.a.getShape());
             
             this.s = new Shape(conv.getPos(dir), WIDTH, HEIGHT);
             super.setLocation(conv.getPos(dir).x, conv.getPos(dir).y);
@@ -78,7 +78,7 @@ public class Gun extends JPanel{
     }
 
     public void restore(){
-        PosConverter conv = new PosConverter(new Pair<Integer, Integer> (WIDTH, HEIGHT), this.a);
+        PosConverter conv = new PosConverter(new Pair<Integer, Integer> (WIDTH, HEIGHT), this.a.getShape());
         this.s = new Shape(conv.getPos(this.direction), WIDTH, HEIGHT);
         super.setBounds(this.s.getRectangle());
     }
