@@ -25,5 +25,7 @@ public interface Bullet {
 
     int getStepsDone();
 
+    int getSerialNumber();
+
 
 }
