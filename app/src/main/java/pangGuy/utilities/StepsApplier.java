@@ -3,6 +3,7 @@ package pangGuy.utilities;
 public class StepsApplier {
 
     private static final int HERO_STEP = 5;
+    private static final int BULLET_STEP = 4;
 
     private Pos2D startPos;
 
@@ -16,6 +17,9 @@ public class StepsApplier {
         return new Pos2D(x, this.startPos.y);
     }
 
+    public int covertStepPosition(int step){
+        return step * BULLET_STEP;
+    }
 
 
 
