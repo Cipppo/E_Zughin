@@ -111,6 +111,19 @@ public class MainPanel extends JPanel implements KeyListener{
     	this.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "enterAction");
     	this.getActionMap().put("enterAction", enterAction);
 	}
+	
+	public void restartMenu() {
+		HoF.setVisible(false);
+		title.setVisible(true);
+		subtitle.setVisible(true);
+		start.setVisible(true);
+		hf.setVisible(true);
+		enterCheck = false;
+		enterStatus = 1;
+		nick.setVisible(false);
+		s1.setVisible(false);
+		
+	}
 		
 	public class UpAction extends AbstractAction{
 
@@ -236,8 +249,9 @@ public class MainPanel extends JPanel implements KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		//System.out.println(e.getKeyCode());
+		int check = e.getKeyCode();
 		if (selectionVar == 2) {
-			int check = e.getKeyCode();
 			if (check == 10) {
 				enterStatus++;
 				if (enterStatus < 2) {
@@ -251,6 +265,11 @@ public class MainPanel extends JPanel implements KeyListener{
 				nick.deleteChar();
 			}else {
 				nick.addChar(e.getKeyChar());
+			}
+		}else
+		if(selectionVar == 1) {
+			if (check == 27) {
+				restartMenu();
 			}
 		}
 		//System.out.println("you released keyz button: " + e.getKeyChar());
