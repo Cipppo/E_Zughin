@@ -2,6 +2,7 @@ package ball.gui;
 
 import java.awt.Graphics;
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 
 import javax.swing.*;
 
@@ -52,8 +53,8 @@ public class Visual extends JFrame {
 
 	    public void paint(Graphics g) {
 	        Graphics2D g2 = (Graphics2D) g;
-	        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-	        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+	        //g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	        //g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
 	        g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 
@@ -69,6 +70,7 @@ public class Visual extends JFrame {
 			g2.fillOval((int)this.enemy.getPosition().x, (int)this.enemy.getPosition().y
 						, this.enemy.getSize(), this.enemy.getSize());
 			g2.dispose();
+			Toolkit.getDefaultToolkit().sync();
 	    }
 
 	    public void updatePositions(List<Pos2D> pos) {
