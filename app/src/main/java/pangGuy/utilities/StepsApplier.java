@@ -13,7 +13,6 @@ public class StepsApplier {
 
     public Pos2D convertHeroPosition(Pos2D pos){
         int x = (pos.x * HERO_STEP) + this.startPos.x;
-        System.out.println(pos.x);
         return new Pos2D(x, this.startPos.y);
     }
 
