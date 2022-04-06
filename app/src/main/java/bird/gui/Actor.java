@@ -50,8 +50,6 @@ public class Actor extends JLabel{
     public void paint(Graphics g) {
 
         Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-	    g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
         g2.clearRect(0, 0, SIZEX, SIZEY);
 
