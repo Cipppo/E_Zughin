@@ -38,7 +38,7 @@ public class Trigger extends Thread{
         try{
             while(!this.stop){
                     this.arpion.raise();
-                    System.out.println(this.arpion.getStepsDone());
+                    //System.out.println(this.arpion.getStepsDone());
                     this.arpionComponent.raise();
                     
                     if(!this.bc.isExtendible(new Pos2D(xValue, maxYValue - this.stepConverter.covertStepPosition(this.arpion.getStepsDone())))){
@@ -48,7 +48,7 @@ public class Trigger extends Thread{
             }
             this.arpion.restore();
             this.arpion.unlock();
-            System.out.println(this.hero.getDirection());
+            //System.out.println(this.hero.getDirection());
             this.visual.restoreBullet(arpionComponent, new Pos2D(stepConverter.convertHeroPosition(this.hero.getPosition()).x, maxYValue - yvalue), this.hero.getDirection());
             
             
