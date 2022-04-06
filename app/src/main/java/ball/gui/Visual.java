@@ -48,13 +48,12 @@ public class Visual extends JFrame {
 		public VisualPanel() {
 			setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
 			this.enemy = new Enemy(WINDOW_SIZE_X / 2, WINDOW_SIZE_Y / 2, 60);
+			this.enemy.getPosition().x -= this.enemy.getSize() / 2;
+			this.enemy.getPosition().y -= this.enemy.getSize() / 2;
 		}
 
 	    public void paint(Graphics g) {
 	        Graphics2D g2 = (Graphics2D) g;
-	        //g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-	        //g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-
 	        g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 
 	        synchronized (this) {
