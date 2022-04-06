@@ -7,7 +7,6 @@ import java.awt.Toolkit;
 import javax.swing.*;
 
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 
 import java.util.List;
 
