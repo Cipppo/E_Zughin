@@ -45,7 +45,7 @@ public class Gui extends JFrame{
     */
 
     private Visual visual = new Visual(new Pos2D(STARTX, STARTY), new Pair<Integer, Integer>(1000, 500));
-    private Hero hero = new Hero();
+    public Hero hero = new Hero();
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     
     /*
