@@ -46,6 +46,7 @@ public class Trigger extends Thread{
                     }
                     Thread.sleep(20);
             }
+            Thread.sleep(this.arpion.getWaitTime() * 1000);
             this.arpion.restore();
             this.arpion.unlock();
             //System.out.println(this.hero.getDirection());
