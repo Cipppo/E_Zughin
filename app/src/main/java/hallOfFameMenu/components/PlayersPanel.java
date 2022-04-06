@@ -38,9 +38,10 @@ public class PlayersPanel extends JPanel{
 		
 		Players p1 = new Players();
 		p1.Read();
-		//Player p = new Player("PORCODIO");
-		//p.setScore(1500);
+		//Player p = new Player("1234567890ABCD");
+		//p.setScore(20000);
 		//p1.add(p);
+		
 		p1.Sort();
 		p1.Save();
 		
@@ -51,13 +52,13 @@ public class PlayersPanel extends JPanel{
 			container.fill = GridBagConstraints.HORIZONTAL;
 			container.gridx = 0;
 			container.gridy = 1+i;
-			container.ipadx = 120;
+			container.ipadx =40;
 			playersPanel.add(new DataLabel(elem),  container);
 			
 			container.fill = GridBagConstraints.HORIZONTAL;
 			container.gridx = 1;
 			container.gridy = 1+i;
-			container.ipadx = 120;
+			container.ipadx = 80;
 			playersPanel.add(new DataLabel(p1.get(i).getNickname()),  container);
 			
 			container.fill = GridBagConstraints.HORIZONTAL;

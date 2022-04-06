@@ -27,7 +27,7 @@ public class SelectionLabel extends JPanel{
 	
     
     public SelectionLabel() {
-    	selectionPanel.setText("-");
+    	selectionPanel.setText("_");
     	selectionPanel.setFont(gameFont);
     	selectionPanel.setForeground(Color.BLACK);
     	this.setLayout(new BorderLayout());
