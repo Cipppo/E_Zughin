@@ -10,7 +10,7 @@ public class Enemy implements Entity {
     private final int size;
 
     public Enemy(double x, double y, int size) {
-        this.position = new Pos2D(x, y, Dimensions.NONE);
+        this.position = new Pos2D(x, y, Dimensions.STD, size);
         this.size = size;
     }
 
