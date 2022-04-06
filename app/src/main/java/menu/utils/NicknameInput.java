@@ -43,7 +43,7 @@ public class NicknameInput extends JPanel{
 		String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		String car = "" + c;
 		car = car.toUpperCase();
-		if (alpha.contains(car)) {
+		if (alpha.contains(car) && nickname.length() < 14) {
 			//nickname = nickname.substring(0, nickname.length()-1) + car + "-";
 			nickname += car;
 			nick.setText(nickname);
@@ -56,6 +56,10 @@ public class NicknameInput extends JPanel{
 			nickname = nickname.substring(0, nickname.length()-1);
 			nick.setText(nickname);
 		}
+	}
+	
+	public String getNickname() {
+		return this.nickname.substring(2);
 	}
 	
 	public void simpleTimer() {
