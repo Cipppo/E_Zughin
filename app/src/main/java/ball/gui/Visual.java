@@ -61,7 +61,7 @@ public class Visual extends JFrame {
 	            if (positions != null) {
 	                for(final var position : positions) {
 	                    int x = (int)( position.x * WINDOW_SIZE_X );
-	                    int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
+	                    int y = (int)( position.y * WINDOW_SIZE_Y );
 						g2.drawImage(iLoader.getBallImage(position.getDimension()), x, y, this);
 	                }
 	            }
