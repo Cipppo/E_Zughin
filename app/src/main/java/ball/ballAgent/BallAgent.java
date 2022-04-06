@@ -82,4 +82,8 @@ public class BallAgent extends Thread {
     public void applyConstraints(double d, Boundary x0) {
         this.ball.applyConstraints(d, x0);
     }
+
+    public synchronized int getSize() {
+        return this.ball.getSize();
+    }
 }

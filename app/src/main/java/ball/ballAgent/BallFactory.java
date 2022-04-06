@@ -41,7 +41,7 @@ public class BallFactory {
 	 */
 	public static Ball randomPos() {
 		Random rand = new Random();
-		Pos2D pos = new Pos2D(rand.nextDouble(), Boundary.Y0.getValue(), Dimensions.FATHER);
+		Pos2D pos = new Pos2D(rand.nextDouble(), Boundary.Y0.getValue(), Dimensions.FATHER, 50);
 		return randomVelAndAngleBall(pos);
 	}
 
@@ -52,7 +52,8 @@ public class BallFactory {
 			ball.getTrajectory().getInitialVelocity(),
 			new Pos2D(ball.getPosition().x,
 				ball.getPosition().y,
-				ball.getPosition().getDimension())
+				ball.getPosition().getDimension(),
+				50)
 			, MOON_GRAVITY);
 	}
 
@@ -86,7 +87,8 @@ public class BallFactory {
 		Pos2D newPos = new Pos2D(
 			ball.getPosition().x,
 			ball.getPosition().y,
-			Dimensions.getChild(ball.getPosition().getDimension())
+			Dimensions.getChild(ball.getPosition().getDimension()),
+			ball.getSize()
 		);
 		
 		return completeBall(
