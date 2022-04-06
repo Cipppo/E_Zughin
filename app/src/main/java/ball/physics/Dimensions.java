@@ -4,6 +4,7 @@ public enum Dimensions {
 	FATHER(1.0),
 	SON(0.85),
 	GRANDSON(0.50),
+	STD(1.0),
 	NONE(0.0);
 
 	private final double n;

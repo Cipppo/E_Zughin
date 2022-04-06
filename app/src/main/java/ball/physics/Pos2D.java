@@ -19,7 +19,7 @@ public class Pos2D {
         this.x = x;
         this.y = y;
         this.dimension = dimension;
-        this.radius = radius;
+        this.radius = (int)(radius * this.dimension.getValue());
     }
 
     public Pos2D(final double x, final double y, Dimensions dimension) {
@@ -30,39 +30,12 @@ public class Pos2D {
     	return this.dimension;
     }
 
-    public void setDimensions(final Dimensions dim) {
-    }
-
     @Override
     public String toString() {
         return "Pos(" + this.x + ", " + this.y + ")";
     }
 
-    /**
-     * Dimension Based on PNGs dimensions
-     * @return
-     *      the size of the ball
-     */
-    private int getDiamterFromDimension() {
-        switch (this.dimension) {
-            case FATHER:
-                this.radius = 50;
-                return 50;
-            case SON:
-                this.radius = 41;
-                return 41;
-            case GRANDSON:
-                this.radius = 25;
-                return 25;
-            default:
-                return 0;
-        }
-    }
-
     public int getDiameter() {
-        if (this.radius == 0) {
-            return this.getDiamterFromDimension();
-        }
         return this.radius;
     }
 }
