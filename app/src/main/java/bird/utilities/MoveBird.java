@@ -4,7 +4,8 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.Toolkit;
 
 import bird.actions.ActionFactory;
 import bird.gui.Actor;
@@ -25,7 +26,7 @@ public class MoveBird extends Thread{
 
     private Shape shape;
 
-    private final JFrame frame;
+    private final JPanel panel;
     private BoundChecker bc = new BoundChecker(new Pair<Integer>(0, SIZEX),
                                     new Pair<Integer>(0, SIZEY));
     private Mover moover;
@@ -34,14 +35,15 @@ public class MoveBird extends Thread{
     private final Random random = new Random();
     private final ActionFactory actionFactory = new ActionFactory();
     private Directions dir;
+    private Boolean pause = false;
 
-    public MoveBird(JFrame frame) {
-        this.frame = frame;
+    public MoveBird(JPanel panel) {
+        this.panel = panel;
     }
     
     @Override
     public void run() {
-        while(true) {
+        while(!pause) {
 
             this.dir = this.randomDirectionChooser();
             this.startX = this.dir == Directions.RIGHT ? 0 : SIZEX - WIDTH;
@@ -54,27 +56,39 @@ public class MoveBird extends Thread{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            frame.add(this.actor);
-            frame.repaint();
+            panel.add(this.actor);
+            panel.repaint();
             try {
                 if(startX == 0) {
                         while(actor.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5) {
-                            this.actionFactory.getRightAction(this.moover);
+                            if(!this.pause){
+                                this.actionFactory.getRightAction(this.moover);
+                                panel.repaint();
+                                Toolkit.getDefaultToolkit().sync();
+                                System.out.println(actor.getShape().getPos());
+                            } else {
+                                panel.repaint();
+                            }
                             Thread.sleep(20);
-                            frame.repaint();
-                            System.out.println(actor.getShape().getPos());
                         }
-                        frame.remove(this.actor);
-                        frame.repaint();
+                        panel.remove(this.actor);
+                        panel.repaint();
+                        Toolkit.getDefaultToolkit().sync();
                     } else {
-                        while(actor.getShape().getPos().x >= bc.getXPair().getX() + 5) {
-                            this.actionFactory.getLeftAction(this.moover);
+                        while(actor.getShape().getPos().x >= bc.getXPair().getX() + 5 && !this.pause) {
+                            if(!this.pause) {
+                                this.actionFactory.getLeftAction(this.moover);
+                                panel.repaint();
+                                Toolkit.getDefaultToolkit().sync();
+                                System.out.println(actor.getShape().getPos());
+                            } else {
+                                panel.repaint();
+                            }
                             Thread.sleep(20);
-                            frame.repaint();
-                            System.out.println(actor.getShape().getPos());
                         }
-                        frame.remove(this.actor);
-                        frame.repaint();
+                        panel.remove(this.actor);
+                        panel.repaint();
+                        Toolkit.getDefaultToolkit().sync();
                     }
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -96,5 +110,13 @@ public class MoveBird extends Thread{
 
     public int getStartX() {
         return this.startX;
+    }
+
+    public void setPause() {
+        if(this.pause) {
+            this.pause = false;
+        } else {
+            this.pause = true;
+        }
     }
 }
