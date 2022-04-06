@@ -4,7 +4,10 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import hallOfFameMenu.components.HoFMainPanel;
+import hallOfFameMenu.components.*;
+import menu.gui.Gui;
+import menu.utils.GenericLabel;
+import menu.utils.NicknameInput;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -32,82 +35,81 @@ public class MainPanel extends JPanel implements KeyListener{
 	private SelectionLabel s1 = new SelectionLabel();
 	private SelectionLabel s2 = new SelectionLabel();
 	private int selectionVar = 0;
+	private boolean enterCheck = false;
 	private StartLabel start = new StartLabel();
 	private HallOfFameLabel hf = new HallOfFameLabel();
-	private char s;
+	private JPanel panel;
+	private GridBagConstraints container;
+	private NicknameInput nick;
+	private int enterStatus = 0;
 	
-	public MainPanel() throws FileNotFoundException{
-		JPanel MainPanel = new JPanel(new GridBagLayout());
-		GridBagConstraints container = new GridBagConstraints();
-		MainPanel.setLayout(new GridBagLayout());
+	public MainPanel(Gui gui) throws FileNotFoundException{
+		 
+		
+		panel = new JPanel(new GridBagLayout());
+		container = new GridBagConstraints();
+		panel.setLayout(new GridBagLayout());
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.ipady = 40;
 		container.gridx = 0;
 		container.gridy = 0;
 		container.gridwidth = 3;
-		MainPanel.add(title, container);
+		panel.add(title, container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 0;
 		container.gridy = 0;
-		MainPanel.add(HoF, container);
+		panel.add(HoF, container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 0;
 		container.gridy = 1;
 		container.gridwidth = 10;
-		MainPanel.add(subtitle, container);
-		
-		/*s1.setVisible(false);
-		t1.setVisible(false);
-		HoF.setVisible(true);
-		/*container.fill = GridBagConstraints.HORIZONTAL ;
-		container.gridx = 0;
-		container.gridy = 3;
-		container.gridwidth = 5;
-		container.gridheight = 2;
-		MainPanel.add(new NavigationPanel(), container);*/
+		panel.add(subtitle, container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 0;
 		container.gridy = 2;
 		container.gridwidth = 1;
-		MainPanel.add(start, container);
+		panel.add(start, container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
-		container.gridx = 1;
+		container.gridx = 2;
 		container.gridy = 2;
-		MainPanel.add(s1, container);
+		panel.add(s1, container);
+		s1.setVisible(false); //attenzione
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 0;
 		container.gridy = 3;
-		container.gridwidth = 3;
-		MainPanel.add(hf, container);
+		container.gridwidth = 1;
+		panel.add(hf, container);
 		
-		container.fill = GridBagConstraints.HORIZONTAL ;
+		/*container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 3;
 		container.gridy = 3;
 		s2.setLastAction(false);
-		MainPanel.add(s2, container);
+		panel.add(s2, container);*/
 		
+
+		this.addKeyListener(this);
 		
-		
+		panel.setBackground(Color.BLACK);
+		this.add(panel);
 		this.setBackground(Color.BLACK);
-		MainPanel.setBackground(Color.BLACK);
-		this.add(MainPanel);
+		//this.add(MainPanel);
 		
 		upAction = new UpAction();
     	downAction = new DownAction();
     	enterAction = new EnterAction();
     	
-    	MainPanel.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
-    	MainPanel.getActionMap().put("upAction", upAction);
-    	MainPanel.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "downAction");
-    	MainPanel.getActionMap().put("downAction", downAction);
-    	MainPanel.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "enterAction");
-    	MainPanel.getActionMap().put("enterAction", enterAction);
+    	this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
+    	this.getActionMap().put("upAction", upAction);
+    	this.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "downAction");
+    	this.getActionMap().put("downAction", downAction);
+    	this.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "enterAction");
+    	this.getActionMap().put("enterAction", enterAction);
 	}
 		
 	public class UpAction extends AbstractAction{
@@ -119,9 +121,11 @@ public class MainPanel extends JPanel implements KeyListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			s1.setLastAction(true);
-			s2.setLastAction(false);
-			selectionVar = 0;
+			if(enterCheck == false) {
+				start.setLastAction(true);
+				hf.setLastAction(false);
+				selectionVar = 0;
+			}
 			
 		}
 		
@@ -137,8 +141,21 @@ public class MainPanel extends JPanel implements KeyListener{
 	
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			s2.setLastAction(true);
-			s1.setLastAction(false);
+			/*if(enterCheck == false) {
+				start.setLastAction(false);
+				hf.setLastAction(true);
+				selectionVar = 1;
+			}*/
+			enterCheck = false;
+			start.setLastAction(false);
+			start.setT("START");
+			hf.setLastAction(true);
+			if(enterStatus > 0) {
+				nick.setVisible(false);
+				s1.setVisible(false);
+			}
+			
+			
 			selectionVar = 1;
 			
 		}
@@ -158,17 +175,47 @@ public class MainPanel extends JPanel implements KeyListener{
 		public void actionPerformed(ActionEvent e) {
 			//System.out.println("enterrrr");
 			//this.add(new MainPanel());
-
-			s1.setVisible(false);
-			s2.setVisible(false);
-			start.setVisible(false);
-			hf.setVisible(false);
+			
+			enterCheck = true;
+			
+			//s1.setVisible(false);
+			//s2.setVisible(false);
+			//start.setVisible(false);
+			//hf.setVisible(false);
 			if (selectionVar == 0) {
+				selectionVar = 2;
+				/*container.fill = GridBagConstraints.HORIZONTAL ;
+				container.gridx = 0;
+				container.gridy = 2;
+				container.gridwidth = 1;
+				DataLabel insert = new DataLabel("INSERT NAME:");
+				insert.setGSize(4);
+				insert.setFont(insert.getGameFont());
+				panel.add(insert, container);*/
+				start.setT("INSERT NAME:");
+				start.setLastAction(false);
 				
-			}else {
+				selectionVar = 2;
+				container.fill = GridBagConstraints.HORIZONTAL ;
+				container.gridx = 1;
+				container.gridy = 2;
+				container.gridwidth = 1;
+				nick = new NicknameInput();
+				enterStatus = 0;
+				nick.setVisible(true);
+				panel.add(nick, container);
+				s1.setVisible(true);
+			}else
+			if(selectionVar == 1) {
 				HoF.setVisible(true);
 				title.setVisible(false);
 				subtitle.setVisible(false);
+				start.setVisible(false);
+				hf.setVisible(false);
+				/*if(enterStatus > 0) {
+					nick.setVisible(false);
+				}*/
+				
 			}
 		}	
 		
@@ -189,8 +236,24 @@ public class MainPanel extends JPanel implements KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(e.getKeyChar());
-		
+		if (selectionVar == 2) {
+			int check = e.getKeyCode();
+			if (check == 10) {
+				enterStatus++;
+				if (enterStatus < 2) {
+					nick.enterInput();
+				}else {
+					System.out.println(nick.getNickname());
+				}
+				
+			}else
+			if(check == 8){
+				nick.deleteChar();
+			}else {
+				nick.addChar(e.getKeyChar());
+			}
+		}
+		//System.out.println("you released keyz button: " + e.getKeyChar());
 	}
 		
 		

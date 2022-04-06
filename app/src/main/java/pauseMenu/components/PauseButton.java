@@ -2,7 +2,6 @@ package pauseMenu.components;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.AbstractAction;
 import javax.swing.JPanel;

@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 import pangGuy.gui.Visual;
+import pangGuy.modularGun.Trigger;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.StepsApplier;
@@ -34,7 +35,8 @@ public class ActionFactory {
             if(this.bc.isInside(new Pos2D(axisHeroPos.x + SPEED, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
                         this.v.getHeroComponent().getShape().getDimensions().getY())){
                             this.h.move(Directions.RIGHT);
-                            this.v.getHeroComponent().changeLocation(new Pos2D(axisHeroPos.x + SPEED, axisHeroPos.y));
+                            this.v.move(new Pos2D(axisHeroPos.x + SPEED, axisHeroPos.y));
+                            this.v.setDirection(this.h.getDirection());
                         }
         }
 
@@ -60,30 +62,42 @@ public class ActionFactory {
             if(this.bc.isInside(new Pos2D(axisHeroPos.x - SPEED, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
                     this.v.getHeroComponent().getShape().getDimensions().getY())){
                         this.h.move(Directions.LEFT);  
-                        this.v.getHeroComponent().changeLocation(new Pos2D(axisHeroPos.x - SPEED, axisHeroPos.y));
+                        this.v.move(new Pos2D(axisHeroPos.x - SPEED,  axisHeroPos.y));
+                        this.v.setDirection(this.h.getDirection());
                     }
         }
         
     }
     
-    /*
+
     private class shootAction extends AbstractAction{
 
-        private GunSet g;
+        private final Visual v;
+        private final Hero h;
+        private final BoundChecker bc;
 
-        public shootAction(GunSet g){
-            this.g = g;
+        public shootAction(Visual v, Hero h, BoundChecker bc){
+            this.v = v;
+            this.h = h;
+            this.bc = bc;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            g.shoot();
+            var shootingGun = this.h.getGset().getShootingGun();
+            var shootingGunComponent = this.v.getFreeComponent();
+            if(!shootingGun.isEmpty()){
+                new Trigger(shootingGun.get(), shootingGunComponent.get(), this.v, this.bc, this.h).start();
+            }else{
+                System.out.println("No available guns!");
+            }
+
             
         }
 
     }
 
-    */
+
 
 
     public rightAction getRightAction(Visual v, Hero h, BoundChecker bc){
@@ -95,9 +109,9 @@ public class ActionFactory {
         return new leftAction(v, h, bc);
     }
 
-    /*
-    public shootAction getShootAction(GunSet g){
-        return new shootAction(g);
+    
+    public shootAction getShootAction(Visual v, Hero h, BoundChecker bc){
+        return new shootAction(v, h, bc);
     }
-    */
+    
 }

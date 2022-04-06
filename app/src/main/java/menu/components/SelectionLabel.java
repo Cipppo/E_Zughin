@@ -6,7 +6,7 @@ import javax.swing.*;
 
 import javax.swing.JPanel;
 
-
+import java.awt.BorderLayout;
 import java.awt.Color;
 //import java.awt.Desktop.Action;
 
@@ -18,7 +18,7 @@ public class SelectionLabel extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 2928014517775593930L;
-	MainFontLoader fontLoader = new MainFontLoader(6);
+	MainFontLoader fontLoader = new MainFontLoader(4);
 	Font gameFont = fontLoader.load();
 	private final JLabel selectionPanel = new JLabel();
 	private int seconds = 0;
@@ -30,18 +30,9 @@ public class SelectionLabel extends JPanel{
     	selectionPanel.setText("_");
     	selectionPanel.setFont(gameFont);
     	selectionPanel.setForeground(Color.BLACK);
+    	this.setLayout(new BorderLayout());
     	this.setBackground(Color.BLACK);
-    	this.add(selectionPanel);
-    	
-    	/*upAction = new UpAction();
-    	downAction = new DownAction();
-    	selectionPanel.getInputMap().put(KeyStroke.getKeyStroke('w'), "upAction");
-    	selectionPanel.getActionMap().put("upAction", upAction);
-    	selectionPanel.getInputMap().put(KeyStroke.getKeyStroke('s'), "downAction");
-    	selectionPanel.getActionMap().put("downAction", downAction);*/
-
-    	
-    	
+    	this.add(selectionPanel, BorderLayout.CENTER);
 		simpleTimer();
 		timer.start();
     }	

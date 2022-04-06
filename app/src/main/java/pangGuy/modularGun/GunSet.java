@@ -78,6 +78,18 @@ public class GunSet{
         return this.arpions;
     }
 
+    public void setWaitTime(int wait){
+        this.getArpions().forEach(e -> {
+            e.setWaitTime(wait);
+        });
+    }
+
+    public void resetWaitTime(){
+        this.getArpions().forEach(e ->{
+            e.setWaitTime(0);
+        });
+    }
+
     /*
     public void shoot(){
         var shootingGun = this.getShootingGun();

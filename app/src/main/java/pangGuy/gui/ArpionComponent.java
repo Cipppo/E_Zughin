@@ -1,5 +1,7 @@
 package pangGuy.gui;
 
+
+import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.Pos2D;
@@ -13,16 +15,15 @@ import javax.swing.JPanel;
 public class ArpionComponent extends JPanel{
     
     private static final int WIDTH = 10;
-    private static final int HEIGHT = 2;
+    private static final int HEIGHT = 600;
+    private static final int SPEED = 5;
 
     private Shape s;
-    //private Directions direction;
-    //private Status status;
+    private Status status;
 
     public ArpionComponent(Color color, Pos2D startpos){
         this.s = new Shape(startpos, WIDTH, HEIGHT);
-        //this.direction = Directions.LEFT;
-        //this.status = Status.IDLE;
+        this.status = Status.IDLE;
 
         super.setBackground(color);
         super.setForeground(color);
@@ -45,5 +46,19 @@ public class ArpionComponent extends JPanel{
         this.changeLocation(posConverter.getPos(dir));
 
     }
+
+    public void raise(){
+        this.changeLocation(new Pos2D(this.getShape().getPos().x, this.getShape().getPos().y - SPEED));
+    }
+
+    public Status getStatus(){
+        return this.status;
+    }
+
+    public void setStatus(Status status){
+        this.status = status;
+    }
+    
+
 
 }

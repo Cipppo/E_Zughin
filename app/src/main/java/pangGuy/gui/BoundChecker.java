@@ -29,7 +29,7 @@ public class BoundChecker {
 
 
     public boolean isExtendible(Pos2D pos){
-        if(pos.y > 0){
+        if(pos.y > 0 + 35){
             return true;
         }else{
             return false;

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import pangGuy.utilities.Pos2D;
 
+
 public class HeroComponent extends JPanel{
 
     private static final int WIDTH = 40;
@@ -36,8 +37,6 @@ public class HeroComponent extends JPanel{
     public Shape getShape(){
         return this.s;
     }
-
-
 
 
 }

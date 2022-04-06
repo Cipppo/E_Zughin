@@ -1,5 +1,6 @@
 package pangGuy.modularGun;
 
+
 import pangGuy.utilities.Directions;
 
 
@@ -9,9 +10,11 @@ public interface Bullet {
 
     void raise();
 
-    Status getStatus();
+    void lock();
 
-    void setStatus(Status status);
+    void unlock();
+
+    Status getStatus();
 
     Directions getDirection();
 
@@ -20,6 +23,8 @@ public interface Bullet {
     void setWaitTime(int newWaitTime);
 
     void changeDir(Directions dir);
+
+    int getStepsDone();
 
 
 }

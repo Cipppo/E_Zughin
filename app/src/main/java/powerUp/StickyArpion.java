@@ -5,6 +5,8 @@ import pangGuy.modularGun.GunTypes;
 
 public class StickyArpion extends Thread implements PowerUp{
 
+    private final static int WAIT_SECONDS = 2;
+
     private final GunSet gSet;
     private int timeElapsed;
     private int duration;
@@ -19,6 +21,7 @@ public class StickyArpion extends Thread implements PowerUp{
     public void run(){
         System.out.println("Sticky Arpion: Active");
         this.gSet.setGunType(GunTypes.STICKY_ARPION);
+        this.gSet.setWaitTime(WAIT_SECONDS);
         while(!this.isActive()){
             try{
                 Thread.sleep(1000);
@@ -27,6 +30,7 @@ public class StickyArpion extends Thread implements PowerUp{
             }
             this.timeElapsed++;
         }
+        this.gSet.resetWaitTime();
         System.out.println("Sticky Arpion: Finished");
         this.gSet.resetGunType(GunTypes.STICKY_ARPION);
         this.timeElapsed = 0;

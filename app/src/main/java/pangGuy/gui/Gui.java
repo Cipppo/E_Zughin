@@ -44,8 +44,8 @@ public class Gui extends JFrame{
     private final ActionApplier aa = new ActionApplier(this.actor, this.gSet, this.field);
     */
 
-    private Visual visual = new Visual(new Pos2D(STARTX, STARTY), new Pair<Integer, Integer>(SIZEX, SIZEY));
-    private Hero hero = new Hero();
+    private Visual visual = new Visual(new Pos2D(STARTX, STARTY), new Pair<Integer, Integer>(1000, 500));
+    public Hero hero = new Hero();
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     
     /*
@@ -55,8 +55,7 @@ public class Gui extends JFrame{
     End (Maybe)
     */
 
-
-
+    
     public Gui() {
         this.setSize(SIZEX, SIZEY);
         this.setTitle("Pang Guy gui");

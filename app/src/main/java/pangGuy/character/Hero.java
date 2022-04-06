@@ -1,7 +1,7 @@
 package pangGuy.character;
 
 import pangGuy.modularGun.GunSet;
-import pangGuy.modularGun.Status;
+
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
 
@@ -40,23 +40,18 @@ public class Hero {
             case LEFT:
                 this.pos = new Pos2D(pos.x - 1, pos.y);
                 break;
-            default:
-                this.updateDirection(dir);
         }
-    }
-
-    public void shoot(){
-        var gun = this.gSet.getShootingGun();
-        if(!gun.isEmpty()){
-            gun.get().setStatus(Status.RISING);
-            this.telemetry.startShoot(gun.get());
-        }
+        this.updateDirection(dir);
     }
 
     //Whatever, Timer is counting the steps done not the time Elapsed
     //Probaly gonna need a refactor 
     public Telemetry getTelemetry(){
         return this.telemetry;
+    }
+
+    public GunSet getGset(){
+        return this.gSet;
     }
 
 }
