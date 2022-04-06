@@ -89,7 +89,7 @@ public class ActionFactory {
             if(!shootingGun.isEmpty()){
                 new Trigger(shootingGun.get(), shootingGunComponent.get(), this.v, this.bc, this.h).start();
             }else{
-                System.out.println("no");
+                System.out.println("No available guns!");
             }
 
             
