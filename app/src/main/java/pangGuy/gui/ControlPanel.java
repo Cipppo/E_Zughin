@@ -32,7 +32,7 @@ public class ControlPanel extends JFrame{
 
     public ControlPanel(Gui gui){
         this.gui = gui;
-        //this.gSet = gui.gSet;
+        this.gSet = gui.hero.getGset();
 
         
 
