@@ -35,18 +35,24 @@ public class ConstraintCheck {
     }
 
     public boolean checkEnemyCollision(Entity entity, BallAgent ball) {
-        var bPos = new Pos2D(ball.getBallPosition().x * this.width
-                        , ball.getBallPosition().y *  this.height
-                        , ball.getBallPosition().getDimension());
-        var ePos = entity.getPosition();
-        
+        var bPos = new Pos2D(ball.getBallPosition().x * this.width,
+                        ball.getBallPosition().y *  this.height,
+                        ball.getBallPosition().getDimension(),
+                        ball.getSize());
+
+        var ePos = new Pos2D(entity.getPosition().x,
+                            entity.getPosition().y,
+                            entity.getPosition().getDimension(),
+                            entity.getSize());
         return isCollision(bPos, ePos, bPos.getDiameter() + ePos.getDiameter());
     }
 
     public boolean isCollision(Pos2D ball, Pos2D entity, int delta) {
         Pair<Integer> aCenter = new Pair<Integer>((int)(ball.x + (ball.getDiameter() / 2)), (int)(ball.y + (ball.getDiameter() / 2) ));
-        Pair<Integer> bCenter = new Pair<Integer>((int)(entity.x + (ball.getDiameter() / 2)), (int)(entity.y + (entity.getDiameter() / 2) + 130));
-        System.out.println(aCenter + " " + bCenter) ;
+        Pair<Integer> bCenter = new Pair<Integer>((int)(entity.x + (entity.getDiameter() / 2)), (int)(entity.y + (entity.getDiameter() / 2)));
+
+        System.out.println(aCenter + " " + bCenter + " Ball Radius: " + ball.getDiameter() + " Obstacle Radius: " + entity.getDiameter());
+
         return ((int)Math.hypot(aCenter.getX() - bCenter.getX(), aCenter.getY() - bCenter.getY()) <= delta);
     }
 }

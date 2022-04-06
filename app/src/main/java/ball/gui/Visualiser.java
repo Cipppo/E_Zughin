@@ -6,7 +6,6 @@ import ball.controller.ConstraintCheck;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
-import java.awt.BorderLayout;
 
 /**
  * This makes the BallAgent communicate with the Visual
@@ -15,7 +14,7 @@ import java.awt.BorderLayout;
  */
 public class Visualiser extends Thread {
     private final Visual frame;
-    private final ControlPanel controlPane;
+    //private final ControlPanel controlPane;
     /**
      * Very useful for handling java.util.ConcurrentModificationException
      */
@@ -27,8 +26,8 @@ public class Visualiser extends Thread {
     
     public Visualiser(int ballsToGenerate) {
         this.frame = new Visual();
-        this.controlPane = new ControlPanel(this);
-        this.frame.add(this.controlPane, BorderLayout.NORTH);
+        //this.controlPane = new ControlPanel(this);
+        //this.frame.add(this.controlPane, BorderLayout.NORTH);
         this.frame.setVisible(true);
         this.balls = new CopyOnWriteArrayList<>();
         this.stop = false;
