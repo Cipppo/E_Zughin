@@ -11,6 +11,7 @@ import bird.gui.BoundChecker;
 import bird.gui.Mover;
 import bird.gui.Shape;
 import stage.utils.CenterOnDefaultScreen;
+import stage.components.MainPanel;
 
 public class MoveBird extends Thread{
 
@@ -24,7 +25,7 @@ public class MoveBird extends Thread{
 
     private Shape shape;
 
-    private final JPanel panel;
+    private final MainPanel panel;
     private BoundChecker bc = new BoundChecker(new Pair<Integer>(0, SIZEX),
                                     new Pair<Integer>(0, SIZEY));
     private Mover mover;
@@ -33,9 +34,9 @@ public class MoveBird extends Thread{
     private final Random random = new Random();
     private Directions dir;
     private Boolean pause = false;
-    private MoovementUtils movUtils;
+    private MovementUtils movUtils;
 
-    public MoveBird(JPanel panel) {
+    public MoveBird(MainPanel panel) {
         this.panel = panel;
     }
     
@@ -48,7 +49,7 @@ public class MoveBird extends Thread{
             this.shape = new Shape(new Pos2D(startX, STARTY), WIDTH, HEIGHT, Optional.of(dir));
             this.actor = new Actor(this.shape);
             this.mover = new Mover(this.actor, bc);
-            movUtils = new MoovementUtils(actor, panel, mover);
+            movUtils = new MovementUtils(actor, panel, mover);
 
             try {
                 TimeUnit.SECONDS.sleep(random.nextInt(10) + 10);
@@ -59,7 +60,7 @@ public class MoveBird extends Thread{
             panel.repaint();
             if(startX == 0) {
                 movUtils.moveRight();
-            } else {
+            } else if(startX == SIZEX - WIDTH) {
                 movUtils.moveLeft();
             }
         }

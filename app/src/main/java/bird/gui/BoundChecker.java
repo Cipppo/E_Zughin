@@ -27,5 +27,9 @@ public class BoundChecker {
     public Pair<Integer> getXPair() {
         return this.x;
     }
+
+    public Pair<Integer> getYPair() {
+        return this.y;
+    }
     
 }
