@@ -12,8 +12,7 @@ import java.util.List;
 
 import ball.physics.SpherePos2D;
 import ball.physics.Dimensions;
-import ball.physics.Entity;
-import ball.testing.Enemy;
+import ball.testing.SquaredEnemy;
 
 public class Visual extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -43,13 +42,11 @@ public class Visual extends JFrame {
 		private static final long serialVersionUID = 1L;
 		private List<SpherePos2D> positions;
 
-		private Enemy enemy;
+		private SquaredEnemy enemy;
 	    
 		public VisualPanel() {
 			setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
-			this.enemy = new Enemy(WINDOW_SIZE_X / 2, WINDOW_SIZE_Y / 2, 60);
-			this.enemy.getPosition().x -= this.enemy.getSize() / 2;
-			this.enemy.getPosition().y -= this.enemy.getSize() / 2;
+			this.enemy = new SquaredEnemy(WINDOW_SIZE_X / 2, WINDOW_SIZE_Y / 2, 60, 30);
 		}
 
 	    public void paint(Graphics g) {
@@ -65,8 +62,10 @@ public class Visual extends JFrame {
 	                }
 	            }
 	        }
-			g2.fillOval((int)this.enemy.getPosition().x, (int)this.enemy.getPosition().y
-						, this.enemy.getSize(), this.enemy.getSize());
+			//g2.fillOval((int)this.enemy.getPosition().x, (int)this.enemy.getPosition().y
+			//			, this.enemy.getSize(), this.enemy.getSize());
+			g2.fillRect(this.enemy.getPosition().x, this.enemy.getPosition().y, 
+						this.enemy.getDimension().getX(), this.enemy.getDimension().getY());
 			g2.dispose();
 			Toolkit.getDefaultToolkit().sync();
 	    }
@@ -76,7 +75,7 @@ public class Visual extends JFrame {
 	        repaint();
 	    }
 
-		public Entity getGuy() {
+		public SquaredEnemy getGuy() {
 			return this.enemy;
 		}
     }
@@ -85,7 +84,7 @@ public class Visual extends JFrame {
 		return this.iLoader.getBallImage(dim).getHeight();
 	}
 
-    public Entity getGuy() {
+    public SquaredEnemy getGuy() {
         return panel.getGuy();
     }
 }
