@@ -1,6 +1,8 @@
 package pangGuy.modularGun;
 
 import pangGuy.utilities.Directions;
+import pangGuy.utilities.Pos2D;
+
 import java.util.Optional;
 
 public class Arpion implements Bullet {
@@ -90,6 +92,11 @@ public class Arpion implements Bullet {
         if(this.status == Status.RISING){
             this.setStatus(Status.HIT);
         }
+    }
+
+    @Override 
+    public Pos2D getRisingPos(){
+        return new Pos2D(this.xPos.get(), this.steps);
     }
     
     @Override 
