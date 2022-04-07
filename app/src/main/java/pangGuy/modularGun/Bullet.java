@@ -10,7 +10,7 @@ public interface Bullet {
 
     void raise();
 
-    void lock();
+    void lock(int xPos);
 
     void unlock();
 
@@ -27,6 +27,7 @@ public interface Bullet {
     int getStepsDone();
 
     void hit();
+
 
 
 }
