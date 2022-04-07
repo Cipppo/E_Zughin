@@ -9,7 +9,7 @@ import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.Pair;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
-
+import java.awt.Toolkit;
 
 
 public class Visual {
@@ -40,6 +40,7 @@ public class Visual {
                 e.setLocation(this.hero.getShape().getPos().x, this.hero.getShape().getPos().y);
             }
         });
+        Toolkit.getDefaultToolkit().sync();
     }
 
     public void setDirection(Directions dir){
@@ -87,5 +88,20 @@ public class Visual {
         }
     }
 
-    
+    private Optional<ArpionComponent> giveMeThatArpion(ArpionComponent arpion){
+        for(ArpionComponent i : this.getArpions()){
+            if(i == arpion){
+                return Optional.of(i);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public void raiseArpion(ArpionComponent arpion){
+        var a = this.giveMeThatArpion(arpion);
+        if(!a.isEmpty()){
+            a.get().raise();
+            Toolkit.getDefaultToolkit().sync();
+        }        
+    }
 }
