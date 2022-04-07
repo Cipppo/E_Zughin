@@ -1,6 +1,7 @@
 package stage.gui;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 
 import stage.utils.*;
@@ -28,7 +29,7 @@ public class Gui extends JFrame{
 		this.add(new HUDPanel(), BorderLayout.SOUTH);
 		this.add(mainPanel, BorderLayout.CENTER);
 		this.setVisible(true);
-		mainPanel.getMoveBird().run();
+		mainPanel.getMoveBird().run();;
 	}
 	
 }

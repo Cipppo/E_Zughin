@@ -8,6 +8,7 @@ import pauseMenu.components.PauseButton;
 import pauseMenu.components.PausePanel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 public class MainPanel extends JPanel{
 	
@@ -21,9 +22,7 @@ public class MainPanel extends JPanel{
 
 	
 	public MainPanel() {
-		//this.setBackground(Color.gray);
-		this.setLayout(new BorderLayout());
-		this.add(timer, BorderLayout.NORTH);
+		this.setBackground(Color.WHITE);
 		this.add(pausePanel, BorderLayout.CENTER);
 		new PauseButton(this, pausePanel, timer, moveBird);
 		new ExitButton(this, pausePanel);
