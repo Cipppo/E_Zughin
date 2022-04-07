@@ -42,6 +42,7 @@ public class MainPanel extends JPanel implements KeyListener{
 	private GridBagConstraints container;
 	private NicknameInput nick;
 	private int enterStatus = 0;
+	private DataLabel credits = new DataLabel("CREDITS");
 	
 	public MainPanel(Gui gui) throws FileNotFoundException{
 		 
@@ -51,7 +52,7 @@ public class MainPanel extends JPanel implements KeyListener{
 		panel.setLayout(new GridBagLayout());
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
-		container.ipady = 40;
+		container.ipady = 20;
 		container.gridx = 0;
 		container.gridy = 0;
 		container.gridwidth = 3;
@@ -84,7 +85,27 @@ public class MainPanel extends JPanel implements KeyListener{
 		container.gridx = 0;
 		container.gridy = 3;
 		container.gridwidth = 1;
+		container.ipady = 7;
 		panel.add(hf, container);
+		
+		container.fill = GridBagConstraints.HORIZONTAL ;
+		container.gridx = 0;
+		container.gridy = 4;
+		credits.setGSize(4);
+		credits.setFont(credits.getGameFont());
+		//credits.set
+		panel.add(credits, container);
+		
+		container.fill = GridBagConstraints.HORIZONTAL ;
+		container.gridx = 0;
+		container.gridy = 5;
+		DataLabel help = new DataLabel("HELP");
+		help.setGSize(4);
+		help.setFont(help.getGameFont());
+		//credits.set
+		panel.add(help, container);
+		
+		
 		
 		/*container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridx = 3;
