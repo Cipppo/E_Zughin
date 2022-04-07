@@ -47,7 +47,6 @@ public class ConstraintCheck {
      *          true if the two enemies collides
      */
     public boolean checkEnemyCollision(SquaredEnemy entity, BallAgent ball) {
-        System.out.println("Ball relative pos: " + ball.getBallPosition());
         var bPos = new SpherePos2D(ball.getBallPosition().x * this.width,
                         ball.getBallPosition().y *  this.height,
                         ball.getBallPosition().getDimension(),
