@@ -4,7 +4,7 @@ import pangGuy.character.Hero;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.BoundChecker;
 import pangGuy.gui.Visual;
-
+import mergeballs.gui.VisualInterface;
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.StepsApplier;
 
@@ -12,14 +12,14 @@ public class Trigger extends Thread{
     
     private Bullet arpion;
     private ArpionComponent arpionComponent;
-    private Visual visual;
+    private VisualInterface visual;
     private BoundChecker bc;
     private StepsApplier stepConverter;
     private Hero hero;
 
     private boolean stop = false;
 
-    public Trigger(Bullet arpion, ArpionComponent arpionComponent, Visual visual, BoundChecker bc, Hero hero){
+    public Trigger(Bullet arpion, ArpionComponent arpionComponent, VisualInterface visual, BoundChecker bc, Hero hero){
         this.arpion = arpion;
         this.arpionComponent = arpionComponent;
         this.bc = bc;
