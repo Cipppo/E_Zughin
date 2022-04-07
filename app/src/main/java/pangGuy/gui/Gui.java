@@ -35,14 +35,7 @@ public class Gui extends JFrame{
     private static final int STARTX = SIZEX / 2;
     private static final int STARTY = (SIZEY - 35) - HEIGHT;
 
-    /*
-    public final Actor actor = new Actor(new Shape(new Pos2D(STARTX, STARTY), WIDTH, HEIGHT));
-    
-    private final Field field = new Field(0, SIZEX, 0, SIZEY);
-    public final GunSet gSet = new GunSet(this.actor, this.field);
 
-    private final ActionApplier aa = new ActionApplier(this.actor, this.gSet, this.field);
-    */
 
     private Visual visual = new Visual(new Pos2D(STARTX, STARTY), new Pair<Integer, Integer>(1000, 500));
     public Hero hero = new Hero();
