@@ -82,7 +82,9 @@ public class Arpion implements Bullet {
 
     @Override
     public void hit() {
-        this.setStatus(Status.HIT);
+        if(this.status == Status.RISING){
+            this.setStatus(Status.HIT);
+        }
     }
     
     @Override 
