@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class ArpionComponent extends JPanel{
     
     private static final int WIDTH = 10;
-    private static final int HEIGHT = 600;
+    private static final int HEIGHT = 2000;
     private static final int SPEED = 5;
 
     private Shape s;
