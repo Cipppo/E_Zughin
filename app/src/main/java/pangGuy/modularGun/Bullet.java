@@ -26,5 +26,7 @@ public interface Bullet {
 
     int getStepsDone();
 
+    void hit();
+
 
 }
