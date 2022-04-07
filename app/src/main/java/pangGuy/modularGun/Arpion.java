@@ -26,6 +26,7 @@ public class Arpion implements Bullet {
 
     @Override
     public void restore() {
+        this.status = Status.IDLE;
         this.steps = 0;
     }
 
@@ -77,6 +78,11 @@ public class Arpion implements Bullet {
     @Override 
     public int getStepsDone(){
         return this.steps;
+    }
+
+    @Override
+    public void hit() {
+        this.setStatus(Status.HIT);
     }
     
     @Override 
