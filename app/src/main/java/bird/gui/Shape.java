@@ -15,7 +15,7 @@ public class Shape {
 
     public Shape(Pos2D pos, int width, int height, Optional<Directions> dir){
         r = new Rectangle(pos.x, pos.y, width, height);
-        if(dir.isPresent()) {
+        if(!dir.isEmpty()) {
             this.dir = dir;
         } else {
             this.dir = Optional.empty();
