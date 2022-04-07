@@ -7,6 +7,7 @@ import pangGuy.gui.Visual;
 
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.StepsApplier;
+
 public class Trigger extends Thread{
     
     private Bullet arpion;
@@ -38,18 +39,31 @@ public class Trigger extends Thread{
         try{
             while(!this.stop){
                     this.arpion.raise();
-                    //System.out.println(this.arpion.getStepsDone());
                     this.visual.raiseArpion(arpionComponent);
                     
-                    if(!this.bc.isExtendible(new Pos2D(xValue, maxYValue - this.stepConverter.covertStepPosition(this.arpion.getStepsDone())))){
+                    if(!this.bc.isExtendible(new Pos2D(xValue, maxYValue - this.stepConverter.covertStepPosition(this.arpion.getStepsDone()))) || 
+                            this.arpion.getStatus() == Status.HIT){
                         this.stop = true;
                     }
                     Thread.sleep(20);
             }
-            Thread.sleep(this.arpion.getWaitTime() * 1000);
+
+            if(this.arpion.getWaitTime() > 0){
+                int sync = 0;
+                if(this.arpion.getWaitTime() > 0){
+                    while(sync <= 2000){
+                        sync++;
+                        if(this.arpion.getStatus() == Status.HIT){
+                            break;
+                        }
+                        Thread.sleep(1);
+                    }
+                }
+            }
+
             this.arpion.restore();
+            System.out.println(this.arpion.getStatus());
             this.arpion.unlock();
-            //System.out.println(this.hero.getDirection());
             this.visual.restoreBullet(arpionComponent, new Pos2D(stepConverter.convertHeroPosition(this.hero.getPosition()).x, maxYValue - yvalue), this.hero.getDirection());
             
             
