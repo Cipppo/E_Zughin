@@ -39,7 +39,7 @@ public class Trigger extends Thread{
             while(!this.stop){
                     this.arpion.raise();
                     //System.out.println(this.arpion.getStepsDone());
-                    this.arpionComponent.raise();
+                    this.visual.raiseArpion(arpionComponent);
                     
                     if(!this.bc.isExtendible(new Pos2D(xValue, maxYValue - this.stepConverter.covertStepPosition(this.arpion.getStepsDone())))){
                         this.stop = true;
