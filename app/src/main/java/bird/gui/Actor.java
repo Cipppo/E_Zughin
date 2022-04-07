@@ -10,7 +10,6 @@ import stage.utils.CenterOnDefaultScreen;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.util.Optional;
 
 public class Actor extends JLabel{

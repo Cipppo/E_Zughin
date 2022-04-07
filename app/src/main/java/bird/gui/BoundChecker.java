@@ -24,15 +24,6 @@ public class BoundChecker {
         return false;
     }
 
-
-    public boolean isExtendible(Pos2D pos){
-        if(pos.y > 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
     public Pair<Integer> getXPair() {
         return this.x;
     }

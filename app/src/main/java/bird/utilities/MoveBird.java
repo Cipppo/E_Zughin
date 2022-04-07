@@ -5,9 +5,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JPanel;
-import java.awt.Toolkit;
 
-import bird.actions.ActionFactory;
 import bird.gui.Actor;
 import bird.gui.BoundChecker;
 import bird.gui.Mover;
@@ -29,16 +27,17 @@ public class MoveBird extends Thread{
     private final JPanel panel;
     private BoundChecker bc = new BoundChecker(new Pair<Integer>(0, SIZEX),
                                     new Pair<Integer>(0, SIZEY));
-    private Mover moover;
+    private Mover mover;
     private Actor actor;
     private int startX;
     private final Random random = new Random();
-    private final ActionFactory actionFactory = new ActionFactory();
     private Directions dir;
     private Boolean pause = false;
+    private final MoovementUtils movUtils;
 
     public MoveBird(JPanel panel) {
         this.panel = panel;
+        movUtils = new MoovementUtils(actor, panel, mover);
     }
     
     @Override
@@ -49,7 +48,7 @@ public class MoveBird extends Thread{
             this.startX = this.dir == Directions.RIGHT ? 0 : SIZEX - WIDTH;
             this.shape = new Shape(new Pos2D(startX, STARTY), WIDTH, HEIGHT, Optional.of(dir));
             this.actor = new Actor(this.shape);
-            this.moover = new Mover(this.actor, bc);
+            this.mover = new Mover(this.actor, bc);
 
             try {
                 TimeUnit.SECONDS.sleep(random.nextInt(10) + 10);
@@ -58,40 +57,10 @@ public class MoveBird extends Thread{
             }
             panel.add(this.actor);
             panel.repaint();
-            try {
-                if(startX == 0) {
-                        while(actor.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5) {
-                            if(!this.pause){
-                                this.actionFactory.getRightAction(this.moover);
-                                panel.repaint();
-                                Toolkit.getDefaultToolkit().sync();
-                                System.out.println(actor.getShape().getPos());
-                            } else {
-                                panel.repaint();
-                            }
-                            Thread.sleep(20);
-                        }
-                        panel.remove(this.actor);
-                        panel.repaint();
-                        Toolkit.getDefaultToolkit().sync();
-                    } else {
-                        while(actor.getShape().getPos().x >= bc.getXPair().getX() + 5 && !this.pause) {
-                            if(!this.pause) {
-                                this.actionFactory.getLeftAction(this.moover);
-                                panel.repaint();
-                                Toolkit.getDefaultToolkit().sync();
-                                System.out.println(actor.getShape().getPos());
-                            } else {
-                                panel.repaint();
-                            }
-                            Thread.sleep(20);
-                        }
-                        panel.remove(this.actor);
-                        panel.repaint();
-                        Toolkit.getDefaultToolkit().sync();
-                    }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if(startX == 0) {
+                movUtils.moveRight();
+            } else {
+                movUtils.moveLeft();
             }
         }
     }
