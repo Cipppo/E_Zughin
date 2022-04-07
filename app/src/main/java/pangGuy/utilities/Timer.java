@@ -1,35 +1,46 @@
 package pangGuy.utilities;
 
+
+import pangGuy.modularGun.Status;
+import pangGuy.modularGun.Bullet;
+
 public class Timer extends Thread{
 
     private final int duration;
-    private int timeElapsed;
+    private long timeElapsed;
+    private boolean stopV;
+    private final Bullet arpion;
 
-    public Timer(int duration){
-        this.duration = duration;
+    public Timer(Bullet arpion){
+        this.duration = arpion.getWaitTime();
         this.timeElapsed = 0;
+        this.stopV = false;
+        this.arpion = arpion;
     }
 
 
     @Override
     public void run(){
-        while(!this.isActive()){
+        while(!this.stopV){
             try{
-                Thread.sleep(1000);
+                if(this.arpion.getStatus() == Status.HIT){
+                    this.stopV = true;
+                }
+                Thread.sleep(1);
+                this.timeElapsed += 1;
+                if(this.timeElapsed == this.duration * 1000){
+                    this.stopV = true;
+                }
             }catch(Exception e){
                 System.out.println("Thread.sleep() Exception: " + e.getMessage());
             }
-            this.timeElapsed++;
         }
-    }
 
+    }
 
     public boolean isActive(){
-        return this.timeElapsed == this.duration;
+        return !this.stopV;
     }
 
-    public void stopTimer(){
-        this.timeElapsed = duration;
-    }
-    
+
 }
