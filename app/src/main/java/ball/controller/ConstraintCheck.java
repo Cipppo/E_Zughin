@@ -2,9 +2,11 @@ package ball.controller;
 
 import ball.Boundary;
 import ball.ballAgent.BallAgent;
-import ball.physics.Entity;
 import ball.physics.SpherePos2D;
+import ball.testing.SquaredEnemy;
 import ball.utils.Pair;
+import pangGuy.gui.Shape;
+
 public class ConstraintCheck {
     private final double width;
     private final double height;
@@ -44,26 +46,43 @@ public class ConstraintCheck {
      * @return
      *          true if the two enemies collides
      */
-    public boolean checkEnemyCollision(Entity entity, BallAgent ball) {
+    public boolean checkEnemyCollision(SquaredEnemy entity, BallAgent ball) {
         System.out.println("Ball relative pos: " + ball.getBallPosition());
         var bPos = new SpherePos2D(ball.getBallPosition().x * this.width,
                         ball.getBallPosition().y *  this.height,
                         ball.getBallPosition().getDimension(),
                         ball.getSize());
 
-        var ePos = new SpherePos2D(entity.getPosition().x,
-                            entity.getPosition().y,
-                            entity.getPosition().getDimension(),
-                            entity.getSize());
-        return isCollision(bPos, ePos, (bPos.getDiameter() / 2) + (ePos.getDiameter() / 2));
+        return isCollision(bPos, entity.getShape());
     }
 
-    private boolean isCollision(SpherePos2D ball, SpherePos2D entity, int delta) {
-        Pair<Integer> aCenter = new Pair<Integer>((int)(ball.x + (ball.getDiameter() / 2)), (int)(ball.y + (ball.getDiameter() / 2) ));
-        Pair<Integer> bCenter = new Pair<Integer>((int)(entity.x + (entity.getDiameter() / 2)), (int)(entity.y + (entity.getDiameter() / 2)));
+    private boolean isCollision(SpherePos2D ball, Shape rect) {
+        var rectWidht = rect.getDimensions().getX();
+        var rectHeight = rect.getDimensions().getY();
+        Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().x + (int)(0.5*rectWidht),
+                                                    rect.getPos().y + (int)(0.5*rectHeight));
+        Pair<Integer> ballCenter = new Pair<Integer>((int)(ball.x + (ball.getDiameter() / 2)), (int)(ball.y + (ball.getDiameter() / 2) ));
 
-        System.out.println(aCenter + " " + bCenter + " Ball Radius: " + ball.getDiameter() /2 + " Obstacle Radius: " + entity.getDiameter() / 2);
+        Pair<Integer> circleDistance = new Pair<Integer>(0,0);
+        
+        circleDistance.setX(Math.abs(ballCenter.getX() - rectCenter.getX()));
+        circleDistance.setY(Math.abs(ballCenter.getY() - rectCenter.getY()));
 
-        return ((int)Math.hypot(aCenter.getX() - bCenter.getX(), aCenter.getY() - bCenter.getY()) <= delta);
+        // Base cases, the two figures doen't intersect
+        if (circleDistance.getX() > (rectWidht / 2 + ball.getDiameter() / 2)) {
+            return false;
+        }
+
+        if (circleDistance.getY() > (rectHeight / 2 + ball.getDiameter() / 2)) {
+            return false;
+        }
+
+        //Simple intersection (circle intersect rectangle)
+        if (circleDistance.getX() <= (rectWidht / 2) || circleDistance.getY() <= (rectHeight / 2)) {
+            return true;
+        }
+        //Check distance of circle from corners of the rectangle.
+        var cornerDistance_sq = Math.hypot(circleDistance.getX() - rectWidht / 2, circleDistance.getY() - rectWidht / 2);
+        return (cornerDistance_sq <= (Math.pow(ball.getDiameter() / 2, 2)));
     }
 }
