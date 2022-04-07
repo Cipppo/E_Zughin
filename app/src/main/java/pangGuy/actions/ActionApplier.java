@@ -3,6 +3,7 @@ package pangGuy.actions;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import mergeballs.gui.VisualInterface;
 import pangGuy.gui.BoundChecker;
 
 import pangGuy.character.Hero;
@@ -14,7 +15,7 @@ public class ActionApplier{
 
     private final ActionFactory f = new ActionFactory();
 
-    public ActionApplier(Visual v, Hero h){
+    public ActionApplier(VisualInterface v, Hero h){
 
         BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, v.getBounds().getX()), new Pair<Integer, Integer>(0, v.getBounds().getY()));
         JPanel character = v.getHeroComponent();
