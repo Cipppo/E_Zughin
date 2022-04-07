@@ -71,4 +71,12 @@ public class MoovementUtils {
         panel.repaint();
         Toolkit.getDefaultToolkit().sync();
     }
+
+    public void setPause() {
+        if(this.pause) {
+            this.pause = false;
+        } else {
+            this.pause = true;
+        }
+    }
 }

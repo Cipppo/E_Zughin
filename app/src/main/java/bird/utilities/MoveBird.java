@@ -33,22 +33,22 @@ public class MoveBird extends Thread{
     private final Random random = new Random();
     private Directions dir;
     private Boolean pause = false;
-    private final MoovementUtils movUtils;
+    private MoovementUtils movUtils;
 
     public MoveBird(JPanel panel) {
         this.panel = panel;
-        movUtils = new MoovementUtils(actor, panel, mover);
     }
     
     @Override
     public void run() {
         while(!pause) {
-
+            
             this.dir = this.randomDirectionChooser();
             this.startX = this.dir == Directions.RIGHT ? 0 : SIZEX - WIDTH;
             this.shape = new Shape(new Pos2D(startX, STARTY), WIDTH, HEIGHT, Optional.of(dir));
             this.actor = new Actor(this.shape);
             this.mover = new Mover(this.actor, bc);
+            movUtils = new MoovementUtils(actor, panel, mover);
 
             try {
                 TimeUnit.SECONDS.sleep(random.nextInt(10) + 10);
@@ -82,10 +82,6 @@ public class MoveBird extends Thread{
     }
 
     public void setPause() {
-        if(this.pause) {
-            this.pause = false;
-        } else {
-            this.pause = true;
-        }
+        movUtils.setPause();
     }
 }
