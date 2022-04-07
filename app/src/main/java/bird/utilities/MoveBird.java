@@ -4,8 +4,6 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JPanel;
-
 import bird.gui.Actor;
 import bird.gui.BoundChecker;
 import bird.gui.Mover;
