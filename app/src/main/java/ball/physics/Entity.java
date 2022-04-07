@@ -13,7 +13,7 @@ public interface Entity {
 	 * 
 	 * @return the position occupied by this entity.
 	 */
-	Pos2D getPosition();
+	SpherePos2D getPosition();
 	
 	/**
 	 * We got to define how to return the space occupied
