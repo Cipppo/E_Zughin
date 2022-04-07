@@ -3,7 +3,7 @@ package ball.controller;
 import ball.Boundary;
 import ball.ballAgent.BallAgent;
 import ball.physics.Entity;
-import ball.physics.Pos2D;
+import ball.physics.SpherePos2D;
 import ball.utils.Pair;
 public class ConstraintCheck {
     private final double width;
@@ -13,6 +13,7 @@ public class ConstraintCheck {
         this.width = width;
         this.height = height;
     }
+
     /**
      * Valori empirici
      * @param t
@@ -34,21 +35,30 @@ public class ConstraintCheck {
         }
     }
 
+    /**
+     * 
+     * @param entity
+     *          rectangular shaped entity
+     * @param ball 
+     *          spherical shaped entity
+     * @return
+     *          true if the two enemies collides
+     */
     public boolean checkEnemyCollision(Entity entity, BallAgent ball) {
         System.out.println("Ball relative pos: " + ball.getBallPosition());
-        var bPos = new Pos2D(ball.getBallPosition().x * this.width,
+        var bPos = new SpherePos2D(ball.getBallPosition().x * this.width,
                         ball.getBallPosition().y *  this.height,
                         ball.getBallPosition().getDimension(),
                         ball.getSize());
 
-        var ePos = new Pos2D(entity.getPosition().x,
+        var ePos = new SpherePos2D(entity.getPosition().x,
                             entity.getPosition().y,
                             entity.getPosition().getDimension(),
                             entity.getSize());
         return isCollision(bPos, ePos, (bPos.getDiameter() / 2) + (ePos.getDiameter() / 2));
     }
 
-    public boolean isCollision(Pos2D ball, Pos2D entity, int delta) {
+    private boolean isCollision(SpherePos2D ball, SpherePos2D entity, int delta) {
         Pair<Integer> aCenter = new Pair<Integer>((int)(ball.x + (ball.getDiameter() / 2)), (int)(ball.y + (ball.getDiameter() / 2) ));
         Pair<Integer> bCenter = new Pair<Integer>((int)(entity.x + (entity.getDiameter() / 2)), (int)(entity.y + (entity.getDiameter() / 2)));
 
