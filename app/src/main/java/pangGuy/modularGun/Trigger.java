@@ -30,9 +30,9 @@ public class Trigger extends Thread{
 
     @Override
     public void run(){
-        this.arpion.lock();
-        this.arpionComponent.setStatus(this.arpion.getStatus());
         int xValue = this.stepConverter.convertHeroPosition(this.hero.getPosition()).x;
+        this.arpion.lock(xValue);
+        this.arpionComponent.setStatus(this.arpion.getStatus());
         int yvalue = this.stepConverter.covertStepPosition(this.arpion.getStepsDone());
         int maxYValue = this.visual.getBounds().getY();
         
@@ -63,7 +63,7 @@ public class Trigger extends Thread{
 
             this.arpion.restore();
             System.out.println(this.arpion.getStatus());
-            this.arpion.unlock();
+            //this.arpion.unlock();
             this.visual.restoreBullet(arpionComponent, new Pos2D(stepConverter.convertHeroPosition(this.hero.getPosition()).x, maxYValue - yvalue), this.hero.getDirection());
             
             
