@@ -62,7 +62,7 @@ public class ConstraintCheck {
         Pair<Integer> aCenter = new Pair<Integer>((int)(ball.x + (ball.getDiameter() / 2)), (int)(ball.y + (ball.getDiameter() / 2) ));
         Pair<Integer> bCenter = new Pair<Integer>((int)(entity.x + (entity.getDiameter() / 2)), (int)(entity.y + (entity.getDiameter() / 2)));
 
-        System.out.println(aCenter + " " + bCenter + " Ball Radius: " + ball.getDiameter() /2 + " Obstacle Radius: " + entity.getDiameter() / 2);
+        System.out.println(aCenter + " " + bCenter + " Ball Radius: " + ball.getDiameter() / 2 + " Obstacle Radius: " + entity.getDiameter() / 2);
 
         return ((int)Math.hypot(aCenter.getX() - bCenter.getX(), aCenter.getY() - bCenter.getY()) <= delta);
     }
