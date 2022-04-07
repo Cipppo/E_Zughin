@@ -9,18 +9,18 @@ import ball.physics.*;
  */
 public class Ball implements Entity {
     private Trajectory trajectory;
-    private Pos2D actualPosition;
-    private Pos2D initialPosition;
+    private SpherePos2D actualPosition;
+    private SpherePos2D initialPosition;
     private final Velocity2D velocity;
     private Time time = new Time(0.0, 0.0);
     private final double gravity;
     private final int size;
     
     
-    public Ball(Trajectory trajectory, Pos2D position, double gravity) {
+    public Ball(Trajectory trajectory, SpherePos2D position, double gravity) {
     	this.trajectory = trajectory;
     	this.actualPosition = position;
-    	this.initialPosition = new Pos2D(position.x, position.y, position.getDimension());
+    	this.initialPosition = new SpherePos2D(position.x, position.y, position.getDimension());
     	this.velocity = this.trajectory.getXYVelocity();
     	this.gravity = gravity;
         this.size = this.getPosition().getDiameter();
@@ -46,7 +46,7 @@ public class Ball implements Entity {
         }
     }
     @Override
-    public synchronized Pos2D getPosition() {
+    public synchronized SpherePos2D getPosition() {
         return this.actualPosition;
     }
 

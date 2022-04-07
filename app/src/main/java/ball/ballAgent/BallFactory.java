@@ -26,7 +26,7 @@ public class BallFactory {
 	 * 			initial position of the ball
 	 * @return a new ball with random angle, initialVelocity and Earth gravity.
 	 */
-	private static Ball randomVelAndAngleBall(final Pos2D pos) {
+	private static Ball randomVelAndAngleBall(final SpherePos2D pos) {
 		Random rand = new Random();
         var angle = rand.nextDouble() * (MAX_ANGLE - MIN_ANGLE) + MIN_ANGLE;
         var initialVelocity = rand.nextDouble() * (MAX_VELOCITY - MIN_VELOCITY) + MIN_VELOCITY;
@@ -41,7 +41,7 @@ public class BallFactory {
 	 */
 	public static Ball randomPos() {
 		Random rand = new Random();
-		Pos2D pos = new Pos2D(rand.nextDouble(), Boundary.Y0.getValue(), Dimensions.FATHER, 50);
+		SpherePos2D pos = new SpherePos2D(rand.nextDouble(), Boundary.Y0.getValue(), Dimensions.FATHER, 50);
 		return randomVelAndAngleBall(pos);
 	}
 
@@ -50,7 +50,7 @@ public class BallFactory {
 		return completeBall(
 			ball.getTrajectory().getAngle(),
 			ball.getTrajectory().getInitialVelocity(),
-			new Pos2D(ball.getPosition().x,
+			new SpherePos2D(ball.getPosition().x,
 				ball.getPosition().y,
 				ball.getPosition().getDimension(),
 				50)
@@ -68,7 +68,7 @@ public class BallFactory {
 	 * 
 	 * @return a ball with specified parameters.
 	 */
-	public static Ball completeBall(double angle, double initialVelocity, Pos2D position, double gravity) {
+	public static Ball completeBall(double angle, double initialVelocity, SpherePos2D position, double gravity) {
 		Trajectory traj = new Trajectory(angle, initialVelocity);
 		return new Ball(traj, position, gravity);
 	}
@@ -84,7 +84,7 @@ public class BallFactory {
 	 * 			a child ball
 	 */
 	public static Ball fromFatherBall(final Ball ball) {
-		Pos2D newPos = new Pos2D(
+		SpherePos2D newPos = new SpherePos2D(
 			ball.getPosition().x,
 			ball.getPosition().y,
 			Dimensions.getChild(ball.getPosition().getDimension()),

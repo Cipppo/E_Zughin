@@ -4,7 +4,7 @@ import java.util.List;
 
 import ball.Boundary;
 import ball.physics.Dimensions;
-import ball.physics.Pos2D;
+import ball.physics.SpherePos2D;
 
 /**
  * This class should handle Thread support and all calculus needed to update position;
@@ -45,7 +45,7 @@ public class BallAgent extends Thread {
         this.stop = false;
     }
 
-    public synchronized Pos2D getBallPosition() {
+    public synchronized SpherePos2D getBallPosition() {
         return this.ball.getPosition();
     }
 

@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
 
 import java.util.List;
 
-import ball.physics.Pos2D;
+import ball.physics.SpherePos2D;
 import ball.physics.Dimensions;
 import ball.physics.Entity;
 import ball.testing.Enemy;
@@ -35,13 +35,13 @@ public class Visual extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
-	public void updatePosition(List<Pos2D> pos) {
+	public void updatePosition(List<SpherePos2D> pos) {
 		panel.updatePositions(pos);
 	}
     
     public class VisualPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
-		private List<Pos2D> positions;
+		private List<SpherePos2D> positions;
 
 		private Enemy enemy;
 	    
@@ -71,7 +71,7 @@ public class Visual extends JFrame {
 			Toolkit.getDefaultToolkit().sync();
 	    }
 
-	    public void updatePositions(List<Pos2D> pos) {
+	    public void updatePositions(List<SpherePos2D> pos) {
 	        positions = pos;
 	        repaint();
 	    }
