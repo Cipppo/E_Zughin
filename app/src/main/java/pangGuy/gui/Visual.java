@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import mergeballs.gui.VisualInterface;
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.Pair;
 import pangGuy.modularGun.Status;
@@ -12,7 +13,7 @@ import pangGuy.utilities.Directions;
 import java.awt.Toolkit;
 
 
-public class Visual {
+public class Visual implements VisualInterface{
     
     private HeroComponent hero;
     private List<ArpionComponent> arpions;
