@@ -11,10 +11,9 @@ import java.awt.Graphics2D;
 import java.util.List;
 
 import ball.physics.SpherePos2D;
-import ball.physics.Dimensions;
 import ball.testing.SquaredEnemy;
 
-public class Visual extends JFrame {
+public class Visual extends JFrame implements Updateable {
 	private static final long serialVersionUID = 1L;
 
 	private VisualPanel panel;
@@ -33,7 +32,8 @@ public class Visual extends JFrame {
 		this.add(panel, BorderLayout.CENTER);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-
+	
+	@Override
 	public void updatePosition(List<SpherePos2D> pos) {
 		panel.updatePositions(pos);
 	}
@@ -62,8 +62,6 @@ public class Visual extends JFrame {
 	                }
 	            }
 	        }
-			//g2.fillOval((int)this.enemy.getPosition().x, (int)this.enemy.getPosition().y
-			//			, this.enemy.getSize(), this.enemy.getSize());
 			g2.fillRect(this.enemy.getPosition().x, this.enemy.getPosition().y, 
 						this.enemy.getDimension().getX(), this.enemy.getDimension().getY());
 			g2.dispose();
@@ -79,10 +77,6 @@ public class Visual extends JFrame {
 			return this.enemy;
 		}
     }
-
-	public int getBallImageDiameter(Dimensions dim) {
-		return this.iLoader.getBallImage(dim).getHeight();
-	}
 
     public SquaredEnemy getGuy() {
         return panel.getGuy();
