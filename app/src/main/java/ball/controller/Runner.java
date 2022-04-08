@@ -28,8 +28,8 @@ public class Runner extends Thread {
                 if (!this.stop) {
                     this.balls.forEach(t -> {
                         this.checker.checkConstraints(t);
-
                     });
+                    Thread.sleep(10);
                 } else {
                     Thread.sleep(10);
                 }
@@ -54,7 +54,7 @@ public class Runner extends Thread {
         }
     }
 
-    public synchronized void duplication(BallAgent ball) {
+    private synchronized void duplication(BallAgent ball) {
         this.stop = true;
         try {
             var children = ball.duplicate();
