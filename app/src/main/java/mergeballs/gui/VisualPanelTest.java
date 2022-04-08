@@ -12,7 +12,7 @@ import ball.gui.ImageLoader;
 
 import ball.physics.SpherePos2D;
 
-public class VisualPanelTest extends JPanel{
+public class VisualPanelTest extends JPanel {
 
     private List<SpherePos2D> positions;
     private int width;
@@ -47,7 +47,4 @@ public class VisualPanelTest extends JPanel{
         positions = pos;
         repaint();
     }
-    
-
-
 }
