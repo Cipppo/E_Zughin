@@ -40,7 +40,7 @@ public class BirdVisual extends Thread{
     
     @Override
     public void run() {
-        while(!pause) {
+        while(!this.pause) {
             
             this.dir = this.randomDirectionChooser();
             this.startX = this.dir == Directions.RIGHT ? 0 : SIZEX - WIDTH;
@@ -81,6 +81,11 @@ public class BirdVisual extends Thread{
     }
 
     public void setPause() {
+        if(this.pause) {
+            this.pause = false;
+        } else {
+            this.pause = true;
+        }
         movUtils.setPause();
     }
 }

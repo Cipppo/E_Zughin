@@ -16,15 +16,15 @@ public class MainPanel extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = -5567586066880648121L;
-	private TimerLabel timer = new TimerLabel();
 	private PausePanel pausePanel = new PausePanel();
 	private final BirdVisual visual = new BirdVisual(this);
 
 	
 	public MainPanel() {
 		this.setBackground(Color.WHITE);
+		this.setLayout(new BorderLayout());
 		this.add(pausePanel, BorderLayout.CENTER);
-		new PauseButton(this, pausePanel, timer, visual);
+		new PauseButton(this, pausePanel, visual);
 		new ExitButton(this, pausePanel);
 	}
 
