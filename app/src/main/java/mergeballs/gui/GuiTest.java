@@ -40,14 +40,8 @@ public class GuiTest extends JFrame{
         this.setLocationRelativeTo(null);
         this.setLayout(null);
 
-        this.visual.getArpions().forEach(e -> {
-            this.add(e);
-        });
-        
-        this.add(visual.getHeroComponent());
-
         this.add(panel);
-
+        //this.visual.updatePosition(pos); <- i Don't know how to get the positions
         System.out.println(WIDTH);
         System.out.println(HEIGHT);
 

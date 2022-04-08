@@ -12,6 +12,7 @@ import java.util.List;
 import ball.gui.ImageLoader;
 import ball.physics.Dimensions;
 import ball.physics.SpherePos2D;
+import pangGuy.gui.Shape;
 
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -120,7 +121,12 @@ public class VisualTest implements VisualInterface{
     }
 
     public void updatePosition(List<SpherePos2D> pos){
-        panel.updatePositions(pos);
+        List<Shape> shapeList = new ArrayList<>();
+        for(ArpionComponent i : this.getArpions()){
+            shapeList.add(i.getShape());
+        }
+        shapeList.add(this.hero.getShape());
+        panel.updatePositions(pos, shapeList);
 
     }
 
@@ -131,7 +137,6 @@ public class VisualTest implements VisualInterface{
     public VisualPanelTest getVisualTest(){
         return this.panel;
     }
-
 
 
 

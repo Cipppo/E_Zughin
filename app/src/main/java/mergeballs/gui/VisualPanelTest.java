@@ -11,10 +11,12 @@ import java.util.List;
 import ball.gui.ImageLoader;
 
 import ball.physics.SpherePos2D;
+import pangGuy.gui.Shape;
 
 public class VisualPanelTest extends JPanel {
 
     private List<SpherePos2D> positions;
+    private List<Shape> shapes;
     private int width;
     private int height;
     ImageLoader iLoader;
@@ -38,13 +40,20 @@ public class VisualPanelTest extends JPanel {
                     g2.drawImage(iLoader.getBallImage(position.getDimension()), x, y, this);
                 }
             }
+            if(this.shapes != null){
+                for(final var shape : shapes){
+                    g2.drawRect(shape.getPos().x, shape.getPos().y, shape.getDimensions().getX(), shape.getDimensions().getY());
+                }
+            }
         }
         g2.dispose();
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public void updatePositions(List<SpherePos2D> pos){
+    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes){
         positions = pos;
+        shapes = aShapes;
         repaint();
     }
+
 }
