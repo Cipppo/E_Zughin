@@ -28,8 +28,8 @@ public class ConstraintCheck {
         final int diameter = t.getBallPosition().getDiameter();
         if (x < 0) {
             t.applyConstraints(Boundary.X0.getValue() , Boundary.X0);
-        } else if (x + diameter > this.width) {
-            t.applyConstraints(Boundary.X1.getValue() - (diameter * 0.00125), Boundary.X1);
+        } else if (x + diameter >= this.width) {
+            t.applyConstraints(t.getBallPosition().x - (diameter * 0.0001), Boundary.X1);
         } else if (y + 1.65 * diameter > this.height) { //very problematic in macos
             t.applyConstraints(t.getBallPosition().y - 0.009, Boundary.Y1);
         } else if (y < -1) {
