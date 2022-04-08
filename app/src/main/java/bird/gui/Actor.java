@@ -5,9 +5,7 @@ import javax.swing.JLabel;
 import bird.utilities.Directions;
 import bird.utilities.ImageLoader;
 import bird.utilities.BirdPos2D;
-import stage.utils.CenterOnDefaultScreen;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Optional;
@@ -18,10 +16,6 @@ public class Actor extends JLabel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1967410748214691856L;
-
-
-    private static final int SIZEX = CenterOnDefaultScreen.center().width*70/100;
-    private static final int SIZEY = CenterOnDefaultScreen.center().height*70/100;
     
 	private Shape s;
     private final ImageLoader iLoader = new ImageLoader();
@@ -29,9 +23,8 @@ public class Actor extends JLabel{
     public Actor(Shape s){
         this.s = s;
         
-        super.setBackground(Color.black);
         super.setBounds(this.s.getRectangle());
-        super.setOpaque(true);
+        super.setOpaque(false);
         
     }
     
@@ -46,11 +39,9 @@ public class Actor extends JLabel{
         return this.s;
     }
 
-    public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
 
         Graphics2D g2 = (Graphics2D) g;
-
-        g2.clearRect(0, 0, SIZEX, SIZEY);
 
         g2.drawImage(iLoader.getBirdImage(this.getShape().getDireciton() == Directions.RIGHT ? Directions.RIGHT : Directions.LEFT), 
                 0, 0, null);
