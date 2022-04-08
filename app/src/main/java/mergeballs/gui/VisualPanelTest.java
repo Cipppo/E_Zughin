@@ -43,7 +43,7 @@ public class VisualPanelTest extends JPanel {
             if(this.shapes != null){
                 for(final var shape : shapes){
                     g2.fillRect(shape.getPos().x, shape.getPos().y, shape.getDimensions().getX(), shape.getDimensions().getY());
-                    System.out.println(shape);
+                    //System.out.println(shape);
                 }
             }
         }
