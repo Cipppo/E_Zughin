@@ -78,8 +78,6 @@ public class MovementUtils {
                 panel.repaint();
                 Toolkit.getDefaultToolkit().sync();
                 System.out.println(actor.getShape().getPos());
-            } else {
-                panel.repaint();
             }
             Thread.sleep(20);
         } catch (InterruptedException e) {
