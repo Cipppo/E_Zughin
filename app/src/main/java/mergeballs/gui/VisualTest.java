@@ -12,14 +12,16 @@ import java.util.List;
 import ball.gui.ImageLoader;
 import ball.physics.Dimensions;
 import ball.physics.SpherePos2D;
+import mergeballs.control.UpdateableVisual;
 import pangGuy.gui.Shape;
 
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class VisualTest implements VisualInterface{
+public class VisualTest implements VisualInterface, UpdateableVisual{
     
 
     private HeroComponent hero;
@@ -119,15 +121,14 @@ public class VisualTest implements VisualInterface{
             Toolkit.getDefaultToolkit().sync();
         }        
     }
+    
+    @Override
+    public List<Shape> getArpionsShapes() {
+        return this.getArpions().stream().map(t -> t.getShape()).collect(Collectors.toList());
+    }
 
     public void updatePosition(List<SpherePos2D> pos){
-        List<Shape> shapeList = new ArrayList<>();
-        for(ArpionComponent i : this.getArpions()){
-            shapeList.add(i.getShape());
-        }
-        shapeList.add(this.hero.getShape());
-        panel.updatePositions(pos, shapeList);
-
+        panel.updatePositions(pos, this.getArpionsShapes());
     }
 
     public int getBallImageDiameter(Dimensions dim){
