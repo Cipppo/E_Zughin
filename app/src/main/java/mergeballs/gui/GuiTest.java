@@ -5,6 +5,7 @@ package mergeballs.gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import mergeballs.control.BallRunner;
 import pangGuy.actions.ActionApplier;
 import pangGuy.character.Hero;
 import pangGuy.utilities.Pair;
@@ -30,6 +31,7 @@ public class GuiTest extends JFrame{
     public Hero hero = new Hero();
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
+    private final BallRunner ballRunner = new BallRunner(this.visual);
 
 
 
@@ -41,6 +43,7 @@ public class GuiTest extends JFrame{
         this.setLayout(null);
 
         this.add(panel);
+        this.ballRunner.start();
         //this.visual.updatePosition(pos); <- i Don't know how to get the positions
         System.out.println(WIDTH);
         System.out.println(HEIGHT);
