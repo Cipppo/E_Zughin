@@ -48,9 +48,9 @@ public class Visualiser extends Thread {
                     for (final var t : this.balls) {
                         this.checker
                             .checkConstraints(t);
-                        if (this.checker.checkEnemyCollision(this.frame.getGuy(), t)) {
-                            this.duplicatation(t);
-                        }
+                        // if (this.checker.checkEnemyCollision(this.frame.getGuy(), t)) {
+                        //     this.duplicatation(t);
+                        // }
                     }
                     Thread.sleep(10);
                 } else {
