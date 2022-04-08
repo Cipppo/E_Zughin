@@ -49,23 +49,28 @@ public class BallAgent extends Thread {
         return this.ball.getPosition();
     }
 
-    //Absolutaly to be cleaned
+    /**
+     * 
+     * @return List<Ball> the two childern Ball.
+     * 
+     * @throws IllegalStateException if the ball isn't splittable;
+     */
     public synchronized List<Ball> duplicate() {
-        // TODO: change gravity to something dynamic
-        var ball1 = this.generateBall();
-        var ball2 = this.generateBall();
-
-        ball1.getVelocity().vx = -ball1.getVelocity().vx;
-
-        return List.of(ball1, ball2);
-    }
-
-    private Ball generateBall() {
         if (this.ball.getPosition().getDimension() != Dimensions.GRANDSON) {
-            return BallFactory.fromFatherBall(this.ball);
+            var ball1 = this.generateBall();
+            var ball2 = this.generateBall();
+
+            ball1.getVelocity().vx = -ball1.getVelocity().vx;
+
+            return List.of(ball1, ball2);
         } else {
             throw new IllegalStateException();
         }
+
+    }
+
+    private Ball generateBall() {
+        return BallFactory.fromFatherBall(this.ball);
     }
 
     public synchronized void pause() {
