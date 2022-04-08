@@ -1,6 +1,7 @@
 package ball.controller;
 
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.List;
 
 import ball.ballAgent.BallAgent;
 import ball.testing.SquaredEnemy;
@@ -54,7 +55,7 @@ public class Runner extends Thread {
         }
     }
 
-    private synchronized void duplication(BallAgent ball) {
+    public synchronized void duplication(BallAgent ball) {
         this.stop = true;
         try {
             var children = ball.duplicate();
@@ -63,10 +64,10 @@ public class Runner extends Thread {
                 this.balls.add(newAgent);
                 newAgent.start();
             }
-        } catch (IllegalStateException e) {
-            ball.terminate();
-            this.balls.remove(ball);
-        }
+        } catch (IllegalStateException e) { }
+        
+        ball.terminate();
+        this.balls.remove(ball);
         this.stop = false;
     }
 
@@ -80,5 +81,9 @@ public class Runner extends Thread {
         if (!this.balls.isEmpty()) {
             this.balls.forEach(t -> t.restart());
         }
+    }
+
+    public synchronized List<BallAgent> getBalls() {
+        return this.balls;
     }
 }
