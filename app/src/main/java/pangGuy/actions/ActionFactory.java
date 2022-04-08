@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import pangGuy.gui.Visual;
 import pangGuy.modularGun.Trigger;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;

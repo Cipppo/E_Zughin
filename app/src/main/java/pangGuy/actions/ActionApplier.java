@@ -7,7 +7,6 @@ import mergeballs.gui.VisualInterface;
 import pangGuy.gui.BoundChecker;
 
 import pangGuy.character.Hero;
-import pangGuy.gui.Visual;
 
 import pangGuy.utilities.Pair;
 

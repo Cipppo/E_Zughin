@@ -3,7 +3,6 @@ package pangGuy.modularGun;
 import pangGuy.character.Hero;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.BoundChecker;
-import pangGuy.gui.Visual;
 import mergeballs.gui.VisualInterface;
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.StepsApplier;
