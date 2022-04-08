@@ -10,7 +10,6 @@ import pangGuy.utilities.Pos2D;
 import java.util.List;
 
 import ball.gui.ImageLoader;
-import ball.gui.Visual.VisualPanel;
 import ball.physics.Dimensions;
 import ball.physics.SpherePos2D;
 
