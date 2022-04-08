@@ -23,9 +23,10 @@ public class ConstraintCheck {
      * @param diameter
      *          of the ball in pixels
      */
-    public void checkConstraints(BallAgent t, int diameter) {
+    public void checkConstraints(BallAgent t) {
         final var x =  (t.getBallPosition().x * this.width);
         final var y =  (t.getBallPosition().y * this.height);
+        final int diameter = t.getBallPosition().getDiameter();
         if (x < 0) {
             t.applyConstraints(Boundary.X0.getValue() , Boundary.X0);
         } else if (x + diameter > this.width) {
