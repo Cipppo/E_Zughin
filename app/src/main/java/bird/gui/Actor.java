@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 import bird.utilities.Directions;
 import bird.utilities.ImageLoader;
-import bird.utilities.Pos2D;
+import bird.utilities.BirdPos2D;
 import stage.utils.CenterOnDefaultScreen;
 
 import java.awt.Color;
@@ -35,7 +35,7 @@ public class Actor extends JLabel{
         
     }
     
-    public void changeLocation(Pos2D pos){
+    public void changeLocation(BirdPos2D pos){
 
         super.setLocation(pos.x, pos.y);
         this.s = new Shape(pos, this.s.getDimensions().getX(), 

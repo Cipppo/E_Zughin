@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import bird.utilities.Directions;
 import bird.utilities.Pair;
-import bird.utilities.Pos2D;
+import bird.utilities.BirdPos2D;
 
 public class Shape {
 
@@ -13,7 +13,7 @@ public class Shape {
     private final Optional<Directions> dir;
 
 
-    public Shape(Pos2D pos, int width, int height, Optional<Directions> dir){
+    public Shape(BirdPos2D pos, int width, int height, Optional<Directions> dir){
         r = new Rectangle(pos.x, pos.y, width, height);
         if(!dir.isEmpty()) {
             this.dir = dir;
@@ -23,8 +23,8 @@ public class Shape {
     }
     
 
-    public Pos2D getPos(){
-        return new Pos2D((int)r.getX(), (int) r.getY());
+    public BirdPos2D getPos(){
+        return new BirdPos2D((int)r.getX(), (int) r.getY());
     }
 
 

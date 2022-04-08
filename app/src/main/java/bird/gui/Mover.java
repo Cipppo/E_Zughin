@@ -1,7 +1,7 @@
 package bird.gui;
 
 import bird.utilities.Directions;
-import bird.utilities.Pos2D;
+import bird.utilities.BirdPos2D;
 
 public class Mover {
     
@@ -13,14 +13,14 @@ public class Mover {
         this.bc = bc;
     }
 
-    public void move(Pos2D pos, Directions dir) {
+    public void move(BirdPos2D pos, Directions dir) {
         if(bc.isInside(pos, this.actor.getShape().getDimensions().getX(), 
         this.actor.getShape().getDimensions().getY())) {
             this.actor.changeLocation(pos);
         }
     }
 
-    public Pos2D getCurrentPos(){
+    public BirdPos2D getCurrentPos(){
         return this.actor.getShape().getPos();
     }
 }

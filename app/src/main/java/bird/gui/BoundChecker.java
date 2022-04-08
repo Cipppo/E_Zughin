@@ -1,7 +1,7 @@
 package bird.gui;
 
 import bird.utilities.Pair;
-import bird.utilities.Pos2D;
+import bird.utilities.BirdPos2D;
 
 public class BoundChecker {
 
@@ -14,7 +14,7 @@ public class BoundChecker {
     }
 
 
-    public boolean isInside(Pos2D pos ,int width, int height){
+    public boolean isInside(BirdPos2D pos ,int width, int height){
         if(pos.x >= this.x.getX() && pos.x + width <= this.x.getY()){
             if(pos.y >= this.y.getX() && pos.y + height <= this.y.getY() - 35){
                 //System.out.println("PERFORMED");

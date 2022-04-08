@@ -2,7 +2,7 @@ package bird.actions;
 
 import bird.gui.Mover;
 import bird.utilities.Directions;
-import bird.utilities.Pos2D;
+import bird.utilities.BirdPos2D;
 
 public class ActionFactory {
 
@@ -12,7 +12,7 @@ public class ActionFactory {
     private class rightAction {
         
         public rightAction(Mover m){
-            m.move(new Pos2D(m.getCurrentPos().x + SPEED, m.getCurrentPos().y), Directions.RIGHT);            
+            m.move(new BirdPos2D(m.getCurrentPos().x + SPEED, m.getCurrentPos().y), Directions.RIGHT);            
         }
 
     }
@@ -20,21 +20,21 @@ public class ActionFactory {
     private class leftAction{
 
         public leftAction(Mover m) {
-            m.move(new Pos2D(m.getCurrentPos().x - SPEED, m.getCurrentPos().y), Directions.LEFT);            
+            m.move(new BirdPos2D(m.getCurrentPos().x - SPEED, m.getCurrentPos().y), Directions.LEFT);            
         }
     }
 
     private class downAction{
 
         public downAction(Mover m) {
-            m.move(new Pos2D(m.getCurrentPos().x, m.getCurrentPos().y + SPEED), Directions.DOWN);
+            m.move(new BirdPos2D(m.getCurrentPos().x, m.getCurrentPos().y + SPEED), Directions.DOWN);
         }
     }
 
     private class upAction{
 
         public upAction(Mover m) {
-            m.move(new Pos2D(m.getCurrentPos().x, m.getCurrentPos().y - SPEED), Directions.UP);
+            m.move(new BirdPos2D(m.getCurrentPos().x, m.getCurrentPos().y - SPEED), Directions.UP);
         }
     }
 

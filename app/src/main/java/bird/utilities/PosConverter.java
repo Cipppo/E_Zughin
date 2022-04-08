@@ -13,18 +13,18 @@ public class PosConverter {
     }
 
 
-    private Pos2D getLeftPos(){
+    private BirdPos2D getLeftPos(){
         return this.actor.getShape().getPos();
     }
 
 
-    private Pos2D getRightPos(){
+    private BirdPos2D getRightPos(){
         int x = (this.actor.getShape().getPos().x + this.actor.getShape().getDimensions().getX()) - this.dimensions.getX();
         int y = this.actor.getShape().getPos().y;
-        return new Pos2D(x, y);
+        return new BirdPos2D(x, y);
     }
 
-    public Pos2D getPos(Directions dir){
+    public BirdPos2D getPos(Directions dir){
         if(dir == Directions.RIGHT){
             return getRightPos();
         }else{
