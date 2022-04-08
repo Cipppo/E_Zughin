@@ -10,6 +10,8 @@ import pangGuy.utilities.Pos2D;
 
 public class Hero {
     
+    private static final int HIT_WAIT = 1;
+
     private Pos2D pos;
     private Directions direction;
     private GunSet gSet;
@@ -56,7 +58,7 @@ public class Hero {
         System.out.println(this.status);
         Timer timer = new Timer();
         TimerTask hitCond = new hitCondition(this.status);
-        timer.schedule(hitCond, 1);
+        timer.schedule(hitCond, HIT_WAIT * 1000);
     }
 
 }
