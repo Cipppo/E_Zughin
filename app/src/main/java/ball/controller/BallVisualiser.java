@@ -4,7 +4,10 @@ import java.util.stream.Collectors;
 
 import ball.gui.Updateable;
 /**
- * Controller that interfaces Runner with the View
+ * Controller that interfaces Runner with the View.
+ * Thread extension is momentaneous, when a controller
+ * for both arpion/charachter is ready, start to build
+ * getters and behaviour setters.
  */
 public class BallVisualiser extends Thread {
     private final ConstraintCheck checker;
