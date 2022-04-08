@@ -11,7 +11,7 @@ import bird.gui.Shape;
 import stage.utils.CenterOnDefaultScreen;
 import stage.components.MainPanel;
 
-public class MoveBird extends Thread{
+public class BirdVisual extends Thread{
 
     private static final int SIZEX = CenterOnDefaultScreen.center().width*70/100;
     private static final int SIZEY = CenterOnDefaultScreen.center().height*70/100;
@@ -21,20 +21,20 @@ public class MoveBird extends Thread{
 
     private static final int STARTY = 0;
 
-    private Shape shape;
-
+    private final Random random = new Random();
     private final MainPanel panel;
-    private BoundChecker bc = new BoundChecker(new Pair<Integer>(0, SIZEX),
-                                    new Pair<Integer>(0, SIZEY));
+    private Shape shape;
     private Mover mover;
     private Actor actor;
     private int startX;
-    private final Random random = new Random();
     private Directions dir;
     private Boolean pause = false;
     private MovementUtils movUtils;
+    private BoundChecker bc = new BoundChecker(new Pair<Integer>(0, SIZEX),
+                                    new Pair<Integer>(0, SIZEY));
 
-    public MoveBird(MainPanel panel) {
+
+    public BirdVisual(MainPanel panel) {
         this.panel = panel;
     }
     
@@ -44,7 +44,7 @@ public class MoveBird extends Thread{
             
             this.dir = this.randomDirectionChooser();
             this.startX = this.dir == Directions.RIGHT ? 0 : SIZEX - WIDTH;
-            this.shape = new Shape(new Pos2D(startX, STARTY), WIDTH, HEIGHT, Optional.of(dir));
+            this.shape = new Shape(new BirdPos2D(startX, STARTY), WIDTH, HEIGHT, Optional.of(dir));
             this.actor = new Actor(this.shape);
             this.mover = new Mover(this.actor, bc);
             movUtils = new MovementUtils(actor, panel, mover);

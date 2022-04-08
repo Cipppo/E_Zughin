@@ -7,14 +7,14 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import bird.utilities.MoveBird;
+import bird.utilities.BirdVisual;
 import stage.components.TimerLabel;
 
 public class PauseButton {
 
     private boolean pause = false;
     
-    public PauseButton(JPanel mainPanel, JPanel pausePanel, TimerLabel timer, MoveBird moveBird) {
+    public PauseButton(JPanel mainPanel, JPanel pausePanel, TimerLabel timer, BirdVisual visual) {
 
         KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
         mainPanel.getInputMap().put(escKey, "Esc");
@@ -24,21 +24,21 @@ public class PauseButton {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            setVisibility(pausePanel, timer, moveBird);
+            setVisibility(pausePanel, timer, visual);
         }
     });
     }
 
-    public void setVisibility(JPanel pausePanel, TimerLabel timer, MoveBird moveBird) {
+    public void setVisibility(JPanel pausePanel, TimerLabel timer, BirdVisual visual) {
     	if(!pause){
             pausePanel.setVisible(true);
             timer.getTimer().stop();
-            moveBird.setPause();
+            visual.setPause();
             pause = true;
         } else {
             pausePanel.setVisible(false);
             timer.getTimer().start();
-            moveBird.setPause();
+            visual.setPause();
             pause = false;
         }
     }
