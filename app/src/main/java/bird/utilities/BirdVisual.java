@@ -50,7 +50,7 @@ public class BirdVisual extends Thread{
             movUtils = new MovementUtils(actor, panel, mover);
 
             try {
-                TimeUnit.SECONDS.sleep(random.nextInt(10) + 10);
+                TimeUnit.SECONDS.sleep(random.nextInt(10) + 5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -43,7 +43,7 @@ public class Actor extends JLabel{
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.drawImage(iLoader.getBirdImage(this.getShape().getDireciton() == Directions.RIGHT ? Directions.RIGHT : Directions.LEFT), 
+        g2.drawImage(iLoader.getBirdImage(this.getShape().getDireciton() == Directions.RIGHT ? Directions.RIGHT : Directions.LEFT, s.getPos()), 
                 0, 0, null);
 
         g2.dispose();

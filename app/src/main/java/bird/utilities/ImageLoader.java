@@ -8,7 +8,7 @@ import stage.utils.MainImagesLoader;
 
 public class ImageLoader {
     
-    private Map<Directions, BufferedImage> entries = new HashMap<>();
+    private Map<Directions, Pair<BufferedImage>> entries = new HashMap<>();
     private MainImagesLoader loader = new MainImagesLoader();
 
     public ImageLoader() {
@@ -17,21 +17,25 @@ public class ImageLoader {
     }
 
     private void fillIamgesCache(Directions dir) {
-        String spriteName = this.getFileNameGivenDimension(dir);
-        BufferedImage image = loader.load(spriteName);
-        this.entries.put(dir, image);
+        Pair<String> spriteName = this.getFileNameGivenDimension(dir);
+        Pair<BufferedImage> images = new Pair<BufferedImage>(loader.load(spriteName.getX()), loader.load(spriteName.getY()));
+        this.entries.put(dir, images);
     }
 
-    public BufferedImage getBirdImage(Directions dir) {
-        return this.entries.get(dir);
+    public BufferedImage getBirdImage(Directions dir, BirdPos2D pos) {
+        if(pos.y % 20 != 0) {
+            return this.entries.get(dir).getX();
+        } else {
+            return this.entries.get(dir).getY();
+        }
     }
 
-    private String getFileNameGivenDimension(Directions dir) {
+    private Pair<String> getFileNameGivenDimension(Directions dir) {
         switch (dir) {
             case LEFT:
-                return "BirdFirstSx.png";
+                return new Pair<String>("BirdFirstSx.png", "BirdSecondSx.png");
             case RIGHT:
-                return "BirdFirstDx.png";
+                return new Pair<String>("BirdFirstDx.png", "BirdSecondDx.png");
             default:
                 throw new IllegalArgumentException();
         }
