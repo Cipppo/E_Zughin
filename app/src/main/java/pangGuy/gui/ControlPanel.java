@@ -25,6 +25,7 @@ public class ControlPanel extends JFrame{
     private JButton jb = new JButton("Double Arpion: not Active");
     private JButton jb2 = new JButton("Sticky Arpion: not Active");
     private JButton jb3 = new JButton("HIT");
+    private JButton jb4 = new JButton("Hero Hit");
     private Gui gui;
     private GunSet gSet;
     private JLabel label = new JLabel("Status");
@@ -58,9 +59,14 @@ public class ControlPanel extends JFrame{
             });
         });
 
+        this.jb4.addActionListener(e -> {
+            this.gui.hero.hit();
+        });
+
         this.panel.add(jb);
         this.panel.add(jb2);
-        this.panel.add(jb3);
+        //this.panel.add(jb3);
+        this.panel.add(jb4);
         this.getContentPane().add(this.panel);
         
         
