@@ -72,12 +72,12 @@ public class Visual extends JFrame implements Updateable {
 	        positions = pos;
 	        repaint();
 	    }
-
+		
 		public SquaredEnemy getGuy() {
 			return this.enemy;
 		}
     }
-
+	@Override
     public SquaredEnemy getGuy() {
         return panel.getGuy();
     }
