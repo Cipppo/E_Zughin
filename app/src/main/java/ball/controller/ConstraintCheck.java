@@ -3,7 +3,6 @@ package ball.controller;
 import ball.Boundary;
 import ball.ballAgent.BallAgent;
 import ball.physics.SpherePos2D;
-import ball.testing.SquaredEnemy;
 import ball.utils.Pair;
 import pangGuy.gui.Shape;
 
@@ -47,13 +46,13 @@ public class ConstraintCheck {
      * @return
      *          true if the two enemies collides
      */
-    public boolean checkEnemyCollision(SquaredEnemy entity, BallAgent ball) {
+    public boolean checkEnemyCollision(Shape entity, BallAgent ball) {
         var bPos = new SpherePos2D(ball.getBallPosition().x * this.width,
                         ball.getBallPosition().y *  this.height,
                         ball.getBallPosition().getDimension(),
                         ball.getSize());
 
-        return isCollision(bPos, entity.getShape());
+        return isCollision(bPos, entity);
     }
 
     private boolean isCollision(SpherePos2D ball, Shape rect) {
