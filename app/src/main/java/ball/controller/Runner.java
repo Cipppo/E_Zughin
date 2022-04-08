@@ -4,7 +4,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.List;
 
 import ball.ballAgent.BallAgent;
-import ball.testing.SquaredEnemy;
+import pangGuy.gui.Shape;
 
 public class Runner extends Thread {
     private final CopyOnWriteArrayList<BallAgent> balls;
@@ -45,7 +45,7 @@ public class Runner extends Thread {
      *          by now is a Sqared Entity, need to change to
      *          something in common with arpion and guy.
      */
-    public synchronized void checkCollision(SquaredEnemy enemy) {
+    public synchronized void checkCollision(Shape enemy) {
         if(!this.balls.isEmpty()) {
             this.balls.forEach(t -> {
                 if (this.checker.checkEnemyCollision(enemy, t)) {
