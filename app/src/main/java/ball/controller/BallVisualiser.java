@@ -2,8 +2,6 @@ package ball.controller;
 
 import java.util.stream.Collectors;
 
-import javax.sound.sampled.SourceDataLine;
-
 import ball.gui.Updateable;
 /**
  * Controller that interfaces Runner with the View
