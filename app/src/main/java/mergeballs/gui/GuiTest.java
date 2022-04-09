@@ -58,7 +58,7 @@ public class GuiTest extends JFrame{
         this.ballRunner.start();
 
 
-
+        //ok
         //this.visual.updatePosition(pos); <- i Don't know how to get the positions
 
 
