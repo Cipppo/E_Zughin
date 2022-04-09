@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import mergeballs.gui.VisualInterface;
+import mergeballs.gui.VisualPanelTest;
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.Pair;
 import pangGuy.modularGun.Status;
@@ -104,5 +105,11 @@ public class Visual implements VisualInterface{
             a.get().raise();
             Toolkit.getDefaultToolkit().sync();
         }        
+    }
+
+    @Override
+    public VisualPanelTest getVisualTest() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
