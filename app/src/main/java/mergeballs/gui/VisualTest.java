@@ -126,9 +126,12 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     public List<Shape> getArpionsShapes() {
         return this.getArpions().stream().map(t -> t.getShape()).collect(Collectors.toList());
     }
-
+    
+    @Override
     public void updatePosition(List<SpherePos2D> pos){
-        panel.updatePositions(pos, this.getArpionsShapes());
+        var shapes = this.getArpionsShapes();
+        shapes.add(this.getHeroComponent().getShape());
+        panel.updatePositions(pos, shapes);
     }
 
     public int getBallImageDiameter(Dimensions dim){
