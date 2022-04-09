@@ -18,7 +18,7 @@ import java.awt.event.KeyEvent;
 
 //import stage.components.*;
 @SuppressWarnings("unused")
-public class GuiTest extends JFrame implements KeyListener{
+public class GuiTest extends JFrame{
 
 
     private final static int WIDTH = CenterOnDefaultScreen.center().width*70/100;
@@ -37,7 +37,11 @@ public class GuiTest extends JFrame implements KeyListener{
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
     private final BallRunner ballRunner = new BallRunner(this.visual);
+<<<<<<< HEAD
     private final ActionFactory factory = new ActionFactory();
+=======
+    
+>>>>>>> Removed KeyListeners
 
     private BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, visual.getBounds().getX()), new Pair<Integer, Integer>(0, visual.getBounds().getY()));
 
@@ -50,6 +54,10 @@ public class GuiTest extends JFrame implements KeyListener{
 
         this.add(panel);
         this.ballRunner.start();
+<<<<<<< HEAD
+=======
+        //this.visual.updatePosition(pos); <- i Don't know how to get the positions
+>>>>>>> Removed KeyListeners
         System.out.println(WIDTH);
         System.out.println(HEIGHT);
 
@@ -61,34 +69,6 @@ public class GuiTest extends JFrame implements KeyListener{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case 37:
-                this.factory.getLeftAction(this.visual, this.hero, this.bc);
-                break;
-            case 32:
-                this.factory.getShootAction(this.visual, this.hero, this.bc);
-                break;
-            case 39:
-                this.factory.getRightAction(this.visual, this.hero, this.bc);
-                break;
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        System.out.println("You released key char: " + e.getKeyChar());
-        System.out.println("You released key code: " + e.getKeyCode());
-    }
-
 
 
     
