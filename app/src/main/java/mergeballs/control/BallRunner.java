@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 
 import ball.controller.ConstraintCheck;
 import mergeballs.gui.VisualTest;
+import pangGuy.modularGun.Status;
 import ball.controller.Runner;
 
 
@@ -26,11 +27,15 @@ public class BallRunner extends Thread {
             try {
                 ballRunner.getBalls()
                 .forEach(t -> {
-                    for (final var arp : frame.getArpionsShapes()) {
-                        if (this.checker.checkEnemyCollision(arp, t)) {
-                            this.ballRunner.duplication(t);
-                        } 
+                    for (final var arp : frame.getArpions()) {
+                        if (!arp.getStatus().equals(Status.IDLE)) {
+                            if (this.checker.checkEnemyCollision(arp.getShape(), t)) {
+                                this.ballRunner.duplication(t);
+                                arp.setStatus(Status.HIT);
+                            } 
+                        }
                     }
+
                     this.frame.updatePosition(this.ballRunner
                                 .getBalls()
                                 .stream()
