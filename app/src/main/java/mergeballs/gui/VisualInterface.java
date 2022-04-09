@@ -21,4 +21,5 @@ public interface VisualInterface {
     Optional<ArpionComponent> getFreeComponent();
     void restoreBullet(ArpionComponent bullet, Pos2D charPos, Directions dir);
     void raiseArpion(ArpionComponent arpion);
+    public VisualPanelTest getVisualTest();
 }
