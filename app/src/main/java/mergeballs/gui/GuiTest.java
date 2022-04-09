@@ -36,7 +36,7 @@ public class GuiTest extends JFrame implements KeyListener{
     public Hero hero = new Hero();
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
-    //private final BallRunner ballRunner = new BallRunner(this.visual);
+    private final BallRunner ballRunner = new BallRunner(this.visual);
     private final ActionFactory factory = new ActionFactory();
 
     private BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, visual.getBounds().getX()), new Pair<Integer, Integer>(0, visual.getBounds().getY()));
@@ -49,8 +49,7 @@ public class GuiTest extends JFrame implements KeyListener{
         this.setLayout(null);
 
         this.add(panel);
-        //this.ballRunner.start();
-        //this.visual.updatePosition(pos); <- i Don't know how to get the positions
+        this.ballRunner.start();
         System.out.println(WIDTH);
         System.out.println(HEIGHT);
 
