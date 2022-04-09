@@ -37,11 +37,7 @@ public class GuiTest extends JFrame{
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
     private final BallRunner ballRunner = new BallRunner(this.visual);
-<<<<<<< HEAD
-    private final ActionFactory factory = new ActionFactory();
-=======
     
->>>>>>> Removed KeyListeners
 
     private BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, visual.getBounds().getX()), new Pair<Integer, Integer>(0, visual.getBounds().getY()));
 
@@ -54,10 +50,6 @@ public class GuiTest extends JFrame{
 
         this.add(panel);
         this.ballRunner.start();
-<<<<<<< HEAD
-=======
-        //this.visual.updatePosition(pos); <- i Don't know how to get the positions
->>>>>>> Removed KeyListeners
         System.out.println(WIDTH);
         System.out.println(HEIGHT);
 
