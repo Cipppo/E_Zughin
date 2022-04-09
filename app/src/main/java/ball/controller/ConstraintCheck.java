@@ -61,7 +61,6 @@ public class ConstraintCheck {
         Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().x + (int)(0.5*rectWidht),
                                                     rect.getPos().y + (int)(0.5*rectHeight));
         Pair<Integer> ballCenter = new Pair<Integer>((int)(ball.x + (ball.getDiameter() / 2)), (int)(ball.y + (ball.getDiameter() / 2) ));
-
         Pair<Integer> circleDistance = new Pair<Integer>(0,0);
         
         circleDistance.setX(Math.abs(ballCenter.getX() - rectCenter.getX()));
@@ -72,13 +71,9 @@ public class ConstraintCheck {
             return false;
         }
 
-
-        //System.out.println(aCenter + " " + bCenter + " Ball Radius: " + ball.getDiameter() / 2 + " Obstacle Radius: " + entity.getDiameter() / 2);
-
         if (circleDistance.getY() > (rectHeight / 2 + ball.getDiameter() / 2)) {
             return false;
         }
-
 
         //Simple intersection (circle intersect rectangle)
         if (circleDistance.getX() <= (rectWidht / 2) || circleDistance.getY() <= (rectHeight / 2)) {
