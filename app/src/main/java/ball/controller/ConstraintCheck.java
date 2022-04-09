@@ -73,7 +73,7 @@ public class ConstraintCheck {
         }
 
 
-        System.out.println(aCenter + " " + bCenter + " Ball Radius: " + ball.getDiameter() / 2 + " Obstacle Radius: " + entity.getDiameter() / 2);
+        //System.out.println(aCenter + " " + bCenter + " Ball Radius: " + ball.getDiameter() / 2 + " Obstacle Radius: " + entity.getDiameter() / 2);
 
         if (circleDistance.getY() > (rectHeight / 2 + ball.getDiameter() / 2)) {
             return false;
