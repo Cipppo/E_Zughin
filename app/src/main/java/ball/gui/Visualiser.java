@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
  */
 public class Visualiser extends Thread {
     private final Visual frame;
-    //private final ControlPanel controlPane;
     /**
      * Very useful for handling java.util.ConcurrentModificationException
      */
@@ -26,8 +25,6 @@ public class Visualiser extends Thread {
     
     public Visualiser(int ballsToGenerate) {
         this.frame = new Visual();
-        //this.controlPane = new ControlPanel(this);
-        //this.frame.add(this.controlPane, BorderLayout.NORTH);
         this.frame.setVisible(true);
         this.balls = new CopyOnWriteArrayList<>();
         this.stop = false;
@@ -38,7 +35,6 @@ public class Visualiser extends Thread {
             this.balls.add(new BallAgent());
         }
     }
-
 
     @Override
     public void run() {
@@ -51,10 +47,10 @@ public class Visualiser extends Thread {
                         .collect(Collectors.toList()));
                     for (final var t : this.balls) {
                         this.checker
-                            .checkConstraints(t, this.frame.getBallImageDiameter(t.getBallPosition().getDimension()));
-                        if (this.checker.checkEnemyCollision(this.frame.getGuy(), t)) {
-                            this.duplicatation(t);
-                        }
+                            .checkConstraints(t);
+                        // if (this.checker.checkEnemyCollision(this.frame.getGuy(), t)) {
+                        //     this.duplicatation(t);
+                        // }
                     }
                     Thread.sleep(10);
                 } else {

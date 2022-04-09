@@ -1,38 +1,56 @@
-package pangGuy.gui;
+package mergeballs.gui;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import mergeballs.gui.VisualInterface;
-import mergeballs.gui.VisualPanelTest;
-import pangGuy.utilities.Pos2D;
-import pangGuy.utilities.Pair;
+import pangGuy.gui.ArpionComponent;
+import pangGuy.gui.HeroComponent;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
+import pangGuy.utilities.Pair;
+import pangGuy.utilities.Pos2D;
+
+import java.util.List;
+
+import ball.gui.ImageLoader;
+import ball.physics.SpherePos2D;
+import mergeballs.control.UpdateableVisual;
+import pangGuy.gui.Shape;
+
+import java.awt.Color;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-
-public class Visual implements VisualInterface{
+public class VisualTest implements VisualInterface, UpdateableVisual{
     
+
     private HeroComponent hero;
     private List<ArpionComponent> arpions;
-    private Pair<Integer, Integer> bounds;
-
-    private Pos2D startPosition;
-
-    public Visual(Pos2D startPos, Pair<Integer, Integer> bounds){
-        this.hero = new HeroComponent(startPos);
-        this.startPosition = startPos;
+    private final Pair<Integer, Integer> bounds;
+    
+    private VisualPanelTest panel;
+    private ImageLoader iLoader;
 
 
-        this.bounds = bounds;
+    private Pos2D startPos;
+
+    public VisualTest(int width, int height, Pos2D startpos){
+        this.bounds = new Pair<Integer,Integer>(width, height);
+
+        this.iLoader = new ImageLoader();
+        this.panel = new VisualPanelTest(width, height, iLoader);
+
+        this.startPos = startpos;
+        this.hero = new HeroComponent(startpos);
+
         this.arpions = new ArrayList<>(List.of(
-            new ArpionComponent(Color.red, this.hero.getShape().getLeftFoot()),
-            new ArpionComponent(Color.green, this.hero.getShape().getLeftFoot()))
-        );
-        
+            new ArpionComponent(Color.red, this.hero.getShape().getLeftFoot()), 
+            new ArpionComponent(Color.green, this.hero.getShape().getLeftFoot())
+        ));
+
+    }
+
+    public List<ArpionComponent> getArpions(){
+        return this.arpions;
     }
 
     public void move(Pos2D pos){
@@ -42,7 +60,7 @@ public class Visual implements VisualInterface{
                 e.setLocation(this.hero.getShape().getPos().x, this.hero.getShape().getPos().y);
             }
         });
-        Toolkit.getDefaultToolkit().sync();
+        Toolkit.getDefaultToolkit().sync();            
     }
 
     public void setDirection(Directions dir){
@@ -57,16 +75,12 @@ public class Visual implements VisualInterface{
         return this.hero;
     }
 
-    public List<ArpionComponent> getArpions(){
-        return this.arpions;
-    }
-
     public Pair<Integer, Integer> getBounds(){
         return this.bounds;
     }
 
     public Pos2D getStartPos(){
-        return this.startPosition;
+        return this.startPos;
     }
 
     public Optional<ArpionComponent> getFreeComponent(){
@@ -106,10 +120,20 @@ public class Visual implements VisualInterface{
             Toolkit.getDefaultToolkit().sync();
         }        
     }
-
+    
     @Override
-    public VisualPanelTest getVisualTest() {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Shape> getArpionsShapes() {
+        return this.getArpions().stream().map(t -> t.getShape()).collect(Collectors.toList());
+    }
+    
+    @Override
+    public void updatePosition(List<SpherePos2D> pos){
+        var shapes = this.getArpionsShapes();
+        shapes.add(this.getHeroComponent().getShape());
+        panel.updatePositions(pos, shapes);
+    }
+
+    public VisualPanelTest getVisualTest(){
+        return this.panel;
     }
 }

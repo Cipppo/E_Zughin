@@ -1,5 +1,8 @@
 package pangGuy.character;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import pangGuy.modularGun.GunSet;
 
 import pangGuy.utilities.Directions;
@@ -7,16 +10,18 @@ import pangGuy.utilities.Pos2D;
 
 public class Hero {
     
+    private static final int HIT_WAIT = 1;
+
     private Pos2D pos;
     private Directions direction;
     private GunSet gSet;
-    private Telemetry telemetry;
+    private heroStatus status;
 
     public Hero(){
         this.pos = new Pos2D(0, 0);
         this.direction = Directions.LEFT;
         this.gSet = new GunSet();
-        this.telemetry = new Telemetry();
+        this.status = heroStatus.NEUTRAL;
     }
 
     private void updateDirection(Directions dir){
@@ -44,14 +49,16 @@ public class Hero {
         this.updateDirection(dir);
     }
 
-    //Whatever, Timer is counting the steps done not the time Elapsed
-    //Probaly gonna need a refactor 
-    public Telemetry getTelemetry(){
-        return this.telemetry;
-    }
-
     public GunSet getGset(){
         return this.gSet;
+    }
+
+    public void hit(){
+        this.status = heroStatus.HIT;
+        System.out.println(this.status);
+        Timer timer = new Timer();
+        TimerTask hitCond = new hitCondition(this.status);
+        timer.schedule(hitCond, HIT_WAIT * 1000);
     }
 
 }

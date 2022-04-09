@@ -2,6 +2,7 @@ package pangGuy.modularGun;
 
 
 import pangGuy.utilities.Directions;
+import pangGuy.utilities.Pos2D;
 
 
 public interface Bullet {
@@ -10,7 +11,7 @@ public interface Bullet {
 
     void raise();
 
-    void lock();
+    void lock(int xPos);
 
     void unlock();
 
@@ -27,6 +28,8 @@ public interface Bullet {
     int getStepsDone();
 
     void hit();
+
+    Pos2D getRisingPos();
 
 
 }

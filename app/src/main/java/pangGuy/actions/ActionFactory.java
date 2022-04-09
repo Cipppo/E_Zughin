@@ -4,13 +4,14 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import pangGuy.gui.Visual;
 import pangGuy.modularGun.Trigger;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.StepsApplier;
 import pangGuy.gui.BoundChecker;
 import pangGuy.character.Hero;
+
+import mergeballs.gui.VisualInterface;
 public class ActionFactory {
 
     private static final int SPEED = 5;
@@ -18,11 +19,11 @@ public class ActionFactory {
 
     private class rightAction extends AbstractAction{
         
-        private final Visual v;
+        private final VisualInterface v;
         private final Hero h;
         private final BoundChecker bc;
 
-        public rightAction(Visual v, Hero h, BoundChecker bc){
+        public rightAction(VisualInterface v, Hero h, BoundChecker bc){
             this.v = v;
             this.h = h;
             this.bc = bc;
@@ -45,11 +46,11 @@ public class ActionFactory {
     
     private class leftAction extends AbstractAction{
 
-        private final Visual v;
+        private final VisualInterface v;
         private final Hero h;
         private final BoundChecker bc;
 
-        public leftAction(Visual v, Hero h, BoundChecker bc){
+        public leftAction(VisualInterface v, Hero h, BoundChecker bc){
             this.v = v;
             this.h = h;
             this.bc = bc;
@@ -72,11 +73,11 @@ public class ActionFactory {
 
     private class shootAction extends AbstractAction{
 
-        private final Visual v;
+        private final VisualInterface v;
         private final Hero h;
         private final BoundChecker bc;
 
-        public shootAction(Visual v, Hero h, BoundChecker bc){
+        public shootAction(VisualInterface v, Hero h, BoundChecker bc){
             this.v = v;
             this.h = h;
             this.bc = bc;
@@ -100,17 +101,17 @@ public class ActionFactory {
 
 
 
-    public rightAction getRightAction(Visual v, Hero h, BoundChecker bc){
+    public rightAction getRightAction(VisualInterface v, Hero h, BoundChecker bc){
         return new rightAction(v, h, bc);
     }
 
     
-    public leftAction getLeftAction(Visual v, Hero h, BoundChecker bc){
+    public leftAction getLeftAction(VisualInterface v, Hero h, BoundChecker bc){
         return new leftAction(v, h, bc);
     }
 
     
-    public shootAction getShootAction(Visual v, Hero h, BoundChecker bc){
+    public shootAction getShootAction(VisualInterface v, Hero h, BoundChecker bc){
         return new shootAction(v, h, bc);
     }
     

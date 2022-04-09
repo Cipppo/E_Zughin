@@ -1,6 +1,9 @@
 package pangGuy.modularGun;
 
 import pangGuy.utilities.Directions;
+import pangGuy.utilities.Pos2D;
+
+import java.util.Optional;
 
 public class Arpion implements Bullet {
 
@@ -14,6 +17,7 @@ public class Arpion implements Bullet {
     private Directions direction;
     private int waitTime;
     private int steps;
+    private Optional<Integer> xPos;
     
 
     public Arpion(){
@@ -21,12 +25,14 @@ public class Arpion implements Bullet {
         this.status = Status.IDLE;
         this.direction = Directions.LEFT;
         this.steps = 0;
+        this.xPos = Optional.empty();
         
     }
 
     @Override
     public void restore() {
         this.status = Status.IDLE;
+        this.xPos = Optional.empty();
         this.steps = 0;
     }
 
@@ -36,7 +42,8 @@ public class Arpion implements Bullet {
     }
 
     @Override
-    public void lock(){
+    public void lock(int xPos){
+        this.xPos = Optional.of(xPos);
         this.setStatus(Status.RISING);
     }
     
@@ -86,10 +93,16 @@ public class Arpion implements Bullet {
             this.setStatus(Status.HIT);
         }
     }
+
+    @Override 
+    public Pos2D getRisingPos(){
+        return new Pos2D(this.xPos.get(), this.steps);
+    }
     
     @Override 
     public String toString(){
         return "Status:" + this.status + "Direction: " + this.direction;
     }
 
+   
 }
