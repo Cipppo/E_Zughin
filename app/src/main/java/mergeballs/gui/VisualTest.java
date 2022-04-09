@@ -10,7 +10,6 @@ import pangGuy.utilities.Pos2D;
 import java.util.List;
 
 import ball.gui.ImageLoader;
-import ball.physics.Dimensions;
 import ball.physics.SpherePos2D;
 import mergeballs.control.UpdateableVisual;
 import pangGuy.gui.Shape;
@@ -134,19 +133,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         panel.updatePositions(pos, shapes);
     }
 
-    public int getBallImageDiameter(Dimensions dim){
-        return this.iLoader.getBallImage(dim).getHeight();
-    }
-
     public VisualPanelTest getVisualTest(){
         return this.panel;
     }
-
-
-
-    
-
-
-    
-
 }
