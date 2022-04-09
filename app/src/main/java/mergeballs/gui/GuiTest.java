@@ -29,7 +29,7 @@ public class GuiTest extends JFrame{
     private static final int HERO_HEIGHT = 100;
 
     private static final int STARTX =  WIDTH / 2;
-    private static final int STARTY = (HEIGHT - 35) - HERO_HEIGHT;
+    private static final int STARTY = (HEIGHT ) - HERO_HEIGHT;
 
 
     private VisualTest visual = new VisualTest(WIDTH, HEIGHT, new Pos2D(STARTX, STARTY));
@@ -37,7 +37,13 @@ public class GuiTest extends JFrame{
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
     private final BallRunner ballRunner = new BallRunner(this.visual);
+
     
+
+
+    private final ActionFactory factory = new ActionFactory();
+
+
 
     private BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, visual.getBounds().getX()), new Pair<Integer, Integer>(0, visual.getBounds().getY()));
 
@@ -50,6 +56,12 @@ public class GuiTest extends JFrame{
 
         this.add(panel);
         this.ballRunner.start();
+
+
+
+        //this.visual.updatePosition(pos); <- i Don't know how to get the positions
+
+
         System.out.println(WIDTH);
         System.out.println(HEIGHT);
 
