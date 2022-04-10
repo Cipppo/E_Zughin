@@ -33,6 +33,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     private PangGuyImageLoader heroILoader;
 
     private Pos2D startPos;
+    //Maybe i have to give to this Hero in order to get all the possible status
 
     public VisualTest(int width, int height, Pos2D startpos){
         this.bounds = new Pair<Integer,Integer>(width, height);
@@ -130,7 +131,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     @Override
     public void updatePosition(List<SpherePos2D> pos){
         var shapes = this.getArpionsShapes();
-        panel.updatePositions(pos, shapes, this.hero.getShape());
+        panel.updatePositions(pos, shapes, this.hero.getShape(), this.arpions.get(0).getDirection());
     }
 
     public VisualPanelTest getVisualTest(){
