@@ -12,7 +12,7 @@ import pangGuy.utilities.Pos2D;
 public class HeroComponent extends JPanel{
 
     private static final int WIDTH = 40;
-    private static final int HEIGHT = 40;
+    private static final int HEIGHT = 50;
 
     private Shape s;
 
