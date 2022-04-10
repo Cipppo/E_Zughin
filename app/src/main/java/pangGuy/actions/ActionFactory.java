@@ -17,13 +17,13 @@ public class ActionFactory {
     private static final int SPEED = 5;
 
 
-    private class rightAction extends AbstractAction{
+    private class RightAction extends AbstractAction{
         
         private final VisualInterface v;
         private final Hero h;
         private final BoundChecker bc;
 
-        public rightAction(VisualInterface v, Hero h, BoundChecker bc){
+        public RightAction(VisualInterface v, Hero h, BoundChecker bc){
             this.v = v;
             this.h = h;
             this.bc = bc;
@@ -44,13 +44,13 @@ public class ActionFactory {
     }
 
     
-    private class leftAction extends AbstractAction{
+    private class LeftAction extends AbstractAction{
 
         private final VisualInterface v;
         private final Hero h;
         private final BoundChecker bc;
 
-        public leftAction(VisualInterface v, Hero h, BoundChecker bc){
+        public LeftAction(VisualInterface v, Hero h, BoundChecker bc){
             this.v = v;
             this.h = h;
             this.bc = bc;
@@ -71,13 +71,13 @@ public class ActionFactory {
     }
     
 
-    private class shootAction extends AbstractAction{
+    private class ShootAction extends AbstractAction{
 
         private final VisualInterface v;
         private final Hero h;
         private final BoundChecker bc;
 
-        public shootAction(VisualInterface v, Hero h, BoundChecker bc){
+        public ShootAction(VisualInterface v, Hero h, BoundChecker bc){
             this.v = v;
             this.h = h;
             this.bc = bc;
@@ -101,18 +101,18 @@ public class ActionFactory {
 
 
 
-    public rightAction getRightAction(VisualInterface v, Hero h, BoundChecker bc){
-        return new rightAction(v, h, bc);
+    public RightAction getRightAction(VisualInterface v, Hero h, BoundChecker bc){
+        return new RightAction(v, h, bc);
     }
 
     
-    public leftAction getLeftAction(VisualInterface v, Hero h, BoundChecker bc){
-        return new leftAction(v, h, bc);
+    public LeftAction getLeftAction(VisualInterface v, Hero h, BoundChecker bc){
+        return new LeftAction(v, h, bc);
     }
 
     
-    public shootAction getShootAction(VisualInterface v, Hero h, BoundChecker bc){
-        return new shootAction(v, h, bc);
+    public ShootAction getShootAction(VisualInterface v, Hero h, BoundChecker bc){
+        return new ShootAction(v, h, bc);
     }
     
 }
