@@ -26,7 +26,7 @@ public class GuiTest extends JFrame{
 
 
     private static final int STARTX =  WIDTH / 2;
-    private static final int STARTY = (HEIGHT ) - 75 ;
+    private static final int STARTY = (HEIGHT ) - 85 ;
 
 
     private VisualTest visual = new VisualTest(WIDTH, HEIGHT, new Pos2D(STARTX, STARTY));
