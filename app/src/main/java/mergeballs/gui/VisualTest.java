@@ -2,6 +2,7 @@ package mergeballs.gui;
 
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.HeroComponent;
+import pangGuy.gui.PangGuyImageLoader;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
@@ -29,7 +30,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     
     private VisualPanelTest panel;
     private ImageLoader iLoader;
-
+    private PangGuyImageLoader heroILoader;
 
     private Pos2D startPos;
 
@@ -37,7 +38,8 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         this.bounds = new Pair<Integer,Integer>(width, height);
 
         this.iLoader = new ImageLoader();
-        this.panel = new VisualPanelTest(width, height, iLoader);
+        this.heroILoader = new PangGuyImageLoader();
+        this.panel = new VisualPanelTest(width, height, iLoader, heroILoader);
 
         this.startPos = startpos;
         this.hero = new HeroComponent(startpos);
@@ -129,8 +131,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     @Override
     public void updatePosition(List<SpherePos2D> pos){
         var shapes = this.getArpionsShapes();
-        shapes.add(this.getHeroComponent().getShape());
-        panel.updatePositions(pos, shapes);
+        panel.updatePositions(pos, shapes, this.hero.getShape());
     }
 
     public VisualPanelTest getVisualTest(){
