@@ -1,5 +1,7 @@
 package pangGuy.utilities;
 
+import java.nio.Buffer;
+
 public class StepsApplier {
 
     private static final int HERO_STEP = 5;
@@ -18,6 +20,10 @@ public class StepsApplier {
 
     public int covertStepPosition(int step){
         return step * BULLET_STEP;
+    }
+
+    public int fromPixeltoStep(int y){
+        return y / BULLET_STEP;
     }
 
 
