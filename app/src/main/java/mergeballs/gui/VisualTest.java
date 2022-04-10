@@ -123,7 +123,6 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         }        
     }
     
-    @Override
     public List<Shape> getArpionsShapes() {
         return this.getArpions().stream().map(t -> t.getShape()).collect(Collectors.toList());
     }
