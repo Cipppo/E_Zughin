@@ -23,7 +23,7 @@ public class StepsApplier {
     }
 
     public int fromPixeltoStep(int y){
-        return y / BULLET_STEP;
+        return (((this.startPos.y - y) / BULLET_STEP) + 10 );
     }
 
 
