@@ -6,6 +6,7 @@ import ball.physics.SpherePos2D;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.Shape;
 import pangGuy.utilities.Pair;
+import pangGuy.utilities.Pos2D;
 
 public interface UpdateableVisual {
     List<Shape> getArpionsShapes();
@@ -16,4 +17,6 @@ public interface UpdateableVisual {
 
     //Temporary
     List<ArpionComponent> getArpions();
+
+    Pos2D getStartPos();
 }
