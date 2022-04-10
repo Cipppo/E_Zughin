@@ -39,6 +39,8 @@ public class Trigger extends Thread{
             while(!this.stop){
                     this.arpion.raise();
                     this.visual.raiseArpion(arpionComponent);
+
+                    //System.out.println("Model Steps: " + this.arpion.getStepsDone() + " Gui Pos" + this.arpionComponent.getShape().getPos().y);
                     
                     if(!this.bc.isExtendible(new Pos2D(xValue, maxYValue - this.stepConverter.covertStepPosition(this.arpion.getStepsDone()))) || 
                             this.arpion.getStatus() == Status.HIT){
