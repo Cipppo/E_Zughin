@@ -23,6 +23,7 @@ public class VisualPanelTest extends JPanel {
     private List<SpherePos2D> positions;
     private List<Shape> shapes;
     private Shape hShape;
+    private Directions dir;
     private int width;
     private int height;
     ImageLoader iLoader;
@@ -55,17 +56,18 @@ public class VisualPanelTest extends JPanel {
                 }
             }
             if(this.hShape != null){
-                g2.drawImage(heroILoader.getHeroImage(Directions.LEFT).get(0), this.hShape.getPos().x, this.hShape.getPos().y, this);
+            		g2.drawImage(heroILoader.getHeroImage(this.dir).get(0), this.hShape.getPos().x, this.hShape.getPos().y, this);
             }
         }
         g2.dispose();
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape){
+    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir){
         positions = pos;
         shapes = aShapes;
         this.hShape = hShape;
+        this.dir = dir;
         repaint();
     }
 
