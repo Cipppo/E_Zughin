@@ -22,7 +22,7 @@ public class BallRunner extends Thread {
         this.frame = frame;
         this.checker = new ConstraintCheck(this.frame.getBounds().getX(),
                                             this.frame.getBounds().getY());
-        this.ballRunner = new Runner(1, this.checker);
+        this.ballRunner = new Runner(5, this.checker);
 
         this.gSet = gSet;
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
@@ -36,12 +36,13 @@ public class BallRunner extends Thread {
                 ballRunner.getBalls()
                 .forEach(t -> {
                     for (final var arp : frame.getArpions()) {
-                        if (!arp.getStatus().equals(Status.IDLE)) {
+                        if (arp.getStatus().equals(Status.RISING)) {
                             if (this.checker.checkEnemyCollision(arp.getShape(), t)) {
+                                System.out.println("HIT pos: " + arp.getShape().getPos().y + "steps: " +  (this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y)) );
+                                //var stepsMade = this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y);
+                                this.gSet.getBulletFromSteps(this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y)).get().hit();
                                 this.ballRunner.duplication(t);
-                                //System.out.println("HIT pos: " + arp.getShape().getPos().y + "steps: " +  (this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y)) );
-                                var stepsMade = this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y);
-                                this.gSet.getBulletFromSteps(stepsMade).get().hit();
+                                System.out.println(this.gSet.getBulletFromSteps(this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y)).get().getStatus());
                             } 
                         }
                     }
