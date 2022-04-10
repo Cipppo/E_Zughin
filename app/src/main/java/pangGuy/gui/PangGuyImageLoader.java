@@ -39,14 +39,14 @@ public class PangGuyImageLoader {
             case RIGHT:
                 temp.add("StillRight.png");
                 temp.add("WalkingRight1.png");
-                temp.add("WalkinRight2.png");
+                temp.add("WalkingRight2.png");
                 temp.add("PrepShootingRight.png");
                 temp.add("DeathRight.png");
                 break;
             case LEFT:
                 temp.add("StillLeft.png");
                 temp.add("WalkingLeft1.png");
-                temp.add("WalkinLeft2.png");
+                temp.add("WalkingLeft2.png");
                 temp.add("PrepShootingLeft.png");
                 temp.add("DeathLeft.png");
         }
