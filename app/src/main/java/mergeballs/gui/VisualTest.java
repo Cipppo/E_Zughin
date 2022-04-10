@@ -123,7 +123,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         }        
     }
     
-    public List<Shape> getArpionsShapes() {
+    private List<Shape> getArpionsShapes() {
         return this.getArpions().stream().map(t -> t.getShape()).collect(Collectors.toList());
     }
     

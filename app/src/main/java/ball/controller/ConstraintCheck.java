@@ -66,7 +66,7 @@ public class ConstraintCheck {
         circleDistance.setX(Math.abs(ballCenter.getX() - rectCenter.getX()));
         circleDistance.setY(Math.abs(ballCenter.getY() - rectCenter.getY()));
 
-        // Base cases, the two figures doen't intersect
+        // Base cases, the two figures don't intersect
         if (circleDistance.getX() > (rectWidht / 2 + ball.getDiameter() / 2)) {
             return false;
         }
