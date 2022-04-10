@@ -25,18 +25,15 @@ public class GuiTest extends JFrame{
     private final static int HEIGHT = CenterOnDefaultScreen.center().height*70/100;
 
 
-    private static final int HERO_WIDTH = 40;
-    private static final int HERO_HEIGHT = 100;
-
     private static final int STARTX =  WIDTH / 2;
-    private static final int STARTY = (HEIGHT ) - HERO_HEIGHT;
+    private static final int STARTY = (HEIGHT ) - 75 ;
 
 
     private VisualTest visual = new VisualTest(WIDTH, HEIGHT, new Pos2D(STARTX, STARTY));
     public Hero hero = new Hero();
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
-    private final BallRunner ballRunner = new BallRunner(this.visual);
+    private final BallRunner ballRunner = new BallRunner(this.visual, this.hero.getGset());
 
     
 
