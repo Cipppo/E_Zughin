@@ -20,6 +20,7 @@ public class ArpionComponent extends JPanel{
 
     private Shape s;
     private Status status;
+    private Directions dir;
 
     public ArpionComponent(Color color, Pos2D startpos){
         this.s = new Shape(startpos, WIDTH, HEIGHT);
@@ -29,6 +30,7 @@ public class ArpionComponent extends JPanel{
         super.setForeground(color);
         super.setBounds(this.s.getRectangle());
         super.setOpaque(true);
+        this.dir = Directions.LEFT;
 
     }
 
@@ -44,7 +46,7 @@ public class ArpionComponent extends JPanel{
     public void setDirection(Directions dir, Shape shape){
         PosConverter posConverter = new PosConverter(new Pair<Integer,Integer>(WIDTH, HEIGHT), shape);
         this.changeLocation(posConverter.getPos(dir));
-
+        this.dir = dir;
     }
 
     public void raise(){
@@ -57,6 +59,10 @@ public class ArpionComponent extends JPanel{
 
     public void setStatus(Status status){
         this.status = status;
+    }
+
+    public Directions getDirection(){
+        return this.dir;
     }
     
 
