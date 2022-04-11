@@ -48,7 +48,7 @@ public class Trigger extends Thread{
                             this.arpion.getStatus() == Status.HIT){
                         this.stop = true;
                     }
-                    Thread.sleep(25);
+                    Thread.sleep(8);
             }
 
             if(this.arpion.getWaitTime() > 0){
