@@ -32,6 +32,8 @@ public class Trigger extends Thread{
         int xValue = this.stepConverter.convertHeroPosition(this.hero.getPosition()).x;
         this.arpion.lock(xValue);
         this.arpionComponent.setStatus(this.arpion.getStatus());
+        this.arpionComponent.setType(this.hero.getGset().getGunType());
+        
         int yvalue = this.stepConverter.covertStepPosition(this.arpion.getStepsDone());
         int maxYValue = this.visual.getBounds().getY();
         
