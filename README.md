@@ -12,11 +12,11 @@ Il gioco si basa su un personaggio che, sparando verso l'alto, deve riuscire a f
 - [x] Corretto movimento orrizontale del personaggio.
 - [ ] Gestione del caso perdita di una vita / morte.
 - [x] Fisica delle sfere.
-- [ ] Creazione del menu' di gioco e del menu' di pausa.
-- [ ] Implementazione e salvataggio della Leaderboard.
-- [ ] Implementazione di bonus sul punteggio mediante la caduta di Items.
-- [ ] Implementazione di powerup di base ( bomba, time freeze).
-- [ ] Frutta che aumenta il punteggio della partita.
+- [x] Creazione del menu' di gioco e del menu' di pausa.
+- [x] Implementazione e salvataggio della Leaderboard.
+- [ ] Implementazione di bonus sul punteggio mediante la caduta di Items. (WIP)
+- [ ] Implementazione di powerup di base ( bomba, time freeze). (missing bomb)
+- [ ] Frutta che aumenta il punteggio della partita. (WIP)
 
 
 ## Funzionalita' *opzionali*:
