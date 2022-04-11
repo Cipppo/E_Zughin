@@ -1,6 +1,7 @@
 package mergeballs.gui;
 
 import pangGuy.gui.ArpionComponent;
+import pangGuy.gui.ArpionImageLoader;
 import pangGuy.gui.HeroComponent;
 import pangGuy.gui.PangGuyImageLoader;
 import pangGuy.modularGun.Status;
@@ -31,6 +32,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     private VisualPanelTest panel;
     private ImageLoader iLoader;
     private PangGuyImageLoader heroILoader;
+    private ArpionImageLoader arpionILoader;
 
     private Pos2D startPos;
     //Maybe i have to give to this Hero in order to get all the possible status
@@ -40,7 +42,8 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
 
         this.iLoader = new ImageLoader();
         this.heroILoader = new PangGuyImageLoader();
-        this.panel = new VisualPanelTest(width, height, iLoader, heroILoader);
+        this.arpionILoader = new ArpionImageLoader();
+        this.panel = new VisualPanelTest(width, height, iLoader, heroILoader, arpionILoader);
 
         this.startPos = startpos;
         this.hero = new HeroComponent(startpos);
@@ -131,7 +134,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     @Override
     public void updatePosition(List<SpherePos2D> pos){
         var shapes = this.getArpionsShapes();
-        panel.updatePositions(pos, shapes, this.hero.getShape(), this.arpions.get(0).getDirection());
+        panel.updatePositions(pos, shapes, this.hero.getShape(), this.arpions.get(0).getDirection(), this.arpions.get(0).gType());
     }
 
     @Override
