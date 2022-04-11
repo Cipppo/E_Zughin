@@ -1,5 +1,5 @@
 package bird.utilities;
 
-public enum Directions {
+public enum BirdDirections {
     LEFT, RIGHT, DOWN, UP;
 }

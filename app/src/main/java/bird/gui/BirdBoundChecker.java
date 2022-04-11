@@ -1,14 +1,14 @@
 package bird.gui;
 
-import bird.utilities.Pair;
+import pangGuy.utilities.Pair;
 import bird.utilities.BirdPos2D;
 
-public class BoundChecker {
+public class BirdBoundChecker {
 
-    private Pair<Integer> x;
-    private Pair<Integer> y;
+    private Pair<Integer, Integer> x;
+    private Pair<Integer, Integer> y;
 
-    public BoundChecker(Pair<Integer> x, Pair<Integer> y){
+    public BirdBoundChecker(Pair<Integer, Integer> x, Pair<Integer, Integer> y){
         this.x = x;
         this.y = y;
     }
@@ -24,11 +24,11 @@ public class BoundChecker {
         return false;
     }
 
-    public Pair<Integer> getXPair() {
+    public Pair<Integer, Integer> getXPair() {
         return this.x;
     }
 
-    public Pair<Integer> getYPair() {
+    public Pair<Integer, Integer> getYPair() {
         return this.y;
     }
     

@@ -1,19 +1,19 @@
 package bird.gui;
 
-import bird.utilities.Directions;
+import bird.utilities.BirdDirections;
 import bird.utilities.BirdPos2D;
 
-public class Mover {
+public class BirdMover {
     
-    private final Actor actor;
-    private final BoundChecker bc;
+    private final BirdActor actor;
+    private final BirdBoundChecker bc;
 
-    public Mover(Actor actor, BoundChecker bc) {
+    public BirdMover(BirdActor actor, BirdBoundChecker bc) {
         this.actor = actor;
         this.bc = bc;
     }
 
-    public void move(BirdPos2D pos, Directions dir) {
+    public void move(BirdPos2D pos, BirdDirections dir) {
         if(bc.isInside(pos, this.actor.getShape().getDimensions().getX(), 
         this.actor.getShape().getDimensions().getY())) {
             this.actor.changeLocation(pos);

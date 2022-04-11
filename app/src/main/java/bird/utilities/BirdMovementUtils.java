@@ -2,15 +2,16 @@ package bird.utilities;
 
 import javax.swing.JPanel;
 
-import bird.actions.ActionFactory;
-import bird.gui.Actor;
-import bird.gui.BoundChecker;
-import bird.gui.Mover;
+import bird.actions.BirdActionFactory;
+import bird.gui.BirdActor;
+import bird.gui.BirdBoundChecker;
+import bird.gui.BirdMover;
 import stage.utils.CenterOnDefaultScreen;
+import pangGuy.utilities.Pair;
 
 import java.awt.Toolkit;
 
-public class MovementUtils {
+public class BirdMovementUtils {
 
     private static final int SIZEX = CenterOnDefaultScreen.center().width*70/100;
     private static final int SIZEY = CenterOnDefaultScreen.center().height*70/100;
@@ -20,17 +21,17 @@ public class MovementUtils {
 
     private static final int HUD_HEIGHT = CenterOnDefaultScreen.center().height*13/100;
 
-    private final Actor actor;
+    private final BirdActor actor;
     private final JPanel panel;
-    private final Mover mover;
+    private final BirdMover mover;
     private Boolean moveUp = false;
 
     private Boolean pause = false;
-    private final ActionFactory actionFactory = new ActionFactory();
-    private final BoundChecker bc = new BoundChecker(new Pair<Integer>(0, SIZEX),
-                                    new Pair<Integer>(0, SIZEY));
+    private final BirdActionFactory actionFactory = new BirdActionFactory();
+    private final BirdBoundChecker bc = new BirdBoundChecker(new Pair<Integer, Integer>(0, SIZEX),
+                                    new Pair<Integer, Integer>(0, SIZEY));
 
-    public MovementUtils(Actor actor, JPanel panel, Mover mover) {
+    public BirdMovementUtils(BirdActor actor, JPanel panel, BirdMover mover) {
         this.actor = actor;
         this.panel = panel;
         this.mover = mover;
@@ -39,7 +40,7 @@ public class MovementUtils {
     public final void moveRight() {
         this.moveUp = false;
         while(actor.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5) {
-            this.doMovement(Directions.RIGHT);
+            this.doMovement(BirdDirections.RIGHT);
             this.moveDown();
         }
         this.removeActor();
@@ -48,7 +49,7 @@ public class MovementUtils {
     public final void moveLeft() {
         this.moveUp = false;
         while(actor.getShape().getPos().x >= bc.getXPair().getX() + 5) {
-            this.doMovement(Directions.LEFT);
+            this.doMovement(BirdDirections.LEFT);
             this.moveDown();
         }
         this.removeActor();
@@ -56,23 +57,23 @@ public class MovementUtils {
 
     public final void moveDown() {
         if(actor.getShape().getPos().y + HEIGHT <= bc.getYPair().getY() - HUD_HEIGHT && !moveUp) {
-            this.doMovement(Directions.DOWN);
+            this.doMovement(BirdDirections.DOWN);
         } else {
             this.moveUp = true;
-            this.doMovement(Directions.UP);
+            this.doMovement(BirdDirections.UP);
         }
     }
 
-    private final void doMovement(Directions dir) {
+    private final void doMovement(BirdDirections dir) {
         try {
             if(!this.pause) {
-                if(dir == Directions.RIGHT) {
+                if(dir == BirdDirections.RIGHT) {
                     this.actionFactory.getRightAction(this.mover);
-                } else if(dir == Directions.LEFT) {
+                } else if(dir == BirdDirections.LEFT) {
                     this.actionFactory.getLeftAction(this.mover);
-                } else if(dir == Directions.DOWN) {
+                } else if(dir == BirdDirections.DOWN) {
                     this.actionFactory.getDownAction(this.mover);
-                } else if(dir == Directions.UP) {
+                } else if(dir == BirdDirections.UP) {
                     this.actionFactory.getUpAction(this.mover);
                 }
                 panel.repaint();
