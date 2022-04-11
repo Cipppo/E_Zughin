@@ -38,7 +38,7 @@ public class ArpionImageLoader {
         List<String> temp = new ArrayList<>();
         switch(gun){
             case ARPION:
-                temp.add("Arpion1.png");
+                temp.add("LongArpion.png");
                 temp.add("Arpion2.png");
                 break;
             case STICKY_ARPION:
