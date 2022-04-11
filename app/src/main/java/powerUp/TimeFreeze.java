@@ -1,6 +1,6 @@
 package powerUp;
 
-import ball.gui.Visualiser;
+import ball.controller.Runner;
 
 /**
  * This class Models the TimeFreeze PowerUP.
@@ -9,9 +9,9 @@ public class TimeFreeze extends Thread implements PowerUp {
     private int duration;
     private int timeElapsed;
     private boolean isActivated;
-    private final Visualiser context;
+    private final Runner context;
     
-    public TimeFreeze(Visualiser context) {
+    public TimeFreeze (Runner context) {
         this.isActivated = false;
         this.timeElapsed = 0;
         this.context = context;
