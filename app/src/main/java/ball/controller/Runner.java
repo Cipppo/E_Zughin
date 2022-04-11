@@ -6,6 +6,16 @@ import java.util.List;
 import ball.ballAgent.BallAgent;
 import pangGuy.gui.Shape;
 
+/**
+ * This class stores and handle all the balls present in the game.
+ * Main jobs of this class are:
+ * <ul> 
+ *      <li>Storing Ball informations</li>
+ *      <li>Starting all balls Thread when this class Starts</li>
+ *      <li>Checks if balls are touching frame borders using a {@link ball.controller.ConstraintCheck} </li>
+ *      <li>Expose duplication method to other class in case there is a collison with an enemy</li>
+ *      <li>Expose pausing/resuming methods in case of game interruptions</li>
+ */
 public class Runner extends Thread {
     private final CopyOnWriteArrayList<BallAgent> balls;
     private final ConstraintCheck checker;
@@ -41,20 +51,24 @@ public class Runner extends Thread {
     }
 
     /**
+     * Check for each ball if there is a collision with an Entity;
      * @param entity
-     *          by now is a Sqared Entity, need to change to
-     *          something in common with arpion and guy.
+     *          modeled as a {@link pangGuy.gui.Shape}.
      */
-    public synchronized void checkCollision(Shape enemy) {
+    public synchronized void checkCollision(Shape entity) {
         if(!this.balls.isEmpty()) {
             this.balls.forEach(t -> {
-                if (this.checker.checkEnemyCollision(enemy, t)) {
+                if (this.checker.checkEnemyCollision(entity, t)) {
                     this.duplication(t);
                 }
             });
         }
     }
 
+    /**
+     * Split the ball given as argument.
+     * @param ball
+     */
     public synchronized void duplication(BallAgent ball) {
         this.stop = true;
         try {
