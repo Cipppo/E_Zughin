@@ -30,6 +30,7 @@ public class PangGuyImageLoader {
     }
 
     public List<BufferedImage> getHeroImage(Directions dir){
+       
         return this.entries.get(dir);
     }
 
@@ -37,14 +38,14 @@ public class PangGuyImageLoader {
         List<String> temp = new ArrayList<>();
         switch(dir){
             case RIGHT:
-                temp.add("StillRight.png");
+                temp.add("ResizedStillRight.png");
                 temp.add("WalkingRight1.png");
                 temp.add("WalkingRight2.png");
                 temp.add("PrepShootingRight.png");
                 temp.add("DeathRight.png");
                 break;
             case LEFT:
-                temp.add("StillLeft.png");
+                temp.add("ResizedStillLeft.png");
                 temp.add("WalkingLeft1.png");
                 temp.add("WalkingLeft2.png");
                 temp.add("PrepShootingLeft.png");
