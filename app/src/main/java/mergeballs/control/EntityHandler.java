@@ -11,14 +11,14 @@ import pangGuy.utilities.StepsApplier;
 import ball.controller.Runner;
 
 
-public class BallRunner extends Thread {
+public class EntityHandler extends Thread {
     private final ConstraintCheck checker;
     private final UpdateableVisual frame;
     private final Runner ballRunner;
     private final GunSet gSet;
     private final StepsApplier stepsConv;
     
-    public BallRunner(VisualTest frame, GunSet gSet) {
+    public EntityHandler(VisualTest frame, GunSet gSet) {
         this.frame = frame;
         this.checker = new ConstraintCheck(this.frame.getBounds().getX(),
                                             this.frame.getBounds().getY());
