@@ -51,7 +51,7 @@ public class BallAgent extends Thread {
 
     /**
      * 
-     * @return List<Ball> the two childern Ball.
+     * @return List<Ball> of the two childern Ball.
      * 
      * @throws IllegalStateException if the ball isn't splittable;
      */

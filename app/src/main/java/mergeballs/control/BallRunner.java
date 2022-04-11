@@ -55,8 +55,8 @@ public class BallRunner extends Thread {
                 });
                 
                 Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                //Catching Thread Exceptions
             }
         }
     }
