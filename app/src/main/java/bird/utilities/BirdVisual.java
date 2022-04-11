@@ -4,10 +4,11 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import bird.gui.Actor;
-import bird.gui.BoundChecker;
-import bird.gui.Mover;
-import bird.gui.Shape;
+import bird.gui.BirdActor;
+import bird.gui.BirdBoundChecker;
+import bird.gui.BirdMover;
+import bird.gui.BirdShape;
+import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
 import stage.components.MainPanel;
 
@@ -23,15 +24,15 @@ public class BirdVisual extends Thread{
 
     private final Random random = new Random();
     private final MainPanel panel;
-    private Shape shape;
-    private Mover mover;
-    private Actor actor;
+    private BirdShape shape;
+    private BirdMover mover;
+    private BirdActor actor;
     private int startX;
-    private Directions dir;
+    private BirdDirections dir;
     private Boolean pause = false;
-    private MovementUtils movUtils;
-    private BoundChecker bc = new BoundChecker(new Pair<Integer>(0, SIZEX),
-                                    new Pair<Integer>(0, SIZEY));
+    private BirdMovementUtils movUtils;
+    private BirdBoundChecker bc = new BirdBoundChecker(new Pair<Integer, Integer>(0, SIZEX),
+                                    new Pair<Integer, Integer>(0, SIZEY));
 
 
     public BirdVisual(MainPanel panel) {
@@ -43,11 +44,11 @@ public class BirdVisual extends Thread{
         while(!this.pause) {
             
             this.dir = this.randomDirectionChooser();
-            this.startX = this.dir == Directions.RIGHT ? 0 : SIZEX - WIDTH;
-            this.shape = new Shape(new BirdPos2D(startX, STARTY), WIDTH, HEIGHT, Optional.of(dir));
-            this.actor = new Actor(this.shape);
-            this.mover = new Mover(this.actor, bc);
-            movUtils = new MovementUtils(actor, panel, mover);
+            this.startX = this.dir == BirdDirections.RIGHT ? 0 : SIZEX - WIDTH;
+            this.shape = new BirdShape(new BirdPos2D(startX, STARTY), WIDTH, HEIGHT, Optional.of(dir));
+            this.actor = new BirdActor(this.shape);
+            this.mover = new BirdMover(this.actor, bc);
+            movUtils = new BirdMovementUtils(actor, panel, mover);
 
             try {
                 TimeUnit.SECONDS.sleep(random.nextInt(10) + 5);
@@ -64,15 +65,15 @@ public class BirdVisual extends Thread{
         }
     }
 
-    public Directions randomDirectionChooser() {
+    public BirdDirections randomDirectionChooser() {
         if(random.nextInt(2) == 0) {
-            return Directions.RIGHT;
+            return BirdDirections.RIGHT;
         } else {
-            return Directions.LEFT;
+            return BirdDirections.LEFT;
         }
     }
 
-    public Actor getActor() {
+    public BirdActor getActor() {
         return this.actor;
     }
 

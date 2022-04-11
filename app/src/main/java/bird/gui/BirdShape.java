@@ -3,17 +3,17 @@ package bird.gui;
 import java.awt.Rectangle;
 import java.util.Optional;
 
-import bird.utilities.Directions;
-import bird.utilities.Pair;
+import bird.utilities.BirdDirections;
+import pangGuy.utilities.Pair;
 import bird.utilities.BirdPos2D;
 
-public class Shape {
+public class BirdShape {
 
     private final Rectangle r;
-    private final Optional<Directions> dir;
+    private final Optional<BirdDirections> dir;
 
 
-    public Shape(BirdPos2D pos, int width, int height, Optional<Directions> dir){
+    public BirdShape(BirdPos2D pos, int width, int height, Optional<BirdDirections> dir){
         r = new Rectangle(pos.x, pos.y, width, height);
         if(!dir.isEmpty()) {
             this.dir = dir;
@@ -28,15 +28,15 @@ public class Shape {
     }
 
 
-    public Pair<Integer> getDimensions(){
-        return new Pair<Integer>((int)r.getWidth(), (int)r.getHeight());
+    public Pair<Integer, Integer> getDimensions(){
+        return new Pair<Integer, Integer>((int)r.getWidth(), (int)r.getHeight());
     }
     
     public Rectangle getRectangle(){
         return this.r;
     }
 
-    public Directions getDireciton() {
+    public BirdDirections getDireciton() {
         return this.dir.get();
     }
 

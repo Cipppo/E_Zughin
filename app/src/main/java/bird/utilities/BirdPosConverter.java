@@ -1,13 +1,14 @@
 package bird.utilities;
 
-import bird.gui.Actor;
+import bird.gui.BirdActor;
+import pangGuy.utilities.Pair;
 
-public class PosConverter {
+public class BirdPosConverter {
     
-    private Pair<Integer> dimensions;
-    private Actor actor;
+    private Pair<Integer, Integer> dimensions;
+    private BirdActor actor;
 
-    public PosConverter(Pair<Integer> dimensions, Actor actor){
+    public BirdPosConverter(Pair<Integer, Integer> dimensions, BirdActor actor){
         this.dimensions = dimensions;
         this.actor = actor;
     }
@@ -24,8 +25,8 @@ public class PosConverter {
         return new BirdPos2D(x, y);
     }
 
-    public BirdPos2D getPos(Directions dir){
-        if(dir == Directions.RIGHT){
+    public BirdPos2D getPos(BirdDirections dir){
+        if(dir == BirdDirections.RIGHT){
             return getRightPos();
         }else{
             return getLeftPos();
