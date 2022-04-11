@@ -1,13 +1,13 @@
 package stage.components;
 
 import javax.swing.JPanel;
+import java.awt.CardLayout;
 
 import bird.utilities.BirdVisual;
 import pauseMenu.components.ExitButton;
 import pauseMenu.components.PauseButton;
 import pauseMenu.components.PausePanel;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 
 public class MainPanel extends JPanel{
@@ -22,8 +22,7 @@ public class MainPanel extends JPanel{
 	
 	public MainPanel() {
 		this.setBackground(Color.WHITE);
-		this.setLayout(new BorderLayout());
-		this.add(pausePanel, BorderLayout.CENTER);
+		this.setLayout(new CardLayout());
 		new PauseButton(this, pausePanel, visual);
 		new ExitButton(this, pausePanel);
 	}

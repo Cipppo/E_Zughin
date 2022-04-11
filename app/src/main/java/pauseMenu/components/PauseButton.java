@@ -15,7 +15,7 @@ public class PauseButton {
     
     public PauseButton(JPanel mainPanel, JPanel pausePanel, BirdVisual visual) {
 
-        KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
+        final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
         mainPanel.getInputMap().put(escKey, "Esc");
         mainPanel.getActionMap().put("Esc", new AbstractAction(){
         	
@@ -23,17 +23,19 @@ public class PauseButton {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            setVisibility(pausePanel, visual);
+            setVisibility(mainPanel, pausePanel, visual);
         }
     });
-    }
+}
 
-    public void setVisibility(JPanel pausePanel, BirdVisual visual) {
+    public void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdVisual visual) {
     	if(!pause){
+            mainPanel.add(pausePanel);
             pausePanel.setVisible(true);
             visual.setPause();
             pause = true;
         } else {
+            mainPanel.remove(pausePanel);
             pausePanel.setVisible(false);
             visual.setPause();
             pause = false;
