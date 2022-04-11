@@ -32,6 +32,8 @@ public class Trigger extends Thread{
         int xValue = this.stepConverter.convertHeroPosition(this.hero.getPosition()).x;
         this.arpion.lock(xValue);
         this.arpionComponent.setStatus(this.arpion.getStatus());
+        this.arpionComponent.setType(this.hero.getGset().getGunType());
+        
         int yvalue = this.stepConverter.covertStepPosition(this.arpion.getStepsDone());
         int maxYValue = this.visual.getBounds().getY();
         
@@ -40,7 +42,7 @@ public class Trigger extends Thread{
                     this.arpion.raise();
                     this.visual.raiseArpion(arpionComponent);
 
-                    System.out.println("Model Steps: " + this.arpion.getStepsDone() + " Gui Pos" + this.arpionComponent.getShape().getPos().y);
+                    
                     
                     if(!this.bc.isExtendible(new Pos2D(xValue, maxYValue - this.stepConverter.covertStepPosition(this.arpion.getStepsDone()))) || 
                             this.arpion.getStatus() == Status.HIT){

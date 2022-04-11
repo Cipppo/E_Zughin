@@ -99,5 +99,9 @@ public class GunSet{
         }
         return Optional.empty();
     }
+
+    public GunTypes getGunType(){
+        return this.currentGun;
+    }
     
 }

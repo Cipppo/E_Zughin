@@ -1,6 +1,7 @@
 package pangGuy.gui;
 
 
+import pangGuy.modularGun.GunTypes;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
@@ -21,6 +22,7 @@ public class ArpionComponent extends JPanel{
     private Shape s;
     private Status status;
     private Directions dir;
+    private GunTypes type;
 
     public ArpionComponent(Color color, Pos2D startpos){
         this.s = new Shape(startpos, WIDTH, HEIGHT);
@@ -31,6 +33,7 @@ public class ArpionComponent extends JPanel{
         super.setBounds(this.s.getRectangle());
         super.setOpaque(true);
         this.dir = Directions.LEFT;
+        this.type = GunTypes.ARPION;
 
     }
 
@@ -65,6 +68,12 @@ public class ArpionComponent extends JPanel{
         return this.dir;
     }
     
+    public void setType(GunTypes type){
+        this.type = type;
+    }
 
+    public GunTypes gType(){
+        return this.type;
+    }
 
 }

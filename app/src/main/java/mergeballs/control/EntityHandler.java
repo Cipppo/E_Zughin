@@ -11,14 +11,14 @@ import pangGuy.utilities.StepsApplier;
 import ball.controller.Runner;
 
 
-public class BallRunner extends Thread {
+public class EntityHandler extends Thread {
     private final ConstraintCheck checker;
     private final UpdateableVisual frame;
     private final Runner ballRunner;
     private final GunSet gSet;
     private final StepsApplier stepsConv;
     
-    public BallRunner(VisualTest frame, GunSet gSet) {
+    public EntityHandler(VisualTest frame, GunSet gSet) {
         this.frame = frame;
         this.checker = new ConstraintCheck(this.frame.getBounds().getX(),
                                             this.frame.getBounds().getY());
@@ -38,13 +38,14 @@ public class BallRunner extends Thread {
                     for (final var arp : frame.getArpions()) {
                         if (arp.getStatus().equals(Status.RISING)) {
                             if (this.checker.checkEnemyCollision(arp.getShape(), t)) {
-                                System.out.println("HIT pos: " + arp.getShape().getPos().y + "steps: " +  (this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y)) );
-                                //var stepsMade = this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y);
                                 this.gSet.getBulletFromSteps(this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y)).get().hit();
                                 this.ballRunner.duplication(t);
-                                System.out.println(this.gSet.getBulletFromSteps(this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y)).get().getStatus());
                             } 
                         }
+                    }
+
+                    if (this.checker.checkEnemyCollision(this.frame.getHero().getShape(), t)) {
+                        System.out.println("HERO HIT!!! YOU LOSE!!!!!!!!");
                     }
 
                     this.frame.updatePosition(this.ballRunner
