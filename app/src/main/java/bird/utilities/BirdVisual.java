@@ -83,8 +83,10 @@ public class BirdVisual extends Thread{
     public void setPause() {
         if(this.pause) {
             this.pause = false;
+            this.actor.setVisible(true);
         } else {
             this.pause = true;
+            this.actor.setVisible(false);
         }
         movUtils.setPause();
     }
