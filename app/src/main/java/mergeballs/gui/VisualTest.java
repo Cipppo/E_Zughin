@@ -134,6 +134,11 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         panel.updatePositions(pos, shapes, this.hero.getShape(), this.arpions.get(0).getDirection());
     }
 
+    @Override
+    public HeroComponent getHero() {
+        return this.hero;
+    }
+
     public VisualPanelTest getVisualTest(){
         return this.panel;
     }
