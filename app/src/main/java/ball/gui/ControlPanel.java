@@ -2,7 +2,7 @@ package ball.gui;
 
 import javax.swing.JPanel;
 
-import powerUp.TimeFreeze;
+//import powerUp.TimeFreeze;
 
 import java.awt.BorderLayout;
 import javax.swing.JButton;
@@ -13,8 +13,6 @@ public class ControlPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JButton separateOne;
-	//private JButton stopAll;
-	//private JButton resumeAll;
 	private JButton timeFreeze;
 
 	@SuppressWarnings("unused")
@@ -51,10 +49,10 @@ public class ControlPanel extends JPanel {
 		});
 		*/
 
-		this.timeFreeze.addActionListener(t -> {
-			var tF = new TimeFreeze(this.visual);
-			tF.setDuration(3);
-			tF.start();
-		});
+		// this.timeFreeze.addActionListener(t -> {
+		// 	var tF = new TimeFreeze(this.visual);
+		// 	tF.setDuration(3);
+		// 	tF.start();
+		// });
 	}
 }
