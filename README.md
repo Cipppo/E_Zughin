@@ -15,7 +15,7 @@ Il gioco si basa su un personaggio che, sparando verso l'alto, deve riuscire a f
 - [x] Creazione del menu' di gioco e del menu' di pausa.
 - [x] Implementazione e salvataggio della Leaderboard.
 - [ ] Implementazione di bonus sul punteggio mediante la caduta di Items. (WIP)
-- [ ] Implementazione di powerup di base ( bomba, time freeze). (missing bomb)
+- [x] Implementazione di powerup di base ( bomba, time freeze).
 - [ ] Frutta che aumenta il punteggio della partita. (WIP)
 
 
