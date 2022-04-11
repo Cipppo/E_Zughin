@@ -14,8 +14,10 @@ import java.util.List;
 import ball.gui.ImageLoader;
 
 import ball.physics.SpherePos2D;
+import pangGuy.gui.ArpionImageLoader;
 import pangGuy.gui.PangGuyImageLoader;
 import pangGuy.gui.Shape;
+import pangGuy.modularGun.GunTypes;
 import pangGuy.utilities.Directions;
 
 public class VisualPanelTest extends JPanel {
@@ -24,17 +26,20 @@ public class VisualPanelTest extends JPanel {
     private List<Shape> shapes;
     private Shape hShape;
     private Directions dir;
+    private GunTypes gunType;
     private int width;
     private int height;
     ImageLoader iLoader;
+    private ArpionImageLoader aILoader;
     private PangGuyImageLoader heroILoader;
 
-    public VisualPanelTest(int width, int height, ImageLoader iLoader, PangGuyImageLoader heroILoader){
+    public VisualPanelTest(int width, int height, ImageLoader iLoader, PangGuyImageLoader heroILoader, ArpionImageLoader aILoader){
         super.setSize(width, height);
         this.width = width;
         this.height = height;
         this.iLoader = iLoader;
         this.heroILoader = heroILoader;
+        this.aILoader = aILoader;
     }
 
     public void paint(Graphics g){
@@ -51,8 +56,9 @@ public class VisualPanelTest extends JPanel {
             }
             if(this.shapes != null){
                 for(final var shape : shapes){
-                    g2.fillRect(shape.getPos().x, shape.getPos().y, shape.getDimensions().getX(), shape.getDimensions().getY());
+                    //g2.fillRect(shape.getPos().x, shape.getPos().y, shape.getDimensions().getX(), shape.getDimensions().getY());
                     //System.out.println(shape);
+                    g2.drawImage(this.aILoader.getArpionSprites(this.gunType).get(0), shape.getPos().x, shape.getPos().y, this);
                 }
             }
             if(this.hShape != null){
@@ -63,11 +69,12 @@ public class VisualPanelTest extends JPanel {
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir){
+    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir, GunTypes type){
         positions = pos;
         shapes = aShapes;
         this.hShape = hShape;
         this.dir = dir;
+        this.gunType = type;
         repaint();
     }
 
