@@ -6,8 +6,23 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * If the MainImageLoader fails, this class loads a BufferedImage.
+ * 
+ * @param imageFilePath (String) Full path and file name of the image to load.
+ * 
+ * @return (BufferedImage) the desired image.
+ */
 public class SecondaryImagesLoader {
 
+	/**
+	 * This method uses FindDirectory to search for the desired image.
+	 * 
+	 * @param resourceName
+	 * 			the name of the image to load complete of the format specifier.
+	 * @return
+	 * 			the desired image.
+	 */
 	public BufferedImage load(String resourceName) {
 		String imageFilePath = FindDirectory.find(resourceName).toString();
 		BufferedImage image = null;

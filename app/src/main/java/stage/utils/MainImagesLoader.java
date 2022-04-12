@@ -6,8 +6,20 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * This utility has the purpose of loading the desired image.
+ */
 public class MainImagesLoader {
 	
+	/**
+	 * This method looks for the image in the bin directory,
+     * if this isn't in this directory it calls SecondaryImagesLoader.\
+	 * 
+	 * @param resourceName
+	 * 			the name of the image to look for.
+	 * @return
+	 * 			the image.
+	 */
 	public BufferedImage load(String resourceName) {
 		BufferedImage image = null;
 		SecondaryImagesLoader imagesLoader = new SecondaryImagesLoader();
