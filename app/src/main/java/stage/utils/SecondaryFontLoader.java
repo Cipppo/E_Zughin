@@ -1,21 +1,3 @@
-/**
- * Loads a Font file and returns it as a Font Object.
- * 
- * @param fontFilePath (String) Full path and file name of the font to load.<br>
- * 
- * @param fontStyle (Integer) The Font Style to use for the loaded font, for 
- * example:<pre>
- * 
- *      Font.PLAIN
- *      Font.BOLD
- *      Font.ITALIC
- *      Font.BOLDITALIC</pre>
- * 
- * @param fontSize (Integer) The desired size of font.<br>
- * 
- * @return (Font) A Font Object
- */
-
 package stage.utils;
 
 import java.awt.Font;
@@ -25,18 +7,48 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * If the MainFontLoader fails, this class loads a Font file and returns it as a Font Object.
+ * 
+ * @param fontFilePath (String) Full path and file name of the font to load.
+ * 
+ * @param fontStyle (Integer) The Font Style to use for the loaded font, for 
+ * example:
+ * 
+ *      Font.PLAIN
+ *      Font.BOLD
+ *      Font.ITALIC
+ *      Font.BOLDITALIC
+ * 
+ * @param fontSize (Integer) The desired size of font.
+ * 
+ * @return (Font) A Font Object
+ */
 public class SecondaryFontLoader {
 	
 	private final int fontSizePercentage;
 	
+    /**
+     * This constructor make the user chose a font size.
+     * @param fontSizePercentage
+     *          the font size to associate to the font.
+     */
 	public SecondaryFontLoader(int fontSizePercentage) {
 		this.fontSizePercentage = fontSizePercentage;
 	}
 	
+    /**
+     * This contructor set the font size percentage to the default (2).
+     */
 	public SecondaryFontLoader() {
 		this.fontSizePercentage = 2;
 	}
 
+    /**
+     * This method uses FindDirectory to search for the "Retro Gaming.ttf" font.
+     * @return
+     *      the desired font.
+     */
     public Font load() {
         String fontFilePath = FindDirectory.find("Retro Gaming.ttf").toString();
         int fontStyle = Font.BOLD;

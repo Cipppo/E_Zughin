@@ -7,7 +7,11 @@ import ball.physics.Dimensions;
 import ball.physics.SpherePos2D;
 
 /**
- * This class should handle Thread support and all calculus needed to update position;
+ * This class has the job to wrap the concept of a {@linkplain ball.ballAgent.Ball}. 
+ * This class create a ball and stores all its values. It has also
+ * the job to constantly update the ball position, and it offers a 
+ * variety of method to change the status and the behaviour of the 
+ * ball.
  */
 public class BallAgent extends Thread {
     private final Ball ball;
@@ -16,7 +20,6 @@ public class BallAgent extends Thread {
 
     public BallAgent() {
         this.ball = BallFactory.randomPos();
-        //this.ball = BallFactory.moonBall();
         this.stop = false;
         this.paused = false;
     }
@@ -31,7 +34,7 @@ public class BallAgent extends Thread {
         try {
             while(!this.stop) {
                 while(this.paused) {
-                    Thread.sleep(20);//Don't know now how to handle this, tried to reduce CPU bounding as much as possibile
+                    Thread.sleep(20);
                 }
                 this.ball.updatePos();
                 Thread.sleep(15);
@@ -50,8 +53,17 @@ public class BallAgent extends Thread {
     }
 
     /**
+     * This method duplicate the current ball into other 2 child balls.
+     * The new Balls will have same parameter as this ball, except:
+     * <ul>
+     * <li>the first ball will have inverted x velocity</li>
+     * <li>new balls will have different dimension (depend on the {@link Dimensions})</li>
+     * </ul>
      * 
-     * @return List<Ball> of the two childern Ball.
+     * The expected behaviour is that, when this method is called, the ball creates 
+     * two other balls, one goes to the left, and the other goes to the right.
+     * 
+     * @return Two childern Ball.
      * 
      * @throws IllegalStateException if the ball isn't splittable;
      */
@@ -73,21 +85,36 @@ public class BallAgent extends Thread {
         return BallFactory.fromFatherBall(this.ball);
     }
 
-    public synchronized void pause() {
-        this.paused = true;
-    }
     /**
-     * Maybe try to implement a version with a specific time to wait before resuming;
-     * it comes useful in the implementation of a Pause Menu and a 3-2-1 timer when closing.
+     * Pause the ball if not already paused
+     */
+    public synchronized void pause() {
+        if (!this.paused) {
+            this.paused = true;
+        }
+    }
+    
+    /**
+     * Restart the ball if was paused
      */
     public synchronized void restart() {
-        this.paused = false;
+        if (this.paused) {
+            this.paused = false;
+        }
     }
 
-    public void applyConstraints(double d, Boundary x0) {
-        this.ball.applyConstraints(d, x0);
+    /**
+     * 
+     * @param position the new position of the ball
+     * @param bound the stage boundary where the ball crashed into (X0, X1, Y0, Y1).
+     */
+    public void applyConstraints(double position, Boundary bound) {
+        this.ball.applyConstraints(position, bound);
     }
 
+    /**
+     * @return the size of the ball (diameter)
+     */
     public synchronized int getSize() {
         return this.ball.getSize();
     }

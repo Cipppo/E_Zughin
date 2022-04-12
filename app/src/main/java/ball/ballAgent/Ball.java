@@ -16,8 +16,13 @@ public class Ball implements Entity {
     private final double gravity;
     private final int size;
     
-    
-    public Ball(Trajectory trajectory, SpherePos2D position, double gravity) {
+    /**
+     * Constructor used and called only from the factory in this same package.
+     * @param trajectory
+     * @param position
+     * @param gravity
+     */
+    protected Ball(Trajectory trajectory, SpherePos2D position, double gravity) {
     	this.trajectory = trajectory;
     	this.actualPosition = position;
     	this.initialPosition = new SpherePos2D(position.x, position.y, position.getDimension());
@@ -26,21 +31,40 @@ public class Ball implements Entity {
         this.size = this.getPosition().getDiameter();
     }
 
+    /**
+     * Updates the position of the ball, basing the calculations on Projectile Motion'sequations.
+     */
     public synchronized void updatePos() {
         time.inc(0.09);
         this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.getX();
         this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.getY() 
                                                             - (0.5*gravity*Math.pow(this.time.getY(), 2)));
-        //System.out.println(this.actualPosition);
     }
 
-    public synchronized void applyConstraints(double bound, Boundary axis) {
-        if (axis == Boundary.Y0 || axis == Boundary.Y1) {
-            this.initialPosition.y = bound;
+    /**
+     * Whenever the ball hits a wall, this method will be called.
+     * It's necessary to pass as argument a postion (double beetween -1 and 1)
+     * because floating point precision cause bad bugs when displaying 
+     * the ball bouncing in wall. In {@link ball.controller.ConstraintCheck#checkConstraints(BallAgent)}
+     * there are small variations in X1 and Y1 axis and thanks to those values, when hitting the wall
+     * the transition in the other direction is smoother.
+     * 
+     * NOTE: In MacOS Y1 limit is below the frame of the gui, and for avoiding seeing the ball
+     * disappear under the Y1 boundary, i've added a bigger offset than X1.
+     * 
+     * @param position
+     *          the position that the ball need to occupy in this moment.
+     * @param bound
+     *          Y or X boundary, needed by this method to determinate wich velocity 
+     *              (Horizontal or Vertical) to invert.
+     */
+    public synchronized void applyConstraints(double position, Boundary bound) {
+        if (bound == Boundary.Y0 || bound == Boundary.Y1) {
+            this.initialPosition.y = position;
             this.time.resetY();
             this.velocity.vy = -this.velocity.vy;
         } else {
-            this.initialPosition.x = bound;
+            this.initialPosition.x = position;
             this.time.resetX();
             this.velocity.vx = -this.velocity.vx;
         }
