@@ -16,11 +16,12 @@ public class ConstraintCheck {
     }
 
     /**
-     * Valori empirici
+     * Check collisions beetween balls and walls.
+     * Expecially in X0 and Y1 there are offsets, due to strange behaviour
+     * of swing graphical interface (and MacOS).
+     * 
      * @param t
-     *          the ball to check
-     * @param diameter
-     *          of the ball in pixels
+     *          the ball to check 
      */
     public void checkConstraints(BallAgent t) {
         final var x =  (t.getBallPosition().x * this.width);
@@ -38,6 +39,7 @@ public class ConstraintCheck {
     }
 
     /**
+     * Checks wether a ball hits a {@link pangGuy.gui.Shape} or not.
      * 
      * @param entity
      *          rectangular shaped entity
