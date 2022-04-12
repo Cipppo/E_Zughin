@@ -15,6 +15,7 @@ import pangGuy.gui.Shape;
  *      <li>Checks if balls are touching frame borders using a {@link ball.controller.ConstraintCheck} </li>
  *      <li>Expose duplication method to other class in case there is a collison with an enemy</li>
  *      <li>Expose pausing/resuming methods in case of game interruptions</li>
+ * </ul>
  */
 public class Runner extends Thread {
     private final CopyOnWriteArrayList<BallAgent> balls;

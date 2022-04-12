@@ -21,7 +21,7 @@ public interface UpdateableVisual {
      * @param position
      *      a list of spherical position (the balls)
      */
-    void updatePosition(List<SpherePos2D> pos);
+    void updatePosition(List<SpherePos2D> position);
 
     /**
      * Getter for game frame size.

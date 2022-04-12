@@ -43,7 +43,7 @@ public class Ball implements Entity {
 
     /**
      * Whenever the ball hits a wall, this method will be called.
-     * It's necessary to pass as argument a postion (-1 < position < 1)
+     * It's necessary to pass as argument a postion (double beetween -1 and 1)
      * because floating point precision cause bad bugs when displaying 
      * the ball bouncing in wall. In {@link ball.controller.ConstraintCheck#checkConstraints(BallAgent)}
      * there are small variations in X1 and Y1 axis and thanks to those values, when hitting the wall
