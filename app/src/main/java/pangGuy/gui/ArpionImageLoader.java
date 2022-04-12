@@ -19,6 +19,7 @@ public class ArpionImageLoader {
     public ArpionImageLoader(){
         this.fillImagesCache(GunTypes.ARPION);
         this.fillImagesCache(GunTypes.STICKY_ARPION);
+        this.fillImagesCache(GunTypes.DOUBLE_ARPION);
     }
 
     private void fillImagesCache(GunTypes gun){
@@ -45,7 +46,9 @@ public class ArpionImageLoader {
                 temp.add("StickyArpion1.png");
                 temp.add("StickyArpion2.png");
                 break;
-            default:
+            case DOUBLE_ARPION:
+                temp.add("LongArpion.png");
+                temp.add("Arpion2.png");
                 break;   
         }
         return temp;
