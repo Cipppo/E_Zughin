@@ -4,13 +4,14 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JPanel;
+
 import bird.gui.BirdActor;
 import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
 import bird.gui.BirdShape;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
-import stage.components.MainPanel;
 
 public class BirdVisual extends Thread{
 
@@ -23,7 +24,7 @@ public class BirdVisual extends Thread{
     private static final int STARTY = 0;
 
     private final Random random = new Random();
-    private final MainPanel panel;
+    private final JPanel panel;
     private BirdShape shape;
     private BirdMover mover;
     private BirdActor actor;
@@ -35,7 +36,7 @@ public class BirdVisual extends Thread{
                                     new Pair<Integer, Integer>(0, SIZEY));
 
 
-    public BirdVisual(MainPanel panel) {
+    public BirdVisual(JPanel panel) {
         this.panel = panel;
     }
     
