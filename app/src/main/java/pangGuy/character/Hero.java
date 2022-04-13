@@ -16,12 +16,14 @@ public class Hero {
     private Directions direction;
     private GunSet gSet;
     private heroStatus status;
+    private int lives;
 
     public Hero(){
         this.pos = new Pos2D(0, 0);
         this.direction = Directions.LEFT;
         this.gSet = new GunSet();
         this.status = heroStatus.NEUTRAL;
+        this.lives = 3;
     }
 
     private void updateDirection(Directions dir){
@@ -54,11 +56,13 @@ public class Hero {
     }
 
     public void hit(){
-        this.status = heroStatus.HIT;
-        System.out.println(this.status);
-        Timer timer = new Timer();
-        TimerTask hitCond = new hitCondition(this.status);
-        timer.schedule(hitCond, HIT_WAIT * 1000);
+        if(this.status == heroStatus.NEUTRAL){
+            this.status = heroStatus.HIT;
+            System.out.println(this.status);
+            Timer timer = new Timer();
+            TimerTask hitCond = new hitCondition(this.status);
+            timer.schedule(hitCond, HIT_WAIT * 1000);
+        }
     }
 
 }
