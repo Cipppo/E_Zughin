@@ -56,12 +56,15 @@ public class Hero {
     }
 
     public void hit(){
+        System.out.println("Hit " + this.status);
         if(this.status == heroStatus.NEUTRAL){
             this.status = heroStatus.HIT;
             System.out.println(this.status);
             Timer timer = new Timer();
             TimerTask hitCond = new hitCondition(this.status);
             timer.schedule(hitCond, HIT_WAIT * 1000);
+            this.lives--;
+            System.out.println(this.lives);
         }
     }
 
