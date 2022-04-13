@@ -4,14 +4,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicArrowButton;
+
 import javax.swing.JButton;
 import pangGuy.modularGun.GunSet;
+import pangGuy.utilities.Pair;
+import pangGuy.utilities.Pos2D;
 import powerUp.Bomb;
 import powerUp.DoubleGun;
+import powerUp.PowerUp;
 import powerUp.StickyArpion;
 import powerUp.TimeFreeze;
-
+import powerUp.PowerUpEntity;
 import java.awt.Color;
+import pangGuy.gui.Shape;
 
 @SuppressWarnings("unused")
 public class ControlPanelTest extends JFrame {
@@ -29,7 +34,7 @@ public class ControlPanelTest extends JFrame {
 
     private JPanel panel = new JPanel();
 
-    private final JButton duplicateB = new JButton("Balls Freeze");
+    private final JButton bFreeze = new JButton("Balls Freeze");
     private final JButton bomb = new JButton("Bomb");
 
     public ControlPanelTest(GuiTest gui){
@@ -51,13 +56,19 @@ public class ControlPanelTest extends JFrame {
             new Banner(this.jb2).start();
         });
 
-        this.duplicateB.addActionListener(t -> {
-            new TimeFreeze(this.gui.bRunner).start();
+        this.bFreeze.addActionListener(t -> {
+            PowerUp timeFreeze = new TimeFreeze(this.gui.bRunner);
+            PowerUpEntity Tf =  new PowerUpEntity(timeFreeze, new Shape(new Pos2D(0, 0), 40, 40));
+            Tf.activate();
         });
+
         this.bomb.addActionListener(t -> {
-            new Bomb(this.gui.bRunner).activate();
+            PowerUp bomb = new Bomb(this.gui.bRunner);
+            PowerUpEntity bomba = new PowerUpEntity(bomb, new Shape(new Pos2D(0, 0), 40, 40));
+            bomba.activate();
         });
-        this.panel.add(this.duplicateB);
+
+        this.panel.add(this.bFreeze);
         this.panel.add(this.bomb);
 
 
