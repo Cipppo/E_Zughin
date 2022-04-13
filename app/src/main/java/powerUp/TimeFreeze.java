@@ -3,7 +3,10 @@ package powerUp;
 import ball.controller.Runner;
 
 /**
- * This class Models the TimeFreeze PowerUP.
+ * TimeFreeze implements {@link powerUp.PowerUp}, and this item
+ * freeze/stop all the balls in the current game for 5 seconds. 
+ * When {@link pangGuy.character.Hero} hits a frozen ball, the two children 
+ * ball will not be affected by this powerup.
  */
 public class TimeFreeze extends Thread implements PowerUp {
     private int duration;
@@ -11,7 +14,7 @@ public class TimeFreeze extends Thread implements PowerUp {
     private boolean isActivated;
     private final Runner context;
     
-    public TimeFreeze (Runner context) {
+    public TimeFreeze(Runner context) {
         this.isActivated = false;
         this.timeElapsed = 0;
         this.context = context;
