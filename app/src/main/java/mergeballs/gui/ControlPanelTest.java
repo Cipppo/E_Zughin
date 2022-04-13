@@ -3,10 +3,13 @@ package mergeballs.gui;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.JButton;
 import pangGuy.modularGun.GunSet;
+import powerUp.Bomb;
 import powerUp.DoubleGun;
 import powerUp.StickyArpion;
+import powerUp.TimeFreeze;
 
 import java.awt.Color;
 
@@ -25,6 +28,9 @@ public class ControlPanelTest extends JFrame {
     private JLabel label = new JLabel("Status");
 
     private JPanel panel = new JPanel();
+
+    private final JButton duplicateB = new JButton("Balls Freeze");
+    private final JButton bomb = new JButton("Bomb");
 
     public ControlPanelTest(GuiTest gui){
         this.gui = gui;
@@ -45,6 +51,14 @@ public class ControlPanelTest extends JFrame {
             new Banner(this.jb2).start();
         });
 
+        this.duplicateB.addActionListener(t -> {
+            new TimeFreeze(this.gui.bRunner).start();
+        });
+        this.bomb.addActionListener(t -> {
+            new Bomb(this.gui.bRunner).activate();
+        });
+        this.panel.add(this.duplicateB);
+        this.panel.add(this.bomb);
 
 
         this.panel.add(jb);
@@ -53,12 +67,8 @@ public class ControlPanelTest extends JFrame {
         this.panel.add(jb4);
         this.getContentPane().add(this.panel);
         
-        
-
         this.setVisible(true);
-
     }
-
         
     private class Banner extends Thread{
         
