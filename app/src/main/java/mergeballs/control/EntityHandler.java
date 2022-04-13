@@ -46,7 +46,8 @@ public class EntityHandler extends Thread {
                     }
 
                     if (this.checker.checkEnemyCollision(this.frame.getHero().getShape(), t)) {
-                        System.out.println("HERO HIT!!! YOU LOSE!!!!!!!!");
+                        //System.out.println("HERO HIT!!! YOU LOSE!!!!!!!!");
+                        this.hero.hit();
                     }
 
                     this.frame.updatePosition(this.ballRunner
