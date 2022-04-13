@@ -11,9 +11,9 @@ public class Bomb {
     }
 
     public void activate() {
-        context.getBalls().forEach(t -> {
+        this.context.getBalls().forEach(t -> {
             if (!t.getBallPosition().getDimension().equals(Dimensions.GRANDSON)) {
-                t.duplicate();
+                this.context.duplication(t);
             }
         });
     }
