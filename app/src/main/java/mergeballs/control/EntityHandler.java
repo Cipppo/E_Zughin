@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 
 import ball.controller.ConstraintCheck;
 import mergeballs.gui.VisualTest;
-
+import pangGuy.character.Hero;
 import pangGuy.modularGun.GunSet;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.StepsApplier;
@@ -17,13 +17,14 @@ public class EntityHandler extends Thread {
     private final Runner ballRunner;
     private final GunSet gSet;
     private final StepsApplier stepsConv;
+    private final Hero hero;
     
-    public EntityHandler(VisualTest frame, GunSet gSet) {
+    public EntityHandler(VisualTest frame, GunSet gSet, Hero hero) {
         this.frame = frame;
         this.checker = new ConstraintCheck(this.frame.getBounds().getX(),
                                             this.frame.getBounds().getY());
         this.ballRunner = new Runner(5, this.checker);
-
+        this.hero = hero;
         this.gSet = gSet;
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
     }
@@ -52,7 +53,7 @@ public class EntityHandler extends Thread {
                                 .getBalls()
                                 .stream()
                                 .map(s -> s.getBallPosition())
-                                .collect(Collectors.toList()));
+                                .collect(Collectors.toList()), this.hero.getDirection());
                 });
                 
                 Thread.sleep(10);
