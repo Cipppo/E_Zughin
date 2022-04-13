@@ -63,4 +63,12 @@ public class EntityHandler extends Thread {
             }
         }
     }
+
+    /**
+     * Temporary method for returning ball handler (used by powerups)
+     * @return the ball handler
+     */
+    public synchronized Runner getRunner() {
+        return this.ballRunner;
+    }
 }
