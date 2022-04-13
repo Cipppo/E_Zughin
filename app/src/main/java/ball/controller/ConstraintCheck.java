@@ -85,4 +85,17 @@ public class ConstraintCheck {
         var cornerDistance_sq = Math.hypot(circleDistance.getX() - rectWidht / 2, circleDistance.getY() - rectWidht / 2);
         return (cornerDistance_sq <= (Math.pow(ball.getDiameter() / 2, 2)));
     }
+
+    public static boolean checkShapeCollsion(Shape a, Shape b) {
+        var aBottomLeft = new Pair<Integer>(a.getPos().x, a.getPos().y + a.getDimensions().getY());
+        var aTopRight = new Pair<Integer>(a.getPos().x + a.getDimensions().getX(), a.getPos().y);
+
+        var bBottomLeft = new Pair<Integer>(b.getPos().x, b.getPos().y + b.getDimensions().getY());
+        var bTopRight = new Pair<Integer>(b.getPos().x + b.getDimensions().getX(), b.getPos().y);
+ 
+        return (aBottomLeft.getX() < bTopRight.getX()) 
+            && (bBottomLeft.getX() < aTopRight.getX()) 
+            && (aBottomLeft.getY() < bTopRight.getY()) 
+            && (bBottomLeft.getY() < aTopRight.getY());
+    }
 }
