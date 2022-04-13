@@ -34,14 +34,13 @@ public class DoubleGun extends Thread implements PowerUp{
     }
 
     @Override
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    @Override
     public boolean isActive() {
         return this.timeElapsed == this.duration;
     }
 
+    @Override
+    public void activate() {
+        this.start();
+    }
     
 }

@@ -36,17 +36,13 @@ public class StickyArpion extends Thread implements PowerUp{
         this.timeElapsed = 0;
     }
 
-
-
-    @Override
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
     @Override
     public boolean isActive() {
         return this.timeElapsed == this.duration;
     }
     
-    
+    @Override
+    public void activate() {
+        this.start();
+    }
 }

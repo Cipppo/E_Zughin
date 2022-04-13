@@ -15,12 +15,7 @@ public class TimeFreeze extends Thread implements PowerUp {
         this.isActivated = false;
         this.timeElapsed = 0;
         this.context = context;
-        this.duration = 3; //default value
-    }
-
-    @Override
-    public void setDuration(final int duration) {
-        this.duration = duration;
+        this.duration = 5; //default value
     }
 
     @Override
@@ -48,6 +43,11 @@ public class TimeFreeze extends Thread implements PowerUp {
 
     private boolean isRunning() {
         return this.duration == this.timeElapsed;
+    }
+
+    @Override
+    public void activate() {
+        this.start();
     }
 }
 
