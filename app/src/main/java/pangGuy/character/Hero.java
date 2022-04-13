@@ -56,7 +56,6 @@ public class Hero {
     }
 
     public void hit(){
-        System.out.println("Hit " + this.status);
         if(this.status == heroStatus.NEUTRAL){
             this.status = heroStatus.HIT;
             System.out.println(this.status);
