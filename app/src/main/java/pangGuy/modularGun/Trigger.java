@@ -65,8 +65,6 @@ public class Trigger extends Thread{
             }
 
             this.arpion.restore();
-            System.out.println(this.arpion.getStatus());
-            //this.arpion.unlock();
             this.visual.restoreBullet(arpionComponent, new Pos2D(stepConverter.convertHeroPosition(this.hero.getPosition()).x, maxYValue - yvalue), this.hero.getDirection());
             
             

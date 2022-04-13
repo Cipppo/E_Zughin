@@ -92,7 +92,6 @@ public class GunSet{
 
     public Optional<Bullet> getBulletFromSteps(int steps){
         for(Bullet i : this.arpions){
-            System.out.println("Found steps: " + i.getStepsDone());
             if(i.getStepsDone() == steps){
                 return Optional.of(i);
             }
