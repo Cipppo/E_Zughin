@@ -132,9 +132,9 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     }
     
     @Override
-    public void updatePosition(List<SpherePos2D> pos){
+    public void updatePosition(List<SpherePos2D> pos, Directions dir){
         var shapes = this.getArpionsShapes();
-        panel.updatePositions(pos, shapes, this.hero.getShape(), this.arpions.get(0).getDirection(), this.arpions.get(0).gType());
+        panel.updatePositions(pos, shapes, this.hero.getShape(), dir, this.arpions.get(0).gType());
     }
 
     @Override
