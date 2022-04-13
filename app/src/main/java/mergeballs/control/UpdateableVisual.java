@@ -5,6 +5,7 @@ import java.util.List;
 import ball.physics.SpherePos2D;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.HeroComponent;
+import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.Pos2D;
 /**
@@ -20,8 +21,10 @@ public interface UpdateableVisual {
      * aprions, balls and hero position.
      * @param position
      *      a list of spherical position (the balls)
+     * @param dir 
+     *      the direction of the main character
      */
-    void updatePosition(List<SpherePos2D> position);
+    void updatePosition(List<SpherePos2D> position, Directions dir);
 
     /**
      * Getter for game frame size.
