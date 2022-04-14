@@ -50,7 +50,6 @@ public class EntityHandler extends Thread {
                     }
 
                     if (this.checker.checkEnemyCollision(this.frame.getHero().getShape(), t)) {
-                        //System.out.println("HERO HIT!!! YOU LOSE!!!!!!!!");
                         this.hero.hit();
                     }
 
@@ -60,6 +59,7 @@ public class EntityHandler extends Thread {
                                 .map(s -> s.getBallPosition())
                                 .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup());
                 });
+
                 if (this.pUpHandler.getPowerup().isPresent()) {
                     var powerUp = this.pUpHandler.getPowerup().get();
                     if (powerUp.isPickedUp(this.frame.getHero())) {
@@ -67,19 +67,10 @@ public class EntityHandler extends Thread {
                         powerUp.activate();
                     }
                 }
-                
                 Thread.sleep(10);
             } catch (Exception e) {
                 //Catching Thread Exceptions
             }
         }
-    }
-
-    /**
-     * Temporary method for returning ball handler (used by powerups)
-     * @return the ball handler
-     */
-    public synchronized Runner getRunner() {
-        return this.ballRunner;
     }
 }
