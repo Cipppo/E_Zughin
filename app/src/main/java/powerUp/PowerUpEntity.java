@@ -14,4 +14,8 @@ public class PowerUpEntity extends Pickable {
     public void activate() {
         this.powerUp.activate();
     }
+
+    public PowerUp getPowerUp(){
+        return this.powerUp;
+    }
 }
