@@ -1,6 +1,7 @@
 package mergeballs.control;
 
 import java.util.List;
+import java.util.Optional;
 
 import ball.physics.SpherePos2D;
 import pangGuy.gui.ArpionComponent;
@@ -8,6 +9,7 @@ import pangGuy.gui.HeroComponent;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.Pos2D;
+import powerUp.PowerUpEntity;
 /**
  * Models a controller that stores arpions, the Hero and all their informations.
  * The class that implement this interface will be used by a ball handler, that
@@ -23,8 +25,10 @@ public interface UpdateableVisual {
      *      a list of spherical position (the balls)
      * @param dir 
      *      the direction of the main character
+     * @param pUp
+     *      the powerup which we are gonna display
      */
-    void updatePosition(List<SpherePos2D> position, Directions dir);
+    void updatePosition(List<SpherePos2D> position, Directions dir, Optional<PowerUpEntity> pUp);
 
     /**
      * Getter for game frame size.
