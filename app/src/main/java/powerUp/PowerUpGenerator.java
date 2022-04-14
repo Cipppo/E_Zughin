@@ -22,7 +22,7 @@ public class PowerUpGenerator {
 
     private int getRandomInt(){
         Random rand = new Random();
-        return rand.nextInt(5);
+        return rand.nextInt(4);
     }
 
     public PowerUp getRandomPowerUp(){
