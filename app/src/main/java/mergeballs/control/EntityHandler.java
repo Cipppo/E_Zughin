@@ -60,7 +60,7 @@ public class EntityHandler extends Thread {
                                 .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup());
                 });
 
-                if (this.pUpHandler.getPowerup().isPresent()) {
+                if (this.pUpHandler.getPowerup().isPresent() && !this.pUpHandler.getPowerup().get().isAlreadyPickedUp()) {
                     var powerUp = this.pUpHandler.getPowerup().get();
                     if (powerUp.isPickedUp(this.frame.getHero())) {
                         System.out.println("Hero Picked Up item");
