@@ -26,4 +26,8 @@ public class BirdRunner extends Thread{
             }
         }
     }
+
+    public BirdVisual getBirdVisual() {
+        return this.bird;
+    }
 }
