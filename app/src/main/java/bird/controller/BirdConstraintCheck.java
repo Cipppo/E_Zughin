@@ -7,6 +7,16 @@ import pangGuy.gui.Shape;
 
 public class BirdConstraintCheck {
 
+    /**
+     * Checks wether the bird hits a {@link pangGuy.gui.Shape} or not.
+     * 
+     * @param entity
+     *          rectangular shaped entity
+     * @param bird 
+     *          bird shaped entity
+     * @return
+     *          true if the two enemies collides
+     */
     public boolean checkEnemyCollision(Shape entity, BirdActor bird) {
         return isCollision(bird.getShape(), entity);
     }

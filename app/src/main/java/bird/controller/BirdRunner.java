@@ -5,6 +5,9 @@ import javax.swing.JPanel;
 import bird.utilities.BirdVisual;
 import pangGuy.gui.Shape;
 
+/**
+ * Run the birdVisual thread and check if there are collisions between enemies.
+ */
 public class BirdRunner extends Thread{
     private final BirdVisual bird;
     private final BirdConstraintCheck checker;
