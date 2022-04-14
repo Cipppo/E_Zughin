@@ -34,9 +34,6 @@ public class ControlPanelTest extends JFrame {
 
     private JPanel panel = new JPanel();
 
-    private final JButton bFreeze = new JButton("Balls Freeze");
-    private final JButton bomb = new JButton("Bomb");
-
     public ControlPanelTest(GuiTest gui){
         this.gui = gui;
         this.gSet = gui.hero.getGset();
@@ -55,21 +52,6 @@ public class ControlPanelTest extends JFrame {
             new StickyArpion(this.gSet).start();
             new Banner(this.jb2).start();
         });
-
-        this.bFreeze.addActionListener(t -> {
-            PowerUp timeFreeze = new TimeFreeze(this.gui.bRunner);
-            PowerUpEntity Tf =  new PowerUpEntity(timeFreeze, new Shape(new Pos2D(0, 0), 40, 40));
-            Tf.activate();
-        });
-
-        this.bomb.addActionListener(t -> {
-            PowerUp bomb = new Bomb(this.gui.bRunner);
-            PowerUpEntity bomba = new PowerUpEntity(bomb, new Shape(new Pos2D(0, 0), 40, 40));
-            bomba.activate();
-        });
-
-        this.panel.add(this.bFreeze);
-        this.panel.add(this.bomb);
 
 
         this.panel.add(jb);
