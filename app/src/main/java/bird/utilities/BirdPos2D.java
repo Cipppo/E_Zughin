@@ -1,5 +1,8 @@
 package bird.utilities;
 
+/**
+ * Expresses the position of the bird on the basis of the abscissas and ordinates
+ */
 public class BirdPos2D{
 
     public int x;

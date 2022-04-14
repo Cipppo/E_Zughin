@@ -7,6 +7,10 @@ import java.util.Map;
 import pangGuy.utilities.Pair;
 import stage.utils.MainImagesLoader;
 
+/**
+ * this class loads the image of given bird,
+ * and chaches the result of the loading;
+ */
 public class BirdPNGLoader {
     
     private Map<BirdDirections, Pair<BufferedImage, BufferedImage>> entries = new HashMap<>();

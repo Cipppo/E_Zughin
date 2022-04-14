@@ -13,6 +13,20 @@ import bird.gui.BirdShape;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
 
+/**
+ * The bird visualizer with all of the bird's rules.
+ * 
+ * @param SIZEX
+ *          width of the stage
+ * @param SIZEY
+ *          height of the stage
+ * @param WIDTH
+ *          width of the bird
+ * @param HEIGHT
+ *          height of the bird
+ * @param HUD_HEIGHT
+ *          height of the HUD, defining the ground level
+ */
 public class BirdVisual extends Thread{
 
     private static final int SIZEX = CenterOnDefaultScreen.center().width*70/100;
@@ -66,6 +80,11 @@ public class BirdVisual extends Thread{
         }
     }
 
+    /**
+     * Chooses a random direction to start the bird
+     * @return
+     *      the random direction
+     */
     public BirdDirections randomDirectionChooser() {
         if(random.nextInt(2) == 0) {
             return BirdDirections.RIGHT;
