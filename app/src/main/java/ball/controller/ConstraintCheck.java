@@ -98,4 +98,14 @@ public class ConstraintCheck {
             && (aBottomLeft.getY() < bTopRight.getY()) 
             && (bBottomLeft.getY() < aTopRight.getY());
     }
+
+    public static boolean checkItemPickUp(Shape hero, Shape item) {
+        return (hero.getPos().x < item.getPos().x && checkX(hero, item)) 
+                || (item.getPos().x < hero.getPos().x && checkX(item, hero));
+    } 
+
+    private static boolean checkX(Shape a, Shape b) {
+        return (a.getPos().x + a.getDimensions().getX() >= b.getPos().x);
+    }
+
 }
