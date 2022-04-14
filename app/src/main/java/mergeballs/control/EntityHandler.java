@@ -30,12 +30,12 @@ public class EntityHandler extends Thread {
         this.gSet = gSet;
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
         this.pUpHandler = new PowerUpHandler(gSet, this.ballRunner, this.frame.getBounds());
-        this.pUpHandler.start();
     }
 
     @Override
     public void run() {
         this.ballRunner.start();
+        this.pUpHandler.start();
         while(true) {
             try {
                 ballRunner.getBalls()
@@ -60,6 +60,13 @@ public class EntityHandler extends Thread {
                                 .map(s -> s.getBallPosition())
                                 .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup());
                 });
+                if (this.pUpHandler.getPowerup().isPresent()) {
+                    var powerUp = this.pUpHandler.getPowerup().get();
+                    if (powerUp.isPickedUp(this.frame.getHero())) {
+                        System.out.println("Hero Picked Up item");
+                        powerUp.activate();
+                    }
+                }
                 
                 Thread.sleep(10);
             } catch (Exception e) {
