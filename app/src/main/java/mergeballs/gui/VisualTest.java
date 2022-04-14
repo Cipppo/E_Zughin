@@ -8,6 +8,8 @@ import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.Pos2D;
+import powerUp.PowerUpEntity;
+import powerUp.PowerupImageLoader;
 
 import java.util.List;
 
@@ -30,9 +32,10 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     private final Pair<Integer, Integer> bounds;
     
     private VisualPanelTest panel;
-    private ImageLoader iLoader;
-    private PangGuyImageLoader heroILoader;
-    private ArpionImageLoader arpionILoader;
+    private final ImageLoader iLoader;
+    private final PangGuyImageLoader heroILoader;
+    private final ArpionImageLoader arpionILoader;
+    private final PowerupImageLoader pUpIl;
 
     private Pos2D startPos;
     //Maybe i have to give to this Hero in order to get all the possible status
@@ -43,7 +46,8 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         this.iLoader = new ImageLoader();
         this.heroILoader = new PangGuyImageLoader();
         this.arpionILoader = new ArpionImageLoader();
-        this.panel = new VisualPanelTest(width, height, iLoader, heroILoader, arpionILoader);
+        this.pUpIl = new PowerupImageLoader();
+        this.panel = new VisualPanelTest(width, height, iLoader, heroILoader, arpionILoader, pUpIl);
 
         this.startPos = startpos;
         this.hero = new HeroComponent(startpos);
@@ -132,9 +136,9 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     }
     
     @Override
-    public void updatePosition(List<SpherePos2D> pos, Directions dir){
+    public void updatePosition(List<SpherePos2D> pos, Directions dir, Optional<PowerUpEntity> pUp){
         var shapes = this.getArpionsShapes();
-        panel.updatePositions(pos, shapes, this.hero.getShape(), dir, this.arpions.get(0).gType());
+        panel.updatePositions(pos, shapes, this.hero.getShape(), dir, this.arpions.get(0).gType(), pUp);
     }
 
     @Override
