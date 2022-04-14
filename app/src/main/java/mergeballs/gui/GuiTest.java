@@ -31,8 +31,6 @@ public class GuiTest extends JFrame {
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
     private final EntityHandler handler = new EntityHandler(this.visual, this.hero.getGset(), this.hero);
-    
-    protected final Runner bRunner = this.handler.getRunner();// Temporay only for testing powerups
 
     private final ActionFactory factory = new ActionFactory();
 
