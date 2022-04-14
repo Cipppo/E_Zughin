@@ -86,7 +86,7 @@ public class BirdMovementUtils {
         }
     }
 
-    private final void removeActor() {
+    public final void removeActor() {
         panel.remove(this.actor);
         panel.repaint();
         Toolkit.getDefaultToolkit().sync();

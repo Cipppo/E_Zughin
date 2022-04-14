@@ -82,6 +82,10 @@ public class BirdVisual extends Thread{
         return this.startX;
     }
 
+    public BirdMovementUtils getMovementUtils() {
+        return this.movUtils;
+    }
+
     public void setPause() {
         if(this.pause) {
             this.pause = false;
