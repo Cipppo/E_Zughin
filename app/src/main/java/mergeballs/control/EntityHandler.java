@@ -8,6 +8,7 @@ import pangGuy.character.Hero;
 import pangGuy.modularGun.GunSet;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.StepsApplier;
+import powerUp.PowerUpHandler;
 import ball.controller.Runner;
 
 
@@ -18,6 +19,7 @@ public class EntityHandler extends Thread {
     private final GunSet gSet;
     private final StepsApplier stepsConv;
     private final Hero hero;
+    private final PowerUpHandler pUpHandler;
     
     public EntityHandler(VisualTest frame, GunSet gSet, Hero hero) {
         this.frame = frame;
@@ -27,6 +29,8 @@ public class EntityHandler extends Thread {
         this.hero = hero;
         this.gSet = gSet;
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
+        this.pUpHandler = new PowerUpHandler(gSet, this.ballRunner, this.frame.getBounds());
+        this.pUpHandler.start();
     }
 
     @Override
@@ -54,7 +58,7 @@ public class EntityHandler extends Thread {
                                 .getBalls()
                                 .stream()
                                 .map(s -> s.getBallPosition())
-                                .collect(Collectors.toList()), this.hero.getDirection());
+                                .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup());
                 });
                 
                 Thread.sleep(10);
