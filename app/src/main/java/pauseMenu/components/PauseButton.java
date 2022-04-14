@@ -9,35 +9,62 @@ import javax.swing.KeyStroke;
 
 import bird.utilities.BirdVisual;
 
+/**
+ * Pressing the Esc key, if the pause param is set to false, the PausePanel will be
+ * set to visible and the objects in the main panel will be paused and viceversa.
+ * 
+ * @param pause
+ *          variable to check if the games is in pause status or not.
+ */
 public class PauseButton {
 
     private boolean pause = false;
     
-    public PauseButton(JPanel mainPanel, JPanel pausePanel, BirdVisual visual) {
+    /**
+     * Contructor that trigger the Pause action.
+     * 
+     * @param mainPanel
+     *          panel that listen for the Esc input.
+     * @param pausePanel
+     *          the pause panel.
+     * @param bird
+     *          the bird object.
+     */
+    public PauseButton(JPanel mainPanel, JPanel pausePanel, BirdVisual bird) {
 
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
         mainPanel.getInputMap().put(escKey, "Esc");
         mainPanel.getActionMap().put("Esc", new AbstractAction(){
         	
-		private static final long serialVersionUID = -534997922777581539L;
+            private static final long serialVersionUID = -534997922777581539L;
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setVisibility(mainPanel, pausePanel, visual);
-        }
-    });
-}
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisibility(mainPanel, pausePanel, bird);
+            }
+        });
+    }
 
-    public void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdVisual visual) {
+    /**
+     * Method that trigger the pause for all the objects.
+     * 
+     * @param mainPanel
+     *          the panel where to add the pause panel.
+     * @param pausePanel
+     *          the panel to be add in the main panel.
+     * @param bird
+     *          the bird object to be stopped.
+     */
+    private void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdVisual bird) {
     	if(!pause){
             mainPanel.add(pausePanel);
             pausePanel.setVisible(true);
-            visual.setPause();
+            bird.setPause();
             pause = true;
         } else {
             mainPanel.remove(pausePanel);
             pausePanel.setVisible(false);
-            visual.setPause();
+            bird.setPause();
             pause = false;
         }
     }

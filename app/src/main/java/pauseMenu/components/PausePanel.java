@@ -10,11 +10,11 @@ import javax.swing.SwingConstants;
 
 import stage.utils.MainFontLoader;
 
+/**
+ * The pause panel that will be visible if the pause is triggered.
+ */
 public class PausePanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3943280654281528696L;
 	private final JLabel resumeLabel = new JLabel("ESC: RESUME", SwingConstants.CENTER);
 	private final JLabel exitLabel = new JLabel("ENTER: EXIT THE GAME", SwingConstants.CENTER);
