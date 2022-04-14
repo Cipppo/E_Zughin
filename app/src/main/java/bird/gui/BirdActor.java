@@ -8,7 +8,6 @@ import bird.utilities.BirdPos2D;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.Optional;
 
 public class BirdActor extends JLabel{
     
@@ -32,7 +31,7 @@ public class BirdActor extends JLabel{
 
         super.setLocation(pos.x, pos.y);
         this.s = new BirdShape(pos, this.s.getDimensions().getX(), 
-        this.s.getDimensions().getY(), Optional.of(this.getShape().getDireciton()));  
+        this.s.getDimensions().getY(), this.getShape().getDireciton());  
     }
 
     public BirdShape getShape(){

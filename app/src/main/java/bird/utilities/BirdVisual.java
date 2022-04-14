@@ -1,6 +1,5 @@
 package bird.utilities;
 
-import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -64,7 +63,7 @@ public class BirdVisual extends Thread{
             
             this.dir = this.randomDirectionChooser();
             this.startX = this.dir == BirdDirections.RIGHT ? 0 : SIZEX - WIDTH;
-            this.shape = new BirdShape(new BirdPos2D(startX, STARTY), WIDTH, HEIGHT, Optional.of(dir));
+            this.shape = new BirdShape(new BirdPos2D(startX, STARTY), WIDTH, HEIGHT, dir);
             this.actor = new BirdActor(this.shape);
             this.mover = new BirdMover(this.actor, bc);
             movUtils = new BirdMovementUtils(actor, panel, mover);
