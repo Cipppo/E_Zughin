@@ -29,7 +29,7 @@ public class SecondaryFontLoader {
 	private final int fontSizePercentage;
 	
     /**
-     * This constructor make the user chose a font size.
+     * This constructor make the user choose a font size.
      * @param fontSizePercentage
      *          the font size to associate to the font.
      */

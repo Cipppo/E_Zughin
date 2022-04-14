@@ -12,7 +12,7 @@ public class MainFontLoader {
 	private int fontSizePercentage;
 	
     /**
-     * This constructor make the user chose a font size percentage.
+     * This constructor make the user choose a font size percentage.
      * @param fontSizePercentage
      *          the font size percentage to associate to the font.
      */
