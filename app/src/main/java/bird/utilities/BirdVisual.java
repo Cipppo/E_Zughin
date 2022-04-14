@@ -54,6 +54,10 @@ public class BirdVisual extends Thread{
         this.panel = panel;
     }
     
+    /**
+     * While the game isn't in pause status,
+     * the bird waits for 5 to 15 seconds to appear and to start moving.
+     */
     @Override
     public void run() {
         while(!this.pause) {
@@ -93,18 +97,33 @@ public class BirdVisual extends Thread{
         }
     }
 
+    /**
+     * @return
+     *      the bird itself
+     */
     public BirdActor getActor() {
         return this.actor;
     }
 
+    /**
+     * @return
+     *      the start abscissa of this object
+     */
     public int getStartX() {
         return this.startX;
     }
 
+    /**
+     * @return
+     *      this bird movement utils
+     */
     public BirdMovementUtils getMovementUtils() {
         return this.movUtils;
     }
 
+    /**
+     * Trigger the pause for this object
+     */
     public void setPause() {
         if(this.pause) {
             this.pause = false;
