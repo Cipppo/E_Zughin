@@ -13,7 +13,7 @@ public class PowerUpHandler extends Thread{
 
     private static final int POWERUP_WIDTH = 17;
     private static final int POWERUP_HEIGHT = 17;
-    private static final int SPAWN_TIME = 5;
+    private static final int SPAWN_TIME = 10;
 
     private final PowerUpGenerator gen;
     private boolean stop;
@@ -32,6 +32,7 @@ public class PowerUpHandler extends Thread{
         while(!stop){
             try {
                 this.next = Optional.of(new PowerUpEntity(this.gen.getRandomPowerUp(), this.generateRandomShape()));
+                System.out.println("Spawned");
                 Thread.sleep(SPAWN_TIME * 1000);
             } catch (InterruptedException e) {
                 System.out.println("Thread.sleep() error: " + e.getMessage());
@@ -41,7 +42,7 @@ public class PowerUpHandler extends Thread{
 
     private Pos2D getRandomPos2D(){
         Random rand = new Random();
-        return new Pos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY());
+        return new Pos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 55);
     }
 
     private Shape generateRandomShape(){
@@ -52,7 +53,7 @@ public class PowerUpHandler extends Thread{
     public Optional<PowerUpEntity> getPowerup(){
         if(!this.next.isEmpty()){
             var buff = this.next;
-            this.next = Optional.empty();
+            //this.next = Optional.empty();
             return buff;
         }
         return Optional.empty();
