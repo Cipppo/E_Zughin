@@ -27,7 +27,7 @@ public abstract class Pickable {
      * @return true if the hero picked this item up
      */
     public boolean isPickedUp(HeroComponent hero) {
-        return ConstraintCheck.checkShapeCollsion(this.shape, hero.getShape());
+        return ConstraintCheck.checkItemPickUp(this.shape, hero.getShape());
     }
     
     public Shape getShape() {
