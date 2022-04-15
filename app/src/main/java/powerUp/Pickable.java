@@ -12,11 +12,9 @@ import pangGuy.gui.Shape;
  */
 public abstract class Pickable {
     private final Shape shape;
-    protected boolean isPickedUp;
 
     protected Pickable(Shape shape) {
         this.shape = shape;
-        this.isPickedUp = false;
     }
    
     /**
@@ -29,18 +27,10 @@ public abstract class Pickable {
      * @return true if the hero picked this item up
      */
     public boolean isPickedUp(HeroComponent hero) {
-        if (ConstraintCheck.checkItemPickUp(hero.getShape(), this.shape)) {
-            this.isPickedUp = true;
-            return true;
-        }
-        return false;
+        return ConstraintCheck.checkItemPickUp(hero.getShape(), this.shape);
     }
     
     public Shape getShape() {
         return this.shape;
-    }
-
-    public boolean isAlreadyPickedUp() {
-        return this.isPickedUp;
     }
 }
