@@ -25,7 +25,7 @@ public class EntityHandler extends Thread {
         this.frame = frame;
         this.checker = new ConstraintCheck(this.frame.getBounds().getX(),
                                             this.frame.getBounds().getY());
-        this.ballRunner = new Runner(5, this.checker);
+        this.ballRunner = new Runner(2, this.checker);
         this.hero = hero;
         this.gSet = gSet;
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
@@ -65,6 +65,7 @@ public class EntityHandler extends Thread {
                     if (powerUp.isPickedUp(this.frame.getHero())) {
                         System.out.println("Hero Picked Up item");
                         powerUp.activate();
+                        this.pUpHandler.resetPowerUp();
                     }
                 }
                 Thread.sleep(10);
