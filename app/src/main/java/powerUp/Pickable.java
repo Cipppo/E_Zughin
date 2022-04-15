@@ -29,7 +29,7 @@ public abstract class Pickable {
      * @return true if the hero picked this item up
      */
     public boolean isPickedUp(HeroComponent hero) {
-        if (ConstraintCheck.checkItemPickUp(this.shape, hero.getShape())) {
+        if (ConstraintCheck.checkItemPickUp(hero.getShape(), this.shape)) {
             this.isPickedUp = true;
             return true;
         }
