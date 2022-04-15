@@ -9,11 +9,10 @@ import pangGuy.utilities.Pair;
 public class BoundChecker {
 
     private Pair<Integer, Integer> x;
-    private Pair<Integer, Integer>  y;
 
-    public BoundChecker(Pair<Integer, Integer>  x, Pair<Integer, Integer>  y){
+
+    public BoundChecker(Pair<Integer, Integer>  x){
         this.x = x;
-        this.y = y;
     }
 
 
