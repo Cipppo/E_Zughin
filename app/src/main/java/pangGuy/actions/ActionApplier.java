@@ -16,7 +16,7 @@ public class ActionApplier{
 
     public ActionApplier(VisualInterface v, Hero h){
 
-        BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, v.getBounds().getX()), new Pair<Integer, Integer>(0, v.getBounds().getY()));
+        BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, v.getBounds().getX()));
         JPanel character = v.getVisualTest();
 
 
