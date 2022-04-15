@@ -1,6 +1,7 @@
 package stage.components;
 
 import javax.swing.JPanel;
+
 import java.awt.CardLayout;
 
 import bird.controller.BirdConstraintCheck;
@@ -27,6 +28,7 @@ public class MainPanel extends JPanel{
 		this.setLayout(new CardLayout());
 		new PauseButton(this, pausePanel, this.runner.getBirdVisual());
 		new ExitButton(this, pausePanel);
+		this.setVisible(true);
 	}
 
 	public BirdRunner getBirdRunner() {

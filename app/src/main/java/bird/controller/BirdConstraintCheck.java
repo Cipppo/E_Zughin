@@ -33,15 +33,18 @@ public class BirdConstraintCheck {
         birdDistance.setX(Math.abs(birdCenter.getX() - rectCenter.getY()));
         birdDistance.setY(Math.abs(birdCenter.getY() - rectCenter.getY()));
 
-        if(birdDistance.getX() > (rectWidht / + bird.getDimensions().getX() / 2)) {
+        if(birdDistance.getX() > (rectWidht / 2 + bird.getDimensions().getX() / 2)) {
+            System.out.println("NIENTE 1");
             return false;
         }
 
         if(birdDistance.getY() > (rectHeight / 2 + bird.getDimensions().getY() / 2)) {
+            System.out.println("NIENTE 2");
             return false;
         }
 
         if(birdDistance.getX() <= (rectWidht / 2) || birdDistance.getY() <= (rectHeight / 2)) {
+            System.out.println("PRESO");
             return true;
         }
 

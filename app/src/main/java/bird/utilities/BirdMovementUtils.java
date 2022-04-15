@@ -3,11 +3,14 @@ package bird.utilities;
 import javax.swing.JPanel;
 
 import bird.actions.BirdActionFactory;
+import bird.controller.BirdConstraintCheck;
 import bird.gui.BirdActor;
 import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
 import stage.utils.CenterOnDefaultScreen;
+import pangGuy.gui.Shape;
 import pangGuy.utilities.Pair;
+import pangGuy.utilities.Pos2D;
 
 import java.awt.Toolkit;
 
@@ -44,6 +47,8 @@ public class BirdMovementUtils {
     private final BirdBoundChecker bc = new BirdBoundChecker(new Pair<Integer, Integer>(0, SIZEX),
                                     new Pair<Integer, Integer>(0, SIZEY));
 
+    private final BirdConstraintCheck birdConsCheck = new BirdConstraintCheck();
+
     /**
      * Cuntructor that define the bird to move, the panel on which to move the bird
      * and the mover utility.
@@ -66,7 +71,7 @@ public class BirdMovementUtils {
      */
     public final void moveRight() {
         this.moveUp = false;
-        while(bird.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5) {
+        while(bird.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5 && bird.getParent() == panel) {
             this.doMovement(BirdDirections.RIGHT);
             this.moveVertically();
         }
@@ -78,7 +83,7 @@ public class BirdMovementUtils {
      */
     public final void moveLeft() {
         this.moveUp = false;
-        while(bird.getShape().getPos().x >= bc.getXPair().getX() + 5) {
+        while(bird.getShape().getPos().x >= bc.getXPair().getX() + 5 && bird.getParent() == panel) {
             this.doMovement(BirdDirections.LEFT);
             this.moveVertically();
         }
@@ -117,6 +122,9 @@ public class BirdMovementUtils {
                     this.actionFactory.getDownAction(this.mover);
                 } else if(dir == BirdDirections.UP) {
                     this.actionFactory.getUpAction(this.mover);
+                }
+                if(birdConsCheck.checkEnemyCollision(new Shape(new Pos2D(480, 475), 20, 30), bird)) {
+                    this.removeActor();
                 }
                 panel.repaint();
                 Toolkit.getDefaultToolkit().sync();
