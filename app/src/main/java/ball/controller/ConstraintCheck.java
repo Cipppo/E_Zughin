@@ -100,6 +100,7 @@ public class ConstraintCheck {
     }
 
     public static boolean checkItemPickUp(Shape hero, Shape item) {
+        System.out.println("Hero: " + hero.getPos() + "item: " + item.getPos());
         return (hero.getPos().x < item.getPos().x && checkX(hero, item)) 
                 || (item.getPos().x < hero.getPos().x && checkX(item, hero));
     } 
