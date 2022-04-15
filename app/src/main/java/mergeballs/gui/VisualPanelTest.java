@@ -67,7 +67,7 @@ public class VisualPanelTest extends JPanel {
             }
             if(!this.pUp.isEmpty()){
                 g2.drawImage(pUpImageLoader.getPowUpSprite(this.pUp.get().getPowerUp()).get(), this.pUp.get().getShape().getPos().x, this.pUp.get().getShape().getPos().y, this);
-                System.out.println("x" + pUp.get().getShape().getPos().x + "y" + pUp.get().getShape().getPos().x);
+                //System.out.println("x" + pUp.get().getShape().getPos().x + "y" + pUp.get().getShape().getPos().x);
             }
         }
         g2.dispose();
