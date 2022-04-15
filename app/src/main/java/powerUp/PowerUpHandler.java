@@ -59,6 +59,10 @@ public class PowerUpHandler extends Thread{
         return Optional.empty();
     }    
 
+    public void resetPowerUp(){
+        this.next = Optional.empty();
+    }
+
     public void terminate(){
         this.stop = true;
     }
