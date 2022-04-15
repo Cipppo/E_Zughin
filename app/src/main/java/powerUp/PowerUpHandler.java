@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.Random;
 
 import ball.controller.Runner;
+import pangGuy.gui.HeroComponent;
 import pangGuy.gui.Shape;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Pair;
@@ -40,17 +41,16 @@ public class PowerUpHandler extends Thread{
         }
     }
 
-    private Pos2D getRandomPos2D(){
+    private synchronized Pos2D getRandomPos2D(){
         Random rand = new Random();
         return new Pos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 55);
     }
 
-    private Shape generateRandomShape(){
-        
+    private synchronized Shape generateRandomShape(){
         return new Shape(this.getRandomPos2D(), POWERUP_WIDTH, POWERUP_HEIGHT);
     }
 
-    public Optional<PowerUpEntity> getPowerup(){
+    public synchronized Optional<PowerUpEntity> getPowerup(){
         if(!this.next.isEmpty()){
             var buff = this.next;
             //this.next = Optional.empty();
@@ -59,12 +59,18 @@ public class PowerUpHandler extends Thread{
         return Optional.empty();
     }    
 
-    public void resetPowerUp(){
+    public synchronized void checkItemTaken(HeroComponent hero) {
+        if (this.next.isPresent() && this.next.get().isPickedUp(hero)) {
+            this.next.get().activate();
+            this.resetPowerUp();
+        }
+    }
+
+    public synchronized void resetPowerUp(){
         this.next = Optional.empty();
     }
 
     public void terminate(){
         this.stop = true;
     }
-    
 }
