@@ -34,7 +34,7 @@ public class GuiTest extends JFrame {
 
     private final ActionFactory factory = new ActionFactory();
 
-    private BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, visual.getBounds().getX()), new Pair<Integer, Integer>(0, visual.getBounds().getY()));
+    private BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, visual.getBounds().getX()));
 
     public GuiTest() {
         this.setSize(WIDTH, HEIGHT);
