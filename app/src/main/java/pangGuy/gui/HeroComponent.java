@@ -1,7 +1,7 @@
 package pangGuy.gui;
 
 
-import pangGuy.utilities.Pos2D;
+import mergeballs.utilities.EntityPos2D;
 
 /**
  * This class models a character in the space and keeps track of his position
@@ -20,7 +20,7 @@ public class HeroComponent {
      * given the startPosition in the GUI.
      * @param startPos
      */
-    public HeroComponent(Pos2D startPos){
+    public HeroComponent(EntityPos2D startPos){
         this.s = new Shape(startPos, WIDTH, HEIGHT);
 
     }
@@ -29,7 +29,7 @@ public class HeroComponent {
      * By giving an EntityPosition, it updates the EntityShape.
      * @param pos
      */
-    public void changeLocation(Pos2D pos){
+    public void changeLocation(EntityPos2D pos){
         this.s = new Shape(pos, WIDTH, HEIGHT);
 
     }
