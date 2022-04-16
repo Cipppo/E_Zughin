@@ -133,8 +133,6 @@ public class ActionFactory {
 
     }
 
-
-
     /**
     * 
     * @param v the used Visual.
@@ -167,5 +165,4 @@ public class ActionFactory {
     public ShootAction getShootAction(VisualInterface v, Hero h, BoundChecker bc){
         return new ShootAction(v, h, bc);
     }
-    
 }
