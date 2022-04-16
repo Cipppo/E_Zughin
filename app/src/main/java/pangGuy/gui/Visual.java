@@ -1,10 +1,8 @@
 package pangGuy.gui;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import mergeballs.gui.VisualInterface;
 import mergeballs.gui.VisualPanelTest;
 import mergeballs.utilities.EntityPos2D;
@@ -29,8 +27,8 @@ public class Visual implements VisualInterface{
 
         this.bounds = bounds;
         this.arpions = new ArrayList<>(List.of(
-            new ArpionComponent(Color.red, this.hero.getShape().getLeftFoot()),
-            new ArpionComponent(Color.green, this.hero.getShape().getLeftFoot()))
+            new ArpionComponent(this.hero.getShape().getLeftFoot()),
+            new ArpionComponent(this.hero.getShape().getLeftFoot()))
         );
         
     }
@@ -40,7 +38,7 @@ public class Visual implements VisualInterface{
         this.hero.changeLocation(pos);
         this.getArpions().forEach(e -> {
             if(e.getStatus() == Status.IDLE){
-                e.setLocation(this.hero.getShape().getPos().x, this.hero.getShape().getPos().y);
+                e.changeLocation(pos);
             }
         });
         Toolkit.getDefaultToolkit().sync();
