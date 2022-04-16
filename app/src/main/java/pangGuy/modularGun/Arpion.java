@@ -37,7 +37,6 @@ public class Arpion implements Bullet {
 
     @Override
     public void lock(){
- 
         this.setStatus(Status.RISING);
     }
     
