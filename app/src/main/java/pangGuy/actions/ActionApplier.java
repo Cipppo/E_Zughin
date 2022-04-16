@@ -2,18 +2,24 @@ package pangGuy.actions;
 
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-
 import mergeballs.gui.VisualInterface;
 import pangGuy.gui.BoundChecker;
-
 import pangGuy.character.Hero;
-
 import pangGuy.utilities.Pair;
+
+/**
+ * Interface from visual input to Hero Actions.
+ */
 
 public class ActionApplier{
 
     private final ActionFactory f = new ActionFactory();
 
+    /**
+     * Creates the KeyBindings which permits the Hero to perform Actions.
+     * @param v the VIsual Interface.
+     * @param h the Hero Model.
+     */
     public ActionApplier(VisualInterface v, Hero h){
 
         BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, v.getBounds().getX()));
