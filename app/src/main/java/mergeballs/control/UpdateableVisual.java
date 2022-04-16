@@ -4,17 +4,19 @@ import java.util.List;
 import java.util.Optional;
 
 import ball.physics.SpherePos2D;
+import mergeballs.utilities.EntityPos2D;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.HeroComponent;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
-import pangGuy.utilities.Pos2D;
 import powerUp.PowerUpEntity;
+
 /**
  * Models a controller that stores arpions, the Hero and all their informations.
  * The class that implement this interface will be used by a ball handler, that
  * constantly checks if there are collisons beetween a ball and arpions/hero.
  */
+
 public interface UpdateableVisual {
     /**
      * This method will be called after checking all the possibile collisons
@@ -55,5 +57,5 @@ public interface UpdateableVisual {
      * @return
      *      Hero initial position at the beginning of the game.
      */
-    Pos2D getStartPos();
+    EntityPos2D getStartPos();
 }
