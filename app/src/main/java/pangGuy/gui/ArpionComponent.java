@@ -6,7 +6,6 @@ import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.PosConverter;
-import java.awt.Color;
 import mergeballs.utilities.EntityPos2D;
 
 /**
