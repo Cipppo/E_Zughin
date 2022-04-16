@@ -45,7 +45,7 @@ public class Trigger extends Thread{
      */
     public void run(){
         int xValue = this.stepConverter.convertHeroPosition(this.hero.getPosition()).x;
-        this.arpion.lock(xValue);
+        this.arpion.lock();
         this.arpionComponent.setStatus(this.arpion.getStatus());
         this.arpionComponent.setType(this.hero.getGset().getGunType());
         int yvalue = this.stepConverter.covertStepPosition(this.arpion.getStepsDone());
