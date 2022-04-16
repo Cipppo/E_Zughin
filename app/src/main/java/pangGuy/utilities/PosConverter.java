@@ -1,32 +1,52 @@
 package pangGuy.utilities;
 
 
+import mergeballs.utilities.EntityPos2D;
 import pangGuy.gui.Shape;
 
+/**
+ * This class is used in order to position properly the arpions.
+ */
 
 public class PosConverter {
     
     private Pair<Integer, Integer> dimensions;
-    private Shape shape;
+    private Shape heroShape;
 
-    public PosConverter(Pair<Integer, Integer> dimensions, Shape shape){
+    /**
+     * Creates a new PosConverter
+     * @param dimensions the dimensions of the Arpion.
+     * @param heroShape the hero Shape.
+     */
+    public PosConverter(Pair<Integer, Integer> dimensions, Shape heroShape){
         this.dimensions = dimensions;
-        this.shape = shape;
+        this.heroShape = heroShape;
     }
 
-
-    private Pos2D getLeftPos(){
-        return this.shape.getLeftFoot();
+    /**
+     * Compute the coords where the arpion have to move if the direction of the Hero is Left.
+     * @return the coords of the left position.
+     */
+    private EntityPos2D getLeftPos(){
+        return this.heroShape.getLeftFoot();
     }
 
-
-    private Pos2D getRightPos(){
-        int x = (this.shape.getLeftFoot().x + (int) this.shape.getDimensions().getX()) - this.dimensions.getX();
-        int y = this.shape.getLeftFoot().y;
-        return new Pos2D(x, y);
+    /**
+     * Compute the coords where the arpion have to lay if the direction of the Hero is Right.
+     * @return the coords of the Right position.
+     */
+    private EntityPos2D getRightPos(){
+        int x = (this.heroShape.getLeftFoot().x + (int) this.heroShape.getDimensions().getX()) - this.dimensions.getX();
+        int y = this.heroShape.getLeftFoot().y;
+        return new EntityPos2D(x, y);
     }
 
-    public Pos2D getPos(Directions dir){
+    /**
+     * Compute the next position based on the given Direction.
+     * @param dir the Hero direction.
+     * @return the coords where the Arpion has to lay based on the given Hero Direction.
+     */
+    public EntityPos2D getPos(Directions dir){
         if(dir == Directions.RIGHT){
             return getRightPos();
         }else{
