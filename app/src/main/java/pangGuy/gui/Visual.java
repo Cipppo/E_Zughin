@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import mergeballs.gui.VisualInterface;
 import mergeballs.gui.VisualPanelTest;
-import pangGuy.utilities.Pos2D;
+import mergeballs.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
@@ -20,9 +20,9 @@ public class Visual implements VisualInterface{
     private List<ArpionComponent> arpions;
     private Pair<Integer, Integer> bounds;
 
-    private Pos2D startPosition;
+    private EntityPos2D startPosition;
 
-    public Visual(Pos2D startPos, Pair<Integer, Integer> bounds){
+    public Visual(EntityPos2D startPos, Pair<Integer, Integer> bounds){
         this.hero = new HeroComponent(startPos);
         this.startPosition = startPos;
 
@@ -34,8 +34,9 @@ public class Visual implements VisualInterface{
         );
         
     }
-
-    public void move(Pos2D pos){
+    
+    @Override
+    public void move(EntityPos2D pos){
         this.hero.changeLocation(pos);
         this.getArpions().forEach(e -> {
             if(e.getStatus() == Status.IDLE){
@@ -44,7 +45,8 @@ public class Visual implements VisualInterface{
         });
         Toolkit.getDefaultToolkit().sync();
     }
-
+        
+    @Override
     public void setDirection(Directions dir){
         this.getArpions().forEach(e -> {
             if(e.getStatus() == Status.IDLE){
@@ -52,23 +54,28 @@ public class Visual implements VisualInterface{
             }
         });
     }
-
+        
+    @Override
     public HeroComponent getHeroComponent(){
         return this.hero;
     }
-
+        
+    @Override
     public List<ArpionComponent> getArpions(){
         return this.arpions;
     }
-
+        
+    @Override
     public Pair<Integer, Integer> getBounds(){
         return this.bounds;
     }
-
-    public Pos2D getStartPos(){
+        
+    @Override
+    public EntityPos2D getStartPos(){
         return this.startPosition;
     }
-
+        
+    @Override
     public Optional<ArpionComponent> getFreeComponent(){
         for(ArpionComponent i : this.getArpions()){
             if(i.getStatus() == Status.IDLE){
@@ -79,17 +86,23 @@ public class Visual implements VisualInterface{
         return Optional.empty();
 
     }
-
-    public void restoreBullet(ArpionComponent bullet, Pos2D charPos, Directions dir){
+        
+    @Override
+    public void restoreBullet(ArpionComponent bullet, EntityPos2D charPos, Directions dir){
         for(ArpionComponent i : this.getArpions()){
             if(i == bullet){
-                i.changeLocation(new Pos2D(charPos.x, charPos.y));
+                i.changeLocation(new EntityPos2D(charPos.x, charPos.y));
                 i.setStatus(Status.IDLE);
                 i.setDirection(dir, this.hero.getShape());
             }
         }
     }
 
+    /**
+     * Returns the given ArpionComponent.
+     * @param arpion the arpionComponent.
+     * @return Optional<ArpionComponent> if it finds it, Optional.empty otherwise.
+     */
     private Optional<ArpionComponent> giveMeThatArpion(ArpionComponent arpion){
         for(ArpionComponent i : this.getArpions()){
             if(i == arpion){
@@ -98,7 +111,8 @@ public class Visual implements VisualInterface{
         }
         return Optional.empty();
     }
-
+        
+    @Override
     public void raiseArpion(ArpionComponent arpion){
         var a = this.giveMeThatArpion(arpion);
         if(!a.isEmpty()){
