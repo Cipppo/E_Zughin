@@ -1,8 +1,18 @@
-package mergeballs.Utilities;
+package mergeballs.utilities;
 
-public interface EntityPos2D {
+public class EntityPos2D {
     
-    EntityPos2D getPos();
+    public int x;
+    public int y;
 
+    public EntityPos2D(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public String toString(){
+        return "(x = " + this.x + "| y = " + this.y + ")" ;
+    }
 
 }
