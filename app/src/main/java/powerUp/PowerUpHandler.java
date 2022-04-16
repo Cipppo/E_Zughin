@@ -8,7 +8,7 @@ import pangGuy.gui.HeroComponent;
 import pangGuy.gui.Shape;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Pair;
-import pangGuy.utilities.Pos2D;
+import mergeballs.utilities.EntityPos2D;
 
 public class PowerUpHandler extends Thread{
 
@@ -41,9 +41,9 @@ public class PowerUpHandler extends Thread{
         }
     }
 
-    private synchronized Pos2D getRandomPos2D(){
+    private synchronized EntityPos2D getRandomPos2D(){
         Random rand = new Random();
-        return new Pos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 55);
+        return new EntityPos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 55);
     }
 
     private synchronized Shape generateRandomShape(){
