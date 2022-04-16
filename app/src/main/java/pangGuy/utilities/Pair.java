@@ -1,6 +1,8 @@
 package pangGuy.utilities;
 
-public class Pair<T, E> {
+import mergeballs.utilities.FullPair;
+
+public class Pair<T, E> implements FullPair<T, E>{
 
     private T x;
     private E y;
@@ -10,10 +12,12 @@ public class Pair<T, E> {
         this.y = y;
     }
 
+    @Override
     public T getX() {
         return this.x;
     }
 
+    @Override
     public E getY() {
         return this.y;
     }
