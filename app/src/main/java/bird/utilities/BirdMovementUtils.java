@@ -10,7 +10,7 @@ import bird.gui.BirdMover;
 import stage.utils.CenterOnDefaultScreen;
 import pangGuy.gui.Shape;
 import pangGuy.utilities.Pair;
-import pangGuy.utilities.Pos2D;
+import mergeballs.utilities.EntityPos2D;
 
 import java.awt.Toolkit;
 
@@ -123,7 +123,7 @@ public class BirdMovementUtils {
                 } else if(dir == BirdDirections.UP) {
                     this.actionFactory.getUpAction(this.mover);
                 }
-                if(birdConsCheck.checkEnemyCollision(new Shape(new Pos2D(480, 475), 20, 30), bird)) {
+                if(birdConsCheck.checkEnemyCollision(new Shape(new EntityPos2D(480, 475), 20, 30), bird)) {
                     this.removeActor();
                 }
                 panel.repaint();
