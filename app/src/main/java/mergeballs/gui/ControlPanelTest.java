@@ -8,7 +8,6 @@ import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.JButton;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Pair;
-import pangGuy.utilities.Pos2D;
 import powerUp.Bomb;
 import powerUp.DoubleGun;
 import powerUp.PowerUp;

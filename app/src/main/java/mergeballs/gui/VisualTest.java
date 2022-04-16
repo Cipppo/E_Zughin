@@ -7,7 +7,6 @@ import pangGuy.gui.PangGuyImageLoader;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
-import pangGuy.utilities.Pos2D;
 import powerUp.PowerUpEntity;
 import powerUp.PowerupImageLoader;
 
@@ -16,9 +15,9 @@ import java.util.List;
 import ball.gui.ImageLoader;
 import ball.physics.SpherePos2D;
 import mergeballs.control.UpdateableVisual;
+import mergeballs.utilities.EntityPos2D;
 import pangGuy.gui.Shape;
 
-import java.awt.Color;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -37,10 +36,10 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     private final ArpionImageLoader arpionILoader;
     private final PowerupImageLoader pUpIl;
 
-    private Pos2D startPos;
+    private EntityPos2D startPos;
     //Maybe i have to give to this Hero in order to get all the possible status
 
-    public VisualTest(int width, int height, Pos2D startpos){
+    public VisualTest(int width, int height, EntityPos2D startpos){
         this.bounds = new Pair<Integer,Integer>(width, height);
 
         this.iLoader = new ImageLoader();
@@ -53,8 +52,8 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         this.hero = new HeroComponent(startpos);
 
         this.arpions = new ArrayList<>(List.of(
-            new ArpionComponent(Color.red, this.hero.getShape().getLeftFoot()), 
-            new ArpionComponent(Color.green, this.hero.getShape().getLeftFoot())
+            new ArpionComponent(this.hero.getShape().getLeftFoot()), 
+            new ArpionComponent(this.hero.getShape().getLeftFoot())
         ));
 
     }
@@ -63,11 +62,11 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         return this.arpions;
     }
 
-    public void move(Pos2D pos){
+    public void move(EntityPos2D pos){
         this.hero.changeLocation(pos);
         this.getArpions().forEach(e -> {
             if(e.getStatus() == Status.IDLE){
-                e.setLocation(this.hero.getShape().getPos().x, this.hero.getShape().getPos().y);
+                e.changeLocation(pos);
             }
         });
         Toolkit.getDefaultToolkit().sync();            
@@ -89,7 +88,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         return this.bounds;
     }
 
-    public Pos2D getStartPos(){
+    public EntityPos2D getStartPos(){
         return this.startPos;
     }
 
@@ -104,10 +103,10 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
 
     }
 
-    public void restoreBullet(ArpionComponent bullet, Pos2D charPos, Directions dir){
+    public void restoreBullet(ArpionComponent bullet, EntityPos2D charPos, Directions dir){
         for(ArpionComponent i : this.getArpions()){
             if(i == bullet){
-                i.changeLocation(new Pos2D(charPos.x, charPos.y));
+                i.changeLocation(new EntityPos2D(charPos.x, charPos.y));
                 i.setStatus(Status.IDLE);
                 i.setDirection(dir, this.hero.getShape());
             }

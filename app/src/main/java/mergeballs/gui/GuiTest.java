@@ -8,10 +8,10 @@ import javax.swing.JPanel;
 import ball.controller.Runner;
 import pangGuy.actions.ActionFactory;
 import mergeballs.control.EntityHandler;
+import mergeballs.utilities.EntityPos2D;
 import pangGuy.actions.ActionApplier;
 import pangGuy.character.Hero;
 import pangGuy.utilities.Pair;
-import pangGuy.utilities.Pos2D;
 import stage.utils.*;
 import pangGuy.gui.BoundChecker;
 import java.awt.event.KeyListener;
@@ -26,7 +26,7 @@ public class GuiTest extends JFrame {
     private static final int STARTY = (HEIGHT ) - 85 ;
 
 
-    private VisualTest visual = new VisualTest(WIDTH, HEIGHT, new Pos2D(STARTX, STARTY));
+    private VisualTest visual = new VisualTest(WIDTH, HEIGHT, new EntityPos2D(STARTX, STARTY));
     public Hero hero = new Hero();
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
