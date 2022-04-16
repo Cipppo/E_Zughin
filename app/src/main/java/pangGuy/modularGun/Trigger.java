@@ -5,7 +5,6 @@ import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.BoundChecker;
 import mergeballs.gui.VisualInterface;
 import mergeballs.utilities.EntityPos2D;
-import pangGuy.utilities.Pos2D;
 import pangGuy.utilities.StepsApplier;
 
 /**
@@ -55,7 +54,7 @@ public class Trigger extends Thread{
             while(!this.stop){
                     this.arpion.raise();
                     this.visual.raiseArpion(arpionComponent);
-                    if(!this.bc.isExtendible(new Pos2D(xValue, maxYValue - this.stepConverter.covertStepPosition(this.arpion.getStepsDone()))) || 
+                    if(!this.bc.isExtendible(new EntityPos2D(xValue, maxYValue - this.stepConverter.covertStepPosition(this.arpion.getStepsDone()))) || 
                             this.arpion.getStatus() == Status.HIT){
                         this.stop = true;
                     }
