@@ -28,7 +28,7 @@ public class BoundChecker {
      * @return True if is inside, False otherwise.
      */
     public boolean isInside(EntityPos2D pos ,int width, int height){
-        if(pos.x >= this.bounds.getX() + 8 && pos.x + width <= this.bounds.getY() - 8){
+        if(pos.x >= this.bounds.getX() + 15 && pos.x + width <= this.bounds.getY() - 15){
             return true;
         }
         return false;
