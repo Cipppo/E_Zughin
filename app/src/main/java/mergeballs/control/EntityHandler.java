@@ -1,10 +1,12 @@
 package mergeballs.control;
 
+import java.util.Timer;
 import java.util.stream.Collectors;
 
 import ball.controller.ConstraintCheck;
 import mergeballs.gui.VisualTest;
 import pangGuy.character.Hero;
+import pangGuy.character.HitHandler;
 import pangGuy.modularGun.GunSet;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.StepsApplier;
@@ -21,6 +23,7 @@ public class EntityHandler extends Thread {
     private final Hero hero;
     private final PowerUpHandler pUpHandler;
     
+    
     public EntityHandler(VisualTest frame, GunSet gSet, Hero hero) {
         this.frame = frame;
         this.checker = new ConstraintCheck(this.frame.getBounds().getX(),
@@ -30,6 +33,7 @@ public class EntityHandler extends Thread {
         this.gSet = gSet;
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
         this.pUpHandler = new PowerUpHandler(gSet, this.ballRunner, this.frame.getBounds());
+        
     }
 
     @Override
@@ -50,7 +54,8 @@ public class EntityHandler extends Thread {
                     }
 
                     if (this.checker.checkEnemyCollision(this.frame.getHero().getShape(), t)) {
-                        this.hero.hit();
+                        Timer timer = new Timer();
+                        timer.schedule(new HitHandler(hero), 0);
                     }
 
                     this.frame.updatePosition(this.ballRunner
