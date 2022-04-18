@@ -11,7 +11,7 @@ public class IntersectionChecker {
         var rectHeight = rect.getDimensions().getY();
         Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().x + (int)(0.5*rectWidht),
                                                     rect.getPos().y + (int)(0.5*rectHeight));
-        Pair<Integer> ballCenter = new Pair<Integer>((int)(ball.x + (ball.getDiameter() / 2)), (int)(ball.y + (ball.getDiameter() / 2) ));
+        Pair<Integer> ballCenter = new Pair<Integer>((int)(ball.getX() + (ball.getDiameter() / 2)), (int)(ball.getY() + (ball.getDiameter() / 2) ));
         Pair<Integer> circleDistance = new Pair<Integer>(0,0);
         
         circleDistance.setX(Math.abs(ballCenter.getX() - rectCenter.getX()));

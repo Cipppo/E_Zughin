@@ -23,15 +23,15 @@ public class BallBoundChecker {
      *          the ball to check 
      */
     public void checkConstraints(BallAgent t) {
-        final var x =  (t.getBallPosition().x * this.width);
-        final var y =  (t.getBallPosition().y * this.height);
+        final var x =  (t.getBallPosition().getX() * this.width);
+        final var y =  (t.getBallPosition().getY() * this.height);
         final int diameter = t.getBallPosition().getDiameter();
         if (x < 0) {
             t.applyConstraints(Boundary.X0.getValue() , Boundary.X0);
         } else if (x + diameter >= this.width) {
-            t.applyConstraints(t.getBallPosition().x - (diameter * 0.0001), Boundary.X1);
+            t.applyConstraints(t.getBallPosition().getX() - (diameter * 0.0001), Boundary.X1);
         } else if (y + 1.65 * diameter > this.height) { //very problematic in macos
-            t.applyConstraints(t.getBallPosition().y - 0.009, Boundary.Y1);
+            t.applyConstraints(t.getBallPosition().getY() - 0.009, Boundary.Y1);
         } else if (y < -1) {
             t.applyConstraints(Boundary.Y0.getValue(), Boundary.Y0);
         }
@@ -48,8 +48,8 @@ public class BallBoundChecker {
      *          true if the two enemies collides
      */
     public boolean checkEnemyCollision(Shape entity, BallAgent ball) {
-        var bPos = new SpherePos2D(ball.getBallPosition().x * this.width,
-                        ball.getBallPosition().y *  this.height,
+        var bPos = new SpherePos2D(ball.getBallPosition().getX() * this.width,
+                        ball.getBallPosition().getY() *  this.height,
                         ball.getBallPosition().getDimension(),
                         ball.getSize());
 
