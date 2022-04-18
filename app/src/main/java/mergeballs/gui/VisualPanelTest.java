@@ -52,8 +52,8 @@ public class VisualPanelTest extends JPanel {
         synchronized(this) {
             if (this.ballPositions != null) {
                 for (final var position : ballPositions) {
-                    int x = (int)(position.x * this.width);
-                    int y = (int)(position.y * this.height);
+                    int x = (int)(position.getX() * this.width);
+                    int y = (int)(position.getY() * this.height);
                     g2.drawImage(iLoader.getBallImage(position.getDimension()), x, y, this);
                 }
             }
