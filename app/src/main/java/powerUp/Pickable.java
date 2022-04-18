@@ -1,6 +1,6 @@
 package powerUp;
 
-import ball.controller.ConstraintCheck;
+import ball.controller.IntersectionChecker;
 import pangGuy.gui.HeroComponent;
 import pangGuy.gui.Shape;
 
@@ -27,7 +27,7 @@ public abstract class Pickable {
      * @return true if the hero picked this item up
      */
     public boolean isPickedUp(HeroComponent hero) {
-        return ConstraintCheck.checkItemPickUp(hero.getShape(), this.shape);
+        return IntersectionChecker.checkItemPickUp(hero.getShape(), this.shape);
     }
     
     public Shape getShape() {
