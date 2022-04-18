@@ -53,6 +53,6 @@ public class BallBoundChecker {
                         ball.getBallPosition().getDimension(),
                         ball.getSize());
 
-        return IntersectionChecker.isCollision(bPos, entity);
+        return IntersectionChecker.isBallCollision(bPos, entity);
     }
 }

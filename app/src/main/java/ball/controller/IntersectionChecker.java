@@ -5,8 +5,8 @@ import ball.utils.Pair;
 import pangGuy.gui.Shape;
 
 public class IntersectionChecker {
-    //TOBE RENAMED
-    public static boolean isCollision(SpherePos2D ball, Shape rect) {
+	
+    public static boolean isBallCollision(SpherePos2D ball, Shape rect) {
         var rectWidht = rect.getDimensions().getX();
         var rectHeight = rect.getDimensions().getY();
         Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().x + (int)(0.5*rectWidht),
