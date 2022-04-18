@@ -12,17 +12,17 @@ import pangGuy.gui.Shape;
  * <ul> 
  *      <li>Storing Ball informations</li>
  *      <li>Starting all balls Thread when this class Starts</li>
- *      <li>Checks if balls are touching frame borders using a {@link ball.controller.ConstraintCheck} </li>
+ *      <li>Checks if balls are touching frame borders using a {@link ball.controller.IntersectionChecker} </li>
  *      <li>Expose duplication method to other class in case there is a collison with an enemy</li>
  *      <li>Expose pausing/resuming methods in case of game interruptions</li>
  * </ul>
  */
 public class Runner extends Thread {
     private final CopyOnWriteArrayList<BallAgent> balls;
-    private final ConstraintCheck checker;
+    private final BallBoundChecker checker;
     private boolean stop;
 
-    public Runner(int ballsToGenerate, ConstraintCheck checker) {
+    public Runner(int ballsToGenerate, BallBoundChecker checker) {
         this.balls = new CopyOnWriteArrayList<>();
         this.checker = checker;
         this.stop = false;
@@ -59,7 +59,7 @@ public class Runner extends Thread {
     public synchronized void checkCollision(Shape entity) {
         if(!this.balls.isEmpty()) {
             this.balls.forEach(t -> {
-                if (this.checker.checkEnemyCollision(entity, t)) {
+                if (checker.checkEnemyCollision(entity, t)) {
                     this.duplication(t);
                 }
             });
