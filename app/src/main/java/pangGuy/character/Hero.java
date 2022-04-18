@@ -1,8 +1,5 @@
 package pangGuy.character;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import mergeballs.utilities.EntityPos2D;
 import pangGuy.modularGun.GunSet;
 
@@ -13,8 +10,6 @@ import pangGuy.utilities.Directions;
  */
 
 public class Hero {
-    
-    private static final int HIT_WAIT = 1;
 
     private EntityPos2D pos;
     private Directions direction;
