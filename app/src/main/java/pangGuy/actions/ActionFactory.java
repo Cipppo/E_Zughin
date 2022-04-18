@@ -16,7 +16,7 @@ import mergeballs.gui.VisualInterface;
 
 public class ActionFactory {
 
-    private static final int SPEED = 5;
+    private static final int SPEED = 20;
 
     /**
      * The action which permits the main character to step Right.
@@ -50,6 +50,7 @@ public class ActionFactory {
                         this.v.getHeroComponent().getShape().getDimensions().getY())){
                             this.h.move(Directions.RIGHT);
                             this.v.move(new EntityPos2D(axisHeroPos.x + SPEED, axisHeroPos.y));
+                            System.out.println("Moved from: " + axisHeroPos + "To: " + new EntityPos2D(axisHeroPos.x + SPEED, axisHeroPos.y).x);
                             this.v.setDirection(this.h.getDirection());
                         }
         }
@@ -88,6 +89,7 @@ public class ActionFactory {
                     this.v.getHeroComponent().getShape().getDimensions().getY())){
                         this.h.move(Directions.LEFT);  
                         this.v.move(new EntityPos2D(axisHeroPos.x - SPEED,  axisHeroPos.y));
+                        System.out.println("Moved from: " + axisHeroPos + "To: " + new EntityPos2D(axisHeroPos.x - SPEED, axisHeroPos.y).x);
                         this.v.setDirection(this.h.getDirection());
                     }
         }
