@@ -25,7 +25,7 @@ public class Ball implements Entity {
     protected Ball(Trajectory trajectory, SpherePos2D position, double gravity) {
     	this.trajectory = trajectory;
     	this.actualPosition = position;
-    	this.initialPosition = new SpherePos2D(position.x, position.y, position.getDimension());
+    	this.initialPosition = new SpherePos2D(position.getX(), position.getY(), position.getDimension());
     	this.velocity = this.trajectory.getXYVelocity();
     	this.gravity = gravity;
         this.size = this.getPosition().getDiameter();
@@ -36,9 +36,9 @@ public class Ball implements Entity {
      */
     public synchronized void updatePos() {
         time.inc(0.09);
-        this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.getX();
-        this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.getY() 
-                                                            - (0.5*gravity*Math.pow(this.time.getY(), 2)));
+        this.actualPosition.setX(this.initialPosition.getX() +  0.001 * this.velocity.getX() * this.time.getX());
+        this.actualPosition.setY(this.initialPosition.getY() - 0.001 * (this.velocity.getY() * this.time.getY() 
+                                        - (0.5*gravity*Math.pow(this.time.getY(), 2))));
     }
 
     /**
@@ -60,11 +60,11 @@ public class Ball implements Entity {
      */
     public synchronized void applyConstraints(double position, Boundary bound) {
         if (bound == Boundary.Y0 || bound == Boundary.Y1) {
-            this.initialPosition.y = position;
+            this.initialPosition.setY(position);
             this.time.resetY();
             this.velocity.vy = -this.velocity.vy;
         } else {
-            this.initialPosition.x = position;
+            this.initialPosition.setX(position);
             this.time.resetX();
             this.velocity.vx = -this.velocity.vx;
         }
