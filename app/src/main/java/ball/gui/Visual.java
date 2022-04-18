@@ -11,7 +11,8 @@ import java.awt.Graphics2D;
 import java.util.List;
 
 import ball.physics.SpherePos2D;
-import ball.testing.SquaredEnemy;
+import mergeballs.utilities.EntityPos2D;
+import pangGuy.gui.Shape;
 
 public class Visual extends JFrame implements Updateable {
 	private static final long serialVersionUID = 1L;
@@ -42,11 +43,11 @@ public class Visual extends JFrame implements Updateable {
 		private static final long serialVersionUID = 1L;
 		private List<SpherePos2D> positions;
 
-		private SquaredEnemy enemy;
+		private Shape enemy;
 	    
 		public VisualPanel() {
 			setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
-			this.enemy = new SquaredEnemy(WINDOW_SIZE_X / 2, WINDOW_SIZE_Y / 2, 60, 30);
+			this.enemy = new Shape(new EntityPos2D(WINDOW_SIZE_X / 2, WINDOW_SIZE_Y / 2), 60, 40);
 		}
 
 	    public void paint(Graphics g) {
@@ -56,14 +57,14 @@ public class Visual extends JFrame implements Updateable {
 	        synchronized (this) {
 	            if (positions != null) {
 	                for(final var position : positions) {
-	                    int x = (int)( position.x * WINDOW_SIZE_X );
-	                    int y = (int)( position.y * WINDOW_SIZE_Y );
+	                    int x = (int)( position.getX() * WINDOW_SIZE_X );
+	                    int y = (int)( position.getY() * WINDOW_SIZE_Y );
 						g2.drawImage(iLoader.getBallImage(position.getDimension()), x, y, this);
 	                }
 	            }
 	        }
-			g2.fillRect(this.enemy.getPosition().x, this.enemy.getPosition().y, 
-						this.enemy.getDimension().getX(), this.enemy.getDimension().getY());
+			g2.fillRect(this.enemy.getPos().x, this.enemy.getPos().y, 
+						this.enemy.getDimensions().getX(), this.enemy.getDimensions().getY());
 			g2.dispose();
 			Toolkit.getDefaultToolkit().sync();
 	    }
@@ -73,12 +74,12 @@ public class Visual extends JFrame implements Updateable {
 	        repaint();
 	    }
 		
-		public SquaredEnemy getGuy() {
+		public Shape getGuy() {
 			return this.enemy;
 		}
     }
 	@Override
-    public SquaredEnemy getGuy() {
+    public Shape getGuy() {
         return panel.getGuy();
     }
 }
