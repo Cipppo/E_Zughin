@@ -87,14 +87,17 @@ public class Hero {
      */
     public void hit(){
         if(this.status == heroStatus.NEUTRAL){
-            this.status = heroStatus.HIT;
-            System.out.println(this.status);
-            Timer timer = new Timer();
-            TimerTask hitCond = new hitCondition(this.status);
-            timer.schedule(hitCond, HIT_WAIT * 1000);
             this.lives--;
-            System.out.println(this.lives);
+            System.out.println("Lifes: " + this.lives);
         }
+    }
+
+    /**
+     * Setter for HeroStatus.
+     * @param status the status that needs to be set.
+     */
+    public void setStatus(heroStatus status){
+        this.status = status;
     }
 
 }
