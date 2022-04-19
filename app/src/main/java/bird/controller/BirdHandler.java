@@ -6,9 +6,9 @@ import java.util.Random;
 import bird.gui.BirdActor;
 import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
+import bird.gui.BirdShape;
 import bird.utilities.BirdDirections;
 import bird.utilities.BirdMovementUtils;
-import mergeballs.utilities.EntityShape;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
@@ -61,7 +61,7 @@ public class BirdHandler extends Thread{
 
     private final synchronized void createBird() {
         this.startPosX = this.dir == BirdDirections.RIGHT ? 0 : SIZEX - WIDTH;
-        this.actor = Optional.of(new BirdActor(new EntityPos2D(this.startPosX, STARTY)));
+        this.actor = Optional.of(new BirdActor(new EntityPos2D(this.startPosX, STARTY), this.dir));
         this.mover = new BirdMover(this.actor.get(), this.bc);
         this.movUtils = new BirdMovementUtils(this.actor.get(), this.mover);
     }
@@ -78,7 +78,7 @@ public class BirdHandler extends Thread{
         return this.actor;
     }
 
-    public Optional<EntityShape> getShape() {
+    public Optional<BirdShape> getShape() {
         if(!this.actor.isEmpty()) {
             return Optional.of(this.actor.get().getShape());
         } else {
