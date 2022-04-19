@@ -5,19 +5,29 @@ package ball.physics;
  *  (maybe creating an interface "Entity" for the 
  *  main character, bird and this ball);
  */
-public abstract class Pos2D {
-    public double x;
-    public double y;
-    private final Dimensions dimension;
+public abstract class EntityPos2D<T> {
+    private T x;
+    private T y;
 
-    public Pos2D(final double x, final double y, Dimensions dimension) {
+    public EntityPos2D(final T x, final T y) {
         this.x = x;
         this.y = y;
-        this.dimension = dimension;
     }
 
-    public Dimensions getDimension() {
-    	return this.dimension;
+    public T getX() {
+        return x;
+    }
+
+    public void setX(T value) {
+        this.x = value;
+    }
+
+    public T getY() {
+        return y;
+    }
+
+    public void setY(T value) {
+        this.y = value;
     }
 
     @Override

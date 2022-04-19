@@ -1,7 +1,7 @@
 package ball.gui;
 
 import ball.physics.SpherePos2D;
-import ball.testing.SquaredEnemy;
+import pangGuy.gui.Shape;
 
 import java.util.List;
 import java.awt.Dimension;
@@ -17,5 +17,5 @@ public interface Updateable {
     Dimension getSize();
 
     //only for testing purposes
-    SquaredEnemy getGuy();
+    Shape getGuy();
 }

@@ -1,23 +1,28 @@
 package ball.physics;
-
 /**
  * Modeling a sphere that occupies a place in 2 dimensional space
  * and a size in space described by it's diameter
  */
-public class SpherePos2D extends Pos2D {
+public class SpherePos2D extends EntityPos2D<Double> {
     private int diameter;
+    private Dimensions dimension;
 
     public SpherePos2D(final double x, final double y, final Dimensions dimension, final int diameter) {
-        super(x, y, dimension);
-        this.diameter = (int)(diameter * super.getDimension().getValue());
+        super(x, y);
+        this.dimension = dimension;
+        this.diameter = (int)(diameter * dimension.getValue());
     }
 
     public SpherePos2D(final double x, final double y, final Dimensions dimension) {
-        super(x, y, dimension);
+        super(x, y);
+        this.dimension = dimension;
     }
 
     public int getDiameter() {
         return this.diameter;
     }
 
+    public Dimensions getDimension() {
+        return this.dimension;
+    }
 }

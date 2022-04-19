@@ -3,7 +3,7 @@ package mergeballs.control;
 import java.util.Timer;
 import java.util.stream.Collectors;
 
-import ball.controller.ConstraintCheck;
+import ball.controller.BallBoundChecker;
 import mergeballs.gui.VisualTest;
 import pangGuy.character.Hero;
 import pangGuy.character.HitHandler;
@@ -15,7 +15,7 @@ import ball.controller.Runner;
 
 
 public class EntityHandler extends Thread {
-    private final ConstraintCheck checker;
+    private final BallBoundChecker checker;
     private final UpdateableVisual frame;
     private final Runner ballRunner;
     private final GunSet gSet;
@@ -26,7 +26,7 @@ public class EntityHandler extends Thread {
     
     public EntityHandler(VisualTest frame, GunSet gSet, Hero hero) {
         this.frame = frame;
-        this.checker = new ConstraintCheck(this.frame.getBounds().getX(),
+        this.checker = new BallBoundChecker(this.frame.getBounds().getX(),
                                             this.frame.getBounds().getY());
         this.ballRunner = new Runner(2, this.checker);
         this.hero = hero;

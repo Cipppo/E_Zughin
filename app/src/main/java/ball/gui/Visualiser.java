@@ -1,7 +1,7 @@
 package ball.gui;
 
 import ball.ballAgent.BallAgent;
-import ball.controller.ConstraintCheck;
+import ball.controller.BallBoundChecker;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -20,7 +20,7 @@ public class Visualiser extends Thread {
     private final CopyOnWriteArrayList<BallAgent> balls;
 
     private boolean stop;
-    private final ConstraintCheck checker;
+    private final BallBoundChecker checker;
     
     
     public Visualiser(int ballsToGenerate) {
@@ -28,7 +28,7 @@ public class Visualiser extends Thread {
         this.frame.setVisible(true);
         this.balls = new CopyOnWriteArrayList<>();
         this.stop = false;
-        this.checker = new ConstraintCheck(this.frame.getSize().getWidth()
+        this.checker = new BallBoundChecker(this.frame.getSize().getWidth()
                         , this.frame.getSize().getHeight());
         
         for (int i = 0; i < ballsToGenerate; i++) {
@@ -48,9 +48,9 @@ public class Visualiser extends Thread {
                     for (final var t : this.balls) {
                         this.checker
                             .checkConstraints(t);
-                        // if (this.checker.checkEnemyCollision(this.frame.getGuy(), t)) {
-                        //     this.duplicatation(t);
-                        // }
+                        if (this.checker.checkEnemyCollision(this.frame.getGuy(), t)) {
+                            this.duplicatation(t);
+                        }
                     }
                     Thread.sleep(10);
                 } else {
