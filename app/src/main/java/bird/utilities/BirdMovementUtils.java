@@ -86,7 +86,7 @@ public class BirdMovementUtils {
      *      - Up movement: if bird has already touched ground.
      */
     public final void moveVertically() {
-        if(bird.getShape().getPos().getY() + HEIGHT <= bc.getYPair().getY() - HUD_HEIGHT && !moveUp) {
+        if(bird.getShape().getPos().getY() + HEIGHT <= bc.getYPair().getY()&& !moveUp) {
             this.doMovement(BirdDirections.DOWN);
         } else {
             this.moveUp = true;
@@ -116,7 +116,7 @@ public class BirdMovementUtils {
                 }
                 /* panel.repaint(); */
                 Toolkit.getDefaultToolkit().sync();
-                System.out.println(bird.getShape().getPos());
+                // System.out.println(bird.getShape().getPos());
             }
             Thread.sleep(20);
         } catch (InterruptedException e) {
