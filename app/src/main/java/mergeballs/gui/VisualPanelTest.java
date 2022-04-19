@@ -13,6 +13,8 @@ import ball.gui.ImageLoader;
 import ball.physics.SpherePos2D;
 import bird.gui.BirdShape;
 import bird.utilities.BirdPNGLoader;
+import bonus.BonusEntity;
+import bonus.BonusImageLoader;
 import pangGuy.gui.ArpionImageLoader;
 import pangGuy.gui.PangGuyImageLoader;
 import pangGuy.gui.Shape;
@@ -36,7 +38,9 @@ public class VisualPanelTest extends JPanel {
     private final PangGuyImageLoader heroILoader;
     private final PowerupImageLoader pUpImageLoader;
     private final BirdPNGLoader birdPNGLoader;
+    private final BonusImageLoader bonusILoader;
     private Optional<PowerUpEntity> pUp;
+    private Optional<BonusEntity> bonus;
 
     public VisualPanelTest(int width, int height, ImageLoader iLoader, PangGuyImageLoader heroILoader, ArpionImageLoader aILoader, PowerupImageLoader pIl, BirdPNGLoader birdPNGLoader) {
         super.setSize(width, height);
@@ -47,6 +51,7 @@ public class VisualPanelTest extends JPanel {
         this.aILoader = aILoader;
         this.pUpImageLoader = pIl;
         this.birdPNGLoader = birdPNGLoader;
+        this.bonusILoader = new BonusImageLoader();
     }
 
     public void paint(Graphics g) {
@@ -79,13 +84,17 @@ public class VisualPanelTest extends JPanel {
                             this.bShape.get().getPos().getY(), 
                             this);
             }
+            if (!this.bonus.isEmpty()) {
+                //g2.drawImage(bonusILoader.getSprite(), this.bonus.get().getShape().getPos().getX(), this.bonus.get().getShape().getPos().getY(), this);
+                g2.fillRect(this.bonus.get().getShape().getPos().getX(), this.bonus.get().getShape().getPos().getY(), 20, 20);
+            }
             g2.fillRect(410, 410, 40, 40);
         }
         g2.dispose();
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir, GunTypes type, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape) {
+    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir, GunTypes type, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape, Optional<BonusEntity> bonus) {
         ballPositions = pos;
         shapes = aShapes;
         this.hShape = hShape;
@@ -93,6 +102,7 @@ public class VisualPanelTest extends JPanel {
         this.gunType = type;
         this.pUp = pUp;
         this.bShape = bShape;
+        this.bonus = bonus;
         repaint();
     }
 
