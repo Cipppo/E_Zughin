@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Optional;
 import mergeballs.gui.VisualInterface;
 import mergeballs.gui.VisualPanelTest;
-import mergeballs.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
+import pangGuy.utilities.EntityPos2D;
+
 import java.awt.Toolkit;
 
 
@@ -89,7 +90,7 @@ public class Visual implements VisualInterface{
     public void restoreBullet(ArpionComponent bullet, EntityPos2D charPos, Directions dir){
         for(ArpionComponent i : this.getArpions()){
             if(i == bullet){
-                i.changeLocation(new EntityPos2D(charPos.x, charPos.y));
+                i.changeLocation(new EntityPos2D(charPos.getX(), charPos.getY()));
                 i.setStatus(Status.IDLE);
                 i.setDirection(dir, this.hero.getShape());
             }

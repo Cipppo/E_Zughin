@@ -1,6 +1,6 @@
 package pangGuy.utilities;
 
-import mergeballs.utilities.EntityPos2D;
+
 
 /**
  * A converter from absolute position to X,Y based position
@@ -27,8 +27,8 @@ public class StepsApplier {
      * @return the GUI coords.
      */
     public EntityPos2D convertHeroPosition(EntityPos2D pos){
-        int x = (pos.x * HERO_STEP) + this.startPos.x;
-        return new EntityPos2D(x, this.startPos.y);
+        int x = (pos.getX() * HERO_STEP) + this.startPos.getX();
+        return new EntityPos2D(x, this.startPos.getY());
     }
 
     /**
@@ -46,7 +46,7 @@ public class StepsApplier {
      * @return the Model steps.
      */
     public int fromPixeltoStep(int y){
-        return (((this.startPos.y - y) / BULLET_STEP) + 10 );
+        return (((this.startPos.getY() - y) / BULLET_STEP) + 10 );
     }
 
 

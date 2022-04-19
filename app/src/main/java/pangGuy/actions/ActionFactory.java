@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import pangGuy.modularGun.Trigger;
 import pangGuy.utilities.Directions;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.StepsApplier;
 import pangGuy.gui.BoundChecker;
 import pangGuy.character.Hero;
-import mergeballs.utilities.EntityPos2D;
 import mergeballs.gui.VisualInterface;
 
 /**
@@ -46,10 +46,10 @@ public class ActionFactory {
         public void actionPerformed(ActionEvent e) {
             EntityPos2D actualHeroPos = h.getPosition();
             var axisHeroPos = new StepsApplier(v.getStartPos()).convertHeroPosition(actualHeroPos);
-            if(this.bc.isInside(new EntityPos2D(axisHeroPos.x + SPEED, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
+            if(this.bc.isInside(new EntityPos2D(axisHeroPos.getX() + SPEED, axisHeroPos.getY()), this.v.getHeroComponent().getShape().getDimensions().getX(), 
                         this.v.getHeroComponent().getShape().getDimensions().getY())){
                             this.h.move(Directions.RIGHT);
-                            this.v.move(new EntityPos2D(axisHeroPos.x + SPEED, axisHeroPos.y));
+                            this.v.move(new EntityPos2D(axisHeroPos.getX() + SPEED, axisHeroPos.getY()));
                             this.v.setDirection(this.h.getDirection());
                         }
         }
@@ -84,10 +84,10 @@ public class ActionFactory {
         public void actionPerformed(ActionEvent e) {
             EntityPos2D actualHeroPos = h.getPosition();
             var axisHeroPos = new StepsApplier(v.getStartPos()).convertHeroPosition(actualHeroPos);
-            if(this.bc.isInside(new EntityPos2D(axisHeroPos.x - SPEED, axisHeroPos.y), this.v.getHeroComponent().getShape().getDimensions().getX(), 
+            if(this.bc.isInside(new EntityPos2D(axisHeroPos.getX() - SPEED, axisHeroPos.getY()), this.v.getHeroComponent().getShape().getDimensions().getX(), 
                     this.v.getHeroComponent().getShape().getDimensions().getY())){
                         this.h.move(Directions.LEFT);  
-                        this.v.move(new EntityPos2D(axisHeroPos.x - SPEED,  axisHeroPos.y));
+                        this.v.move(new EntityPos2D(axisHeroPos.getX() - SPEED,  axisHeroPos.getY()));
                         this.v.setDirection(this.h.getDirection());
                     }
         }

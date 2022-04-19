@@ -1,6 +1,6 @@
 package pangGuy.character;
 
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
 
@@ -59,10 +59,10 @@ public class Hero {
     public void move(Directions dir){
         switch (dir) {
             case RIGHT:
-                this.pos = new EntityPos2D(pos.x + 1, pos.y);
+                this.pos = new EntityPos2D(pos.getX() + 1, pos.getY());
                 break;
             case LEFT:
-                this.pos = new EntityPos2D(pos.x - 1, pos.y);
+                this.pos = new EntityPos2D(pos.getX() - 1, pos.getY());
                 break;
         }
         this.updateDirection(dir);

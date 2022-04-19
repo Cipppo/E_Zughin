@@ -1,7 +1,7 @@
 package pangGuy.gui;
 
 
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 
 /**
@@ -28,7 +28,7 @@ public class BoundChecker {
      * @return True if is inside, False otherwise.
      */
     public boolean isInside(EntityPos2D pos ,int width, int height){
-        if(pos.x >= this.bounds.getX() && pos.x + width <= this.bounds.getY()){
+        if(pos.getX() >= this.bounds.getX() && pos.getX() + width <= this.bounds.getY()){
             return true;
         }
         return false;
@@ -40,7 +40,7 @@ public class BoundChecker {
      * @return True if it can raise more, False otherwise.
      */
     public boolean isExtendible(EntityPos2D pos){
-        if(pos.y > 0 + 35){
+        if(pos.getY() > 0 + 35){
             return true;
         }else{
             return false;

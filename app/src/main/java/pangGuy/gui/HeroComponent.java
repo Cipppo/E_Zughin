@@ -1,7 +1,7 @@
 package pangGuy.gui;
 
 
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 
 /**
  * This class models a character in the space and keeps track of his position

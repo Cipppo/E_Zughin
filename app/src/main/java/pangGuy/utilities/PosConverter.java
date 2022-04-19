@@ -1,7 +1,6 @@
 package pangGuy.utilities;
 
 
-import mergeballs.utilities.EntityPos2D;
 import pangGuy.gui.Shape;
 
 /**
@@ -36,8 +35,8 @@ public class PosConverter {
      * @return the coords of the Right position.
      */
     private EntityPos2D getRightPos(){
-        int x = (this.heroShape.getLeftFoot().x + (int) this.heroShape.getDimensions().getX()) - this.dimensions.getX();
-        int y = this.heroShape.getLeftFoot().y;
+        int x = (this.heroShape.getLeftFoot().getX() + (int) this.heroShape.getDimensions().getX()) - this.dimensions.getX();
+        int y = this.heroShape.getLeftFoot().getY();
         return new EntityPos2D(x, y);
     }
 
