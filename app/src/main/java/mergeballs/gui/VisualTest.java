@@ -15,7 +15,7 @@ import java.util.List;
 import ball.gui.ImageLoader;
 import ball.physics.SpherePos2D;
 import mergeballs.control.UpdateableVisual;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.gui.Shape;
 
 import java.awt.Toolkit;
@@ -106,7 +106,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     public void restoreBullet(ArpionComponent bullet, EntityPos2D charPos, Directions dir){
         for(ArpionComponent i : this.getArpions()){
             if(i == bullet){
-                i.changeLocation(new EntityPos2D(charPos.x, charPos.y));
+                i.changeLocation(new EntityPos2D(charPos.getX(), charPos.getY()));
                 i.setStatus(Status.IDLE);
                 i.setDirection(dir, this.hero.getShape());
             }

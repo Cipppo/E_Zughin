@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import ball.physics.SpherePos2D;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.HeroComponent;
 import pangGuy.utilities.Directions;

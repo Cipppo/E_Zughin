@@ -1,5 +1,6 @@
 package mergeballs.utilities;
 
+import pangGuy.utilities.EntityPos2D;
 /**
  * Models a useful class which can store a component position and his dimensions in the space.
  */

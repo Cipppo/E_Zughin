@@ -47,7 +47,7 @@ public class EntityHandler extends Thread {
                     for (final var arp : frame.getArpions()) {
                         if (arp.getStatus().equals(Status.RISING)) {
                             if (this.checker.checkEnemyCollision(arp.getShape(), t)) {
-                                this.gSet.getBulletFromSteps(this.stepsConv.fromPixeltoStep(arp.getShape().getPos().y)).get().hit();
+                                this.gSet.getBulletFromSteps(this.stepsConv.fromPixeltoStep(arp.getShape().getPos().getY())).get().hit();
                                 this.ballRunner.duplication(t);
                             } 
                         }
