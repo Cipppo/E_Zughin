@@ -61,7 +61,7 @@ public class BirdVisual extends Thread{
             
             this.startX = this.dir == BirdDirections.RIGHT ? 0 : SIZEX - WIDTH;
             //this.shape = new BirdShape(new EntityPos2D(startX, STARTY), WIDTH, HEIGHT, dir);
-            this.actor = new BirdActor(new EntityPos2D(startX, STARTY));
+            this.actor = new BirdActor(new EntityPos2D(startX, STARTY), this.dir);
             this.mover = new BirdMover(this.actor, bc);
             movUtils = new BirdMovementUtils(actor, mover);
 
