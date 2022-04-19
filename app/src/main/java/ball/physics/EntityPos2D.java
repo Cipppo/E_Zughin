@@ -1,9 +1,7 @@
 package ball.physics;
 
 /**
- * Got to implement space occupation by this entity 
- *  (maybe creating an interface "Entity" for the 
- *  main character, bird and this ball);
+ * Modeling a generic two dimensional position in space.
  */
 public abstract class EntityPos2D<T> {
     private T x;
