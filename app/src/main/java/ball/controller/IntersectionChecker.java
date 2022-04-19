@@ -2,11 +2,11 @@ package ball.controller;
 
 import ball.physics.SpherePos2D;
 import ball.utils.Pair;
-import pangGuy.gui.Shape;
+import mergeballs.utilities.EntityShape;
 
 public class IntersectionChecker {
 	
-    public static boolean isBallCollision(SpherePos2D ball, Shape rect) {
+    public static boolean isBallCollision(SpherePos2D ball, EntityShape rect) {
         var rectWidht = rect.getDimensions().getX();
         var rectHeight = rect.getDimensions().getY();
         Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().getX() + (int)(0.5*rectWidht),
@@ -35,7 +35,7 @@ public class IntersectionChecker {
         return (cornerDistance_sq <= (Math.pow(ball.getDiameter() / 2, 2)));
     }
 
-    public static boolean checkShapeCollsion(Shape a, Shape b) {
+    public static boolean checkShapeCollsion(EntityShape a, EntityShape b) {
         var aBottomLeft = new Pair<Integer>(a.getPos().getX(), a.getPos().getY() + a.getDimensions().getY());
         var aTopRight = new Pair<Integer>(a.getPos().getX() + a.getDimensions().getX(), a.getPos().getY());
 
@@ -48,13 +48,13 @@ public class IntersectionChecker {
             && (bBottomLeft.getY() < aTopRight.getY());
     }
 
-    public static boolean checkItemPickUp(Shape hero, Shape item) {
+    public static boolean checkItemPickUp(EntityShape hero, EntityShape item) {
         //System.out.println("Hero: " + hero.getPos() + "item: " + item.getPos());
         return (hero.getPos().getX() < item.getPos().getX() && checkX(hero, item)) 
                 || (item.getPos().getX() < hero.getPos().getX() && checkX(item, hero));
     } 
 
-    private static boolean checkX(Shape a, Shape b) {
+    private static boolean checkX(EntityShape a, EntityShape b) {
         return (a.getPos().getX() + a.getDimensions().getX() >= b.getPos().getX());
     }
 
