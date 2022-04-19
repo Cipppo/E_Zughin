@@ -11,7 +11,7 @@ import java.awt.Graphics2D;
 import java.util.List;
 
 import ball.physics.SpherePos2D;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.gui.Shape;
 
 public class Visual extends JFrame implements Updateable {
@@ -63,7 +63,7 @@ public class Visual extends JFrame implements Updateable {
 	                }
 	            }
 	        }
-			g2.fillRect(this.enemy.getPos().x, this.enemy.getPos().y, 
+			g2.fillRect(this.enemy.getPos().getX(), this.enemy.getPos().getY(), 
 						this.enemy.getDimensions().getX(), this.enemy.getDimensions().getY());
 			g2.dispose();
 			Toolkit.getDefaultToolkit().sync();

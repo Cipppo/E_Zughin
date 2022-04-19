@@ -4,7 +4,7 @@ package ball.physics;
  * with the specified {@link ball.physics.Dimensions}, and a 
  * specific diameter.  
  */
-public class SpherePos2D extends EntityPos2D<Double> {
+public class SpherePos2D extends Pos2D<Double> {
     private int diameter;
     private Dimensions dimension;
 

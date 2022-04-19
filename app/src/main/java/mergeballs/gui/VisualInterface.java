@@ -2,12 +2,12 @@ package mergeballs.gui;
 
 import pangGuy.gui.HeroComponent;
 import pangGuy.utilities.Directions;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 
 import java.util.List;
 import java.util.Optional;
 
-import mergeballs.utilities.EntityPos2D;
 import pangGuy.gui.ArpionComponent;
 
 public interface VisualInterface {

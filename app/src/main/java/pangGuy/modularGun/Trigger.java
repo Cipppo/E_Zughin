@@ -4,7 +4,7 @@ import pangGuy.character.Hero;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.BoundChecker;
 import mergeballs.gui.VisualInterface;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.StepsApplier;
 
 /**
@@ -44,7 +44,7 @@ public class Trigger extends Thread{
      * It manages the rising of the Arpion by making steps and checking if the next position is eligible.
      */
     public void run(){
-        int xValue = this.stepConverter.convertHeroPosition(this.hero.getPosition()).x;
+        int xValue = this.stepConverter.convertHeroPosition(this.hero.getPosition()).getX();
         this.arpion.lock();
         this.arpionComponent.setStatus(this.arpion.getStatus());
         this.arpionComponent.setType(this.hero.getGset().getGunType());
@@ -73,7 +73,7 @@ public class Trigger extends Thread{
                 }
             }
             this.arpion.restore();
-            this.visual.restoreBullet(arpionComponent, new EntityPos2D(stepConverter.convertHeroPosition(this.hero.getPosition()).x, maxYValue - yvalue), this.hero.getDirection());
+            this.visual.restoreBullet(arpionComponent, new EntityPos2D(stepConverter.convertHeroPosition(this.hero.getPosition()).getX(), maxYValue - yvalue), this.hero.getDirection());
         }catch(Exception e){
             System.out.println("An error has occured: " + e.getMessage());
         }

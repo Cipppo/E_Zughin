@@ -8,7 +8,7 @@ import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
 import bird.utilities.BirdDirections;
 import bird.utilities.BirdMovementUtils;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
 
@@ -96,6 +96,6 @@ public class BirdHandler extends Thread{
     }
 
     public void setBirdDead() {
-        this.movUtils.setDead();;
+        this.movUtils.setDead();
     }
 }

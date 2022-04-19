@@ -4,7 +4,9 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
-import mergeballs.utilities.EntityPos2D;
+
+
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import stage.utils.MainImagesLoader;
 
@@ -29,7 +31,7 @@ public class BirdPNGLoader {
     }
 
     public BufferedImage getBirdImage(BirdDirections dir, EntityPos2D pos) {
-        if(pos.y % 20 != 0) {
+        if(pos.getY() % 20 != 0) {
             return this.entries.get(dir).getX();
         } else {
             return this.entries.get(dir).getY();

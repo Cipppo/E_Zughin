@@ -3,7 +3,7 @@ package pangGuy.gui;
 import java.awt.Rectangle;
 
 import mergeballs.utilities.EntityShape;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import mergeballs.utilities.FullPair;
 import pangGuy.utilities.Pair;
 
@@ -23,7 +23,7 @@ public class Shape implements EntityShape{
      * @param height the height of the entity.
      */
     public Shape(EntityPos2D pos, int width, int height){
-        r = new Rectangle(pos.x, pos.y, width, height);
+        r = new Rectangle(pos.getX(), pos.getY(), width, height);
     }
     
     @Override
@@ -52,7 +52,7 @@ public class Shape implements EntityShape{
      */
     public EntityPos2D getLeftFoot(){
         EntityPos2D mainPos = this.getPos();
-        return new EntityPos2D(mainPos.x, mainPos.y + (int) this.r.getHeight());
+        return new EntityPos2D(mainPos.getX(), mainPos.getY() + (int) this.r.getHeight());
     }
 
     @Override

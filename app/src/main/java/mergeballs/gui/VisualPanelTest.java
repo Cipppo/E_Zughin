@@ -59,14 +59,14 @@ public class VisualPanelTest extends JPanel {
             }
             if (this.shapes != null) {
                 for (final var shape : shapes) {
-                    g2.drawImage(this.aILoader.getArpionSprites(this.gunType).get(0), shape.getPos().x, shape.getPos().y, this);
+                    g2.drawImage(this.aILoader.getArpionSprites(this.gunType).get(0), shape.getPos().getX(), shape.getPos().getY(), this);
                 }
             }
             if (this.hShape != null) {
-                g2.drawImage(heroILoader.getHeroImage(this.dir).get(0), this.hShape.getPos().x, this.hShape.getPos().y, this);
+                g2.drawImage(heroILoader.getHeroImage(this.dir).get(0), this.hShape.getPos().getX(), this.hShape.getPos().getY(), this);
             }
             if(!this.pUp.isEmpty()){
-                g2.drawImage(pUpImageLoader.getPowUpSprite(this.pUp.get().getPowerUp()).get(), this.pUp.get().getShape().getPos().x, this.pUp.get().getShape().getPos().y, this);
+                g2.drawImage(pUpImageLoader.getPowUpSprite(this.pUp.get().getPowerUp()).get(), this.pUp.get().getShape().getPos().getX(), this.pUp.get().getShape().getPos().getY(), this);
                 //System.out.println("x" + pUp.get().getShape().getPos().x + "y" + pUp.get().getShape().getPos().x);
             }
         }

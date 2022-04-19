@@ -6,7 +6,7 @@ import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.PosConverter;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 
 /**
  * Models a GUI component for the arpion class.
@@ -65,7 +65,7 @@ public class ArpionComponent{
      * Raises the component by one step.
      */
     public void raise(){
-        this.changeLocation(new EntityPos2D(this.getShape().getPos().x, this.getShape().getPos().y - SPEED));
+        this.changeLocation(new EntityPos2D(this.getShape().getPos().getX(), this.getShape().getPos().getY() - SPEED));
     }
 
     /**

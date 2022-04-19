@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
-
-import menu.components.MainPanel;
 import stage.utils.CenterOnDefaultScreen;
 
 public class Gui extends JFrame {
@@ -18,7 +16,6 @@ public class Gui extends JFrame {
 	private static final long serialVersionUID = 5959162590670099057L;
 	private final int width = CenterOnDefaultScreen.center().width;
 	private final int heigth = CenterOnDefaultScreen.center().height;
-	private MainPanel mainPanel;
 
 	public Gui() throws FileNotFoundException {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -28,8 +25,7 @@ public class Gui extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		
-		this.mainPanel = new MainPanel(this);
-		this.add(mainPanel, BorderLayout.CENTER);
+		MenuControl p = new MenuControl(this);
 		
 		this.setVisible(true);
 	}

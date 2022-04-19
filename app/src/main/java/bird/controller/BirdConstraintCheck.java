@@ -5,6 +5,7 @@ import bird.gui.BirdActor;
 import bird.gui.BirdShape;
 import pangGuy.gui.Shape;
 
+
 public class BirdConstraintCheck {
 
     /**
@@ -24,10 +25,10 @@ public class BirdConstraintCheck {
     private boolean isCollision(BirdShape bird, Shape rect) {
         var rectWidht = rect.getDimensions().getX();
         var rectHeight = rect.getDimensions().getY();
-        Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().x + (int)(0.5*rectWidht),
-                                                    rect.getPos().y + (int)(0.5*rectHeight));
-        Pair<Integer> birdCenter = new Pair<Integer>(bird.getPos().x + (bird.getDimensions().getX() / 2),
-                                                    bird.getPos().y + (bird.getDimensions().getY() / 2));
+        Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().getX() + (int)(0.5*rectWidht),
+                                                    rect.getPos().getY() + (int)(0.5*rectHeight));
+        Pair<Integer> birdCenter = new Pair<Integer>(bird.getPos().getX() + (bird.getDimensions().getX() / 2),
+                                                    bird.getPos().getY() + (bird.getDimensions().getY() / 2));
         Pair<Integer> birdDistance = new Pair<Integer>(0, 0);
 
         birdDistance.setX(Math.abs(birdCenter.getX() - rectCenter.getY()));

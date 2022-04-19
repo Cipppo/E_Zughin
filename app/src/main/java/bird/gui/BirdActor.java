@@ -2,8 +2,8 @@ package bird.gui;
 
 import bird.utilities.BirdDirections;
 import bird.utilities.BirdPNGLoader;
-import mergeballs.utilities.EntityPos2D;
 import stage.utils.CenterOnDefaultScreen;
+import pangGuy.utilities.EntityPos2D;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
