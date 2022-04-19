@@ -50,7 +50,6 @@ public class ActionFactory {
                         this.v.getHeroComponent().getShape().getDimensions().getY())){
                             this.h.move(Directions.RIGHT);
                             this.v.move(new EntityPos2D(axisHeroPos.x + SPEED, axisHeroPos.y));
-                            System.out.println("Moved from: " + axisHeroPos + "To: " + new EntityPos2D(axisHeroPos.x + SPEED, axisHeroPos.y).x);
                             this.v.setDirection(this.h.getDirection());
                         }
         }
@@ -89,7 +88,6 @@ public class ActionFactory {
                     this.v.getHeroComponent().getShape().getDimensions().getY())){
                         this.h.move(Directions.LEFT);  
                         this.v.move(new EntityPos2D(axisHeroPos.x - SPEED,  axisHeroPos.y));
-                        System.out.println("Moved from: " + axisHeroPos + "To: " + new EntityPos2D(axisHeroPos.x - SPEED, axisHeroPos.y).x);
                         this.v.setDirection(this.h.getDirection());
                     }
         }
