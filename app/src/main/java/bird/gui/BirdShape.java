@@ -3,7 +3,7 @@ package bird.gui;
 import java.awt.Rectangle;
 import bird.utilities.BirdDirections;
 import pangGuy.utilities.Pair;
-import bird.utilities.BirdPos2D;
+import mergeballs.utilities.EntityPos2D;
 
 /**
  * This class models the shape of the bird.
@@ -26,7 +26,7 @@ public class BirdShape {
      * @param dir
      *          bird's direction.
      */
-    public BirdShape(BirdPos2D pos, int width, int height, BirdDirections dir){
+    public BirdShape(EntityPos2D pos, int width, int height, BirdDirections dir){
         r = new Rectangle(pos.x, pos.y, width, height);
         this.dir = dir;
     }
@@ -35,8 +35,8 @@ public class BirdShape {
      * @return
      *          the bird's position
      */
-    public BirdPos2D getPos(){
-        return new BirdPos2D((int)r.getX(), (int) r.getY());
+    public EntityPos2D getPos(){
+        return new EntityPos2D((int)r.getX(), (int) r.getY());
     }
 
     /**

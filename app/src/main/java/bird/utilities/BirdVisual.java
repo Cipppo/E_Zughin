@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import bird.gui.BirdActor;
 import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
-import bird.gui.BirdShape;
+import mergeballs.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
 
@@ -32,13 +32,11 @@ public class BirdVisual extends Thread{
     private static final int SIZEY = CenterOnDefaultScreen.center().height*70/100;
 
     private static final int WIDTH = CenterOnDefaultScreen.center().width*3/100;
-    private static final int HEIGHT = CenterOnDefaultScreen.center().width*3/100;;
 
     private static final int STARTY = 0;
 
     private final Random random = new Random();
     private final JPanel panel;
-    private BirdShape shape;
     private BirdMover mover;
     private BirdActor actor;
     private int startX;
@@ -63,8 +61,8 @@ public class BirdVisual extends Thread{
             
             this.dir = this.randomDirectionChooser();
             this.startX = this.dir == BirdDirections.RIGHT ? 0 : SIZEX - WIDTH;
-            this.shape = new BirdShape(new BirdPos2D(startX, STARTY), WIDTH, HEIGHT, dir);
-            this.actor = new BirdActor(this.shape);
+            //this.shape = new BirdShape(new EntityPos2D(startX, STARTY), WIDTH, HEIGHT, dir);
+            this.actor = new BirdActor(new EntityPos2D(startX, STARTY));
             this.mover = new BirdMover(this.actor, bc);
             movUtils = new BirdMovementUtils(actor, panel, mover);
 
@@ -73,7 +71,7 @@ public class BirdVisual extends Thread{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            panel.add(this.actor);
+            /* panel.add(this.actor); */
             panel.repaint();
             if(startX == 0) {
                 movUtils.moveRight();
@@ -126,10 +124,10 @@ public class BirdVisual extends Thread{
     public void setPause() {
         if(this.pause) {
             this.pause = false;
-            this.actor.setVisible(true);
+            /* this.actor.setVisible(true); */
         } else {
             this.pause = true;
-            this.actor.setVisible(false);
+            /* this.actor.setVisible(false); */
         }
         movUtils.setPause();
     }

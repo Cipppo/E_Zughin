@@ -71,7 +71,7 @@ public class BirdMovementUtils {
      */
     public final void moveRight() {
         this.moveUp = false;
-        while(bird.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5 && bird.getParent() == panel) {
+        while(bird.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5 /* && bird.getParent() == panel */) {
             this.doMovement(BirdDirections.RIGHT);
             this.moveVertically();
         }
@@ -83,7 +83,7 @@ public class BirdMovementUtils {
      */
     public final void moveLeft() {
         this.moveUp = false;
-        while(bird.getShape().getPos().x >= bc.getXPair().getX() + 5 && bird.getParent() == panel) {
+        while(bird.getShape().getPos().x >= bc.getXPair().getX() + 5 /* && bird.getParent() == panel */) {
             this.doMovement(BirdDirections.LEFT);
             this.moveVertically();
         }
@@ -140,7 +140,7 @@ public class BirdMovementUtils {
      * When the bird reaches the opposite side or gets hit from an enemy, this method will remove it form the panel.
      */
     public final void removeActor() {
-        panel.remove(this.bird);
+        /* panel.remove(this.bird); */
         panel.repaint();
         Toolkit.getDefaultToolkit().sync();
     }

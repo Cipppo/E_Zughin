@@ -1,23 +1,26 @@
 package bird.gui;
 
-import javax.swing.JLabel;
-
 import bird.utilities.BirdDirections;
 import bird.utilities.BirdPNGLoader;
-import bird.utilities.BirdPos2D;
+import mergeballs.utilities.EntityPos2D;
+import stage.utils.CenterOnDefaultScreen;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Random;
 
 /**
  * This class is the bird itself. It defines his dimension thanks to the shape and it can
  * change the bird's position.
  */
-public class BirdActor extends JLabel{
+public class BirdActor{
 
-	private static final long serialVersionUID = 1967410748214691856L;
+    private static final int WIDTH = CenterOnDefaultScreen.center().width*3/100;
+    private static final int HEIGHT = CenterOnDefaultScreen.center().width*3/100;
     
 	private BirdShape s;
+    private final BirdDirections dir = this.randomDirectionChooser();
+    private final Random random = new Random();
     private final BirdPNGLoader iLoader = new BirdPNGLoader();
 
     /**
@@ -25,11 +28,8 @@ public class BirdActor extends JLabel{
      * @param s
      *          bird's shape.
      */
-    public BirdActor(BirdShape s){
-        this.s = s;
-        
-        super.setBounds(this.s.getRectangle());
-        super.setOpaque(false);
+    public BirdActor(EntityPos2D startPos){
+        this.s = new BirdShape(startPos, WIDTH, HEIGHT, dir);
         
     }
     
@@ -38,11 +38,8 @@ public class BirdActor extends JLabel{
      * @param pos
      *          new position.
      */
-    public void changeLocation(BirdPos2D pos){
-
-        super.setLocation(pos.x, pos.y);
-        this.s = new BirdShape(pos, this.s.getDimensions().getX(), 
-        this.s.getDimensions().getY(), this.getShape().getDireciton());  
+    public void changeLocation(EntityPos2D pos){
+        this.s = new BirdShape(pos, WIDTH, HEIGHT, dir);
     }
 
     public BirdShape getShape(){
@@ -61,4 +58,13 @@ public class BirdActor extends JLabel{
 
         g2.dispose();
     }
+
+    public BirdDirections randomDirectionChooser() {
+        if(random.nextInt(2) == 0) {
+            return BirdDirections.RIGHT;
+        } else {
+            return BirdDirections.LEFT;
+        }
+    }
 }
+

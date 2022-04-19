@@ -1,7 +1,7 @@
 package bird.gui;
 
 import bird.utilities.BirdDirections;
-import bird.utilities.BirdPos2D;
+import mergeballs.utilities.EntityPos2D;
 
 /**
  * Checks if the bird is inside the stage and than moves it.
@@ -30,7 +30,7 @@ public class BirdMover {
      * @param dir
      *          direction the bird is flying.
      */
-    public void move(BirdPos2D pos, BirdDirections dir) {
+    public void move(EntityPos2D pos, BirdDirections dir) {
         if(bc.isInside(pos, this.actor.getShape().getDimensions().getX(), 
         this.actor.getShape().getDimensions().getY())) {
             this.actor.changeLocation(pos);
@@ -41,7 +41,7 @@ public class BirdMover {
      * @return
      *          the current position of the bird
      */
-    public BirdPos2D getCurrentPos(){
+    public EntityPos2D getCurrentPos(){
         return this.actor.getShape().getPos();
     }
 }

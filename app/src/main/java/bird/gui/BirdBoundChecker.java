@@ -1,7 +1,7 @@
 package bird.gui;
 
 import pangGuy.utilities.Pair;
-import bird.utilities.BirdPos2D;
+import mergeballs.utilities.EntityPos2D;
 
 /**
  * This class checks if the position of the bird is out of the stage bounds or not.
@@ -37,7 +37,7 @@ public class BirdBoundChecker {
      * @return
      *          if it's inside or outside.
      */
-    public boolean isInside(BirdPos2D pos ,int width, int height){
+    public boolean isInside(EntityPos2D pos ,int width, int height){
         if(pos.x >= this.x.getX() && pos.x + width <= this.x.getY()){
             if(pos.y >= this.y.getX() && pos.y + height <= this.y.getY() - 35){
                 return true;
