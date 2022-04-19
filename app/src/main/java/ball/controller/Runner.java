@@ -79,7 +79,9 @@ public class Runner extends Thread {
                 this.balls.add(newAgent);
                 newAgent.start();
             }
-        } catch (IllegalStateException e) { }
+        } catch (IllegalStateException e) {
+            //System.out.println("Cannot duplicate GRANDCHILD ball");
+        }
         
         ball.terminate();
         this.balls.remove(ball);
