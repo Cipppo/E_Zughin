@@ -4,6 +4,6 @@ package pangGuy.character;
  * Models the Hero status.
  */
 
-public enum heroStatus {
+public enum HeroStatus {
     NEUTRAL, HIT;
 }
