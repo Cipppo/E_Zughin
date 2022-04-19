@@ -3,7 +3,7 @@ package fruit;
 import java.awt.Color;
 import java.util.Random;
 
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import pangGuy.character.Hero;
 import pangGuy.gui.Shape;
 import pangGuy.utilities.Pair;
