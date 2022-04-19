@@ -3,11 +3,11 @@ package ball.physics;
 /**
  * Modeling a generic two dimensional position in space.
  */
-public abstract class EntityPos2D<T> {
+public abstract class Pos2D<T> {
     private T x;
     private T y;
 
-    public EntityPos2D(final T x, final T y) {
+    public Pos2D(final T x, final T y) {
         this.x = x;
         this.y = y;
     }
