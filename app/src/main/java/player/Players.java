@@ -99,6 +99,7 @@ public class Players {
 			
 			this.add(new Player(nickname, score, date));
 		}
+		scan.close();
 		
 		
 	}
