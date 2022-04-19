@@ -1,5 +1,7 @@
 package ball.physics;
-
+/**
+ * Pojo for storing vertical and horizontal velocity.
+ */
 public class Velocity2D {
     public double vx;
     public double vy;
@@ -15,14 +17,6 @@ public class Velocity2D {
 
     public double getY() {
         return vy;
-    }
-
-    public void invertXSing() {
-        this.vy = -this.vy;
-    }
-
-    public void invertYSing() {
-        this.vy = -this.vy;
     }
 
     @Override

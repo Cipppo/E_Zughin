@@ -25,7 +25,7 @@ public class Ball implements Entity {
     protected Ball(Trajectory trajectory, SpherePos2D position, double gravity) {
     	this.trajectory = trajectory;
     	this.actualPosition = position;
-    	this.initialPosition = new SpherePos2D(position.getX(), position.getY(), position.getDimension());
+    	this.initialPosition = new SpherePos2D(position.getX(), position.getY(), position.getDimension(), position.getDiameter());
     	this.velocity = this.trajectory.getXYVelocity();
     	this.gravity = gravity;
         this.size = this.getPosition().getDiameter();
