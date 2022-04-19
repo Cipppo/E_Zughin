@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.stream.Collectors;
 
 import ball.controller.BallBoundChecker;
+import ball.controller.IntersectionChecker;
 import mergeballs.gui.VisualTest;
 import pangGuy.character.Hero;
 import pangGuy.character.HitHandler;
@@ -69,6 +70,17 @@ public class EntityHandler extends Thread {
                                 .map(s -> s.getBallPosition())
                                 .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup(), this.bird.getShape());
                 });
+
+                if (!this.bird.getActor().isEmpty()) {
+                    for (final var arp : frame.getArpions()) {
+                        if (arp.getStatus().equals(Status.RISING)) {
+                            if (IntersectionChecker.checkShapeCollsion(arp.getShape(), this.bird.getShape().get())) {
+                                this.gSet.getBulletFromSteps(this.stepsConv.fromPixeltoStep(arp.getShape().getPos().getY())).get().hit();
+                                this.bird.setBirdDead();
+                            }
+                        }
+                    }
+                }
 
                 if (!this.pUpHandler.getPowerup().isEmpty()) {
                     this.pUpHandler.checkItemTaken(this.frame.getHero());
