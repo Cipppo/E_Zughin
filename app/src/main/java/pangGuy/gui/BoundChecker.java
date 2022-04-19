@@ -40,7 +40,7 @@ public class BoundChecker {
      * @return True if it can raise more, False otherwise.
      */
     public boolean isExtendible(EntityPos2D pos){
-        if(pos.getY() > 0 + 35){
+        if(pos.getY() > 0 ){
             return true;
         }else{
             return false;
