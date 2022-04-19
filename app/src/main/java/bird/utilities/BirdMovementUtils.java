@@ -30,7 +30,7 @@ public class BirdMovementUtils {
     private static final int WIDTH = CenterOnDefaultScreen.center().width*3/100;
     private static final int HEIGHT = CenterOnDefaultScreen.center().width*3/100;;
 
-    private static final int HUD_HEIGHT = CenterOnDefaultScreen.center().height*13/100;
+    // private static final int HUD_HEIGHT = CenterOnDefaultScreen.center().height*13/100;
 
     private final BirdActor bird;
     private final BirdMover mover;
