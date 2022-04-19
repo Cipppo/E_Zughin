@@ -25,7 +25,7 @@ public class BonusImageLoader {
             this.loader.load("Lemon.png"), 
             this.loader.load("Orange.png"), 
             this.loader.load("Strawberry.png"), 
-            this.loader.load("Watermelon.png")
+            this.loader.load("WaterMelon.png")
         ));
     }
 
