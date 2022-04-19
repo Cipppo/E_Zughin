@@ -107,16 +107,20 @@ public class BirdMovementUtils {
                 switch(dir) {
                     case RIGHT:
                         this.actionFactory.getRightAction(this.mover);
+                        break;
                     case LEFT:
                         this.actionFactory.getLeftAction(this.mover);
+                        break;
                     case DOWN:
                         this.actionFactory.getDownAction(this.mover);
+                        break;
                     case UP:
                         this.actionFactory.getUpAction(this.mover);
+                        break;
                 }
                 /* panel.repaint(); */
                 Toolkit.getDefaultToolkit().sync();
-                // System.out.println(bird.getShape().getPos());
+                System.out.println(bird.getShape().getPos());
             }
             Thread.sleep(20);
         } catch (InterruptedException e) {
