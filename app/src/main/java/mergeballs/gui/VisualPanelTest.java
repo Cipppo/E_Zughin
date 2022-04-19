@@ -85,8 +85,8 @@ public class VisualPanelTest extends JPanel {
                             this);
             }
             if (!this.bonus.isEmpty()) {
-                //g2.drawImage(bonusILoader.getSprite(), this.bonus.get().getShape().getPos().getX(), this.bonus.get().getShape().getPos().getY(), this);
-                g2.fillRect(this.bonus.get().getShape().getPos().getX(), this.bonus.get().getShape().getPos().getY(), 20, 20);
+                g2.drawImage(bonusILoader.getSprite(), this.bonus.get().getShape().getPos().getX(), this.bonus.get().getShape().getPos().getY(), this);
+                //g2.fillRect(this.bonus.get().getShape().getPos().getX(), this.bonus.get().getShape().getPos().getY(), 20, 20);
             }
             g2.fillRect(410, 410, 40, 40);
         }
