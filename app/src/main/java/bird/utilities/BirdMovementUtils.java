@@ -10,7 +10,7 @@ import bird.gui.BirdMover;
 import stage.utils.CenterOnDefaultScreen;
 import pangGuy.gui.Shape;
 import pangGuy.utilities.Pair;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 
 import java.awt.Toolkit;
 
@@ -71,7 +71,7 @@ public class BirdMovementUtils {
      */
     public final void moveRight() {
         this.moveUp = false;
-        while(bird.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5 /* && bird.getParent() == panel */) {
+        while(bird.getShape().getPos().getX() + WIDTH <= bc.getXPair().getY() - 5 /* && bird.getParent() == panel */) {
             this.doMovement(BirdDirections.RIGHT);
             this.moveVertically();
         }
@@ -83,7 +83,7 @@ public class BirdMovementUtils {
      */
     public final void moveLeft() {
         this.moveUp = false;
-        while(bird.getShape().getPos().x >= bc.getXPair().getX() + 5 /* && bird.getParent() == panel */) {
+        while(bird.getShape().getPos().getX() >= bc.getXPair().getX() + 5 /* && bird.getParent() == panel */) {
             this.doMovement(BirdDirections.LEFT);
             this.moveVertically();
         }
@@ -96,7 +96,7 @@ public class BirdMovementUtils {
      *      - Up movement: if bird has already touched ground.
      */
     public final void moveVertically() {
-        if(bird.getShape().getPos().y + HEIGHT <= bc.getYPair().getY() - HUD_HEIGHT && !moveUp) {
+        if(bird.getShape().getPos().getY() + HEIGHT <= bc.getYPair().getY() - HUD_HEIGHT && !moveUp) {
             this.doMovement(BirdDirections.DOWN);
         } else {
             this.moveUp = true;

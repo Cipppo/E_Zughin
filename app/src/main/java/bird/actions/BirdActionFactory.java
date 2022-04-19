@@ -2,7 +2,7 @@ package bird.actions;
 
 import bird.gui.BirdMover;
 import bird.utilities.BirdDirections;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 
 public class BirdActionFactory {
 
@@ -12,7 +12,7 @@ public class BirdActionFactory {
     private class rightAction {
         
         public rightAction(BirdMover m){
-            m.move(new EntityPos2D(m.getCurrentPos().x + SPEED, m.getCurrentPos().y), BirdDirections.RIGHT);            
+            m.move(new EntityPos2D(m.getCurrentPos().getX() + SPEED, m.getCurrentPos().getY()), BirdDirections.RIGHT);            
         }
 
     }
@@ -20,21 +20,21 @@ public class BirdActionFactory {
     private class leftAction{
 
         public leftAction(BirdMover m) {
-            m.move(new EntityPos2D(m.getCurrentPos().x - SPEED, m.getCurrentPos().y), BirdDirections.LEFT);            
+            m.move(new EntityPos2D(m.getCurrentPos().getX() - SPEED, m.getCurrentPos().getY()), BirdDirections.LEFT);            
         }
     }
 
     private class downAction{
 
         public downAction(BirdMover m) {
-            m.move(new EntityPos2D(m.getCurrentPos().x, m.getCurrentPos().y + SPEED), BirdDirections.DOWN);
+            m.move(new EntityPos2D(m.getCurrentPos().getX(), m.getCurrentPos().getY() + SPEED), BirdDirections.DOWN);
         }
     }
 
     private class upAction{
 
         public upAction(BirdMover m) {
-            m.move(new EntityPos2D(m.getCurrentPos().x, m.getCurrentPos().y - SPEED), BirdDirections.UP);
+            m.move(new EntityPos2D(m.getCurrentPos().getX(), m.getCurrentPos().getY() - SPEED), BirdDirections.UP);
         }
     }
 

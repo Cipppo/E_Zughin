@@ -1,8 +1,7 @@
 package bird.gui;
 
 import bird.utilities.BirdDirections;
-import mergeballs.utilities.EntityPos2D;
-
+import pangGuy.utilities.EntityPos2D;
 /**
  * Checks if the bird is inside the stage and than moves it.
  */

@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import bird.gui.BirdActor;
 import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
-import mergeballs.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
+import pangGuy.utilities.EntityPos2D;
 
 /**
  * The bird visualizer with all of the bird's rules.
