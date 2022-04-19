@@ -114,14 +114,15 @@ public class BirdMovementUtils {
     private final void doMovement(BirdDirections dir) {
         try {
             if(!this.pause) {
-                if(dir == BirdDirections.RIGHT) {
-                    this.actionFactory.getRightAction(this.mover);
-                } else if(dir == BirdDirections.LEFT) {
-                    this.actionFactory.getLeftAction(this.mover);
-                } else if(dir == BirdDirections.DOWN) {
-                    this.actionFactory.getDownAction(this.mover);
-                } else if(dir == BirdDirections.UP) {
-                    this.actionFactory.getUpAction(this.mover);
+                switch(dir) {
+                    case RIGHT:
+                        this.actionFactory.getRightAction(this.mover);
+                    case LEFT:
+                        this.actionFactory.getLeftAction(this.mover);
+                    case DOWN:
+                        this.actionFactory.getDownAction(this.mover);
+                    case UP:
+                        this.actionFactory.getUpAction(this.mover);
                 }
                 if(birdConsCheck.checkEnemyCollision(new Shape(new EntityPos2D(480, 475), 20, 30), bird)) {
                     this.removeActor();
