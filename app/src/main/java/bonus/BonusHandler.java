@@ -24,7 +24,7 @@ public class BonusHandler extends Thread{
         while(!stop){
             try{
                 this.next = Optional.of(gen.generateNextBonus());
-                System.out.println("Fruit Spawned");
+                System.out.println("Fruit Spawned" + " X: " + this.next.get().getShape().toString());
                 Thread.sleep(SPAWN_TIME * 1000);
             }catch(Exception e){
                 System.out.println("Thread.sleep() error: " + e.getMessage());
