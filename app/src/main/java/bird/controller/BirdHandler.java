@@ -8,7 +8,6 @@ import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
 import bird.utilities.BirdDirections;
 import bird.utilities.BirdMovementUtils;
-import fruit.Shape;
 import mergeballs.utilities.EntityShape;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
@@ -88,10 +87,6 @@ public class BirdHandler extends Thread{
         
     }
 
-    public void removeBird() {
-        this.birdDead = true;
-    }
-
     /**
      * Trigger the pause for this object
      */
@@ -107,6 +102,7 @@ public class BirdHandler extends Thread{
     }
 
     public void setBirdDead() {
+        this.birdDead = true;
         this.movUtils.setDead();
     }
 }
