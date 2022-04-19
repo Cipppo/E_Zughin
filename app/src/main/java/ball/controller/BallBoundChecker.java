@@ -30,7 +30,7 @@ public class BallBoundChecker {
             t.applyConstraints(Boundary.X0.getValue() , Boundary.X0);
         } else if (x + diameter >= this.width) {
             t.applyConstraints(t.getBallPosition().getX() - (diameter * 0.0001), Boundary.X1);
-        } else if (y + 1.65 * diameter > this.height) { //very problematic in macos
+        } else if (y + diameter > this.height) {
             t.applyConstraints(t.getBallPosition().getY() - 0.009, Boundary.Y1);
         } else if (y < -1) {
             t.applyConstraints(Boundary.Y0.getValue(), Boundary.Y0);
