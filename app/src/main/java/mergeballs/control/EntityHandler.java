@@ -80,6 +80,13 @@ public class EntityHandler extends Thread {
                             }
                         }
                     }
+
+                    if (IntersectionChecker.checkShapeCollsion(this.bird.getShape().get(), this.frame.getHero().getShape())) {
+                        if(this.hero.getStatus() == HeroStatus.NEUTRAL){
+                            Timer timer = new Timer();
+                            timer.schedule(new HitHandler(hero), 0);
+                        }
+                    }
                 }
 
                 if (!this.pUpHandler.getPowerup().isEmpty()) {
