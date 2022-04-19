@@ -63,7 +63,7 @@ public class BirdVisual extends Thread{
             //this.shape = new BirdShape(new EntityPos2D(startX, STARTY), WIDTH, HEIGHT, dir);
             this.actor = new BirdActor(new EntityPos2D(startX, STARTY));
             this.mover = new BirdMover(this.actor, bc);
-            movUtils = new BirdMovementUtils(actor, panel, mover);
+            movUtils = new BirdMovementUtils(actor, mover);
 
             try {
                 TimeUnit.SECONDS.sleep(random.nextInt(10) + 5);
@@ -86,22 +86,6 @@ public class BirdVisual extends Thread{
      */
     public BirdActor getActor() {
         return this.actor;
-    }
-
-    /**
-     * @return
-     *      the start abscissa of this object
-     */
-    public int getStartX() {
-        return this.startX;
-    }
-
-    /**
-     * @return
-     *      this bird movement utils
-     */
-    public BirdMovementUtils getMovementUtils() {
-        return this.movUtils;
     }
 
     /**

@@ -38,16 +38,14 @@ public class BirdMovementUtils {
     private static final int HUD_HEIGHT = CenterOnDefaultScreen.center().height*13/100;
 
     private final BirdActor bird;
-    private final JPanel panel;
     private final BirdMover mover;
     private Boolean moveUp = false;
 
     private Boolean pause = false;
+    private Boolean birdDead = false;
     private final BirdActionFactory actionFactory = new BirdActionFactory();
     private final BirdBoundChecker bc = new BirdBoundChecker(new Pair<Integer, Integer>(0, SIZEX),
                                     new Pair<Integer, Integer>(0, SIZEY));
-
-    private final BirdConstraintCheck birdConsCheck = new BirdConstraintCheck();
 
     /**
      * Cuntructor that define the bird to move, the panel on which to move the bird
@@ -60,9 +58,8 @@ public class BirdMovementUtils {
      * @param mover
      *          the mover utility.
      */                                
-    public BirdMovementUtils(BirdActor bird, JPanel panel, BirdMover mover) {
+    public BirdMovementUtils(BirdActor bird, BirdMover mover) {
         this.bird = bird;
-        this.panel = panel;
         this.mover = mover;
     }
     
@@ -71,11 +68,10 @@ public class BirdMovementUtils {
      */
     public final void moveRight() {
         this.moveUp = false;
-        while(bird.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5 /* && bird.getParent() == panel */) {
+        while(bird.getShape().getPos().x + WIDTH <= bc.getXPair().getY() - 5 && this.birdDead != true) {
             this.doMovement(BirdDirections.RIGHT);
             this.moveVertically();
         }
-        this.removeActor();
     }
 
     /**
@@ -83,11 +79,10 @@ public class BirdMovementUtils {
      */
     public final void moveLeft() {
         this.moveUp = false;
-        while(bird.getShape().getPos().x >= bc.getXPair().getX() + 5 /* && bird.getParent() == panel */) {
+        while(bird.getShape().getPos().x >= bc.getXPair().getX() + 5 && this.birdDead != true) {
             this.doMovement(BirdDirections.LEFT);
             this.moveVertically();
         }
-        this.removeActor();
     }
 
     /**
@@ -124,10 +119,7 @@ public class BirdMovementUtils {
                     case UP:
                         this.actionFactory.getUpAction(this.mover);
                 }
-                if(birdConsCheck.checkEnemyCollision(new Shape(new EntityPos2D(480, 475), 20, 30), bird)) {
-                    this.removeActor();
-                }
-                panel.repaint();
+                /* panel.repaint(); */
                 Toolkit.getDefaultToolkit().sync();
                 System.out.println(bird.getShape().getPos());
             }
@@ -138,18 +130,13 @@ public class BirdMovementUtils {
     }
 
     /**
-     * When the bird reaches the opposite side or gets hit from an enemy, this method will remove it form the panel.
-     */
-    public final void removeActor() {
-        /* panel.remove(this.bird); */
-        panel.repaint();
-        Toolkit.getDefaultToolkit().sync();
-    }
-
-    /**
      * Method to pause the bird movements.
      */
     public void setPause() {
         this.pause = !this.pause;
+    }
+
+    public void setDead() {
+        this.birdDead = true;
     }
 }
