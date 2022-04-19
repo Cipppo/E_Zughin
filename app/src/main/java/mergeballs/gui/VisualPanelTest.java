@@ -79,6 +79,7 @@ public class VisualPanelTest extends JPanel {
                             this.bShape.get().getPos().getY(), 
                             this);
             }
+            g2.fillRect(410, 410, 40, 40);
         }
         g2.dispose();
         Toolkit.getDefaultToolkit().sync();
