@@ -149,10 +149,6 @@ public class BirdMovementUtils {
      * Method to pause the bird movements.
      */
     public void setPause() {
-        if(this.pause) {
-            this.pause = false;
-        } else {
-            this.pause = true;
-        }
+        this.pause = !this.pause;
     }
 }
