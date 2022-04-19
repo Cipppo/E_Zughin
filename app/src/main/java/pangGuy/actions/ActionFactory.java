@@ -16,7 +16,7 @@ import mergeballs.gui.VisualInterface;
 
 public class ActionFactory {
 
-    private static final int SPEED = 5;
+    private static final int SPEED = 20;
 
     /**
      * The action which permits the main character to step Right.

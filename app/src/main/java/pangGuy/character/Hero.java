@@ -1,11 +1,7 @@
 package pangGuy.character;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import mergeballs.utilities.EntityPos2D;
 import pangGuy.modularGun.GunSet;
-
 import pangGuy.utilities.Directions;
 
 /**
@@ -13,13 +9,11 @@ import pangGuy.utilities.Directions;
  */
 
 public class Hero {
-    
-    private static final int HIT_WAIT = 1;
 
     private EntityPos2D pos;
     private Directions direction;
     private GunSet gSet;
-    private heroStatus status;
+    private HeroStatus status;
     private int lives;
 
     /**
@@ -29,7 +23,7 @@ public class Hero {
         this.pos = new EntityPos2D(0, 0);
         this.direction = Directions.LEFT;
         this.gSet = new GunSet();
-        this.status = heroStatus.NEUTRAL;
+        this.status = HeroStatus.NEUTRAL;
         this.lives = 3;
     }
 
@@ -86,15 +80,24 @@ public class Hero {
      * The method is called whenever a ball hits the main character, it cut off one life.
      */
     public void hit(){
-        if(this.status == heroStatus.NEUTRAL){
-            this.status = heroStatus.HIT;
-            System.out.println(this.status);
-            Timer timer = new Timer();
-            TimerTask hitCond = new hitCondition(this.status);
-            timer.schedule(hitCond, HIT_WAIT * 1000);
-            this.lives--;
-            System.out.println(this.lives);
-        }
+        this.lives--;
+        System.out.println("Lifes: " + this.lives);
+    }
+
+    /**
+     * Setter for HeroStatus.
+     * @param status the status that needs to be set.
+     */
+    public void setStatus(HeroStatus status){
+        this.status = status;
+    }
+
+    /**
+     * Getter for Status.
+     * @return the current Hero status.
+     */
+    public HeroStatus getStatus(){
+        return this.status;
     }
 
 }
