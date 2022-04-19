@@ -15,14 +15,12 @@ public class NicknameInput extends JPanel{
 	private int check;
 	private int seconds = 0;
 	private Timer timer;
-	private SecondaryLabel nick;
+	private MenuLabel nick;
 	
 	public NicknameInput() {
 		nickname = "";
 		check = -1;
-		nick = new SecondaryLabel();
-		nick.setSSize(4);
-		nick.setFont(nick.getGameFont());
+		nick = new MenuLabel("", 4);
 		nick.setText(nickname);
 		this.setLayout(new BorderLayout());
 		this.add(nick, BorderLayout.CENTER);
@@ -34,9 +32,11 @@ public class NicknameInput extends JPanel{
 	
 	public void enterInput() {
 		if (check == -1) {
-			nickname += "  ";
+			nickname = "  ";
 			nick.setText(nickname);
 		}
+		check++;
+		
 	}
 		
 	public void addChar(char c) {
