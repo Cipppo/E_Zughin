@@ -2,7 +2,6 @@ package pangGuy.character;
 
 import mergeballs.utilities.EntityPos2D;
 import pangGuy.modularGun.GunSet;
-
 import pangGuy.utilities.Directions;
 
 /**
@@ -81,10 +80,8 @@ public class Hero {
      * The method is called whenever a ball hits the main character, it cut off one life.
      */
     public void hit(){
-        if(this.status == heroStatus.NEUTRAL){
-            this.lives--;
-            System.out.println("Lifes: " + this.lives);
-        }
+        this.lives--;
+        System.out.println("Lifes: " + this.lives);
     }
 
     /**
@@ -93,6 +90,14 @@ public class Hero {
      */
     public void setStatus(heroStatus status){
         this.status = status;
+    }
+
+    /**
+     * Getter for Status.
+     * @return the current Hero status.
+     */
+    public heroStatus getStatus(){
+        return this.status;
     }
 
 }
