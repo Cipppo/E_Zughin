@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.stream.Collectors;
 
 import ball.controller.BallBoundChecker;
+import ball.controller.IntersectionChecker;
 import mergeballs.gui.VisualTest;
 import pangGuy.character.Hero;
 import pangGuy.character.HitHandler;
@@ -12,6 +13,7 @@ import pangGuy.modularGun.Status;
 import pangGuy.utilities.StepsApplier;
 import powerUp.PowerUpHandler;
 import ball.controller.Runner;
+import bird.controller.BirdHandler;
 import pangGuy.character.HeroStatus;
 
 public class EntityHandler extends Thread {
@@ -22,6 +24,7 @@ public class EntityHandler extends Thread {
     private final StepsApplier stepsConv;
     private final Hero hero;
     private final PowerUpHandler pUpHandler;
+    private final BirdHandler bird;
     
     
     public EntityHandler(VisualTest frame, GunSet gSet, Hero hero) {
@@ -33,13 +36,14 @@ public class EntityHandler extends Thread {
         this.gSet = gSet;
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
         this.pUpHandler = new PowerUpHandler(gSet, this.ballRunner, this.frame.getBounds());
-        
+        this.bird = new BirdHandler();
     }
 
     @Override
     public void run() {
         this.ballRunner.start();
         this.pUpHandler.start();
+        this.bird.start();
         while(true) {
             try {
                 ballRunner.getBalls()
@@ -64,8 +68,26 @@ public class EntityHandler extends Thread {
                                 .getBalls()
                                 .stream()
                                 .map(s -> s.getBallPosition())
-                                .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup());
+                                .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup(), this.bird.getShape());
                 });
+
+                if (!this.bird.getActor().isEmpty()) {
+                    for (final var arp : frame.getArpions()) {
+                        if (arp.getStatus().equals(Status.RISING)) {
+                            if (IntersectionChecker.checkShapeCollsion(arp.getShape(), this.bird.getShape().get())) {
+                                this.gSet.getBulletFromSteps(this.stepsConv.fromPixeltoStep(arp.getShape().getPos().getY())).get().hit();
+                                this.bird.setBirdDead();
+                            }
+                        }
+                    }
+
+                    if (IntersectionChecker.checkShapeCollsion(this.bird.getShape().get(), this.frame.getHero().getShape())) {
+                        if(this.hero.getStatus() == HeroStatus.NEUTRAL){
+                            Timer timer = new Timer();
+                            timer.schedule(new HitHandler(hero), 0);
+                        }
+                    }
+                }
 
                 if (!this.pUpHandler.getPowerup().isEmpty()) {
                     this.pUpHandler.checkItemTaken(this.frame.getHero());

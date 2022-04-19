@@ -19,7 +19,7 @@ public class BirdActor{
     private static final int HEIGHT = CenterOnDefaultScreen.center().width*3/100;
     
 	private BirdShape s;
-    private final BirdDirections dir = this.randomDirectionChooser();
+    private final BirdDirections dir;
     private final Random random = new Random();
     private final BirdPNGLoader iLoader = new BirdPNGLoader();
 
@@ -28,7 +28,8 @@ public class BirdActor{
      * @param s
      *          bird's shape.
      */
-    public BirdActor(EntityPos2D startPos){
+    public BirdActor(EntityPos2D startPos, BirdDirections dir){
+        this.dir = dir;
         this.s = new BirdShape(startPos, WIDTH, HEIGHT, dir);
         
     }
@@ -53,8 +54,7 @@ public class BirdActor{
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.drawImage(iLoader.getBirdImage(this.getShape().getDireciton() == BirdDirections.RIGHT ? BirdDirections.RIGHT : BirdDirections.LEFT, s.getPos()), 
-                0, 0, null);
+        g2.drawImage(iLoader.getBirdImage(this.getShape().getDireciton(), s.getPos()), 0, 0, null);
 
         g2.dispose();
     }
