@@ -43,7 +43,7 @@ public class PowerUpHandler extends Thread{
 
     private synchronized EntityPos2D getRandomPos2D(){
         Random rand = new Random();
-        return new EntityPos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 55);
+        return new EntityPos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 20);
     }
 
     private synchronized Shape generateRandomShape(){
