@@ -12,6 +12,7 @@ import pangGuy.modularGun.Status;
 import pangGuy.utilities.StepsApplier;
 import powerUp.PowerUpHandler;
 import ball.controller.Runner;
+import bird.controller.BirdHandler;
 import pangGuy.character.HeroStatus;
 
 public class EntityHandler extends Thread {
@@ -22,6 +23,7 @@ public class EntityHandler extends Thread {
     private final StepsApplier stepsConv;
     private final Hero hero;
     private final PowerUpHandler pUpHandler;
+    private final BirdHandler bird;
     
     
     public EntityHandler(VisualTest frame, GunSet gSet, Hero hero) {
@@ -33,13 +35,14 @@ public class EntityHandler extends Thread {
         this.gSet = gSet;
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
         this.pUpHandler = new PowerUpHandler(gSet, this.ballRunner, this.frame.getBounds());
-        
+        this.bird = new BirdHandler();
     }
 
     @Override
     public void run() {
         this.ballRunner.start();
         this.pUpHandler.start();
+        this.bird.start();
         while(true) {
             try {
                 ballRunner.getBalls()
@@ -64,7 +67,7 @@ public class EntityHandler extends Thread {
                                 .getBalls()
                                 .stream()
                                 .map(s -> s.getBallPosition())
-                                .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup());
+                                .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup(), this.bird.getShape());
                 });
 
                 if (!this.pUpHandler.getPowerup().isEmpty()) {

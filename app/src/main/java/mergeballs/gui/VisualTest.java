@@ -14,6 +14,8 @@ import java.util.List;
 
 import ball.gui.ImageLoader;
 import ball.physics.SpherePos2D;
+import bird.gui.BirdShape;
+import bird.utilities.BirdPNGLoader;
 import mergeballs.control.UpdateableVisual;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.gui.Shape;
@@ -35,6 +37,7 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     private final PangGuyImageLoader heroILoader;
     private final ArpionImageLoader arpionILoader;
     private final PowerupImageLoader pUpIl;
+    private final BirdPNGLoader birdPNGLoader;
 
     private EntityPos2D startPos;
     //Maybe i have to give to this Hero in order to get all the possible status
@@ -46,7 +49,8 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
         this.heroILoader = new PangGuyImageLoader();
         this.arpionILoader = new ArpionImageLoader();
         this.pUpIl = new PowerupImageLoader();
-        this.panel = new VisualPanelTest(width, height, iLoader, heroILoader, arpionILoader, pUpIl);
+        this.birdPNGLoader = new BirdPNGLoader();
+        this.panel = new VisualPanelTest(width, height, iLoader, heroILoader, arpionILoader, pUpIl, birdPNGLoader);
 
         this.startPos = startpos;
         this.hero = new HeroComponent(startpos);
@@ -135,9 +139,9 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     }
     
     @Override
-    public void updatePosition(List<SpherePos2D> pos, Directions dir, Optional<PowerUpEntity> pUp){
+    public void updatePosition(List<SpherePos2D> pos, Directions dir, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape){
         var shapes = this.getArpionsShapes();
-        panel.updatePositions(pos, shapes, this.hero.getShape(), dir, this.arpions.get(0).gType(), pUp);
+        panel.updatePositions(pos, shapes, this.hero.getShape(), dir, this.arpions.get(0).gType(), pUp, bShape);
     }
 
     @Override

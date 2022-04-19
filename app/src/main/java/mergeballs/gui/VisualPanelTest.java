@@ -11,7 +11,8 @@ import java.util.Optional;
 
 import ball.gui.ImageLoader;
 import ball.physics.SpherePos2D;
-
+import bird.gui.BirdShape;
+import bird.utilities.BirdPNGLoader;
 import pangGuy.gui.ArpionImageLoader;
 import pangGuy.gui.PangGuyImageLoader;
 import pangGuy.gui.Shape;
@@ -25,6 +26,7 @@ public class VisualPanelTest extends JPanel {
     private List<SpherePos2D> ballPositions;
     private List<Shape> shapes;
     private Shape hShape;
+    private Optional<BirdShape> bShape;
     private Directions dir;
     private GunTypes gunType;
     private final int width;
@@ -33,9 +35,10 @@ public class VisualPanelTest extends JPanel {
     private final ArpionImageLoader aILoader;
     private final PangGuyImageLoader heroILoader;
     private final PowerupImageLoader pUpImageLoader;
+    private final BirdPNGLoader birdPNGLoader;
     private Optional<PowerUpEntity> pUp;
 
-    public VisualPanelTest(int width, int height, ImageLoader iLoader, PangGuyImageLoader heroILoader, ArpionImageLoader aILoader, PowerupImageLoader pIl) {
+    public VisualPanelTest(int width, int height, ImageLoader iLoader, PangGuyImageLoader heroILoader, ArpionImageLoader aILoader, PowerupImageLoader pIl, BirdPNGLoader birdPNGLoader) {
         super.setSize(width, height);
         this.width = width;
         this.height = height;
@@ -43,6 +46,7 @@ public class VisualPanelTest extends JPanel {
         this.heroILoader = heroILoader;
         this.aILoader = aILoader;
         this.pUpImageLoader = pIl;
+        this.birdPNGLoader = birdPNGLoader;
     }
 
     public void paint(Graphics g) {
@@ -69,18 +73,25 @@ public class VisualPanelTest extends JPanel {
                 g2.drawImage(pUpImageLoader.getPowUpSprite(this.pUp.get().getPowerUp()).get(), this.pUp.get().getShape().getPos().getX(), this.pUp.get().getShape().getPos().getY(), this);
                 //System.out.println("x" + pUp.get().getShape().getPos().x + "y" + pUp.get().getShape().getPos().x);
             }
+            if(!this.bShape.isEmpty()) {
+                g2.drawImage(birdPNGLoader.getBirdImage(this.bShape.get().getDireciton(), this.bShape.get().getPos()), 
+                            this.bShape.get().getPos().getX(), 
+                            this.bShape.get().getPos().getY(), 
+                            this);
+            }
         }
         g2.dispose();
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir, GunTypes type, Optional<PowerUpEntity> pUp) {
+    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir, GunTypes type, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape) {
         ballPositions = pos;
         shapes = aShapes;
         this.hShape = hShape;
         this.dir = dir;
         this.gunType = type;
         this.pUp = pUp;
+        this.bShape = bShape;
         repaint();
     }
 
