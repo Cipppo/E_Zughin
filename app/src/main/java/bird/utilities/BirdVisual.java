@@ -59,7 +59,6 @@ public class BirdVisual extends Thread{
     public void run() {
         while(!this.pause) {
             
-            this.dir = this.randomDirectionChooser();
             this.startX = this.dir == BirdDirections.RIGHT ? 0 : SIZEX - WIDTH;
             //this.shape = new BirdShape(new EntityPos2D(startX, STARTY), WIDTH, HEIGHT, dir);
             this.actor = new BirdActor(new EntityPos2D(startX, STARTY));
@@ -78,19 +77,6 @@ public class BirdVisual extends Thread{
             } else if(startX == SIZEX - WIDTH) {
                 movUtils.moveLeft();
             }
-        }
-    }
-
-    /**
-     * Chooses a random direction to start the bird
-     * @return
-     *      the random direction
-     */
-    public BirdDirections randomDirectionChooser() {
-        if(random.nextInt(2) == 0) {
-            return BirdDirections.RIGHT;
-        } else {
-            return BirdDirections.LEFT;
         }
     }
 
