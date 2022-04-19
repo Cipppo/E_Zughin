@@ -1,7 +1,7 @@
 package ball.testing;
 
 import pangGuy.gui.Shape;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 import mergeballs.utilities.FullPair;
 
 public class SquaredEnemy{

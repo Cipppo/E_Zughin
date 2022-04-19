@@ -9,8 +9,8 @@ public class IntersectionChecker {
     public static boolean isBallCollision(SpherePos2D ball, Shape rect) {
         var rectWidht = rect.getDimensions().getX();
         var rectHeight = rect.getDimensions().getY();
-        Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().x + (int)(0.5*rectWidht),
-                                                    rect.getPos().y + (int)(0.5*rectHeight));
+        Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().getX() + (int)(0.5*rectWidht),
+                                                    rect.getPos().getY() + (int)(0.5*rectHeight));
         Pair<Integer> ballCenter = new Pair<Integer>((int)(ball.getX() + (ball.getDiameter() / 2)), (int)(ball.getY() + (ball.getDiameter() / 2) ));
         Pair<Integer> circleDistance = new Pair<Integer>(0,0);
         
@@ -36,11 +36,11 @@ public class IntersectionChecker {
     }
 
     public static boolean checkShapeCollsion(Shape a, Shape b) {
-        var aBottomLeft = new Pair<Integer>(a.getPos().x, a.getPos().y + a.getDimensions().getY());
-        var aTopRight = new Pair<Integer>(a.getPos().x + a.getDimensions().getX(), a.getPos().y);
+        var aBottomLeft = new Pair<Integer>(a.getPos().getX(), a.getPos().getY() + a.getDimensions().getY());
+        var aTopRight = new Pair<Integer>(a.getPos().getX() + a.getDimensions().getX(), a.getPos().getY());
 
-        var bBottomLeft = new Pair<Integer>(b.getPos().x, b.getPos().y + b.getDimensions().getY());
-        var bTopRight = new Pair<Integer>(b.getPos().x + b.getDimensions().getX(), b.getPos().y);
+        var bBottomLeft = new Pair<Integer>(b.getPos().getX(), b.getPos().getY() + b.getDimensions().getY());
+        var bTopRight = new Pair<Integer>(b.getPos().getX() + b.getDimensions().getX(), b.getPos().getY());
  
         return (aBottomLeft.getX() < bTopRight.getX()) 
             && (bBottomLeft.getX() < aTopRight.getX()) 
@@ -50,12 +50,12 @@ public class IntersectionChecker {
 
     public static boolean checkItemPickUp(Shape hero, Shape item) {
         //System.out.println("Hero: " + hero.getPos() + "item: " + item.getPos());
-        return (hero.getPos().x < item.getPos().x && checkX(hero, item)) 
-                || (item.getPos().x < hero.getPos().x && checkX(item, hero));
+        return (hero.getPos().getX() < item.getPos().getX() && checkX(hero, item)) 
+                || (item.getPos().getX() < hero.getPos().getX() && checkX(item, hero));
     } 
 
     private static boolean checkX(Shape a, Shape b) {
-        return (a.getPos().x + a.getDimensions().getX() >= b.getPos().x);
+        return (a.getPos().getX() + a.getDimensions().getX() >= b.getPos().getX());
     }
 
 }
