@@ -60,6 +60,7 @@ public class BirdHandler extends Thread{
     }
 
     private final synchronized void createBird() {
+        this.dir = randomDirectionChooser();
         this.startPosX = this.dir == BirdDirections.RIGHT ? 0 : SIZEX - WIDTH;
         this.actor = Optional.of(new BirdActor(new EntityPos2D(this.startPosX, STARTY), this.dir));
         this.mover = new BirdMover(this.actor.get(), this.bc);
@@ -104,5 +105,13 @@ public class BirdHandler extends Thread{
     public void setBirdDead() {
         this.birdDead = true;
         this.movUtils.setDead();
+    }
+
+    public BirdDirections randomDirectionChooser() {
+        if(random.nextInt(2) == 0) {
+            return BirdDirections.RIGHT;
+        } else {
+            return BirdDirections.LEFT;
+        }
     }
 }
