@@ -13,7 +13,7 @@ public class Hero {
     private EntityPos2D pos;
     private Directions direction;
     private GunSet gSet;
-    private heroStatus status;
+    private HeroStatus status;
     private int lives;
 
     /**
@@ -23,7 +23,7 @@ public class Hero {
         this.pos = new EntityPos2D(0, 0);
         this.direction = Directions.LEFT;
         this.gSet = new GunSet();
-        this.status = heroStatus.NEUTRAL;
+        this.status = HeroStatus.NEUTRAL;
         this.lives = 3;
     }
 
@@ -88,7 +88,7 @@ public class Hero {
      * Setter for HeroStatus.
      * @param status the status that needs to be set.
      */
-    public void setStatus(heroStatus status){
+    public void setStatus(HeroStatus status){
         this.status = status;
     }
 
@@ -96,7 +96,7 @@ public class Hero {
      * Getter for Status.
      * @return the current Hero status.
      */
-    public heroStatus getStatus(){
+    public HeroStatus getStatus(){
         return this.status;
     }
 
