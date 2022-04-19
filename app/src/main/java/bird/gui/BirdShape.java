@@ -2,13 +2,14 @@ package bird.gui;
 
 import java.awt.Rectangle;
 import bird.utilities.BirdDirections;
+import mergeballs.utilities.EntityShape;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.EntityPos2D;
 
 /**
  * This class models the shape of the bird.
  */
-public class BirdShape {
+public class BirdShape implements EntityShape {
 
     private final Rectangle r;
     private final BirdDirections dir;

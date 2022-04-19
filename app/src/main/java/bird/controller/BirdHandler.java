@@ -8,6 +8,8 @@ import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
 import bird.utilities.BirdDirections;
 import bird.utilities.BirdMovementUtils;
+import fruit.Shape;
+import mergeballs.utilities.EntityShape;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
@@ -75,6 +77,15 @@ public class BirdHandler extends Thread{
      */
     public Optional<BirdActor> getActor() {
         return this.actor;
+    }
+
+    public Optional<EntityShape> getShape() {
+        if(!this.actor.isEmpty()) {
+            return Optional.of(this.actor.get().getShape());
+        } else {
+            return Optional.empty();
+        }
+        
     }
 
     public void removeBird() {
