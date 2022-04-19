@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 
 import javax.swing.JPanel;
 
+import menu.utils.MenuLabel;
+
 public class HoFMainPanel extends JPanel{
 	
 	
@@ -23,7 +25,7 @@ public class HoFMainPanel extends JPanel{
 		container.fill = GridBagConstraints.HORIZONTAL;
 		container.gridx = 0;
 		container.gridy = 0;
-		mainPanel.add(new TitleLabel("HALL OF FAME"),  container);
+		mainPanel.add(new MenuLabel("HALL OF FAME", 7, Color.MAGENTA),  container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL;
 		container.gridx = 0;
