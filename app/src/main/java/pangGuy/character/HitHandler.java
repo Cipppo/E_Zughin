@@ -14,10 +14,10 @@ public class HitHandler extends TimerTask{
     @Override
     public void run() {
         try {
-            this.hero.setStatus(heroStatus.HIT);
+            this.hero.setStatus(HeroStatus.HIT);
             this.hero.hit();
             Thread.sleep(1000);
-            this.hero.setStatus(heroStatus.NEUTRAL);
+            this.hero.setStatus(HeroStatus.NEUTRAL);
         } catch (InterruptedException e) {
             System.out.println("Thread.sleep() Exception: " + e.getMessage());
         }
