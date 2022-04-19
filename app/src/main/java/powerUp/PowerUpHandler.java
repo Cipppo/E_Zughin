@@ -8,7 +8,7 @@ import pangGuy.gui.HeroComponent;
 import pangGuy.gui.Shape;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Pair;
-import mergeballs.utilities.EntityPos2D;
+import pangGuy.utilities.EntityPos2D;
 
 public class PowerUpHandler extends Thread{
 
