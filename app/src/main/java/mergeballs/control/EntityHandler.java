@@ -12,7 +12,7 @@ import pangGuy.modularGun.Status;
 import pangGuy.utilities.StepsApplier;
 import powerUp.PowerUpHandler;
 import ball.controller.Runner;
-
+import pangGuy.character.heroStatus;
 
 public class EntityHandler extends Thread {
     private final BallBoundChecker checker;
@@ -54,8 +54,10 @@ public class EntityHandler extends Thread {
                     }
 
                     if (this.checker.checkEnemyCollision(this.frame.getHero().getShape(), t)) {
-                        Timer timer = new Timer();
-                        timer.schedule(new HitHandler(hero), 0);
+                        if(this.hero.getStatus() == heroStatus.NEUTRAL){
+                            Timer timer = new Timer();
+                            timer.schedule(new HitHandler(hero), 0);
+                        }
                     }
 
                     this.frame.updatePosition(this.ballRunner
