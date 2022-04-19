@@ -25,7 +25,7 @@ import java.awt.Toolkit;
 public class BirdMovementUtils {
 
     private static final int SIZEX = CenterOnDefaultScreen.center().width*70/100;
-    private static final int SIZEY = CenterOnDefaultScreen.center().height*70/100;
+    private static final int SIZEY = CenterOnDefaultScreen.center().height*60/100;
 
     private static final int WIDTH = CenterOnDefaultScreen.center().width*3/100;
     private static final int HEIGHT = CenterOnDefaultScreen.center().width*3/100;;
@@ -40,7 +40,7 @@ public class BirdMovementUtils {
     private Boolean birdDead = false;
     private final BirdActionFactory actionFactory = new BirdActionFactory();
     private final BirdBoundChecker bc = new BirdBoundChecker(new Pair<Integer, Integer>(0, SIZEX),
-                                    new Pair<Integer, Integer>(0, SIZEY));
+                                    new Pair<Integer, Integer>(0, SIZEY - 200));
 
     /**
      * Cuntructor that define the bird to move, the panel on which to move the bird

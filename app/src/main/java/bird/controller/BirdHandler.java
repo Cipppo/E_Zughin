@@ -16,7 +16,7 @@ import stage.utils.CenterOnDefaultScreen;
 public class BirdHandler extends Thread{
     
     private static final int SIZEX = CenterOnDefaultScreen.center().width*70/100;
-    private static final int SIZEY = CenterOnDefaultScreen.center().height*70/100;
+    private static final int SIZEY = CenterOnDefaultScreen.center().height*60/100;
 
     private static final int WIDTH = CenterOnDefaultScreen.center().width*3/100;
 
