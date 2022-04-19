@@ -1,16 +1,11 @@
 package bird.utilities;
 
-import javax.swing.JPanel;
-
 import bird.actions.BirdActionFactory;
-import bird.controller.BirdConstraintCheck;
 import bird.gui.BirdActor;
 import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
 import stage.utils.CenterOnDefaultScreen;
-import pangGuy.gui.Shape;
 import pangGuy.utilities.Pair;
-import pangGuy.utilities.EntityPos2D;
 
 import java.awt.Toolkit;
 
@@ -68,7 +63,7 @@ public class BirdMovementUtils {
      */
     public final void moveRight() {
         this.moveUp = false;
-        while(bird.getShape().getPos().getX() + WIDTH <= bc.getXPair().getY() - 5 /* && bird.getParent() == panel */) {
+        while(bird.getShape().getPos().getX() + WIDTH <= bc.getXPair().getY() - 5 && this.birdDead != true) {
             this.doMovement(BirdDirections.RIGHT);
             this.moveVertically();
         }
@@ -79,7 +74,7 @@ public class BirdMovementUtils {
      */
     public final void moveLeft() {
         this.moveUp = false;
-        while(bird.getShape().getPos().getX() >= bc.getXPair().getX() + 5 /* && bird.getParent() == panel */) {
+        while(bird.getShape().getPos().getX() >= bc.getXPair().getX() + 5 && this.birdDead != true) {
             this.doMovement(BirdDirections.LEFT);
             this.moveVertically();
         }
