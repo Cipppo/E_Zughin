@@ -73,8 +73,8 @@ public class BirdHandler extends Thread{
      * @return
      *      the bird itself
      */
-    public BirdActor getActor() {
-        return this.actor.get();
+    public Optional<BirdActor> getActor() {
+        return this.actor;
     }
 
     public void removeBird() {
