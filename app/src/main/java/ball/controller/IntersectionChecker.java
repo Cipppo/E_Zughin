@@ -36,16 +36,16 @@ public class IntersectionChecker {
     }
 
     public static boolean checkShapeCollsion(EntityShape a, EntityShape b) {
-        var aBottomLeft = new Pair<Integer>(a.getPos().getX(), a.getPos().getY() + a.getDimensions().getY());
-        var aTopRight = new Pair<Integer>(a.getPos().getX() + a.getDimensions().getX(), a.getPos().getY());
+        var aPos = a.getPos();
+        var bPos = b.getPos();
 
-        var bBottomLeft = new Pair<Integer>(b.getPos().getX(), b.getPos().getY() + b.getDimensions().getY());
-        var bTopRight = new Pair<Integer>(b.getPos().getX() + b.getDimensions().getX(), b.getPos().getY());
- 
-        return (aBottomLeft.getX() < bTopRight.getX()) 
-            && (bBottomLeft.getX() < aTopRight.getX()) 
-            && (aBottomLeft.getY() < bTopRight.getY()) 
-            && (bBottomLeft.getY() < aTopRight.getY());
+        if (aPos.getX() + a.getDimensions().getX() <= bPos.getX()
+            || bPos.getX() + b.getDimensions().getX() <= aPos.getX()
+            || aPos.getY() + a.getDimensions().getY() <= bPos.getY()
+            || bPos.getY() + b.getDimensions().getY() <= aPos.getY()) {
+            return false;
+        }
+        return true;
     }
 
     public static boolean checkItemPickUp(EntityShape hero, EntityShape item) {
