@@ -3,7 +3,6 @@ package bonus;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import stage.utils.MainImagesLoader;
 
@@ -29,13 +28,10 @@ public class BonusImageLoader {
         ));
     }
 
-    private int getRandomIndex(){
-        Random rand = new Random();
-        return rand.nextInt(10);
-    }
 
-    public BufferedImage getSprite(){
-        return this.entries.get(this.getRandomIndex());
+    public BufferedImage getSprite(BonusEntity bonus){
+        System.out.println("Bonus Score: " + bonus.getPoints() + "/ 100: " + bonus.getPoints() / 100);
+        return this.entries.get((bonus.getPoints() / 100) - 1);
     }
 
     
