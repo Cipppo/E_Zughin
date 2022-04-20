@@ -8,7 +8,8 @@ import bonus.Score;
 public class P1ScoreSetter extends Thread {
 
     private Score score;
-    JPanel[][] hud;
+    private JPanel[][] hud;
+    private int actualScore = 0;
 
     public P1ScoreSetter(Score score, JPanel[][] hud) {
         this.score = score;
@@ -19,8 +20,11 @@ public class P1ScoreSetter extends Thread {
     public void run() {
         while(true) {
             try {
-                this.hud[1][1].removeAll();
-                this.hud[1][1].add(new JLabel("" + this.score.getScore()));
+                if(this.actualScore != this.score.getScore()) {
+                    this.actualScore = this.score.getScore();
+                    this.hud[1][1].removeAll();
+                    this.hud[1][1].add(new JLabel("" + this.actualScore));
+                }
                 Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
