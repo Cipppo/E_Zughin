@@ -126,7 +126,7 @@ public class BirdMovementUtils {
                     this.setDead();
                 }
                 Toolkit.getDefaultToolkit().sync();
-                System.out.println(bird.getShape().getPos());
+                //System.out.println(bird.getShape().getPos());
             }
             Thread.sleep(20);
         } catch (InterruptedException e) {

@@ -16,6 +16,7 @@ import ball.gui.ImageLoader;
 import ball.physics.SpherePos2D;
 import bird.gui.BirdShape;
 import bird.utilities.BirdPNGLoader;
+import bonus.BonusEntity;
 import mergeballs.control.UpdateableVisual;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.gui.Shape;
@@ -139,9 +140,9 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     }
     
     @Override
-    public void updatePosition(List<SpherePos2D> pos, Directions dir, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape){
+    public void updatePosition(List<SpherePos2D> pos, Directions dir, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape, Optional<BonusEntity> bonus){
         var shapes = this.getArpionsShapes();
-        panel.updatePositions(pos, shapes, this.hero.getShape(), dir, this.arpions.get(0).gType(), pUp, bShape);
+        panel.updatePositions(pos, shapes, this.hero.getShape(), dir, this.arpions.get(0).gType(), pUp, bShape, bonus);
     }
 
     @Override

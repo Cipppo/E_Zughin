@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import ball.physics.SpherePos2D;
 import bird.gui.BirdShape;
+import bonus.BonusEntity;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.HeroComponent;
@@ -31,7 +32,7 @@ public interface UpdateableVisual {
      * @param pUp
      *      the powerup which we are gonna display
      */
-    void updatePosition(List<SpherePos2D> position, Directions dir, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape);
+    void updatePosition(List<SpherePos2D> position, Directions dir, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape, Optional<BonusEntity> bonus);
 
     /**
      * Getter for game frame size.

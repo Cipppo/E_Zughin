@@ -14,6 +14,7 @@ import pangGuy.utilities.StepsApplier;
 import powerUp.PowerUpHandler;
 import ball.controller.Runner;
 import bird.controller.BirdHandler;
+import bonus.BonusHandler;
 import pangGuy.character.HeroStatus;
 
 public class EntityHandler extends Thread {
@@ -24,6 +25,7 @@ public class EntityHandler extends Thread {
     private final StepsApplier stepsConv;
     private final Hero hero;
     private final PowerUpHandler pUpHandler;
+    private final BonusHandler bonHandler;
     private final BirdHandler bird;
     
     
@@ -36,6 +38,7 @@ public class EntityHandler extends Thread {
         this.gSet = gSet;
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
         this.pUpHandler = new PowerUpHandler(gSet, this.ballRunner, this.frame.getBounds());
+        this.bonHandler = new BonusHandler(this.frame.getBounds());
         this.bird = new BirdHandler();
     }
 
@@ -43,6 +46,7 @@ public class EntityHandler extends Thread {
     public void run() {
         this.ballRunner.start();
         this.pUpHandler.start();
+        this.bonHandler.start();
         this.bird.start();
         while(true) {
             try {
@@ -68,7 +72,7 @@ public class EntityHandler extends Thread {
                                 .getBalls()
                                 .stream()
                                 .map(s -> s.getBallPosition())
-                                .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup(), this.bird.getShape());
+                                .collect(Collectors.toList()), this.hero.getDirection(), this.pUpHandler.getPowerup(), this.bird.getShape(), this.bonHandler.getBonus());
                 });
 
                 if (!this.bird.getActor().isEmpty()) {
@@ -91,6 +95,10 @@ public class EntityHandler extends Thread {
 
                 if (!this.pUpHandler.getPowerup().isEmpty()) {
                     this.pUpHandler.checkItemTaken(this.frame.getHero());
+                }
+
+                if(!this.bonHandler.getBonus().isEmpty()){
+                    this.bonHandler.checkItemTaken(this.frame.getHero());
                 }
                 
                 Thread.sleep(10);
