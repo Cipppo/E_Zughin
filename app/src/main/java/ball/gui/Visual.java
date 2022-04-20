@@ -1,18 +1,24 @@
 package ball.gui;
 
 import java.awt.Graphics;
-import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.Toolkit;
+
 import javax.swing.*;
+
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.Font;
 
-import ball.physics.Pos2D;
+import java.util.List;
 
-public class Visual extends JFrame {
+import ball.physics.SpherePos2D;
+import pangGuy.utilities.EntityPos2D;
+import pangGuy.gui.Shape;
+
+public class Visual extends JFrame implements Updateable {
 	private static final long serialVersionUID = 1L;
 
 	private VisualPanel panel;
+	private ImageLoader iLoader;
 	
 	private static final int WINDOW_SIZE_X = 800;
 	private static final int WINDOW_SIZE_Y = 600;
@@ -20,52 +26,61 @@ public class Visual extends JFrame {
 	
 	public Visual() {
 		setTitle("Bouncing Balls");
-        
+		this.iLoader = new ImageLoader();
 		setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
 		setResizable(false);
 		panel = new VisualPanel();
-		getContentPane().add(panel);
+		this.add(panel, BorderLayout.CENTER);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-
-	public void updatePosition(Pos2D pos) {
+	
+	@Override
+	public void updatePosition(List<SpherePos2D> pos) {
 		panel.updatePositions(pos);
 	}
     
     public class VisualPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
+		private List<SpherePos2D> positions;
 
-		private Pos2D position;
-
-	    private Font usedFont;
+		private Shape enemy;
 	    
-	    public VisualPanel() {
+		public VisualPanel() {
 			setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
-			usedFont = new Font("Verdana", Font.PLAIN, 24);
+			this.enemy = new Shape(new EntityPos2D(WINDOW_SIZE_X / 2, WINDOW_SIZE_Y / 2), 60, 40);
 		}
 
-		public void paint(Graphics g) {
-			Graphics2D g2 = (Graphics2D) g;
-    		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    		g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+	    public void paint(Graphics g) {
+	        Graphics2D g2 = (Graphics2D) g;
+	        g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 
-    		g2.clearRect(0, 0, WINDOW_SIZE_X, WINDOW_SIZE_Y);
-			
-            if (position != null) {
-                int x = (int)( position.x * WINDOW_SIZE_X );
-                int y = (int)( position.y * WINDOW_SIZE_Y - 80 );
-                //System.out.println("EFFECTIVE-POSITION (" + x + ", " + y + ")");
-                g.fillOval(x, y, 50, 50);
-            }
+	        synchronized (this) {
+	            if (positions != null) {
+	                for(final var position : positions) {
+	                    int x = (int)( position.getX() * WINDOW_SIZE_X );
+	                    int y = (int)( position.getY() * WINDOW_SIZE_Y );
+						g2.drawImage(iLoader.getBallImage(position.getDimension()), x, y, this);
+	                }
+	            }
+	        }
+			g2.fillRect(this.enemy.getPos().getX(), this.enemy.getPos().getY(), 
+						this.enemy.getDimensions().getX(), this.enemy.getDimensions().getY());
+			g2.dispose();
+			Toolkit.getDefaultToolkit().sync();
+	    }
 
-			g2.setFont(usedFont);
-			g2.setColor(Color.RED);
+	    public void updatePositions(List<SpherePos2D> pos) {
+	        positions = pos;
+	        repaint();
+	    }
+		
+		public Shape getGuy() {
+			return this.enemy;
 		}
-
-		public void updatePositions(Pos2D pos) {
-		    position = pos;
-			repaint();
-		}
+    }
+	@Override
+    public Shape getGuy() {
+        return panel.getGuy();
     }
 }
 

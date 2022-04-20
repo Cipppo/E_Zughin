@@ -2,88 +2,88 @@ package ball.ballAgent;
 
 import ball.Boundary;
 import ball.physics.*;
-
-import java.util.Random;
-
 /**
  * This is the structure of the ball, described by:
  *      - A trajectory
  *      - A two dimensional position
  */
-public class Ball {
+public class Ball implements Entity {
     private Trajectory trajectory;
-    private Pos2D actualPosition;
-    private Velocity2D velocity;
-
-    private static final double GRAVITY = 9.81;
+    private SpherePos2D actualPosition;
+    private SpherePos2D initialPosition;
+    private final Velocity2D velocity;
     private Time time = new Time(0.0, 0.0);
-    private Boundary bounds;
-    private Pos2D initialPosition;
-    //private boolean stop = false;
-
-    // all temporary boundaries
-    private static final double MAX_ANGLE = 80;
-    private static final double MIN_ANGLE = 40;
-    private static final double MAX_VELOCITY = 150;
-    private static final double MIN_VELOCITY = 50;
-
-
-    public Ball() {
-        Random rand = new Random();
-        var angle = rand.nextDouble() * (MAX_ANGLE - MIN_ANGLE) + MIN_ANGLE;
-        var initialVelocity = rand.nextDouble() * (MAX_VELOCITY - MIN_VELOCITY) + MIN_VELOCITY;
-        trajectory = new Trajectory(angle, initialVelocity);
-        this.bounds = new Boundary(0, 0, 1, 1);
-        this.actualPosition = new Pos2D(this.bounds.x0, this.bounds.y1);
-        this.initialPosition = new Pos2D(actualPosition.x, actualPosition.y);
-        this.velocity = this.trajectory.getXYVelocity();
-    }
+    private final double gravity;
+    private final int size;
+    
     /**
-     * Need to implement thread support and consequently:
-     *      -a class for handling view/model interactions (update ball position -> draw ball position)
-     *          already created Visualiser class, need to change name of that and all Guis components;
-     *      -try to disassemble this class (thread delegation scares me) and build an entity and follow SRP
-     *          meaning that one class will handle movement and time, and another one is more like a structure that 
-     *          stores velocity values, (got to implement dimensions in the space), positions and maybe traj.
-     *      -Need to implement starting Y value, and how to handle the first launch without compromising 
-     *      	initial velocity; (I think this could be optional);
+     * Constructor used and called only from the factory in this same package.
+     * @param trajectory
+     * @param position
+     * @param gravity
      */
+    protected Ball(Trajectory trajectory, SpherePos2D position, double gravity) {
+    	this.trajectory = trajectory;
+    	this.actualPosition = position;
+    	this.initialPosition = new SpherePos2D(position.getX(), position.getY(), position.getDimension(), position.getDiameter());
+    	this.velocity = this.trajectory.getXYVelocity();
+    	this.gravity = gravity;
+        this.size = this.getPosition().getDiameter();
+    }
 
+    /**
+     * Updates the position of the ball, basing the calculations on Projectile Motion'sequations.
+     */
     public synchronized void updatePos() {
-        time.inc(0.1);
-        this.actualPosition.x = this.initialPosition.x +  0.001 * this.velocity.getX() * this.time.getX();
-        this.actualPosition.y = this.initialPosition.y - 0.001 * (this.velocity.getY() * this.time.getY() 
-                                                            - (0.5*GRAVITY*Math.pow(this.time.getY(), 2)));
-        this.checkConstraints();
+        time.inc(0.09);
+        this.actualPosition.setX(this.initialPosition.getX() +  0.001 * this.velocity.getX() * this.time.getX());
+        this.actualPosition.setY(this.initialPosition.getY() - 0.001 * (this.velocity.getY() * this.time.getY() 
+                                        - (0.5*gravity*Math.pow(this.time.getY(), 2))));
     }
 
-    // this should be cleaned
-    private void checkConstraints() {
-        if(this.actualPosition.y > bounds.y1) {
-            this.applyConstraints(bounds.y1, 0);
-        } else if (this.actualPosition.y < bounds.y0) {
-            this.applyConstraints(bounds.y0, 0);
-        } else if (this.actualPosition.x > bounds.x1 - 0.05) {
-            this.applyConstraints(bounds.x1 - 0.05, 1);
-        } else if (this.actualPosition.x < bounds.x0) {
-            this.applyConstraints(bounds.x0, 1);
-        }
-    }
-
-    // gotta find something better than that int
-    private void applyConstraints(double bound, int axis) {
-        if (axis == 0) {
-            this.initialPosition.y = bound;
+    /**
+     * Whenever the ball hits a wall, this method will be called.
+     * It's necessary to pass as argument a postion (double beetween -1 and 1)
+     * because floating point precision cause bad bugs when displaying 
+     * the ball bouncing in wall. In {@link ball.controller.BallBoundChecker#checkConstraints(BallAgent)}
+     * there are small variations in X1 and Y1 axis and thanks to those values, when hitting the wall
+     * the transition in the other direction is smoother.
+     * 
+     * NOTE: In MacOS Y1 limit is below the frame of the gui, and for avoiding seeing the ball
+     * disappear under the Y1 boundary, i've added a bigger offset than X1.
+     * 
+     * @param position
+     *          the position that the ball need to occupy in this moment.
+     * @param bound
+     *          Y or X boundary, needed by this method to determinate wich velocity 
+     *              (Horizontal or Vertical) to invert.
+     */
+    public synchronized void applyConstraints(double position, Boundary bound) {
+        if (bound == Boundary.Y0 || bound == Boundary.Y1) {
+            this.initialPosition.setY(position);
             this.time.resetY();
             this.velocity.vy = -this.velocity.vy;
         } else {
-            this.initialPosition.x = bound;
+            this.initialPosition.setX(position);
             this.time.resetX();
             this.velocity.vx = -this.velocity.vx;
         }
     }
-
-    public synchronized Pos2D getCurrentPosition() {
+    @Override
+    public synchronized SpherePos2D getPosition() {
         return this.actualPosition;
+    }
+
+    @Override
+    public int getSize() {
+        return this.size;
+    }
+
+    public synchronized Trajectory getTrajectory() {
+        return this.trajectory;
+    }
+
+    public  synchronized Velocity2D getVelocity() {
+        return this.velocity;
     }
 }

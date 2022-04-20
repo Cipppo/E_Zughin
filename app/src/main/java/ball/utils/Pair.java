@@ -17,6 +17,14 @@ public class Pair<T> {
         return this.y;
     }
 
+    public void setX(T value) {
+        this.x = value;
+    }
+
+    public void setY(T value) {
+        this.y = value;
+    }
+
     @Override
     public String toString() {
         return "Pair(" + this.x + ", " + this.y + ")";

@@ -1,26 +1,31 @@
 package ball.physics;
 
-
 /**
- * Got to implement space occupation by this entity 
- *  (maybe creating an interface "Entity" for the 
- *  main charachter, bird and this ball);
+ * Modeling a generic two dimensional position in space.
  */
-public class Pos2D {
-    public double x;
-    public double y;
+public abstract class Pos2D<T> {
+    private T x;
+    private T y;
 
-    public Pos2D(double x, double y) {
+    public Pos2D(final T x, final T y) {
         this.x = x;
         this.y = y;
     }
 
-    public Pos2D sum(Pos2D p2) {
-        return new Pos2D(this.x + p2.x, this.y + p2.y);
+    public T getX() {
+        return x;
     }
 
-    public Pos2D sub(Pos2D p2) {
-        return new Pos2D(this.x - p2.x, this.y - p2.y);
+    public void setX(T value) {
+        this.x = value;
+    }
+
+    public T getY() {
+        return y;
+    }
+
+    public void setY(T value) {
+        this.y = value;
     }
 
     @Override
