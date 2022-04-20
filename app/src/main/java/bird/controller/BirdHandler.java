@@ -50,11 +50,11 @@ public class BirdHandler extends Thread{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
-            try {
-                Thread.sleep(getTimeToSleep()*1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                try {
+                    Thread.sleep(getTimeToSleep()*1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
