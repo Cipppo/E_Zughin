@@ -20,6 +20,10 @@ public class Score {
         this.score += points;
     }
 
+    @Override
+    public String toString(){
+        return "Actual Score: " + this.score;
+    }
 
 
 }
