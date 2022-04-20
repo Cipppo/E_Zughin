@@ -14,9 +14,9 @@ Il gioco si basa su un personaggio che, sparando verso l'alto, deve riuscire a f
 - [x] Fisica delle sfere.
 - [x] Creazione del menu' di gioco e del menu' di pausa.
 - [x] Implementazione e salvataggio della Leaderboard.
-- [ ] Implementazione di bonus sul punteggio mediante la caduta di Items. (WIP)
+- [x] Implementazione di bonus sul punteggio mediante la caduta di Items.
 - [x] Implementazione di powerup di base ( bomba, time freeze).
-- [ ] Frutta che aumenta il punteggio della partita. (WIP)
+- [x] Frutta che aumenta il punteggio della partita.
 
 
 ## Funzionalita' *opzionali*:
