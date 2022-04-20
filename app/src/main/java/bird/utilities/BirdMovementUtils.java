@@ -1,13 +1,10 @@
 package bird.utilities;
 
 import bird.actions.BirdActionFactory;
-import bird.controller.BirdConstraintCheck;
 import bird.gui.BirdActor;
 import bird.gui.BirdBoundChecker;
 import bird.gui.BirdMover;
 import stage.utils.CenterOnDefaultScreen;
-import pangGuy.gui.Shape;
-import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 
 import java.awt.Toolkit;
@@ -42,7 +39,6 @@ public class BirdMovementUtils {
     private Boolean pause = false;
     private Boolean birdDead = false;
     private final BirdActionFactory actionFactory = new BirdActionFactory();
-    private final BirdConstraintCheck bCheck = new BirdConstraintCheck();
     private final BirdBoundChecker bc = new BirdBoundChecker(new Pair<Integer, Integer>(0, SIZEX),
                                     new Pair<Integer, Integer>(0, SIZEY - 200));
 
@@ -121,9 +117,6 @@ public class BirdMovementUtils {
                     case UP:
                         this.actionFactory.getUpAction(this.mover);
                         break;
-                }
-                if(bCheck.checkEnemyCollision(new Shape(new EntityPos2D(410, 410), 40, 40), bird)) {
-                    this.setDead();
                 }
                 Toolkit.getDefaultToolkit().sync();
                 //System.out.println(bird.getShape().getPos());
