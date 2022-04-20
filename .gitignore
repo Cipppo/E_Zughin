@@ -37,6 +37,7 @@ bin/
 .settings/
 app/.classpath
 .DS_Store
+
 *.toc
 *.synctex.gz
 *.synctex.bbl
@@ -47,3 +48,6 @@ app/.classpath
 *.aux
 *.bbl
 *.blg
+*fdb_latexmk
+*.fls 
+
