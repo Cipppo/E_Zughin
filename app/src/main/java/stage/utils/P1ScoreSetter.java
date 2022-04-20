@@ -35,7 +35,7 @@ public class P1ScoreSetter extends Thread {
                     this.hud.getHUDPanel()[1][1].add(label);
                     this.hud.validate();
                 }
-                Thread.sleep(20);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
