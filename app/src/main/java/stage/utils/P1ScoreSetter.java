@@ -34,6 +34,7 @@ public class P1ScoreSetter extends Thread {
                     this.hud.getHUDPanel()[1][1].removeAll();
                     this.hud.getHUDPanel()[1][1].add(label);
                     this.hud.validate();
+                    this.hud.repaint();
                 }
                 Thread.sleep(500);
             } catch (InterruptedException e) {
