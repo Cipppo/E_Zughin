@@ -16,7 +16,7 @@ public class P1ScoreLabel extends JLabel{
 	Font gameFont = fontLoader.load();
 
 	public P1ScoreLabel() {
-        this.setText("123345");
+        this.setText("0");
 		this.setForeground(Color.white);
 		this.setFont(gameFont);
     }
