@@ -44,14 +44,16 @@ public class ActionFactory {
          * It makes the main character step right, if it's possible.
          */
         public void actionPerformed(ActionEvent e) {
-            EntityPos2D actualHeroPos = h.getPosition();
-            var axisHeroPos = new StepsApplier(v.getStartPos()).convertHeroPosition(actualHeroPos);
-            if(this.bc.isInside(new EntityPos2D(axisHeroPos.getX() + SPEED, axisHeroPos.getY()), this.v.getHeroComponent().getShape().getDimensions().getX(), 
-                        this.v.getHeroComponent().getShape().getDimensions().getY())){
-                            this.h.move(Directions.RIGHT);
-                            this.v.move(new EntityPos2D(axisHeroPos.getX() + SPEED, axisHeroPos.getY()));
-                            this.v.setDirection(this.h.getDirection());
-                        }
+            if (this.h.isAwake()) {
+                EntityPos2D actualHeroPos = h.getPosition();
+                var axisHeroPos = new StepsApplier(v.getStartPos()).convertHeroPosition(actualHeroPos);
+                if (this.bc.isInside(new EntityPos2D(axisHeroPos.getX() + SPEED, axisHeroPos.getY()), this.v.getHeroComponent().getShape().getDimensions().getX(), 
+                            this.v.getHeroComponent().getShape().getDimensions().getY())) {
+                                this.h.move(Directions.RIGHT);
+                                this.v.move(new EntityPos2D(axisHeroPos.getX() + SPEED, axisHeroPos.getY()));
+                                this.v.setDirection(this.h.getDirection());
+                            }
+            }
         }
 
     }
@@ -82,14 +84,16 @@ public class ActionFactory {
         * It makes the main character step left, if it's possible.
         */
         public void actionPerformed(ActionEvent e) {
-            EntityPos2D actualHeroPos = h.getPosition();
-            var axisHeroPos = new StepsApplier(v.getStartPos()).convertHeroPosition(actualHeroPos);
-            if(this.bc.isInside(new EntityPos2D(axisHeroPos.getX() - SPEED, axisHeroPos.getY()), this.v.getHeroComponent().getShape().getDimensions().getX(), 
-                    this.v.getHeroComponent().getShape().getDimensions().getY())){
-                        this.h.move(Directions.LEFT);  
-                        this.v.move(new EntityPos2D(axisHeroPos.getX() - SPEED,  axisHeroPos.getY()));
-                        this.v.setDirection(this.h.getDirection());
-                    }
+            if (this.h.isAwake()) {
+                EntityPos2D actualHeroPos = h.getPosition();
+                var axisHeroPos = new StepsApplier(v.getStartPos()).convertHeroPosition(actualHeroPos);
+                if (this.bc.isInside(new EntityPos2D(axisHeroPos.getX() - SPEED, axisHeroPos.getY()), this.v.getHeroComponent().getShape().getDimensions().getX(), 
+                this.v.getHeroComponent().getShape().getDimensions().getY())) {
+                    this.h.move(Directions.LEFT);  
+                    this.v.move(new EntityPos2D(axisHeroPos.getX() - SPEED,  axisHeroPos.getY()));
+                    this.v.setDirection(this.h.getDirection());
+                }
+            }
         }
         
     }
@@ -120,15 +124,15 @@ public class ActionFactory {
          * It makes the main character shoot, if there are available guns.
          */
         public void actionPerformed(ActionEvent e) {
-            var shootingGun = this.h.getGset().getShootingGun();
-            var shootingGunComponent = this.v.getFreeComponent();
-            if(!shootingGun.isEmpty()){
-                new Trigger(shootingGun.get(), shootingGunComponent.get(), this.v, this.bc, this.h).start();
-            }else{
-                System.out.println("No available guns!");
+            if (this.h.isAwake()) {
+                var shootingGun = this.h.getGset().getShootingGun();
+                var shootingGunComponent = this.v.getFreeComponent();
+                if (!shootingGun.isEmpty()) {
+                    new Trigger(shootingGun.get(), shootingGunComponent.get(), this.v, this.bc, this.h).start();
+                }else{
+                    System.out.println("No available guns!");
+                }
             }
-
-            
         }
 
     }
