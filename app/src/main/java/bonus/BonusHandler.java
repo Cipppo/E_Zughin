@@ -24,7 +24,7 @@ public class BonusHandler extends Thread{
         while(!stop){
             try{
                 this.next = Optional.of(gen.generateNextBonus());
-                System.out.println("Fruit Spawned" + " X: " + this.next.get().getShape().toString());
+                //System.out.println("Fruit Spawned" + " X: " + this.next.get().getShape().toString());
                 Thread.sleep(SPAWN_TIME * 1000);
             }catch(Exception e){
                 System.out.println("Thread.sleep() error: " + e.getMessage());
@@ -39,10 +39,12 @@ public class BonusHandler extends Thread{
         return Optional.empty();
     }
 
-    public synchronized void checkItemTaken(HeroComponent hero){
+    public synchronized boolean checkItemTaken(HeroComponent hero){
         if (this.next.isPresent() && this.next.get().isPickedUp(hero)) {
             this.resetBonus();
+            return true;
         }
+        return false;
     }
 
     public synchronized void resetBonus(){
