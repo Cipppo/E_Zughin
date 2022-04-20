@@ -60,12 +60,8 @@ public class PauseButton {
     private void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdHandler bird) {
     	if(!pause){
             mainPanel.add(pausePanel);
-            pausePanel.setSize(mainPanel.getBounds().width, mainPanel.getBounds().height);
-            pausePanel.setLocation(0, 0);
             pausePanel.setVisible(true);
             bird.setPause();
-            pausePanel.validate();
-            pausePanel.repaint();
             pause = true;
         } else {
             mainPanel.remove(pausePanel);
