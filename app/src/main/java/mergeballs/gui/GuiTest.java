@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ball.controller.Runner;
+import bonus.Score;
 import pangGuy.actions.ActionFactory;
 import mergeballs.control.EntityHandler;
 import pangGuy.actions.ActionApplier;
@@ -30,7 +31,8 @@ public class GuiTest extends JFrame {
     public Hero hero = new Hero();
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
-    private final EntityHandler handler = new EntityHandler(this.visual, this.hero.getGset(), this.hero);
+    private final Score score = new Score();
+    private final EntityHandler handler = new EntityHandler(this.visual, this.hero.getGset(), this.hero, this.score);
 
     private final ActionFactory factory = new ActionFactory();
 
