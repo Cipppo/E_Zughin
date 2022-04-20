@@ -45,9 +45,11 @@ public class StageGui extends JFrame{
 	private final MainPanel mainPanel = new MainPanel();
 
     private final HUDPanel hud;
+    private final P1ScoreSetter scoresetter;
 
     public StageGui(){
         this.hud = new HUDPanel();
+        this.scoresetter = new P1ScoreSetter(score, hud);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(width, heigth);
 		this.setLayout(null);
