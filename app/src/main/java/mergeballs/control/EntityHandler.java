@@ -15,6 +15,7 @@ import powerUp.PowerUpHandler;
 import ball.controller.Runner;
 import bird.controller.BirdHandler;
 import bonus.BonusHandler;
+import bonus.Score;
 import pangGuy.character.HeroStatus;
 
 public class EntityHandler extends Thread {
@@ -24,12 +25,13 @@ public class EntityHandler extends Thread {
     private final GunSet gSet;
     private final StepsApplier stepsConv;
     private final Hero hero;
+    private final Score score;
     private final PowerUpHandler pUpHandler;
     private final BonusHandler bonHandler;
     private final BirdHandler bird;
     
     
-    public EntityHandler(VisualTest frame, GunSet gSet, Hero hero) {
+    public EntityHandler(VisualTest frame, GunSet gSet, Hero hero, Score score) {
         this.frame = frame;
         this.checker = new BallBoundChecker(this.frame.getBounds().getX(),
                                             this.frame.getBounds().getY());
@@ -40,6 +42,7 @@ public class EntityHandler extends Thread {
         this.pUpHandler = new PowerUpHandler(gSet, this.ballRunner, this.frame.getBounds());
         this.bonHandler = new BonusHandler(this.frame.getBounds());
         this.bird = new BirdHandler();
+        this.score = score;
     }
 
     @Override
@@ -98,7 +101,11 @@ public class EntityHandler extends Thread {
                 }
 
                 if(!this.bonHandler.getBonus().isEmpty()){
-                    this.bonHandler.checkItemTaken(this.frame.getHero());
+                    var points = this.bonHandler.getBonus().get().getPoints();
+                    if (this.bonHandler.checkItemTaken(this.frame.getHero())) {
+                        this.score.raiseScore(points);
+                        System.out.println(this.score.toString());
+                    }
                 }
                 
                 Thread.sleep(10);
