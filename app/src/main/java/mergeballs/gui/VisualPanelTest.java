@@ -15,6 +15,7 @@ import bird.gui.BirdShape;
 import bird.utilities.BirdPNGLoader;
 import bonus.BonusEntity;
 import bonus.BonusImageLoader;
+import mergeballs.utilities.BackgroundImageLoader;
 import pangGuy.gui.ArpionImageLoader;
 import pangGuy.gui.PangGuyImageLoader;
 import pangGuy.gui.Shape;
@@ -39,6 +40,7 @@ public class VisualPanelTest extends JPanel {
     private final PowerupImageLoader pUpImageLoader;
     private final BirdPNGLoader birdPNGLoader;
     private final BonusImageLoader bonusILoader;
+    private final BackgroundImageLoader backLoader;
     private Optional<PowerUpEntity> pUp;
     private Optional<BonusEntity> bonus;
 
@@ -52,6 +54,7 @@ public class VisualPanelTest extends JPanel {
         this.pUpImageLoader = pIl;
         this.birdPNGLoader = birdPNGLoader;
         this.bonusILoader = new BonusImageLoader();
+        this.backLoader = new BackgroundImageLoader();
     }
 
     public void paint(Graphics g) {
@@ -59,6 +62,8 @@ public class VisualPanelTest extends JPanel {
         g2.clearRect(0, 0, this.width, this.height);
 
         synchronized(this) {
+            g2.drawImage(backLoader.getBackImage(), 0, 0, this.width, this.height, this);
+
             if (this.ballPositions != null) {
                 for (final var position : ballPositions) {
                     int x = (int)(position.getX() * this.width);
