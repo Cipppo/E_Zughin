@@ -24,6 +24,7 @@ import pangGuy.utilities.Directions;
 import powerUp.PowerUpEntity;
 import powerUp.PowerupImageLoader;
 
+@SuppressWarnings("unused")
 public class VisualPanelTest extends JPanel {
 
     private List<SpherePos2D> ballPositions;
@@ -43,6 +44,7 @@ public class VisualPanelTest extends JPanel {
     private final BackgroundImageLoader backLoader;
     private Optional<PowerUpEntity> pUp;
     private Optional<BonusEntity> bonus;
+
 
     public VisualPanelTest(int width, int height, ImageLoader iLoader, PangGuyImageLoader heroILoader, ArpionImageLoader aILoader, PowerupImageLoader pIl, BirdPNGLoader birdPNGLoader) {
         super.setSize(width, height);
@@ -90,8 +92,7 @@ public class VisualPanelTest extends JPanel {
                             this);
             }
             if (!this.bonus.isEmpty()) {
-                g2.drawImage(bonusILoader.getSprite(this.bonus.get()), this.bonus.get().getShape().getPos().getX(), this.bonus.get().getShape().getPos().getY(), this);
-                
+                g2.drawImage(this.bonusILoader.getSprite(bonus.get()), this.bonus.get().getShape().getPos().getX(), this.bonus.get().getShape().getPos().getY(), this);
             }
         }
         g2.dispose();

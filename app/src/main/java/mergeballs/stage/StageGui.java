@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import bonus.Score;
 import mergeballs.control.EntityHandler;
 import mergeballs.gui.VisualTest;
 import pangGuy.actions.ActionApplier;
@@ -34,7 +35,8 @@ public class StageGui extends JFrame{
     public Hero hero = new Hero();
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
-    private final EntityHandler handler = new EntityHandler(this.visual, this.hero.getGset(), this.hero);
+    private final Score score = new Score();
+    private final EntityHandler handler = new EntityHandler(this.visual, this.hero.getGset(), this.hero, this.score);
 
     private final ActionFactory factory = new ActionFactory();
 
@@ -43,9 +45,12 @@ public class StageGui extends JFrame{
 	private final MainPanel mainPanel = new MainPanel();
 
     private final HUDPanel hud;
+    private final P1ScoreSetter scoresetter;
 
     public StageGui(){
         this.hud = new HUDPanel();
+        this.scoresetter = new P1ScoreSetter(score, hud);
+        this.scoresetter.start();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(width, heigth);
 		this.setLayout(null);

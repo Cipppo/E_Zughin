@@ -71,6 +71,10 @@ public class Player {
 	public void setScore(int score) { 
 		this.score = score; 
 		}
+	
+	public void incScore(int score) {
+		this.score += score;
+	}
 
 }
 

@@ -30,7 +30,7 @@ public class BonusImageLoader {
 
 
     public BufferedImage getSprite(BonusEntity bonus){
-        System.out.println("Bonus Score: " + bonus.getPoints() + "/ 100: " + bonus.getPoints() / 100);
+        //System.out.println("Bonus Score: " + bonus.getPoints() + "/ 100: " + bonus.getPoints() / 100);
         return this.entries.get((bonus.getPoints() / 100) - 1);
     }
 

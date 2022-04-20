@@ -27,9 +27,11 @@ public class MenuControl implements KeyListener{
 	private UpAction upAction;
 	private DownAction downAction;
 	private EnterAction enterAction;
+	private final Gui gui;
 	
 	
 	public MenuControl(Gui gui) throws FileNotFoundException{
+		this.gui = gui;
 		panel = new JPanel(new GridBagLayout());
 		container = new GridBagConstraints();
 		panel.setLayout(new GridBagLayout());
@@ -230,6 +232,8 @@ public class MenuControl implements KeyListener{
 						navPanel.getNicknameLabel().enterInput();
 					}else {
 						System.out.println(navPanel.getNicknameLabel().getNickname());
+						
+						gui.dispose();
 					}
 					
 				}else

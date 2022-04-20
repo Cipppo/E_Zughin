@@ -18,9 +18,9 @@ public class HUDPanel extends JPanel{
 	private final int heigth = CenterOnDefaultScreen.center().height;
 	private final int rows = 4;
 	private final int columns = 7;
+	private JPanel[][] HUDPanel = new JPanel[rows][columns];
 
 	public HUDPanel() {	
-		JPanel[][] HUDPanel = new JPanel[rows][columns];
 		this.setLayout(new GridLayout(rows, columns));
 
 		for(int m = 0; m < rows; m++) {
@@ -33,6 +33,10 @@ public class HUDPanel extends JPanel{
 		this.setPreferredSize(new Dimension(width, heigth*12/100));
 
 		AddAllLabels.add(HUDPanel);
+
 	}
 
+	public JPanel[][] getHUDPanel() {
+		return this.HUDPanel;
+	}
 }
