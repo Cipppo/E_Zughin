@@ -122,11 +122,8 @@ public class BirdMovementUtils {
                         this.actionFactory.getUpAction(this.mover);
                         break;
                 }
-                if(bCheck.checkEnemyCollision(new Shape(new EntityPos2D(410, 410), 40, 40), bird)) {
-                    this.setDead();
-                }
                 Toolkit.getDefaultToolkit().sync();
-                System.out.println(bird.getShape().getPos());
+                // System.out.println(bird.getShape().getPos());
             }
             Thread.sleep(20);
         } catch (InterruptedException e) {
