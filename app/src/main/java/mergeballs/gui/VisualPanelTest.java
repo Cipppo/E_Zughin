@@ -91,6 +91,9 @@ public class VisualPanelTest extends JPanel {
                             this.bShape.get().getPos().getY(), 
                             this);
             }
+            if (!this.bonus.isEmpty()) {
+                g2.drawImage(this.bonusILoader.getSprite(bonus.get()), this.bonus.get().getShape().getPos().getX(), this.bonus.get().getShape().getPos().getY(), this);
+            }
         }
         g2.dispose();
         Toolkit.getDefaultToolkit().sync();
