@@ -27,7 +27,7 @@ public class SecondaryImagesLoader {
 		String imageFilePath = FindDirectory.find(resourceName).toString();
 		BufferedImage image = null;
 		
-		if(imageFilePath == null || imageFilePath.isEmpty()) {
+		if (imageFilePath == null || imageFilePath.isEmpty()) {
 			throw new IllegalArgumentException("load() Method Error! Arguments " +
                     "passed to this method must contain a file path" 
 					+ System.lineSeparator());

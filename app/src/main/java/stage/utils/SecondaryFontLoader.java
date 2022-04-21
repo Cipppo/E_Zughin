@@ -56,7 +56,7 @@ public class SecondaryFontLoader {
         Font font = null;
         int fontTypeResource = Font.TRUETYPE_FONT;
     
-        if((fontFilePath == null || fontFilePath.isEmpty()) || fontSize < 1) {
+        if ((fontFilePath == null || fontFilePath.isEmpty()) || fontSize < 1) {
             throw new IllegalArgumentException("load() Method Error! Arguments " +
                                                 "passed to this method must contain a file path" 
                                                 + System.lineSeparator());

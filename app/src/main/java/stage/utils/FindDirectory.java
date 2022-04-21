@@ -27,7 +27,7 @@ public class FindDirectory {
 		List<Path> resourcePath = new ArrayList<>();
 		Path path = Paths.get(System.getProperty("user.dir"));
 		
-		try(Stream<Path> subPaths = Files.walk(path)) {
+		try (Stream<Path> subPaths = Files.walk(path)) {
 			resourcePath = subPaths.filter(e -> e.toString()
 					.contains(fileName))
 					.collect(Collectors.toList());
