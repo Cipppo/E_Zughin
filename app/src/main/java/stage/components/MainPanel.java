@@ -24,8 +24,8 @@ public class MainPanel extends JPanel{
 	public MainPanel() {
 		this.setBackground(Color.WHITE);
 		this.setLayout(new CardLayout());
-		new PauseButton(this, pausePanel, this.bird);
-		new ExitButton(this, pausePanel);
+		// new PauseButton(this, pausePanel, this.bird);
+		// new ExitButton(this, pausePanel);
 		this.setVisible(true);
 	}
 

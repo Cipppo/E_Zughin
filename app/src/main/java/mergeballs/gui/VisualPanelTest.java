@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.Graphics2D;
+import java.awt.CardLayout;
 
 import java.util.List;
 import java.util.Optional;
@@ -57,6 +58,7 @@ public class VisualPanelTest extends JPanel {
         this.birdPNGLoader = birdPNGLoader;
         this.bonusILoader = new BonusImageLoader();
         this.backLoader = new BackgroundImageLoader();
+        this.setLayout(new CardLayout());
     }
 
     public void paint(Graphics g) {

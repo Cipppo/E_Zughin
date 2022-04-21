@@ -7,7 +7,8 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import bird.utilities.BirdVisual;
+import bird.controller.BirdHandler;
+import mergeballs.gui.VisualInterface;
 
 /**
  * Pressing the Esc key, if the pause param is set to false, the PausePanel will be
@@ -23,15 +24,16 @@ public class PauseButton {
     /**
      * Contructor that trigger the Pause action.
      * 
-     * @param mainPanel
+     * @param visual
      *          panel that listen for the Esc input.
      * @param pausePanel
      *          the pause panel.
      * @param bird
      *          the bird object.
      */
-    public PauseButton(JPanel mainPanel, JPanel pausePanel, BirdVisual bird) {
+    public PauseButton(VisualInterface visual, JPanel pausePanel, BirdHandler bird) {
 
+        JPanel mainPanel = visual.getVisualTest();
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
         mainPanel.getInputMap().put(escKey, "Esc");
         mainPanel.getActionMap().put("Esc", new AbstractAction(){
@@ -55,7 +57,7 @@ public class PauseButton {
      * @param bird
      *          the bird object to be stopped.
      */
-    private void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdVisual bird) {
+    private void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdHandler bird) {
     	if(!pause){
             mainPanel.add(pausePanel);
             pausePanel.setVisible(true);
