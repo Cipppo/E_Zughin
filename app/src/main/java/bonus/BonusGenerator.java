@@ -28,7 +28,7 @@ public class BonusGenerator {
 
     private EntityPos2D generateRandomPos(){
         Random rand = new Random();
-        return new EntityPos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - BONUS_HEIGHT);
+        return new EntityPos2D(rand.nextInt(this.bounds.getX() - BONUS_WIDTH), this.bounds.getY() - BONUS_HEIGHT);
     }
 
     private Shape generateRandomShape(){

@@ -50,7 +50,7 @@ public class PowerUpHandler extends Thread implements Pausable {
 
     private synchronized EntityPos2D getRandomPos2D(){
         Random rand = new Random();
-        return new EntityPos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 20);
+        return new EntityPos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 24);
     }
 
     @Override
