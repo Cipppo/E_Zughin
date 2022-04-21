@@ -13,8 +13,8 @@ import pangGuy.utilities.EntityPos2D;
 
 public class PowerUpHandler extends Thread implements Pausable {
 
-    private static final int POWERUP_WIDTH = 17;
-    private static final int POWERUP_HEIGHT = 17;
+    private static final int POWERUP_WIDTH = 24;
+    private static final int POWERUP_HEIGHT = 24;
     private static final int SPAWN_TIME = 10;
 
     private final PowerUpGenerator gen;
