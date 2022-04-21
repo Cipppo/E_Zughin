@@ -97,7 +97,7 @@ public class EntityHandler extends Thread {
      * @return
      */
     public synchronized List<Pausable> getPausable() {
-        return List.of(this.ballRunner, this.bird);
+        return List.of(this.ballRunner, this.bird, this.hero);
     }
 
     public synchronized Runner getBallRunner() {
