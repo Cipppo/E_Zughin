@@ -103,17 +103,13 @@ public class VisualPanelTest extends JPanel {
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir, GunTypes type, Optional<BirdShape> bShape) {
-        ballPositions = pos;
-        shapes = aShapes;
+    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir, GunTypes type, Optional<BirdShape> bShape, Optional<PowerUpEntity> powerUp, Optional<BonusEntity> bonus) {
+        this.ballPositions = pos;
+        this.shapes = aShapes;
         this.hShape = hShape;
         this.dir = dir;
         this.gunType = type;
         this.bShape = bShape;
-        repaint();
-    }
-
-    public void updatePickablePosition(Optional<PowerUpEntity> powerUp, Optional<BonusEntity> bonus) {
         this.pUp = powerUp;
         this.bonus = bonus;
         repaint();
