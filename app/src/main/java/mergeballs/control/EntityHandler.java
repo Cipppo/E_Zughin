@@ -70,10 +70,7 @@ public class EntityHandler extends Thread {
                     }
 
                     if (this.checker.checkEnemyCollision(this.frame.getHero().getShape(), t)) {
-                        if(this.hero.getStatus() == HeroStatus.NEUTRAL){
-                            Timer timer = new Timer();
-                            timer.schedule(new HitHandler(hero), 0);
-                        }
+                        this.setHeroStatus();
                     }
 
                     this.frame.updatePosition(this.ballRunner
@@ -94,10 +91,7 @@ public class EntityHandler extends Thread {
                     }
 
                     if (IntersectionChecker.checkShapeCollsion(this.bird.getShape().get(), this.frame.getHero().getShape())) {
-                        if(this.hero.getStatus() == HeroStatus.NEUTRAL){
-                            Timer timer = new Timer();
-                            timer.schedule(new HitHandler(hero), 0);
-                        }
+                        this.setHeroStatus();
                     }
                 }
 
@@ -120,11 +114,20 @@ public class EntityHandler extends Thread {
         }
     }
 
+    //temp
     public Boolean getPauseStatus() {
         return this.pauseEntity;
     }
 
+    //temp
     public void setPause() {
         this.pauseEntity = !this.pauseEntity;
     }
+
+    private void setHeroStatus() {
+        if(this.hero.getStatus() == HeroStatus.NEUTRAL){
+            Timer timer = new Timer();
+            timer.schedule(new HitHandler(hero), 0);
+        }
+    } 
 }
