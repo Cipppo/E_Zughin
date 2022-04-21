@@ -9,8 +9,10 @@ import javax.swing.KeyStroke;
 
 import ball.controller.Runner;
 import bird.controller.BirdHandler;
+import bonus.BonusHandler;
 import mergeballs.gui.VisualInterface;
 import pangGuy.character.Hero;
+import powerUp.PowerUpHandler;
 
 /**
  * Pressing the Esc key, if the pause param is set to false, the PausePanel will be
@@ -33,7 +35,7 @@ public class PauseButton {
      * @param bird
      *          the bird object.
      */
-    public PauseButton(VisualInterface visual, JPanel pausePanel, BirdHandler bird, Hero hero, Runner ballRunner) {
+    public PauseButton(VisualInterface visual, JPanel pausePanel, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus) {
 
         JPanel mainPanel = visual.getVisualTest();
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
@@ -44,7 +46,7 @@ public class PauseButton {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisibility(mainPanel, pausePanel, bird, hero, ballRunner);
+                setVisibility(mainPanel, pausePanel, bird, hero, ballRunner, powerup, bonus);
             }
         });
     }
@@ -59,13 +61,15 @@ public class PauseButton {
      * @param bird
      *          the bird object to be stopped.
      */
-    private void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdHandler bird, Hero hero, Runner ballRunner) {
+    private void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus) {
     	if(!pause){
             mainPanel.add(pausePanel);
             pausePanel.setVisible(true);
             bird.setPause();
             hero.toggleAwake();
             ballRunner.pauseAll();
+            powerup.pauseAll();
+            bonus.pauseAll();
             pause = true;
         } else {
             mainPanel.remove(pausePanel);
@@ -73,6 +77,8 @@ public class PauseButton {
             bird.setPause();
             hero.toggleAwake();
             ballRunner.resumeAll();
+            powerup.resumeAll();
+            bonus.resumeAll();
             pause = false;
         }
     }
