@@ -37,8 +37,8 @@ public class BirdHandler extends Thread implements Pausable {
     
     @Override
     public void run() {
-        while(!this.birdDead) {
-            while(!this.pause) {
+        while (!this.birdDead) {
+            while (!this.pause) {
                 try {
                     this.createBird();
                     Thread.sleep(20);
@@ -81,7 +81,7 @@ public class BirdHandler extends Thread implements Pausable {
     }
 
     public Optional<BirdShape> getShape() {
-        if(!this.actor.isEmpty()) {
+        if (!this.actor.isEmpty()) {
             return Optional.of(this.actor.get().getShape());
         } else {
             return Optional.empty();
