@@ -3,6 +3,7 @@ package mergeballs.control;
 import java.util.List;
 import java.util.Timer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import ball.controller.BallBoundChecker;
 import ball.controller.IntersectionChecker;
@@ -97,7 +98,7 @@ public class EntityHandler extends Thread {
      * @return
      */
     public synchronized List<Pausable> getPausable() {
-        return List.of(this.ballRunner, this.bird, this.hero);
+        return Stream.concat(Stream.of(this.hero, this.ballRunner, this.bird), this.gSet.getArpions().stream()).collect(Collectors.toList());
     }
 
     public synchronized Runner getBallRunner() {
