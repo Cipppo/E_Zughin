@@ -1,12 +1,9 @@
 package bird.gui;
 
 import bird.utilities.BirdDirections;
-import bird.utilities.BirdPNGLoader;
 import stage.utils.CenterOnDefaultScreen;
 import pangGuy.utilities.EntityPos2D;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.Random;
 
 /**
@@ -21,7 +18,6 @@ public class BirdActor{
 	private BirdShape s;
     private final BirdDirections dir;
     private final Random random = new Random();
-    private final BirdPNGLoader iLoader = new BirdPNGLoader();
 
     /**
      * Constructor that define the bird's dimension.
@@ -45,18 +41,6 @@ public class BirdActor{
 
     public BirdShape getShape(){
         return this.s;
-    }
-
-    /**
-     * Thanks to this method the bird is being paint correctly on the frame depending on his direction.
-     */
-    public void paintComponent(Graphics g) {
-
-        Graphics2D g2 = (Graphics2D) g;
-
-        g2.drawImage(iLoader.getBirdImage(this.getShape().getDireciton(), s.getPos()), 0, 0, null);
-
-        g2.dispose();
     }
 
     public BirdDirections randomDirectionChooser() {
