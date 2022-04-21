@@ -1,7 +1,8 @@
 package mergeballs.control;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import bonus.BonusHandler;
 import mergeballs.gui.VisualTest;
@@ -28,13 +29,8 @@ public class Controller {
                         new BonusHandler(this.visual.getBounds()), 
                         player, this.visual);
 
-        List<Pausable> pausables = new ArrayList<>();
-        for (final var elem : this.entityHandler.getPausable()) {
-            pausables.add(elem);
-        }
-        for (final var elem : this.pickableHandler.getPausable()) {
-            pausables.add(elem);
-        }
+        List<Pausable> pausables = Stream.concat(this.entityHandler.getPausable().stream(), this.pickableHandler.getPausable().stream())
+                                                    .collect(Collectors.toList());
 
         this.pauseHandler = new PauseHandler(this.visual, pausables);
     }
