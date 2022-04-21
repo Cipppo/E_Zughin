@@ -23,8 +23,8 @@ public class HUDPanel extends JPanel{
 	public HUDPanel() {	
 		this.setLayout(new GridLayout(rows, columns));
 
-		for(int m = 0; m < rows; m++) {
-			for(int n = 0; n < columns; n++) {
+		for (int m = 0; m < rows; m++) {
+			for (int n = 0; n < columns; n++) {
 				HUDPanel[m][n] = new JPanel();
 				HUDPanel[m][n].setBackground(Color.BLACK);
 				this.add(HUDPanel[m][n]);

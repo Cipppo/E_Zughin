@@ -26,9 +26,9 @@ public class P1ScoreSetter extends Thread {
         label.setForeground(Color.WHITE);
         label.setFont(gameFont);
 
-        while(true) {
+        while (true) {
             try {
-                if(this.actualScore != this.score.getScore()) {
+                if (this.actualScore != this.score.getScore()) {
                     this.actualScore = this.score.getScore();
                     label.setText("" + this.actualScore);
                     this.hud.getHUDPanel()[1][1].removeAll();

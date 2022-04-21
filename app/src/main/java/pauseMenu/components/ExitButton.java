@@ -33,7 +33,7 @@ public class ExitButton{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(pausePanel.getVisibility()) {
+				if (pausePanel.getVisibility()) {
 					System.exit(0);	
 				}
 			}
