@@ -5,11 +5,11 @@ public interface Pausable {
     /**
      * Pauses the Entity 
      */
-    public void Pause();
+    public void pause();
 
     /**
-     * Resume the Entity
+     * Resume the Entity    
      */
-    public void Resume();
+    public void resume();
     
 }
