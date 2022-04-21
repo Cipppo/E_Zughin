@@ -48,7 +48,7 @@ public class EntityHandler extends Thread {
         this.bonHandler = new BonusHandler(this.frame.getBounds());
         this.bird = new BirdHandler();
         this.score = score;
-        new PauseButton(frame, pausePanel, bird, hero, ballRunner);
+        new PauseButton(frame, pausePanel, bird, hero, ballRunner, pUpHandler, bonHandler);
         new ExitButton(frame, pausePanel);
     }
 
