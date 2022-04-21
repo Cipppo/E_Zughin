@@ -2,22 +2,22 @@ package stage.utils;
 
 import javax.swing.JLabel;
 
-import bonus.Score;
+import player.Player;
 import stage.components.HUDPanel;
 import java.awt.Font;
 import java.awt.Color;
 
 public class P1ScoreSetter extends Thread {
 
-    private Score score;
+    private Player player;
     private HUDPanel hud;
     private int actualScore = 0;
     private MainFontLoader fontLoader = new MainFontLoader();
 	private Font gameFont = fontLoader.load();
     private JLabel label = new JLabel();
 
-    public P1ScoreSetter(Score score, HUDPanel hud) {
-        this.score = score;
+    public P1ScoreSetter(Player player, HUDPanel hud) {
+        this.player = player;
         this.hud = hud;
     }
     
@@ -28,8 +28,8 @@ public class P1ScoreSetter extends Thread {
 
         while (true) {
             try {
-                if (this.actualScore != this.score.getScore()) {
-                    this.actualScore = this.score.getScore();
+                if (this.actualScore != this.player.getScore().getScore()) {
+                    this.actualScore = this.player.getScore().getScore();
                     label.setText("" + this.actualScore);
                     this.hud.getHUDPanel()[1][1].removeAll();
                     this.hud.getHUDPanel()[1][1].add(label);

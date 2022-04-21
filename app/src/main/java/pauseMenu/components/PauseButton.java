@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import mergeballs.control.Pausable;
+import mergeballs.control.PauseHandler;
 import mergeballs.gui.VisualInterface;
 
 /**
@@ -19,8 +20,6 @@ import mergeballs.gui.VisualInterface;
  *          variable to check if the games is in pause status or not.
  */
 public class PauseButton {
-
-    private boolean pause = false;
     
     /**
      * Contructor that trigger the Pause action.
@@ -32,7 +31,7 @@ public class PauseButton {
      * @param bird
      *          the bird object.
      */
-    public PauseButton(VisualInterface visual, List<Pausable> pausables) {
+    public PauseButton(VisualInterface visual, List<Pausable> pausables, PauseHandler pauseHandler) {
 
         JPanel mainPanel = visual.getVisualTest();
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
@@ -43,7 +42,7 @@ public class PauseButton {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisibility(pausables);
+                setVisibility(pausables, pauseHandler);
             }
         });
     }
@@ -58,17 +57,13 @@ public class PauseButton {
      * @param bird
      *          the bird object to be stopped.
      */
-    private void setVisibility(List<Pausable> pausables) {
-    	if(!pause){
+    private void setVisibility(List<Pausable> pausables, PauseHandler pauseHandler) {
+    	if(!pauseHandler.getPause()){
             pausables.forEach(e -> e.pauseAll());
-            this.pause = true;
+            pauseHandler.setPause();
         } else {
             pausables.forEach(e -> e.resumeAll());
-            this.pause = false;
+            pauseHandler.setPause();
         }
-    }
-
-    public Boolean getPause() {
-        return this.pause;
     }
 }

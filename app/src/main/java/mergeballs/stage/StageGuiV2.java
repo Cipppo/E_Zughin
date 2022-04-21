@@ -36,7 +36,7 @@ public class StageGuiV2 extends JFrame {
         
         this.hud = new HUDPanel();
 
-        this.scoresetter = new P1ScoreSetter(player.getScore(), this.hud);
+        this.scoresetter = new P1ScoreSetter(player, this.hud);
         this.pauseHUDSetter = new PauseHUDSetter(this.hud, this.controller.getPauseHandler());
 
         this.scoresetter.start();
