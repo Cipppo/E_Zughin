@@ -13,7 +13,6 @@ import pangGuy.modularGun.Status;
 import pangGuy.utilities.StepsApplier;
 import pauseMenu.components.ExitButton;
 import pauseMenu.components.PauseButton;
-import pauseMenu.components.PausePanel;
 import powerUp.PowerUpHandler;
 import ball.controller.Runner;
 import bird.controller.BirdHandler;
@@ -32,9 +31,8 @@ public class EntityHandler extends Thread {
     private final PowerUpHandler pUpHandler;
     private final BonusHandler bonHandler;
     private final BirdHandler bird;
-    private PausePanel pausePanel = new PausePanel();
+    private Boolean pauseEntity = false;
 
-    
     
     public EntityHandler(VisualTest frame, GunSet gSet, Hero hero, Score score) {
         this.frame = frame;
@@ -48,8 +46,8 @@ public class EntityHandler extends Thread {
         this.bonHandler = new BonusHandler(this.frame.getBounds());
         this.bird = new BirdHandler();
         this.score = score;
-        new PauseButton(frame, pausePanel, bird, hero, ballRunner);
-        new ExitButton(frame, pausePanel);
+        new PauseButton(frame, bird, hero, ballRunner, this);
+        new ExitButton(frame, this);
     }
 
     @Override
@@ -120,5 +118,13 @@ public class EntityHandler extends Thread {
                 //Catching Thread Exceptions
             }
         }
+    }
+
+    public Boolean getPauseStatus() {
+        return this.pauseEntity;
+    }
+
+    public void setPause() {
+        this.pauseEntity = !this.pauseEntity;
     }
 }
