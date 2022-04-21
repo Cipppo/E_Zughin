@@ -31,7 +31,7 @@ public class StageGuiV2 extends JFrame {
     private Controller controller;
 
     public StageGuiV2(Player player) {
-        this.controller = new Controller(this.visual);
+        this.controller = new Controller(this.visual, player);
         this.controller.startAll();
         
         this.hud = new HUDPanel();
