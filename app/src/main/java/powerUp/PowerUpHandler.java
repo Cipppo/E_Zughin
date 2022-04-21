@@ -4,13 +4,14 @@ import java.util.Optional;
 import java.util.Random;
 
 import ball.controller.Runner;
+import mergeballs.control.Pausable;
 import pangGuy.gui.HeroComponent;
 import pangGuy.gui.Shape;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.EntityPos2D;
 
-public class PowerUpHandler extends Thread{
+public class PowerUpHandler extends Thread implements Pausable {
 
     private static final int POWERUP_WIDTH = 17;
     private static final int POWERUP_HEIGHT = 17;
@@ -52,10 +53,12 @@ public class PowerUpHandler extends Thread{
         return new EntityPos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 20);
     }
 
+    @Override
     public synchronized void pauseAll() {
         this.pause = true;
     }
 
+    @Override
     public synchronized void resumeAll() {
         this.pause = false;
     }

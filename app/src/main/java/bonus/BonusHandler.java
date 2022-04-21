@@ -2,10 +2,11 @@ package bonus;
 
 import java.util.Optional;
 
+import mergeballs.control.Pausable;
 import pangGuy.gui.HeroComponent;
 import pangGuy.utilities.Pair;
 
-public class BonusHandler extends Thread{
+public class BonusHandler extends Thread implements Pausable {
 
     private static final int SPAWN_TIME = 5;
     
@@ -53,10 +54,12 @@ public class BonusHandler extends Thread{
         return false;
     }
 
+    @Override
     public synchronized void pauseAll() {
         this.pause = true;
     }
 
+    @Override
     public synchronized void resumeAll() {
         this.pause = false;
     }
