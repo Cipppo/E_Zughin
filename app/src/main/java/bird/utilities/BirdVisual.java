@@ -57,7 +57,7 @@ public class BirdVisual extends Thread{
      */
     @Override
     public void run() {
-        while(!this.pause) {
+        while (!this.pause) {
             
             this.startX = this.dir == BirdDirections.RIGHT ? 0 : SIZEX - WIDTH;
             //this.shape = new BirdShape(new EntityPos2D(startX, STARTY), WIDTH, HEIGHT, dir);
@@ -72,7 +72,7 @@ public class BirdVisual extends Thread{
             }
             /* panel.add(this.actor); */
             panel.repaint();
-            if(startX == 0) {
+            if (startX == 0) {
                 movUtils.moveRight();
             } else if(startX == SIZEX - WIDTH) {
                 movUtils.moveLeft();
@@ -92,7 +92,7 @@ public class BirdVisual extends Thread{
      * Trigger the pause for this object
      */
     public void setPause() {
-        if(this.pause) {
+        if (this.pause) {
             this.pause = false;
             /* this.actor.setVisible(true); */
         } else {

@@ -63,7 +63,7 @@ public class BirdMovementUtils {
      */
     public final void moveRight() {
         this.moveUp = false;
-        while(bird.getShape().getPos().getX() + WIDTH <= bc.getXPair().getY() - 5 && this.birdDead != true) {
+        while (bird.getShape().getPos().getX() + WIDTH <= bc.getXPair().getY() - 5 && this.birdDead != true) {
             this.doMovement(BirdDirections.RIGHT);
             this.moveVertically();
         }
@@ -74,7 +74,7 @@ public class BirdMovementUtils {
      */
     public final void moveLeft() {
         this.moveUp = false;
-        while(bird.getShape().getPos().getX() >= bc.getXPair().getX() + 5 && this.birdDead != true) {
+        while (bird.getShape().getPos().getX() >= bc.getXPair().getX() + 5 && this.birdDead != true) {
             this.doMovement(BirdDirections.LEFT);
             this.moveVertically();
         }
@@ -86,7 +86,7 @@ public class BirdMovementUtils {
      *      - Up movement: if bird has already touched ground.
      */
     public final void moveVertically() {
-        if(bird.getShape().getPos().getY() + HEIGHT <= bc.getYPair().getY() && !moveUp) {
+        if (bird.getShape().getPos().getY() + HEIGHT <= bc.getYPair().getY() && !moveUp) {
             this.doMovement(BirdDirections.DOWN);
         } else {
             this.moveUp = true;
@@ -103,8 +103,8 @@ public class BirdMovementUtils {
      */
     private final void doMovement(BirdDirections dir) {
         try {
-            if(!this.pause) {
-                switch(dir) {
+            if (!this.pause) {
+                switch (dir) {
                     case RIGHT:
                         this.actionFactory.getRightAction(this.mover);
                         break;
