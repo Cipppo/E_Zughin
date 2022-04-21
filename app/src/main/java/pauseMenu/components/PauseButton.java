@@ -7,8 +7,10 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import ball.controller.Runner;
 import bird.controller.BirdHandler;
 import mergeballs.gui.VisualInterface;
+import pangGuy.character.Hero;
 
 /**
  * Pressing the Esc key, if the pause param is set to false, the PausePanel will be
@@ -31,7 +33,7 @@ public class PauseButton {
      * @param bird
      *          the bird object.
      */
-    public PauseButton(VisualInterface visual, JPanel pausePanel, BirdHandler bird) {
+    public PauseButton(VisualInterface visual, JPanel pausePanel, BirdHandler bird, Hero hero, Runner ballRunner) {
 
         JPanel mainPanel = visual.getVisualTest();
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
@@ -42,7 +44,7 @@ public class PauseButton {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisibility(mainPanel, pausePanel, bird);
+                setVisibility(mainPanel, pausePanel, bird, hero, ballRunner);
             }
         });
     }
@@ -57,16 +59,20 @@ public class PauseButton {
      * @param bird
      *          the bird object to be stopped.
      */
-    private void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdHandler bird) {
+    private void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdHandler bird, Hero hero, Runner ballRunner) {
     	if(!pause){
             mainPanel.add(pausePanel);
             pausePanel.setVisible(true);
             bird.setPause();
+            hero.toggleAwake();
+            ballRunner.pauseAll();
             pause = true;
         } else {
             mainPanel.remove(pausePanel);
             pausePanel.setVisible(false);
             bird.setPause();
+            hero.toggleAwake();
+            ballRunner.resumeAll();
             pause = false;
         }
     }
