@@ -32,17 +32,19 @@ public class PickableHandler extends Thread {
         while(!this.stop) {
             try {
                 
+                this.pane.updatePickablePosition(this.powerUp.getPowerup(), this.bonus.getBonus());
+
                 if (!this.powerUp.getPowerup().isEmpty()) {
                     this.powerUp.checkItemTaken(this.hero);
                 }
 
                 if (!this.bonus.getBonus().isEmpty()) {
+                    var score = this.bonus.getBonus().get().getPoints();
                     if (this.bonus.checkItemTaken(this.hero)) {
-                        this.player.getScore().raiseScore(this.bonus.getBonus().get().getPoints());
+                        this.player.getScore().raiseScore(score);
+                        System.out.println("Player score: " + this.player.getScore());
                     }
                 }
-
-                this.pane.updatePickablePosition(this.powerUp.getPowerup(), this.bonus.getBonus());
 
                 Thread.sleep(30);   
             } catch (InterruptedException e) {
