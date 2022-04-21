@@ -7,15 +7,11 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import ball.controller.Runner;
-import bonus.BonusHandler;
 import mergeballs.control.EntityHandler;
 import mergeballs.control.Pausable;
 import mergeballs.gui.VisualInterface;
-import pangGuy.character.Hero;
 import pangGuy.modularGun.Bullet;
 import pangGuy.modularGun.GunSet;
-import powerUp.PowerUpHandler;
 
 /**
  * Pressing the Esc key, if the pause param is set to false, the PausePanel will be
