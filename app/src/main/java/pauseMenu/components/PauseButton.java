@@ -9,9 +9,11 @@ import javax.swing.KeyStroke;
 
 import ball.controller.Runner;
 import bird.controller.BirdHandler;
+import bonus.BonusHandler;
 import mergeballs.control.EntityHandler;
 import mergeballs.gui.VisualInterface;
 import pangGuy.character.Hero;
+import powerUp.PowerUpHandler;
 
 /**
  * Pressing the Esc key, if the pause param is set to false, the PausePanel will be
@@ -34,7 +36,7 @@ public class PauseButton {
      * @param bird
      *          the bird object.
      */
-    public PauseButton(VisualInterface visual, BirdHandler bird, Hero hero, Runner ballRunner, EntityHandler handler) {
+    public PauseButton(VisualInterface visual, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler) {
 
         JPanel mainPanel = visual.getVisualTest();
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
@@ -45,7 +47,7 @@ public class PauseButton {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisibility(mainPanel, bird, hero, ballRunner, handler);
+                setVisibility(mainPanel, bird, hero, ballRunner, powerup, bonus, handler);
             }
         });
     }
@@ -60,17 +62,21 @@ public class PauseButton {
      * @param bird
      *          the bird object to be stopped.
      */
-    private void setVisibility(JPanel mainPanel, BirdHandler bird, Hero hero, Runner ballRunner, EntityHandler handler) {
-    	if (!pause) {
+    private void setVisibility(JPanel mainPanel, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler) {
+    	if(!pause){
             bird.setPause();
             hero.toggleAwake();
             ballRunner.pauseAll();
+            powerup.pauseAll();
+            bonus.pauseAll();
             handler.setPause();
             pause = true;
         } else {
             bird.setPause();
             hero.toggleAwake();
             ballRunner.resumeAll();
+            powerup.resumeAll();
+            bonus.resumeAll();
             handler.setPause();
             pause = false;
         }

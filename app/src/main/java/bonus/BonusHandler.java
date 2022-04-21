@@ -11,22 +11,28 @@ public class BonusHandler extends Thread{
     
     private final BonusGenerator gen;
     private boolean stop;
+    private boolean pause;
     Optional<BonusEntity> next;
 
-    public BonusHandler(Pair<Integer, Integer> bounds){
+    public BonusHandler(Pair<Integer, Integer> bounds) {
         this.gen = new BonusGenerator(bounds);
         this.next = Optional.empty();
+        this.pause = 
         this.stop = false;
     }
 
     @Override
     public void run(){
-        while(!stop){
-            try{
-                this.next = Optional.of(gen.generateNextBonus());
-                //System.out.println("Fruit Spawned" + " X: " + this.next.get().getShape().toString());
-                Thread.sleep(SPAWN_TIME * 1000);
-            }catch(Exception e){
+        while(!this.stop){
+            try {
+                if (!this.pause) {
+                    this.next = Optional.of(gen.generateNextBonus());
+                    //System.out.println("Fruit Spawned" + " X: " + this.next.get().getShape().toString());
+                    Thread.sleep(SPAWN_TIME * 1000);
+                } else {
+                    Thread.sleep(30);
+                }
+            } catch(Exception e) {
                 System.out.println("Thread.sleep() error: " + e.getMessage());
             }
         }
@@ -45,6 +51,14 @@ public class BonusHandler extends Thread{
             return true;
         }
         return false;
+    }
+
+    public synchronized void pauseAll() {
+        this.pause = true;
+    }
+
+    public synchronized void resumeAll() {
+        this.pause = false;
     }
 
     public synchronized void resetBonus(){
