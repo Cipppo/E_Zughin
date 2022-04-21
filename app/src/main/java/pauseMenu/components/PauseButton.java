@@ -67,4 +67,8 @@ public class PauseButton {
             this.pause = false;
         }
     }
+
+    public Boolean getPause() {
+        return this.pause;
+    }
 }

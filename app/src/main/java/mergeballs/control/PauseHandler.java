@@ -8,9 +8,11 @@ import pauseMenu.components.PauseButton;
 
 public class PauseHandler {
     
+    private final PauseButton pauseButton;
+
     public PauseHandler(VisualInterface visual, List<Pausable> pausables) {
 
-        new PauseButton(visual, pausables);
-        new ExitButton(visual);
+        pauseButton = new PauseButton(visual, pausables);
+        new ExitButton(visual, pauseButton);
     }
 }
