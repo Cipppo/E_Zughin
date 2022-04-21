@@ -6,14 +6,14 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import pauseMenu.components.PauseButton;
+import mergeballs.control.PauseHandler;
 import stage.components.HUDPanel;
 import stage.components.StageNameLabel;
 
 public class PauseHUDSetter extends Thread {
     
     private final HUDPanel hud;
-    private final PauseButton pauseButton;
+    private final PauseHandler pauseHandler;
     private final MainFontLoader fontLoader = new MainFontLoader(2);
 	private final Font gameFont = fontLoader.load();
     private final JLabel resumeLabel = new JLabel("ESC: RESUME", SwingConstants.CENTER);
@@ -21,9 +21,9 @@ public class PauseHUDSetter extends Thread {
     private final JLabel StageNameLabel = new StageNameLabel();
     private Boolean stageNameVisible = true;
 
-    public PauseHUDSetter(HUDPanel hud, PauseButton pauseButton) {
+    public PauseHUDSetter(HUDPanel hud, PauseHandler pauseHandler) {
         this.hud = hud;
-        this.pauseButton = pauseButton;
+        this.pauseHandler = pauseHandler;
     }
     
     @Override
@@ -37,7 +37,7 @@ public class PauseHUDSetter extends Thread {
 
         while (true) {
             try {
-                if (this.pauseButton.getPause() && this.stageNameVisible) {
+                if (this.pauseHandler.getPause() && this.stageNameVisible) {
                     this.hud.getHUDPanel()[0][3].removeAll();
                     this.hud.getHUDPanel()[1][3].removeAll();
                     this.hud.getHUDPanel()[0][3].add(resumeLabel);
@@ -45,7 +45,7 @@ public class PauseHUDSetter extends Thread {
                     this.stageNameVisible = false;
                     this.hud.validate();
                     this.hud.repaint();
-                } else if (!this.pauseButton.getPause() && !this.stageNameVisible) {
+                } else if (!this.pauseHandler.getPause() && !this.stageNameVisible) {
                     this.hud.getHUDPanel()[0][3].removeAll();
                     this.hud.getHUDPanel()[1][3].removeAll();
                     this.hud.getHUDPanel()[0][3].add(StageNameLabel);

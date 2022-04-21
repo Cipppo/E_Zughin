@@ -15,4 +15,8 @@ public class PauseHandler {
         pauseButton = new PauseButton(visual, pausables);
         new ExitButton(visual, pauseButton);
     }
+
+    public Boolean getPause() {
+        return this.pauseButton.getPause();
+    }
 }
