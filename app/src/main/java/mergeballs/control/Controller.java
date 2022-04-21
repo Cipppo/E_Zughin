@@ -18,11 +18,10 @@ public class Controller {
     private final PickableHandler pickableHandler;
     private final PauseHandler pauseHandler;
     
-    public Controller(VisualTest visual) {
+    public Controller(VisualTest visual, Player player) {
         this.visual = visual;
         this.panel = new VisualPanelTest(this.visual.getBounds().getX(), this.visual.getBounds().getY());
         
-        Player player = new Player("Test");
         Hero hero = new Hero();
         new ActionApplier(this.visual, hero);
 
