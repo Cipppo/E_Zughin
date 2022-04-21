@@ -3,8 +3,6 @@ package mergeballs.control;
 import java.util.List;
 
 import bonus.BonusHandler;
-import bonus.Score;
-import pangGuy.character.Hero;
 import pangGuy.gui.HeroComponent;
 import player.Player;
 import powerUp.PowerUpHandler;
@@ -15,15 +13,13 @@ public class PickableHandler extends Thread {
     private final BonusHandler bonus;
     private final Player player;
     private boolean stop;
-    private final Score score; //temp
 
-    public PickableHandler(HeroComponent hero, PowerUpHandler powerUp, BonusHandler bonus, Player player, Score score) {
+    public PickableHandler(HeroComponent hero, PowerUpHandler powerUp, BonusHandler bonus, Player player) {
         this.stop = false;
         this.hero = hero;
         this.powerUp = powerUp;
         this.bonus = bonus;
         this.player = player;
-        this.score = score;
     }
 
     @Override
@@ -39,7 +35,7 @@ public class PickableHandler extends Thread {
 
                 if (!this.bonus.getBonus().isEmpty()) {
                     if (this.bonus.checkItemTaken(this.hero)) {
-                        this.score.raiseScore(this.bonus.getBonus().get().getPoints());
+                        this.player.getScore().raiseScore(this.bonus.getBonus().get().getPoints());
                     }
                 }
 
