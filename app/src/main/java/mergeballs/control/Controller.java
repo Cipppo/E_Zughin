@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bonus.BonusHandler;
-import mergeballs.gui.VisualPanelTest;
 import mergeballs.gui.VisualTest;
 import pangGuy.actions.ActionApplier;
 import pangGuy.character.Hero;
@@ -13,14 +12,12 @@ import powerUp.PowerUpHandler;
 
 public class Controller {
     private final VisualTest visual;
-    private final VisualPanelTest panel;
     private final EntityHandler entityHandler;
     private final PickableHandler pickableHandler;
     private final PauseHandler pauseHandler;
     
     public Controller(VisualTest visual, Player player) {
         this.visual = visual;
-        this.panel = new VisualPanelTest(this.visual.getBounds().getX(), this.visual.getBounds().getY());
         
         Hero hero = new Hero();
         new ActionApplier(this.visual, hero);
@@ -29,7 +26,7 @@ public class Controller {
         this.pickableHandler = new PickableHandler(this.visual.getHero(), 
                         new PowerUpHandler(hero.getGset(), this.entityHandler.getBallRunner(), this.visual.getBounds()), 
                         new BonusHandler(this.visual.getBounds()), 
-                        player, this.panel);
+                        player, this.visual);
 
         List<Pausable> pausables = new ArrayList<>();
         for (final var elem : this.entityHandler.getPausable()) {
