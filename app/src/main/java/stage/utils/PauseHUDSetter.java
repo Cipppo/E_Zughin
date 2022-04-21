@@ -45,7 +45,7 @@ public class PauseHUDSetter extends Thread {
                     this.stageNameVisible = false;
                     this.hud.validate();
                     this.hud.repaint();
-                } else if (this.pauseButton.getPause() && !this.stageNameVisible) {
+                } else if (!this.pauseButton.getPause() && !this.stageNameVisible) {
                     this.hud.getHUDPanel()[0][3].removeAll();
                     this.hud.getHUDPanel()[1][3].removeAll();
                     this.hud.getHUDPanel()[0][3].add(StageNameLabel);
