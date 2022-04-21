@@ -6,23 +6,23 @@ import bonus.BonusHandler;
 import pangGuy.gui.HeroComponent;
 import player.Player;
 import powerUp.PowerUpHandler;
-import mergeballs.gui.VisualPanelTest;
+import mergeballs.gui.VisualTest;
 
 public class PickableHandler extends Thread {
     private final HeroComponent hero;
     private final PowerUpHandler powerUp;
     private final BonusHandler bonus;
     private final Player player;
-    private final VisualPanelTest pane;
+    private final VisualTest visual;
     private boolean stop;
 
-    public PickableHandler(HeroComponent hero, PowerUpHandler powerUp, BonusHandler bonus, Player player, VisualPanelTest pane) {
+    public PickableHandler(HeroComponent hero, PowerUpHandler powerUp, BonusHandler bonus, Player player, VisualTest visual) {
         this.stop = false;
         this.hero = hero;
         this.powerUp = powerUp;
         this.bonus = bonus;
         this.player = player;
-        this.pane = pane;
+        this.visual = visual;
     }
 
     @Override
@@ -31,9 +31,8 @@ public class PickableHandler extends Thread {
         this.bonus.start();
         while(!this.stop) {
             try {
-                
-                
-                this.pane.updatePickablePosition(this.powerUp.getPowerup(), this.bonus.getBonus());
+
+                this.visual.setBonuses(this.powerUp.getPowerup(), this.bonus.getBonus());
 
                 if (!this.powerUp.getPowerup().isEmpty()) {
                     this.powerUp.checkItemTaken(this.hero);
