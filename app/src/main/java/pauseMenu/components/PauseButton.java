@@ -13,6 +13,8 @@ import bonus.BonusHandler;
 import mergeballs.control.EntityHandler;
 import mergeballs.gui.VisualInterface;
 import pangGuy.character.Hero;
+import pangGuy.modularGun.Bullet;
+import pangGuy.modularGun.GunSet;
 import powerUp.PowerUpHandler;
 
 /**
@@ -36,7 +38,7 @@ public class PauseButton {
      * @param bird
      *          the bird object.
      */
-    public PauseButton(VisualInterface visual, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler) {
+    public PauseButton(VisualInterface visual, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler, GunSet gSet) {
 
         JPanel mainPanel = visual.getVisualTest();
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
@@ -47,7 +49,7 @@ public class PauseButton {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisibility(mainPanel, bird, hero, ballRunner, powerup, bonus, handler);
+                setVisibility(mainPanel, bird, hero, ballRunner, powerup, bonus, handler, gSet);
             }
         });
     }
@@ -62,7 +64,7 @@ public class PauseButton {
      * @param bird
      *          the bird object to be stopped.
      */
-    private void setVisibility(JPanel mainPanel, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler) {
+    private void setVisibility(JPanel mainPanel, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler, GunSet gSet) {
     	if(!pause){
             bird.setPause();
             hero.toggleAwake();
@@ -70,6 +72,9 @@ public class PauseButton {
             powerup.pauseAll();
             bonus.pauseAll();
             handler.setPause();
+            for(Bullet arp : gSet.getArpions()){
+                arp.hit();
+            }
             pause = true;
         } else {
             bird.setPause();
