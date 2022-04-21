@@ -38,8 +38,8 @@ public class BirdBoundChecker {
      *          if it's inside or outside.
      */
     public boolean isInside(EntityPos2D pos ,int width, int height){
-        if(pos.getX() >= this.x.getX() && pos.getX() + width <= this.x.getY()){
-            if(pos.getY() >= this.y.getX() && pos.getY() + height <= this.y.getY() - 35){
+        if (pos.getX() >= this.x.getX() && pos.getX() + width <= this.x.getY()){
+            if (pos.getY() >= this.y.getX() && pos.getY() + height <= this.y.getY() - 35){
                 return true;
             }
         }

@@ -30,7 +30,7 @@ public class BirdMover {
      *          direction the bird is flying.
      */
     public void move(EntityPos2D pos, BirdDirections dir) {
-        if(bc.isInside(pos, this.actor.getShape().getDimensions().getX(), 
+        if (bc.isInside(pos, this.actor.getShape().getDimensions().getX(), 
         this.actor.getShape().getDimensions().getY())) {
             this.actor.changeLocation(pos);
         }
