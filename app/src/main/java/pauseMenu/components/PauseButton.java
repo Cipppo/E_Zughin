@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import ball.controller.Runner;
-import bird.controller.BirdHandler;
 import bonus.BonusHandler;
 import mergeballs.control.EntityHandler;
+import mergeballs.control.Pausable;
 import mergeballs.gui.VisualInterface;
 import pangGuy.character.Hero;
 import pangGuy.modularGun.Bullet;
@@ -38,7 +38,7 @@ public class PauseButton {
      * @param bird
      *          the bird object.
      */
-    public PauseButton(VisualInterface visual, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler, GunSet gSet) {
+    public PauseButton(VisualInterface visual, Pausable bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler, GunSet gSet) {
 
         JPanel mainPanel = visual.getVisualTest();
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
@@ -49,7 +49,7 @@ public class PauseButton {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisibility(mainPanel, bird, hero, ballRunner, powerup, bonus, handler, gSet);
+                setVisibility(bird, hero, ballRunner, powerup, bonus, handler, gSet);
             }
         });
     }
@@ -64,10 +64,10 @@ public class PauseButton {
      * @param bird
      *          the bird object to be stopped.
      */
-    private void setVisibility(JPanel mainPanel, BirdHandler bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler, GunSet gSet) {
+    private void setVisibility(Pausable bird, Pausable hero, Pausable ballRunner, Pausable powerup, Pausable bonus, EntityHandler handler, GunSet gSet) {
     	if(!pause){
-            bird.setPause();
-            hero.toggleAwake();
+            bird.pauseAll();
+            hero.pauseAll();
             ballRunner.pauseAll();
             powerup.pauseAll();
             bonus.pauseAll();
@@ -77,8 +77,8 @@ public class PauseButton {
             }
             pause = true;
         } else {
-            bird.setPause();
-            hero.toggleAwake();
+            bird.resumeAll();
+            hero.resumeAll();
             ballRunner.resumeAll();
             powerup.resumeAll();
             bonus.resumeAll();
