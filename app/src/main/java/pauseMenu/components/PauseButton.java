@@ -38,7 +38,7 @@ public class PauseButton {
      * @param bird
      *          the bird object.
      */
-    public PauseButton(VisualInterface visual, Pausable bird, Hero hero, Runner ballRunner, PowerUpHandler powerup, BonusHandler bonus, EntityHandler handler, GunSet gSet) {
+    public PauseButton(VisualInterface visual, Pausable bird, Pausable hero, Pausable ballRunner, Pausable powerup, Pausable bonus, EntityHandler handler, GunSet gSet) {
 
         JPanel mainPanel = visual.getVisualTest();
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
