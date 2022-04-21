@@ -23,7 +23,7 @@ public class ExitButton{
 	 * @param pausePanel
 	 * 			the panel that has to be visible.
 	 */
-	public ExitButton(VisualInterface visual) {		
+	public ExitButton(VisualInterface visual, PauseButton pauseButton) {		
 		JPanel mainPanel = visual.getVisualTest();
 		KeyStroke enterKey = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false);
         mainPanel.getInputMap().put(enterKey, "Enter");
