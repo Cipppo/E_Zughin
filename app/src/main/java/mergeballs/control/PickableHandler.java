@@ -32,6 +32,7 @@ public class PickableHandler extends Thread {
         while(!this.stop) {
             try {
                 
+                
                 this.pane.updatePickablePosition(this.powerUp.getPowerup(), this.bonus.getBonus());
 
                 if (!this.powerUp.getPowerup().isEmpty()) {
@@ -41,7 +42,7 @@ public class PickableHandler extends Thread {
                 if (!this.bonus.getBonus().isEmpty()) {
                     var score = this.bonus.getBonus().get().getPoints();
                     if (this.bonus.checkItemTaken(this.hero)) {
-                        this.player.getScore().raiseScore(score);
+                        this.player.increaseScore(score);
                         System.out.println("Player score: " + this.player.getScore());
                     }
                 }
