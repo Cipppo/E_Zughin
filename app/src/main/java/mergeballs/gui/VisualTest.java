@@ -1,21 +1,17 @@
 package mergeballs.gui;
 
 import pangGuy.gui.ArpionComponent;
-import pangGuy.gui.ArpionImageLoader;
 import pangGuy.gui.HeroComponent;
-import pangGuy.gui.PangGuyImageLoader;
+
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 import powerUp.PowerUpEntity;
-import powerUp.PowerupImageLoader;
 
 import java.util.List;
 
-import ball.gui.ImageLoader;
 import ball.physics.SpherePos2D;
 import bird.gui.BirdShape;
-import bird.utilities.BirdPNGLoader;
 import bonus.BonusEntity;
 import mergeballs.control.UpdateableVisual;
 import pangGuy.utilities.EntityPos2D;
@@ -34,27 +30,23 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     private final Pair<Integer, Integer> bounds;
     
     private VisualPanelTest panel;
-    private final ImageLoader iLoader;
-    private final PangGuyImageLoader heroILoader;
-    private final ArpionImageLoader arpionILoader;
-    private final PowerupImageLoader pUpIl;
-    private final BirdPNGLoader birdPNGLoader;
 
     private EntityPos2D startPos;
     //Maybe i have to give to this Hero in order to get all the possible status
 
+    private Optional<PowerUpEntity> powerUp;
+    private Optional<BonusEntity> bonus;
+
     public VisualTest(int width, int height, EntityPos2D startpos){
         this.bounds = new Pair<Integer,Integer>(width, height);
 
-        this.iLoader = new ImageLoader();
-        this.heroILoader = new PangGuyImageLoader();
-        this.arpionILoader = new ArpionImageLoader();
-        this.pUpIl = new PowerupImageLoader();
-        this.birdPNGLoader = new BirdPNGLoader();
-        this.panel = new VisualPanelTest(width, height, iLoader, heroILoader, arpionILoader, pUpIl, birdPNGLoader);
+        this.panel = new VisualPanelTest(width, height);
 
         this.startPos = startpos;
         this.hero = new HeroComponent(startpos);
+
+        this.bonus = Optional.empty();
+        this.powerUp = Optional.empty();
 
         this.arpions = new ArrayList<>(List.of(
             new ArpionComponent(this.hero.getShape().getLeftFoot()), 
@@ -140,14 +132,19 @@ public class VisualTest implements VisualInterface, UpdateableVisual{
     }
     
     @Override
-    public void updatePosition(List<SpherePos2D> pos, Directions dir, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape, Optional<BonusEntity> bonus){
+    public void updatePosition(List<SpherePos2D> pos, Directions dir, Optional<BirdShape> bShape){
         var shapes = this.getArpionsShapes();
-        panel.updatePositions(pos, shapes, this.hero.getShape(), dir, this.arpions.get(0).gType(), pUp, bShape, bonus);
+        panel.updatePositions(pos, shapes, this.hero.getShape(), dir, this.arpions.get(0).gType(), bShape, this.powerUp, this.bonus);
     }
 
     @Override
     public HeroComponent getHero() {
         return this.hero;
+    }
+
+    public void setBonuses(Optional<PowerUpEntity> powerUp, Optional<BonusEntity> bonus) {
+        this.powerUp = powerUp;
+        this.bonus = bonus;
     }
 
     public VisualPanelTest getVisualTest(){

@@ -7,8 +7,8 @@ import pangGuy.utilities.Pair;
 
 public class BonusGenerator {
 
-    private static final int BONUS_WIDTH = 15;
-    private static final int BONUS_HEIGHT = 15;
+    private static final int BONUS_WIDTH = 20;
+    private static final int BONUS_HEIGHT = 20;
     
     private final int baseScore = 100;
     private final Pair<Integer, Integer> bounds;
@@ -28,7 +28,7 @@ public class BonusGenerator {
 
     private EntityPos2D generateRandomPos(){
         Random rand = new Random();
-        return new EntityPos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - BONUS_HEIGHT);
+        return new EntityPos2D(rand.nextInt(this.bounds.getX() - BONUS_WIDTH), this.bounds.getY() - BONUS_HEIGHT);
     }
 
     private Shape generateRandomShape(){

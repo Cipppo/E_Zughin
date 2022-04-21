@@ -1,10 +1,11 @@
 package pangGuy.modularGun;
 
 
+import mergeballs.control.Pausable;
 import pangGuy.utilities.Directions;
 
 
-public interface Bullet {
+public interface Bullet extends Pausable{
 
     /**
      * Takes the Bullet to his Original status.

@@ -2,12 +2,15 @@ package pauseMenu.components;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import bird.utilities.BirdVisual;
+import mergeballs.control.Pausable;
+import mergeballs.control.PauseHandler;
+import mergeballs.gui.VisualInterface;
 
 /**
  * Pressing the Esc key, if the pause param is set to false, the PausePanel will be
@@ -17,21 +20,20 @@ import bird.utilities.BirdVisual;
  *          variable to check if the games is in pause status or not.
  */
 public class PauseButton {
-
-    private boolean pause = false;
     
     /**
      * Contructor that trigger the Pause action.
      * 
-     * @param mainPanel
+     * @param visual
      *          panel that listen for the Esc input.
      * @param pausePanel
      *          the pause panel.
      * @param bird
      *          the bird object.
      */
-    public PauseButton(JPanel mainPanel, JPanel pausePanel, BirdVisual bird) {
+    public PauseButton(VisualInterface visual, List<Pausable> pausables, PauseHandler pauseHandler) {
 
+        JPanel mainPanel = visual.getVisualTest();
         final KeyStroke escKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
         mainPanel.getInputMap().put(escKey, "Esc");
         mainPanel.getActionMap().put("Esc", new AbstractAction(){
@@ -40,7 +42,7 @@ public class PauseButton {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisibility(mainPanel, pausePanel, bird);
+                setVisibility(pausables, pauseHandler);
             }
         });
     }
@@ -55,17 +57,13 @@ public class PauseButton {
      * @param bird
      *          the bird object to be stopped.
      */
-    private void setVisibility(JPanel mainPanel, JPanel pausePanel, BirdVisual bird) {
-    	if(!pause){
-            mainPanel.add(pausePanel);
-            pausePanel.setVisible(true);
-            bird.setPause();
-            pause = true;
+    private void setVisibility(List<Pausable> pausables, PauseHandler pauseHandler) {
+    	if(!pauseHandler.getPause()){
+            pausables.forEach(e -> e.pauseAll());
+            pauseHandler.setPause();
         } else {
-            mainPanel.remove(pausePanel);
-            pausePanel.setVisible(false);
-            bird.setPause();
-            pause = false;
+            pausables.forEach(e -> e.resumeAll());
+            pauseHandler.setPause();
         }
     }
 }

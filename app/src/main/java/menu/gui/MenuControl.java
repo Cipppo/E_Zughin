@@ -14,6 +14,8 @@ import javax.swing.KeyStroke;
 
 import hallOfFameMenu.components.HoFMainPanel;
 import menu.components.*;
+import mergeballs.stage.StageGuiV2;
+import player.Player;
 
 public class MenuControl implements KeyListener{
 
@@ -232,8 +234,8 @@ public class MenuControl implements KeyListener{
 						navPanel.getNicknameLabel().enterInput();
 					}else {
 						System.out.println(navPanel.getNicknameLabel().getNickname());
-						
-						gui.dispose();
+						new StageGuiV2(new Player("Non una bestemmia"));
+						gui.dispose();	
 					}
 					
 				}else

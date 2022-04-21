@@ -27,7 +27,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("mergeballs.Main")
+    mainClass.set("mergeballs.MainStageGui")
 }
 
 java {

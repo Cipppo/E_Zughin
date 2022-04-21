@@ -49,7 +49,7 @@ public class PlayersPanel extends JPanel{
 		
 		for(int i = 0; i < p1.get(); i++) {
 			String elem = Integer.toString(i+1);
-			String score= Integer.toString(p1.get(i).getScore());
+			String score= Integer.toString(p1.get(i).getScore().getScore());
 			
 			container.fill = GridBagConstraints.HORIZONTAL;
 			container.gridx = 0;

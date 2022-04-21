@@ -5,13 +5,11 @@ import java.util.Optional;
 
 import ball.physics.SpherePos2D;
 import bird.gui.BirdShape;
-import bonus.BonusEntity;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.HeroComponent;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
-import powerUp.PowerUpEntity;
 
 /**
  * Models a controller that stores arpions, the Hero and all their informations.
@@ -32,7 +30,7 @@ public interface UpdateableVisual {
      * @param pUp
      *      the powerup which we are gonna display
      */
-    void updatePosition(List<SpherePos2D> position, Directions dir, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape, Optional<BonusEntity> bonus);
+    void updatePosition(List<SpherePos2D> position, Directions dir, Optional<BirdShape> bShape);
 
     /**
      * Getter for game frame size.

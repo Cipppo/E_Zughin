@@ -1,6 +1,7 @@
 package pangGuy.character;
 
 import pangGuy.utilities.EntityPos2D;
+import mergeballs.control.Pausable;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
 
@@ -8,18 +9,20 @@ import pangGuy.utilities.Directions;
  * Models the model of the main character.
  */
 
-public class Hero {
+public class Hero implements Pausable{
 
     private EntityPos2D pos;
     private Directions direction;
     private GunSet gSet;
     private HeroStatus status;
     private int lives;
+    private boolean awake;
 
     /**
      * Creates the main character giving default values.
      */
     public Hero(){
+        this.awake = true;
         this.pos = new EntityPos2D(0, 0);
         this.direction = Directions.LEFT;
         this.gSet = new GunSet();
@@ -98,6 +101,35 @@ public class Hero {
      */
     public HeroStatus getStatus(){
         return this.status;
+    }
+
+    /**
+     * Toggle method for awake in order to pause the hero.
+     */
+    public void toggleAwake(){
+        if(this.awake == true){
+            this.awake = false;
+        }else{
+            this.awake = true;
+        }
+    }
+
+    /**
+     * Getter for isAwake.
+     * @return if the Hero can accept commands.
+     */
+    public boolean isAwake(){
+        return this.awake;
+    }
+
+    @Override
+    public void pauseAll() {
+        this.toggleAwake();
+    }
+
+    @Override
+    public void resumeAll() {
+        this.toggleAwake();
     }
 
 }

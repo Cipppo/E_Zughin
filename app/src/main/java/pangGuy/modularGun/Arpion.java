@@ -1,12 +1,13 @@
 package pangGuy.modularGun;
 
+
 import pangGuy.utilities.Directions;
 
 /**
  * Models one Arpion.
  */
 
-public class Arpion implements Bullet {
+public class Arpion implements Bullet{
     
     private Status status;
     private Directions direction;
@@ -90,5 +91,15 @@ public class Arpion implements Bullet {
     @Override 
     public String toString(){
         return "Status:" + this.status + "Direction: " + this.direction;
+    }
+
+    @Override
+    public void pauseAll() {
+        this.hit();
+    }
+
+    @Override
+    public void resumeAll() {
+        
     }
 }

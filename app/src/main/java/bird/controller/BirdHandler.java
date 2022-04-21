@@ -9,11 +9,12 @@ import bird.gui.BirdMover;
 import bird.gui.BirdShape;
 import bird.utilities.BirdDirections;
 import bird.utilities.BirdMovementUtils;
+import mergeballs.control.Pausable;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
 
-public class BirdHandler extends Thread{
+public class BirdHandler extends Thread implements Pausable {
     
     private static final int SIZEX = CenterOnDefaultScreen.center().width*70/100;
     private static final int SIZEY = CenterOnDefaultScreen.center().height*60/100;
@@ -36,8 +37,8 @@ public class BirdHandler extends Thread{
     
     @Override
     public void run() {
-        while(!this.birdDead) {
-            while(!this.pause) {
+        while (!this.birdDead) {
+            while (!this.pause) {
                 try {
                     this.createBird();
                     Thread.sleep(20);
@@ -80,26 +81,12 @@ public class BirdHandler extends Thread{
     }
 
     public Optional<BirdShape> getShape() {
-        if(!this.actor.isEmpty()) {
+        if (!this.actor.isEmpty()) {
             return Optional.of(this.actor.get().getShape());
         } else {
             return Optional.empty();
         }
         
-    }
-
-    /**
-     * Trigger the pause for this object
-     */
-    public void setPause() {
-        if(this.pause) {
-            this.pause = false;
-            /* this.actor.setVisible(true); */
-        } else {
-            this.pause = true;
-            /* this.actor.setVisible(false); */
-        }
-        movUtils.setPause();
     }
 
     public void setBirdDead() {
@@ -113,5 +100,17 @@ public class BirdHandler extends Thread{
         } else {
             return BirdDirections.LEFT;
         }
+    }
+
+    @Override
+    public void pauseAll() {
+        this.pause = true;
+        movUtils.setPause();
+    }
+
+    @Override
+    public void resumeAll() {
+        this.pause = false;
+        movUtils.setPause();        
     }
 }

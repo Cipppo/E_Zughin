@@ -4,9 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import stage.components.MainPanel;
+import mergeballs.gui.VisualInterface;
 
 /**
  * While the PauseMenu is triggered, if Enter key is pressed, the game will end.
@@ -22,7 +23,8 @@ public class ExitButton{
 	 * @param pausePanel
 	 * 			the panel that has to be visible.
 	 */
-	public ExitButton(MainPanel mainPanel, PausePanel pausePanel) {		
+	public ExitButton(VisualInterface visual, PauseButton pauseButton) {		
+		JPanel mainPanel = visual.getVisualTest();
 		KeyStroke enterKey = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false);
         mainPanel.getInputMap().put(enterKey, "Enter");
         mainPanel.getActionMap().put("Enter", new AbstractAction(){
@@ -31,7 +33,7 @@ public class ExitButton{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(pausePanel.getVisibility()) {
+				if (true) {
 					System.exit(0);	
 				}
 			}

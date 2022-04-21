@@ -3,6 +3,8 @@ package player;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import bonus.Score;
+
 /**
  * Class to store data for single player
  *
@@ -10,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 public class Player {
 	
 	private String nickname;
-	private int score;			
+	private Score score;		
 	private String date;		
 	
 	
@@ -20,7 +22,7 @@ public class Player {
 	 */
 	public Player(String nickname) {
 		this.nickname = nickname;
-		this.score = 0;
+		this.score = new Score();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDateTime now = LocalDateTime.now();
 		this.date = dtf.format(now);
@@ -32,7 +34,7 @@ public class Player {
 	 * @param score
 	 * @param date
 	 */
-	public Player(String nickname, int score, String date) {
+	public Player(String nickname, Score score, String date) {
 		this.nickname = nickname;
 		this.score = score;
 		this.date = date;
@@ -52,7 +54,7 @@ public class Player {
 	 * returns the score
 	 * @return
 	 */
-	public int getScore() { 
+	public Score getScore() { 
 		return this.score; 
 		}
 	
@@ -65,16 +67,13 @@ public class Player {
 	}
 	
 	/**
-	 * Set Player score
+	 * Increase Player Score
 	 * @param score
 	 */
-	public void setScore(int score) { 
-		this.score = score; 
-		}
-	
-	public void incScore(int score) {
-		this.score += score;
+	public void increaseScore(int score) { 
+		this.score.raiseScore(score);
 	}
+
 
 }
 

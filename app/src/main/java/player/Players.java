@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import bonus.Score;
+
 /**
  * Container class to store all the objects Player
  *
@@ -47,7 +49,7 @@ public class Players {
 	 */
 	public void add(Player p) {
 		if (n == CMax) {									//fullness control of the array
-			if(!removeLastPlayerByScore(p.getScore())) { 
+			if(!removeLastPlayerByScore(p.getScore().getScore())) { 
 				return;
 			}
 		}
@@ -61,7 +63,7 @@ public class Players {
 	 * @return true the operation succeed, false if it do not
 	 */
 	public boolean removeLastPlayerByScore(int score) {
-		if (this.players[n-1].getScore() < score) {
+		if (this.players[n-1].getScore().getScore() < score) {
 			this.players[n-1] = null;
 			this.n--;
 			return true;
@@ -76,7 +78,7 @@ public class Players {
 		for (int i = 1; i < this.n; i++) {
 			Player key = this.get(i);
 			int j = i - 1;
-			while(j >= 0 && this.get(j).getScore() < key.getScore()) {
+			while(j >= 0 && this.get(j).getScore().getScore() < key.getScore().getScore()) {
 				this.players[j+1] = this.players[j];
 				j--;
 			}
@@ -94,7 +96,8 @@ public class Players {
 			String line = scan.nextLine();
 			String[] parts = line.split(";");
 			String nickname = parts[0].trim();
-			int score = Integer.parseInt(parts[1].trim());
+			Score score = new Score();
+			score.raiseScore(Integer.parseInt(parts[1].trim()));
 			String date = parts[2].trim();
 			
 			this.add(new Player(nickname, score, date));
@@ -111,7 +114,7 @@ public class Players {
 	public void Save() throws FileNotFoundException {
 		PrintWriter writer =  new PrintWriter(new File(Players.class.getResource("/bestPlayersSaves.txt").getFile()));
 		for (int i = 0; i < this.n; i++) {
-			String line = this.players[i].getNickname() + "; " + Integer.toString(this.players[i].getScore()) + "; " +
+			String line = this.players[i].getNickname() + "; " + Integer.toString(this.players[i].getScore().getScore()) + "; " +
 					this.players[i].getDate() + ";";
 			writer.println(line);
 		}

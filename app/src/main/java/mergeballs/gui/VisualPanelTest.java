@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.Graphics2D;
+import java.awt.CardLayout;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,17 +47,20 @@ public class VisualPanelTest extends JPanel {
     private Optional<BonusEntity> bonus;
 
 
-    public VisualPanelTest(int width, int height, ImageLoader iLoader, PangGuyImageLoader heroILoader, ArpionImageLoader aILoader, PowerupImageLoader pIl, BirdPNGLoader birdPNGLoader) {
+    public VisualPanelTest(int width, int height) {
         super.setSize(width, height);
         this.width = width;
         this.height = height;
-        this.iLoader = iLoader;
-        this.heroILoader = heroILoader;
-        this.aILoader = aILoader;
-        this.pUpImageLoader = pIl;
-        this.birdPNGLoader = birdPNGLoader;
+        this.iLoader = new ImageLoader();
+        this.heroILoader = new PangGuyImageLoader();
+        this.aILoader = new ArpionImageLoader();
+        this.pUpImageLoader = new PowerupImageLoader();
+        this.birdPNGLoader = new BirdPNGLoader();
         this.bonusILoader = new BonusImageLoader();
         this.backLoader = new BackgroundImageLoader();
+        this.pUp = Optional.empty();
+        this.bonus = Optional.empty();
+        this.setLayout(new CardLayout());
     }
 
     public void paint(Graphics g) {
@@ -99,16 +103,15 @@ public class VisualPanelTest extends JPanel {
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir, GunTypes type, Optional<PowerUpEntity> pUp, Optional<BirdShape> bShape, Optional<BonusEntity> bonus) {
-        ballPositions = pos;
-        shapes = aShapes;
+    public void updatePositions(List<SpherePos2D> pos, List<Shape> aShapes, Shape hShape, Directions dir, GunTypes type, Optional<BirdShape> bShape, Optional<PowerUpEntity> powerUp, Optional<BonusEntity> bonus) {
+        this.ballPositions = pos;
+        this.shapes = aShapes;
         this.hShape = hShape;
         this.dir = dir;
         this.gunType = type;
-        this.pUp = pUp;
         this.bShape = bShape;
+        this.pUp = powerUp;
         this.bonus = bonus;
         repaint();
     }
-
 }

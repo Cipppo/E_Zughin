@@ -32,7 +32,7 @@ public class GuiTest extends JFrame {
     private ActionApplier ap = new ActionApplier(this.visual, this.hero);
     private JPanel panel = this.visual.getVisualTest();
     private final Score score = new Score();
-    private final EntityHandler handler = new EntityHandler(this.visual, this.hero.getGset(), this.hero, this.score);
+    private final EntityHandler handler = new EntityHandler(this.visual, this.hero);
 
     private final ActionFactory factory = new ActionFactory();
 
