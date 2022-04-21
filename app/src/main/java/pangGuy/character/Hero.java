@@ -1,6 +1,7 @@
 package pangGuy.character;
 
 import pangGuy.utilities.EntityPos2D;
+import mergeballs.control.Pausable;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
 
@@ -8,7 +9,7 @@ import pangGuy.utilities.Directions;
  * Models the model of the main character.
  */
 
-public class Hero {
+public class Hero implements Pausable{
 
     private EntityPos2D pos;
     private Directions direction;
@@ -119,6 +120,16 @@ public class Hero {
      */
     public boolean isAwake(){
         return this.awake;
+    }
+
+    @Override
+    public void pauseAll() {
+        this.toggleAwake();
+    }
+
+    @Override
+    public void resumeAll() {
+        this.toggleAwake();
     }
 
 }
