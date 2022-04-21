@@ -92,8 +92,18 @@ public class EntityHandler extends Thread {
             timer.schedule(new HitHandler(hero), 0);
         }
     }
-    
+    /**
+     * Manca Hero e gunSet.getArpions();
+     * @return
+     */
     public synchronized List<Pausable> getPausable() {
         return List.of(this.ballRunner, this.bird);
     }
+
+    public synchronized Runner getBallRunner() {
+        return this.ballRunner;
+    }
+
+
+
 }

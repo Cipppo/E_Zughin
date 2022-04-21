@@ -3,8 +3,6 @@ package mergeballs.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import ball.controller.BallBoundChecker;
-import ball.controller.Runner;
 import bonus.BonusHandler;
 import mergeballs.gui.VisualPanelTest;
 import mergeballs.gui.VisualTest;
@@ -28,12 +26,9 @@ public class Controller {
         Hero hero = new Hero();
         new ActionApplier(this.visual, hero);
 
-        BallBoundChecker ballBoundChecker = new BallBoundChecker(this.visual.getBounds().getX(), this.visual.getBounds().getY());
-        Runner ballRunner = new Runner(5, ballBoundChecker);
-
         this.entityHandler = new EntityHandler(this.visual, hero);
         this.pickableHandler = new PickableHandler(this.visual.getHero(), 
-                        new PowerUpHandler(hero.getGset(), ballRunner, this.visual.getBounds()), 
+                        new PowerUpHandler(hero.getGset(), this.entityHandler.getBallRunner(), this.visual.getBounds()), 
                         new BonusHandler(this.visual.getBounds()), 
                         player, this.panel);
 
