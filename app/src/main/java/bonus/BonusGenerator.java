@@ -7,8 +7,8 @@ import pangGuy.utilities.Pair;
 
 public class BonusGenerator {
 
-    private static final int BONUS_WIDTH = 15;
-    private static final int BONUS_HEIGHT = 15;
+    private static final int BONUS_WIDTH = 20;
+    private static final int BONUS_HEIGHT = 20;
     
     private final int baseScore = 100;
     private final Pair<Integer, Integer> bounds;
