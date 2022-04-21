@@ -1,9 +1,11 @@
 package ball.controller;
 
 import java.util.concurrent.CopyOnWriteArrayList;
+
 import java.util.List;
 
 import ball.ballAgent.BallAgent;
+import mergeballs.control.Pausable;
 import pangGuy.gui.Shape;
 
 /**
@@ -17,7 +19,7 @@ import pangGuy.gui.Shape;
  *      <li>Expose pausing/resuming methods in case of game interruptions</li>
  * </ul>
  */
-public class Runner extends Thread {
+public class Runner extends Thread implements Pausable {
     private final CopyOnWriteArrayList<BallAgent> balls;
     private final BallBoundChecker checker;
     private boolean stop;
@@ -88,12 +90,14 @@ public class Runner extends Thread {
         this.stop = false;
     }
 
+    @Override
     public synchronized void pauseAll() {
         if (!this.balls.isEmpty()) {
             this.balls.forEach(t -> t.pause());
         }
     }
 
+    @Override
     public void resumeAll() {
         if (!this.balls.isEmpty()) {
             this.balls.forEach(t -> t.restart());
