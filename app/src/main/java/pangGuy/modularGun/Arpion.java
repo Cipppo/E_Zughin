@@ -1,13 +1,13 @@
 package pangGuy.modularGun;
 
-import mergeballs.control.Pausable;
+
 import pangGuy.utilities.Directions;
 
 /**
  * Models one Arpion.
  */
 
-public class Arpion implements Bullet, Pausable {
+public class Arpion implements Bullet{
     
     private Status status;
     private Directions direction;
