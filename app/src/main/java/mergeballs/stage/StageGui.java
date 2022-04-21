@@ -41,8 +41,6 @@ public class StageGui extends JFrame{
     private final ActionFactory factory = new ActionFactory();
 
     private BoundChecker bc = new BoundChecker(new Pair<Integer, Integer>(0, visual.getBounds().getX()));
-    
-	private final MainPanel mainPanel = new MainPanel();
 
     private final HUDPanel hud;
     private final P1ScoreSetter scoresetter;
