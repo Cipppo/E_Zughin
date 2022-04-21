@@ -1,6 +1,8 @@
 package mergeballs.control;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import bonus.BonusHandler;
 import pangGuy.gui.HeroComponent;
@@ -54,7 +56,7 @@ public class PickableHandler extends Thread {
     }
 
     public synchronized List<Pausable> getPausable() {
-        return List.of(this.bonus, this.powerUp);
+        return Stream.of(this.bonus, this.powerUp).collect(Collectors.toList());
     }
 
 }
