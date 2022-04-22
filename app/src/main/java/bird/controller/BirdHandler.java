@@ -14,6 +14,10 @@ import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
 
+/**
+ * The handler of the bird.
+ * This class manage the bird spawning and movement.
+ */
 public class BirdHandler extends Thread implements Pausable {
     
     private static final int SIZEX = CenterOnDefaultScreen.center().width*70/100;
@@ -60,6 +64,9 @@ public class BirdHandler extends Thread implements Pausable {
         }
     }
 
+    /**
+     * This method create the bird.
+     */
     private final synchronized void createBird() {
         this.dir = this.randomDirectionChooser();
         this.startPosX = this.dir == BirdDirections.RIGHT ? 0 : SIZEX - WIDTH;
@@ -68,6 +75,11 @@ public class BirdHandler extends Thread implements Pausable {
         this.movUtils = new BirdMovementUtils(this.actor.get(), this.mover);
     }
 
+    /**
+     * Timeout between the spawn of a bird after the dead of the previous one.
+     * @return
+     *          the time to wait.
+     */
     private final int getTimeToSleep() {
         return random.nextInt(10) + 5;
     }
@@ -80,6 +92,10 @@ public class BirdHandler extends Thread implements Pausable {
         return this.actor;
     }
 
+    /**
+     * @return
+     *          the shape if the bird exists, Optional.empty() otherwise.
+     */
     public Optional<BirdShape> getShape() {
         if (!this.actor.isEmpty()) {
             return Optional.of(this.actor.get().getShape());
@@ -89,11 +105,18 @@ public class BirdHandler extends Thread implements Pausable {
         
     }
 
+    /**
+     * When a bird gets hit or reaches the end of the stage, it is set to dead.
+     */
     public void setBirdDead() {
         this.birdDead = true;
         this.movUtils.setDead();
     }
 
+    /**
+     * @return
+     *          a random direction for the bird.
+     */
     public BirdDirections randomDirectionChooser() {
         if(random.nextInt(2) == 0) {
             return BirdDirections.RIGHT;
@@ -102,12 +125,18 @@ public class BirdHandler extends Thread implements Pausable {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void pauseAll() {
         this.pause = true;
         movUtils.setPause();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void resumeAll() {
         this.pause = false;
