@@ -10,12 +10,19 @@ import javax.swing.JPanel;
 import menu.utils.MenuLabel;
 import player.Player;
 
+/**
+ * Class to show the last panel of the game
+ *
+ */
 public class LastPanel extends JPanel{
 
 	private static final long serialVersionUID = 6622022380441572410L;
 	private MenuLabel label; 
 	private GridBagConstraints container;
 	
+	/**
+	 * Constructor without parameters
+	 */
 	public LastPanel() {
 		super(new GridBagLayout());
 		container = new GridBagConstraints();
@@ -23,6 +30,10 @@ public class LastPanel extends JPanel{
 		this.setBackground(Color.BLACK);
 	}
 	
+	/**
+	 * Method to use in case of winning to display the win
+	 * @param p is used for showing the final score of the player
+	 */
 	public void showWinningPanel(Player p) {
 		label = new MenuLabel("YOU WON", 16, Color.MAGENTA);
 		label.setSecondaryColor(Color.WHITE);
@@ -36,6 +47,9 @@ public class LastPanel extends JPanel{
 		this.add(new MenuLabel(text, 7, Color.GREEN), container);
 	}
 	
+	/**
+	 * Method to use in case of losing to display the game over
+	 */
 	public void showLosingPanel() {
 		label = new MenuLabel("GAME-OVER", 16, Color.BLACK);
 		label.setSecondaryColor(Color.RED);

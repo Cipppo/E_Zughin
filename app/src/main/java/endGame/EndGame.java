@@ -8,6 +8,10 @@ import javax.swing.JFrame;
 import player.*;
 import stage.utils.CenterOnDefaultScreen;
 
+/**
+ * Class use for the control of the end of the game
+ *
+ */
 public class EndGame extends JFrame{
 	private static final long serialVersionUID = -2322832387479009686L;
 	
@@ -19,7 +23,12 @@ public class EndGame extends JFrame{
 	private int lives;
 	private LastPanel lastPanel;
 	
-	
+	/**
+	 * Constructor with parameters 
+	 * @param player    used for knowing data about the player and save it in case of winning with high score
+	 * @param lives		used for knowing the lives of the player
+	 * @throws FileNotFoundException
+	 */
 	public EndGame(Player player, int lives) throws FileNotFoundException {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(width*70/100, heigth*70/100);
@@ -33,15 +42,16 @@ public class EndGame extends JFrame{
 		this.lastPanel = new LastPanel();
 		this.add(lastPanel);
 		
-		if (this.lives > 0) {
-			this.player.increaseScore(this.lives * 200);
+	
+		if (this.lives > 0) {								//lives greater than 0, winning case
+			this.player.increaseScore(this.lives * 200);	//add 200 extra points for each lives 
 			this.players = new Players();
 			this.players.Read();
 			this.players.add(this.player);
-			this.players.Save();
-			
+			this.players.Save();							//add the player to players container and saving his data for the
+															//hall of fame
 			this.lastPanel.showWinningPanel(this.player);
-		}else {
+		}else {												//otherwise losing case
 			this.lastPanel.showLosingPanel();
 		}
 	}

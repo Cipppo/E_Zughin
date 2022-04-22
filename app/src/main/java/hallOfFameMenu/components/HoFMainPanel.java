@@ -9,35 +9,34 @@ import javax.swing.JPanel;
 
 import menu.utils.MenuLabel;
 
+/**
+ * Class to create the hall of fame panel
+ *
+ */
 public class HoFMainPanel extends JPanel{
 	
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4822473142531885639L;
 
+	/*
+	 * Constructor without parameters
+	 */
 	public HoFMainPanel() throws FileNotFoundException {
-		JPanel mainPanel = new JPanel(new GridBagLayout());
+		super(new GridBagLayout());
 		GridBagConstraints container = new GridBagConstraints();
-		mainPanel.setLayout(new GridBagLayout());
+		this.setLayout(new GridBagLayout());
 		
 		container.fill = GridBagConstraints.HORIZONTAL;
 		container.gridx = 0;
 		container.gridy = 0;
-		mainPanel.add(new MenuLabel("HALL OF FAME", 7, Color.MAGENTA),  container);
+		
+		this.add(new MenuLabel("HALL OF FAME", 7, Color.MAGENTA),  container); //add the title label
 		
 		container.fill = GridBagConstraints.HORIZONTAL;
 		container.gridx = 0;
 		container.gridy = 1;
-		mainPanel.add(new PlayersPanel(),  container);
 		
-		
-		
-		
-		mainPanel.setBackground(Color.black);
-		this.setBackground(Color.black);
-		this.add(mainPanel);
+		this.add(new PlayersPanel(),  container);								//add PlayerPanel that has inside the 
+		this.setBackground(Color.black);										//standings of the hall of fame
 		this.setVisible(false);
 	}
 }
