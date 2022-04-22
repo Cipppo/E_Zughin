@@ -10,7 +10,7 @@ Il gioco si basa su un personaggio che, sparando verso l'alto, deve riuscire a f
 ## Funzionalita' *minime*:
 
 - [x] Corretto movimento orrizontale del personaggio.
-- [ ] Gestione del caso perdita di una vita / morte.
+- [X] Gestione del caso perdita di una vita / morte.
 - [x] Fisica delle sfere.
 - [x] Creazione del menu' di gioco e del menu' di pausa.
 - [x] Implementazione e salvataggio della Leaderboard.
