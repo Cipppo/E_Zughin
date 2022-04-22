@@ -16,6 +16,7 @@ public class Controller {
     private final EntityHandler entityHandler;
     private final PickableHandler pickableHandler;
     private final PauseHandler pauseHandler;
+    private final DeathHandler deathHandler;
     
     public Controller(VisualTest visual, Player player) {
         this.visual = visual;
@@ -23,6 +24,7 @@ public class Controller {
         Hero hero = new Hero();
         new ActionApplier(this.visual, hero);
 
+        this.deathHandler = new DeathHandler(hero);
         this.entityHandler = new EntityHandler(this.visual, hero);
         this.pickableHandler = new PickableHandler(this.visual.getHero(), 
                         new PowerUpHandler(hero.getGset(), this.entityHandler.getBallRunner(), this.visual.getBounds()), 
@@ -42,5 +44,6 @@ public class Controller {
     public void startAll() {
         this.entityHandler.start();
         this.pickableHandler.start();
+        this.deathHandler.start();
     }
 }
