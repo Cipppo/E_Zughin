@@ -83,8 +83,10 @@ public class Hero implements Pausable{
      * The method is called whenever a ball hits the main character, it cut off one life.
      */
     public void hit(){
-        this.lives--;
-        System.out.println("Lifes: " + this.lives);
+        if (this.isAwake()){
+            this.lives--;
+            System.out.println("Lifes: " + this.lives);
+        }
     }
 
     /**
