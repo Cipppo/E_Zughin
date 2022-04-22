@@ -10,7 +10,7 @@ import mergeballs.control.PauseHandler;
 import stage.components.HUDPanel;
 import stage.components.StageNameLabel;
 
-public class PauseHUDSetter extends Thread {
+public class PauseHUDSetter extends Thread implements HUDFieldSetter{
     
     private final HUDPanel hud;
     private final PauseHandler pauseHandler;

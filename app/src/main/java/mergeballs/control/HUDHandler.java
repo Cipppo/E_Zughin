@@ -3,13 +3,14 @@ package mergeballs.control;
 import pangGuy.character.Hero;
 import player.Player;
 import stage.components.HUDPanel;
+import stage.utils.HUDFieldSetter;
 import stage.utils.LifeSetter;
 import stage.utils.P1ScoreSetter;
 
 public class HUDHandler {
     
-    private final P1ScoreSetter p1ScoreSetter;
-    private final LifeSetter lifeSetter;
+    private final HUDFieldSetter p1ScoreSetter;
+    private final HUDFieldSetter lifeSetter;
 
     public HUDHandler(HUDPanel hud, Player player, Hero hero){
         this.p1ScoreSetter = new P1ScoreSetter(player, hud);

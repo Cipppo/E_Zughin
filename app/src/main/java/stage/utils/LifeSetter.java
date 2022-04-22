@@ -8,7 +8,7 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
-public class LifeSetter extends Thread{
+public class LifeSetter extends Thread implements HUDFieldSetter{
     
     private final Hero hero;
     private final HUDPanel hud;
@@ -52,6 +52,7 @@ public class LifeSetter extends Thread{
         }
     }
 
+    @Override
     public void terminate() {
         this.terminated = true;
     }

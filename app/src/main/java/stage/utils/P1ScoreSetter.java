@@ -7,7 +7,7 @@ import stage.components.HUDPanel;
 import java.awt.Font;
 import java.awt.Color;
 
-public class P1ScoreSetter extends Thread {
+public class P1ScoreSetter extends Thread implements HUDFieldSetter{
 
     private Player player;
     private HUDPanel hud;
@@ -58,6 +58,7 @@ public class P1ScoreSetter extends Thread {
         }
     }
 
+    @Override
     public void terminate() {
         this.terminated = true;
     }
