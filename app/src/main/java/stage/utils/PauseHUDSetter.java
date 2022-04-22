@@ -20,6 +20,7 @@ public class PauseHUDSetter extends Thread {
 	private final JLabel exitLabel = new JLabel("ENTER: EXIT", SwingConstants.CENTER);
     private final JLabel StageNameLabel = new StageNameLabel();
     private Boolean stageNameVisible = true;
+    private Boolean terminated = false;
 
     public PauseHUDSetter(HUDPanel hud, PauseHandler pauseHandler) {
         this.hud = hud;
@@ -35,7 +36,7 @@ public class PauseHUDSetter extends Thread {
 		resumeLabel.setForeground(Color.GREEN);
 		exitLabel.setForeground(Color.GREEN);
 
-        while (true) {
+        while (!this.terminated) {
             try {
                 if (this.pauseHandler.getPause() && this.stageNameVisible) {
                     this.hud.getHUDPanel()[0][3].removeAll();
@@ -58,5 +59,9 @@ public class PauseHUDSetter extends Thread {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void terminate() {
+        this.terminated = true;
     }
 }

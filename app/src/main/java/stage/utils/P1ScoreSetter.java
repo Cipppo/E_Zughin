@@ -16,6 +16,7 @@ public class P1ScoreSetter extends Thread {
 	private Font gameFont = fontLoader.load();
     private JLabel scoreLabel = new JLabel();
     private JLabel playerNameLabel = new JLabel();
+    private Boolean terminated = false;
 
 
     public P1ScoreSetter(Player player, HUDPanel hud) {
@@ -31,7 +32,7 @@ public class P1ScoreSetter extends Thread {
     @Override
     public void run() {
         this.hud.getHUDPanel()[0][0].add(playerNameLabel);
-        while (true) {
+        while (!this.terminated) {
             try {
                 if (this.actualScore != this.player.getScore().getScore()) {
                     this.actualScore = this.player.getScore().getScore();
@@ -55,5 +56,9 @@ public class P1ScoreSetter extends Thread {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void terminate() {
+        this.terminated = true;
     }
 }

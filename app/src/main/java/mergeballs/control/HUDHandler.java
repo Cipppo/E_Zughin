@@ -21,4 +21,8 @@ public class HUDHandler {
         this.lifeSetter.start();
     }
 
+    public void terminator() {
+        this.p1ScoreSetter.terminate();
+        this.lifeSetter.terminate();
+    }
 }

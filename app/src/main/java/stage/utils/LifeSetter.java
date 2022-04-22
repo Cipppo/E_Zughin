@@ -15,6 +15,7 @@ public class LifeSetter extends Thread{
     private final Font font = new MainFontLoader().load();
     private final JLabel label = new JLabel();
     private int actualLifes;
+    private Boolean terminated = false;
 
     public LifeSetter(HUDPanel hud, Hero hero){
         this.hud = hud;
@@ -25,7 +26,7 @@ public class LifeSetter extends Thread{
     @Override
     public void run(){
         label.setFont(this.font);
-        while (true) {
+        while (!this.terminated) {
             try {
                 if (this.hero.getLifes() == this.actualLifes){
                     label.setForeground(Color.white);
@@ -49,6 +50,10 @@ public class LifeSetter extends Thread{
                 System.out.println("Thread.sleep() Exception: " + e.getMessage());
             }
         }
+    }
+
+    public void terminate() {
+        this.terminated = true;
     }
 }
 
