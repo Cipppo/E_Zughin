@@ -39,7 +39,7 @@ public class PlayersPanel extends JPanel{
 		
 		Players p1 = new Players();
 		p1.Read();
-		p1.Save();
+		//p1.Save();
 		
 		for(int i = 0; i < p1.get(); i++) {
 			String elem = Integer.toString(i+1);
