@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import hallOfFameMenu.components.HoFMainPanel;
+//import helpMenu.HelpPanel;
 import menu.components.*;
 import mergeballs.stage.StageGuiV2;
 import player.Player;
@@ -21,9 +22,10 @@ public class MenuControl implements KeyListener{
 
 	private JPanel panel;
 	private GridBagConstraints container;
-	private HoFMainPanel HoF = new HoFMainPanel();
-	private TopMenuPanel topPanel = new TopMenuPanel();
-	private NavigationPanel navPanel = new NavigationPanel();
+	private final HoFMainPanel HoF = new HoFMainPanel();
+	//private final HelpPanel help = new HelpPanel();
+	private final TopMenuPanel topPanel = new TopMenuPanel();
+	private final NavigationPanel navPanel = new NavigationPanel();
 	private int navStatus;
 	private int enterStatus = 0;
 	private UpAction upAction;
@@ -48,6 +50,7 @@ public class MenuControl implements KeyListener{
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		panel.add(HoF, container);
+		//panel.add(Help, container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridy = 1;
