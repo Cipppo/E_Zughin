@@ -61,8 +61,8 @@ public class ArpionImageLoader {
                 temp.add("sprite/Arpions/Arpion2.png");
                 break;
             case STICKY_ARPION:
-                temp.add("sprite/Arpions/StickyArpion1.png");
-                temp.add("sprite/Arpions/StickyArpion2.png");
+            temp.add("sprite/Arpions/LongStickyArpion1.png");
+            temp.add("sprite/Arpions/LongStickyArpion2.png");
                 break;
             case DOUBLE_ARPION:
                 temp.add("sprite/Arpions/LongArpion.png");
