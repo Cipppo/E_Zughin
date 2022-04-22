@@ -3,6 +3,7 @@ package stage.utils;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * This utility has the purpose of loading the "Retro Gaming.ttf" font and choosing a size for it.
@@ -34,18 +35,16 @@ public class MainFontLoader {
      *      the desired font, in case of search failure it returns a default font.
      */
     public Font load(){
-    	SecondaryFontLoader fontLoader = new SecondaryFontLoader(fontSizePercentage);
-    	
-        try (var fontIn = MainFontLoader.class.getResourceAsStream("/Retro Gaming.ttf")) {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, fontIn).deriveFont(Font.BOLD, CenterOnDefaultScreen.center().height*this.fontSizePercentage/100);
-            return font;
+        final InputStream fontStream = ClassLoader.getSystemResourceAsStream("Retro Gaming.ttf");
+        Font font = null;
+
+        try {
+            font = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(Font.BOLD, CenterOnDefaultScreen.center().height*this.fontSizePercentage/100);
         } catch (FontFormatException e) {
-            System.out.println("FontFormatException: ");
-            e.printStackTrace();
+            System.out.println("Could not load font");
         } catch (IOException e) {
-            System.out.println("IOException: Font not found in bin directory, taking it from resources");
-            return fontLoader.load();
+            System.out.println("Could not load font");
         }
-        return new Font("Arial", Font.BOLD, 14);
+    	return font;
     }
 }
