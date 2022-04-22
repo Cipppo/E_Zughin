@@ -8,6 +8,9 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
+/**
+ * This class changes the life field of the HUD when the guy is hit by an enemy.
+ */
 public class LifeSetter extends Thread implements HUDFieldSetter{
     
     private final Hero hero;
@@ -23,6 +26,9 @@ public class LifeSetter extends Thread implements HUDFieldSetter{
         this.actualLifes = hero.getLifes();
     }
 
+    /**
+     * This thread is dedicated to the edit of the interested field when the life value changes.
+     */
     @Override
     public void run(){
         label.setFont(this.font);
@@ -52,6 +58,9 @@ public class LifeSetter extends Thread implements HUDFieldSetter{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void terminate() {
         this.terminated = true;
