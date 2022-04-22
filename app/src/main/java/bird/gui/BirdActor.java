@@ -18,8 +18,10 @@ public class BirdActor{
 
     /**
      * Constructor that define the bird's dimension.
-     * @param s
-     *          bird's shape.
+     * @param startPos
+     *          bird's position.
+     * @param dir
+     *          bird's direction
      */
     public BirdActor(EntityPos2D startPos, BirdDirections dir){
         this.dir = dir;

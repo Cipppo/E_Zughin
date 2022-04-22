@@ -49,8 +49,6 @@ public class BirdMovementUtils {
      * 
      * @param bird
      *          the bird to move.
-     * @param panel
-     *          the panel to repaint.
      * @param mover
      *          the mover utility.
      */                                
