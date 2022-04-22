@@ -1,9 +1,8 @@
 package stage.utils;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
@@ -22,11 +21,11 @@ public class MainImagesLoader {
 	 * 			the image.
 	 */
 	public BufferedImage load(String resourceName) {
-		final URL imgUrl = ClassLoader.getSystemResource(resourceName);
+		final InputStream imgUrl = ClassLoader.getSystemResourceAsStream(resourceName);
 		BufferedImage image = null;
 		
 		try {
-			image = ImageIO.read(new File(imgUrl.getPath()));
+			image = ImageIO.read(imgUrl);
 		} catch (IOException e) {
 			System.out.println("Could not load image");
 		}
