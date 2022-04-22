@@ -33,7 +33,6 @@ public class PickableHandler extends Thread {
         this.bonus.start();
         while(!this.stop) {
             try {
-
                 this.visual.setBonuses(this.powerUp.getPowerup(), this.bonus.getBonus());
 
                 if (!this.powerUp.getPowerup().isEmpty()) {
@@ -59,4 +58,9 @@ public class PickableHandler extends Thread {
         return Stream.of(this.bonus, this.powerUp).collect(Collectors.toList());
     }
 
+    public synchronized void terminate() {
+        this.powerUp.terminate();
+        this.bonus.terminate();
+        this.stop = true;
+    }
 }
