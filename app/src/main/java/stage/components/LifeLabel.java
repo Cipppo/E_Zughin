@@ -8,7 +8,7 @@ import java.awt.Color;
 
 import stage.utils.MainFontLoader;
 
-public class HighScoreLabel extends JLabel{
+public class LifeLabel extends JLabel{
     
     /**
 	 * 
@@ -17,8 +17,8 @@ public class HighScoreLabel extends JLabel{
 	MainFontLoader fontLoader = new MainFontLoader();
 	Font gameFont = fontLoader.load();
     
-    public HighScoreLabel() {
-        this.setText("HI: 100000");
+    public LifeLabel() {
+        this.setText("LIFES: 3");
 		this.setForeground(Color.white);
 		this.setFont(gameFont);
     }
