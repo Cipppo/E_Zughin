@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import hallOfFameMenu.components.HoFMainPanel;
-//import helpMenu.HelpPanel;
+import helpMenu.HelpPanel;
 import menu.components.*;
 import mergeballs.stage.StageGuiV2;
 import player.Player;
@@ -23,7 +23,7 @@ public class MenuControl implements KeyListener{
 	private JPanel panel;
 	private GridBagConstraints container;
 	private final HoFMainPanel HoF = new HoFMainPanel();
-	//private final HelpPanel help = new HelpPanel();
+	private final HelpPanel help = new HelpPanel();
 	private final TopMenuPanel topPanel = new TopMenuPanel();
 	private final NavigationPanel navPanel = new NavigationPanel();
 	private int navStatus;
@@ -50,7 +50,7 @@ public class MenuControl implements KeyListener{
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		panel.add(HoF, container);
-		//panel.add(Help, container);
+		panel.add(help, container);
 		
 		container.fill = GridBagConstraints.HORIZONTAL ;
 		container.gridy = 1;
@@ -104,7 +104,9 @@ public class MenuControl implements KeyListener{
 			case 1:
 				HoF.setVisible(false);
 				break;
-
+			case 2:
+				help.setVisible(false);
+				break;
 			default:
 				break;
 			}
@@ -203,6 +205,9 @@ public class MenuControl implements KeyListener{
 				navPanel.setVisible(false);
 				if (navStatus == 1) {
 					HoF.setVisible(true);
+				}else 
+				if (navStatus == 2) {
+					help.setVisible(true);
 				}
 				//TODO
 			}
@@ -247,8 +252,7 @@ public class MenuControl implements KeyListener{
 				}else {
 					navPanel.getNicknameLabel().addChar(e.getKeyChar());
 				}
-			}else
-			if(navStatus == 1) {
+			}else {
 				if (check == 27) {
 					restartMenu();
 				}
