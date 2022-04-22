@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import stage.utils.CenterOnDefaultScreen;
 
 public class Gui extends JFrame {
-	private MenuControl menuControl;
-	
 	
 	/**
 	 * 
@@ -25,7 +23,7 @@ public class Gui extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		
-		menuControl = new MenuControl(this);
+		new MenuControl(this);
 		
 		this.setVisible(true);
 	}
