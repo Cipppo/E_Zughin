@@ -8,10 +8,8 @@ import javax.imageio.ImageIO;
 
 /**
  * If the MainImageLoader fails, this class loads a BufferedImage.
- * 
- * @param imageFilePath (String) Full path and file name of the image to load.
- * 
- * @return (BufferedImage) the desired image.
+ * As parameters, this class needs the full path and file name of the image to load (a String).
+ * and it's return the desired image as {@link java.awt.image.BufferedImage}
  */
 public class SecondaryImagesLoader {
 

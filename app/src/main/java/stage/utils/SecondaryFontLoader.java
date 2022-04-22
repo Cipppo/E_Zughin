@@ -9,10 +9,11 @@ import java.io.IOException;
 
 /**
  * If the MainFontLoader fails, this class loads a Font file and returns it as a Font Object.
+ *  Parameters:
+ * <ul>
+ * <li>fontFilePath (String): Full path and file name of the font to load. </li>
  * 
- * @param fontFilePath (String) Full path and file name of the font to load.
- * 
- * @param fontStyle (Integer) The Font Style to use for the loaded font, for 
+ * <li>fontStyle (Integer): The Font Style to use for the loaded font, for </li>
  * example:
  * 
  *      Font.PLAIN
@@ -20,9 +21,9 @@ import java.io.IOException;
  *      Font.ITALIC
  *      Font.BOLDITALIC
  * 
- * @param fontSize (Integer) The desired size of font.
- * 
- * @return (Font) A Font Object
+ * <li>fontSize (Integer): The desired size of font.</li>
+ * </ul>
+ * this class returns {@link java.awt.Font} Object
  */
 public class SecondaryFontLoader {
 	
