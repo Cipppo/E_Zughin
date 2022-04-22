@@ -32,8 +32,8 @@ public class PowerUpHandler extends Thread implements Pausable {
     }
 
     @Override
-    public void run(){
-        while(!this.stop){
+    public void run() {
+        while(!this.stop) {
             try {
                 if (!this.pause) {
                     this.next = Optional.of(new PowerUpEntity(this.gen.getRandomPowerUp(), this.generateRandomShape()));
@@ -48,7 +48,7 @@ public class PowerUpHandler extends Thread implements Pausable {
         }
     }
 
-    private synchronized EntityPos2D getRandomPos2D(){
+    private synchronized EntityPos2D getRandomPos2D() {
         Random rand = new Random();
         return new EntityPos2D(rand.nextInt(this.bounds.getX()), this.bounds.getY() - 24);
     }
@@ -63,11 +63,11 @@ public class PowerUpHandler extends Thread implements Pausable {
         this.pause = false;
     }
 
-    private synchronized Shape generateRandomShape(){
+    private synchronized Shape generateRandomShape() {
         return new Shape(this.getRandomPos2D(), POWERUP_WIDTH, POWERUP_HEIGHT);
     }
 
-    public synchronized Optional<PowerUpEntity> getPowerup(){
+    public synchronized Optional<PowerUpEntity> getPowerup() {
         if(!this.next.isEmpty()){
             var buff = this.next;
             //this.next = Optional.empty();
@@ -83,11 +83,11 @@ public class PowerUpHandler extends Thread implements Pausable {
         }
     }
 
-    public synchronized void resetPowerUp(){
+    public synchronized void resetPowerUp() {
         this.next = Optional.empty();
     }
 
-    public void terminate(){
+    public void terminate() {
         this.stop = true;
     }
 }

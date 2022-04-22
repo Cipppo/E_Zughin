@@ -57,16 +57,16 @@ public class ArpionImageLoader {
         List<String> temp = new ArrayList<>();
         switch(gun){
             case ARPION:
-                temp.add("LongArpion.png");
-                temp.add("Arpion2.png");
+                temp.add("sprite/Arpions/LongArpion.png");
+                temp.add("sprite/Arpions/Arpion2.png");
                 break;
             case STICKY_ARPION:
-                temp.add("StickyArpion1.png");
-                temp.add("StickyArpion2.png");
+                temp.add("sprite/Arpions/StickyArpion1.png");
+                temp.add("sprite/Arpions/StickyArpion2.png");
                 break;
             case DOUBLE_ARPION:
-                temp.add("LongArpion.png");
-                temp.add("Arpion2.png");
+                temp.add("sprite/Arpions/LongArpion.png");
+                temp.add("sprite/Arpions/Arpion2.png");
                 break;   
         }
         return temp;

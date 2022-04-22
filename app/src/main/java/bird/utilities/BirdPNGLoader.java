@@ -41,9 +41,9 @@ public class BirdPNGLoader {
     private Pair<String, String> getFileNameGivenDimension(BirdDirections dir) {
         switch (dir) {
             case LEFT:
-                return new Pair<String, String>("BirdFirstSx.png", "BirdSecondSx.png");
+                return new Pair<String, String>("sprite/Birds/BirdFirstSx.png", "sprite/Birds/BirdSecondSx.png");
             case RIGHT:
-                return new Pair<String, String>("BirdFirstDx.png", "BirdSecondDx.png");
+                return new Pair<String, String>("sprite/Birds/BirdFirstDx.png", "sprite/Birds/BirdSecondDx.png");
             default:
                 throw new IllegalArgumentException();
         }

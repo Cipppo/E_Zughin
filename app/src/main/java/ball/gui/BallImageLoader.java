@@ -4,6 +4,7 @@ import ball.physics.Dimensions;
 import stage.utils.MainImagesLoader;
 
 import java.util.Map;
+
 import java.util.HashMap;
 
 import java.awt.image.BufferedImage;
@@ -12,12 +13,12 @@ import java.awt.image.BufferedImage;
  * this class loads the image of given ball (maybe try to disassemble for multiuse),
  * and chaches the result of the loading;
  */
-public class ImageLoader {
+public class BallImageLoader {
 
     private Map<Dimensions, BufferedImage> entries = new HashMap<>();
     private MainImagesLoader loader = new MainImagesLoader();
 
-    public ImageLoader() {
+    public BallImageLoader() {
         this.fillIamgesCache(Dimensions.FATHER);
         this.fillIamgesCache(Dimensions.SON);
         this.fillIamgesCache(Dimensions.GRANDSON);
@@ -37,11 +38,11 @@ public class ImageLoader {
     private String getFileNameGivenDimension(Dimensions dim) {
         switch (dim) {
             case FATHER:
-                return "ballFather.png";
+                return "sprite/spheres/ballFather.png";
             case SON:
-                return "ballSon.png";
+                return "sprite/spheres/ballSon.png";
             case GRANDSON:
-                return "ballGrandSon.png";
+                return "sprite/spheres/ballGrandSon.png";
             default:
                 throw new IllegalArgumentException();
         }

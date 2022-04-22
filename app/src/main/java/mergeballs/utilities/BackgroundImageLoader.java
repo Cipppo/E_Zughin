@@ -9,6 +9,6 @@ public class BackgroundImageLoader {
     private MainImagesLoader loader = new MainImagesLoader();
     
     public BufferedImage getBackImage() {
-        return loader.load("mountFuji.png");
+        return loader.load("sprite/Backgrounds/mountFuji.png");
     }
 }
