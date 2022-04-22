@@ -14,7 +14,7 @@ public class BoundChecker {
 
     /**
      * Creates a new BoundChecker.
-     * @param bounds a Pair<Integer, Integer> with MAX_X and MAX_Y.
+     * @param bounds a Pair with MAX_X and MAX_Y.
      */
     public BoundChecker(Pair<Integer, Integer>  bounds){
         this.bounds = bounds;

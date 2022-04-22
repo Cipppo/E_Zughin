@@ -19,9 +19,8 @@ public interface Bullet extends Pausable{
 
     /**
      * Locks the bullet to an XPos.
-     * @param xPos the position where the Bullet has to be lock.
      */
-    void lock();
+    void lock(); 
 
     /**
      * Unlocks the Bullet.

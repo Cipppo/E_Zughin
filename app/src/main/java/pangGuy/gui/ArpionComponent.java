@@ -44,7 +44,7 @@ public class ArpionComponent{
 
     /**
      * Getter for the Shape.
-     * @returnthe the actual Shape.
+     * @return the the actual Shape.
      */
     public Shape getShape(){
         return this.s;

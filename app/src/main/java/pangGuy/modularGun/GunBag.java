@@ -20,7 +20,8 @@ public interface GunBag {
     void resetGunType(GunTypes caller);
 
     /**
-    * @return Optional<Bullet> if there is a gun available, Optional.empty otherwise.
+    * @return {@link java.util.Optional} of a {@link pangGuy.modularGun.Bullet} 
+                if there is a gun available, Optional.empty otherwise.
     */
     Optional<Bullet> getShootingGun();
 
@@ -44,7 +45,8 @@ public interface GunBag {
     /**
      * Given a Step number, it searches the Arpion which has made the steps.
      * @param steps the Steps which the Arpion Made.
-     * @return Optional<Bullet> if it finds the arpion, Optional.empty otherwhise.
+     * @return {@link java.util.Optional} of a {@link pangGuy.modularGun.Bullet} 
+     *          if it finds the arpion, Optional.empty otherwhise.
     */
     Optional<Bullet> getBulletFromSteps(int steps);
     
