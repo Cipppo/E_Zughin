@@ -4,8 +4,6 @@ import bird.utilities.BirdDirections;
 import stage.utils.CenterOnDefaultScreen;
 import pangGuy.utilities.EntityPos2D;
 
-import java.util.Random;
-
 /**
  * This class is the bird itself. It defines his dimension thanks to the shape and it can
  * change the bird's position.
@@ -17,7 +15,6 @@ public class BirdActor{
     
 	private BirdShape s;
     private final BirdDirections dir;
-    private final Random random = new Random();
 
     /**
      * Constructor that define the bird's dimension.
@@ -39,16 +36,12 @@ public class BirdActor{
         this.s = new BirdShape(pos, WIDTH, HEIGHT, dir);
     }
 
+    /**
+     * @return
+     *      the shape of the bird
+     */
     public BirdShape getShape(){
         return this.s;
-    }
-
-    public BirdDirections randomDirectionChooser() {
-        if(random.nextInt(2) == 0) {
-            return BirdDirections.RIGHT;
-        } else {
-            return BirdDirections.LEFT;
-        }
     }
 }
 
