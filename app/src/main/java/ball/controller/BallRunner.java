@@ -19,12 +19,12 @@ import pangGuy.gui.Shape;
  *      <li>Expose pausing/resuming methods in case of game interruptions</li>
  * </ul>
  */
-public class Runner extends Thread implements Pausable {
+public class BallRunner extends Thread implements Pausable {
     private final CopyOnWriteArrayList<BallAgent> balls;
     private final BallBoundChecker checker;
     private boolean stop;
 
-    public Runner(int ballsToGenerate, BallBoundChecker checker) {
+    public BallRunner(int ballsToGenerate, BallBoundChecker checker) {
         this.balls = new CopyOnWriteArrayList<>();
         this.checker = checker;
         this.stop = false;
