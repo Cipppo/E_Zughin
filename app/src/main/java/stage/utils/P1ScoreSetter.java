@@ -35,7 +35,16 @@ public class P1ScoreSetter extends Thread {
             try {
                 if (this.actualScore != this.player.getScore().getScore()) {
                     this.actualScore = this.player.getScore().getScore();
-                    scoreLabel.setText("" + this.actualScore);
+                    this.scoreLabel.setText("" + this.actualScore);
+                    this.scoreLabel.setForeground(Color.green);
+                    this.hud.getHUDPanel()[1][1].removeAll();
+                    this.hud.getHUDPanel()[1][1].add(scoreLabel);
+                    this.hud.validate();
+                    this.hud.repaint();
+                    Thread.sleep(150);
+                }else{
+                    this.scoreLabel.setForeground(Color.WHITE);
+                    this.scoreLabel.setText("" + this.actualScore);
                     this.hud.getHUDPanel()[1][1].removeAll();
                     this.hud.getHUDPanel()[1][1].add(scoreLabel);
                     this.hud.validate();
