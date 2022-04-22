@@ -10,7 +10,7 @@ import java.awt.CardLayout;
 import java.util.List;
 import java.util.Optional;
 
-import ball.gui.ImageLoader;
+import ball.gui.BallImageLoader;
 import ball.physics.SpherePos2D;
 import bird.gui.BirdShape;
 import bird.utilities.BirdPNGLoader;
@@ -36,7 +36,7 @@ public class VisualPanelTest extends JPanel {
     private GunTypes gunType;
     private final int width;
     private final int height;
-    private final ImageLoader iLoader;
+    private final BallImageLoader iLoader;
     private final ArpionImageLoader aILoader;
     private final PangGuyImageLoader heroILoader;
     private final PowerupImageLoader pUpImageLoader;
@@ -51,7 +51,7 @@ public class VisualPanelTest extends JPanel {
         super.setSize(width, height);
         this.width = width;
         this.height = height;
-        this.iLoader = new ImageLoader();
+        this.iLoader = new BallImageLoader();
         this.heroILoader = new PangGuyImageLoader();
         this.aILoader = new ArpionImageLoader();
         this.pUpImageLoader = new PowerupImageLoader();

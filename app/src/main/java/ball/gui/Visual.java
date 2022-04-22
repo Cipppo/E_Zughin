@@ -18,7 +18,7 @@ public class Visual extends JFrame implements Updateable {
 	private static final long serialVersionUID = 1L;
 
 	private VisualPanel panel;
-	private ImageLoader iLoader;
+	private BallImageLoader iLoader;
 	
 	private static final int WINDOW_SIZE_X = 800;
 	private static final int WINDOW_SIZE_Y = 600;
@@ -26,7 +26,7 @@ public class Visual extends JFrame implements Updateable {
 	
 	public Visual() {
 		setTitle("Bouncing Balls");
-		this.iLoader = new ImageLoader();
+		this.iLoader = new BallImageLoader();
 		setSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
 		setResizable(false);
 		panel = new VisualPanel();

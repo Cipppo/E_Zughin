@@ -13,12 +13,12 @@ import java.awt.image.BufferedImage;
  * this class loads the image of given ball (maybe try to disassemble for multiuse),
  * and chaches the result of the loading;
  */
-public class ImageLoader {
+public class BallImageLoader {
 
     private Map<Dimensions, BufferedImage> entries = new HashMap<>();
     private MainImagesLoader loader = new MainImagesLoader();
 
-    public ImageLoader() {
+    public BallImageLoader() {
         this.fillIamgesCache(Dimensions.FATHER);
         this.fillIamgesCache(Dimensions.SON);
         this.fillIamgesCache(Dimensions.GRANDSON);
