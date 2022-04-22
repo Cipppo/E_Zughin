@@ -25,24 +25,20 @@ public class StageGuiV2 extends JFrame {
 
     private VisualTest visual = new VisualTest(this.width, this.panelHeight, new EntityPos2D(STARTX, STARTY));
     private JPanel panel = this.visual.getVisualTest();
-
     private final HUDPanel hud;
     private final HUDHandler hudHandler;
-    
     private final PauseHUDSetter pauseHUDSetter;
 
     private final DeathHandler deathHandler; 
-    
-    private final Hero hero = new Hero();
-    
+    private final Hero hero;
     private Controller controller;
+    private Player player;
 
     public StageGuiV2(Player player) {
+        this.hero = new Hero();
+        this.player = player;
         this.controller = new Controller(this.visual, player, this.hero);
         this.controller.startAll();
-
-        this.deathHandler = new DeathHandler(this.hero, this);
-        this.deathHandler.start();
         
         this.hud = new HUDPanel();
         this.hudHandler = new HUDHandler(this.hud, player, this.hero);
@@ -50,6 +46,9 @@ public class StageGuiV2 extends JFrame {
 
         this.pauseHUDSetter = new PauseHUDSetter(this.hud, this.controller.getPauseHandler());
         this.pauseHUDSetter.start();
+
+        this.deathHandler = new DeathHandler(this, hero);
+        this.deathHandler.start();
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(width, heigth);
@@ -78,5 +77,14 @@ public class StageGuiV2 extends JFrame {
         this.controller.terminator();
         this.hudHandler.terminator();
         this.pauseHUDSetter.terminate();
+    }
+
+    //temp
+    public Player getPlayer() {
+        return this.player;
+    }
+    //temp
+    public Hero getHero() {
+        return this.hero;
     }
 }
