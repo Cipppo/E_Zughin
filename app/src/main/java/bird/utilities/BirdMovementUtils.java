@@ -11,17 +11,16 @@ import java.awt.Toolkit;
 
 /**
  * Utility that choose the bird's moovements considering its position.
- * @param SIZEX
- *          width of the stage
- * @param SIZEY
- *          height of the stage
- * @param WIDTH
- *          width of the bird
- * @param HEIGHT
- *          height of the bird
- * @param HUD_HEIGHT
- *          height of the HUD, defining the ground level
+ * The Parameters are:
+ * <ul> 
+ *      <li>SIZEX: width of the stage</li>
+ *      <li>WIDTH: width of the bird</li>
+ *      <li>HEIGHT: height of the bird</li>
+ *      <li>HUD_HEIGHT: height of the HUD, defining the ground level</li>
+ * </ul>
  */
+
+ 
 public class BirdMovementUtils {
 
     private static final int SPEED = 5;
