@@ -5,8 +5,8 @@ import pangGuy.gui.HeroComponent;
 import pangGuy.gui.Shape;
 
 /**
- * Class that models a pickable object (Fruit or {@link powerUp.PowerUp}).
- * A Pickable wraps a {@link pangGuy.gui.Shape} and an instance of Fruit or PowerUp.
+ * Class that models a pickable object ( {@link bonus.BonusEntity} or {@link powerUp.PowerUp}).
+ * A Pickable wraps a {@link pangGuy.gui.Shape} and an instance of Bonus or PowerUp.
  * This class will be used to handle the moment of picking up this item by
  * the {@link pangGuy.character.Hero} and activating it's specified effect.
  */
