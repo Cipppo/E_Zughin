@@ -38,7 +38,18 @@ L'arpione viene lanciato dal personaggio principale e a seconda del *powerup* at
 
  - Doppio Arpione: il personaggio puo' sparare due arpioni classici per volta senza il bisogno di aspettare che uno dei due raggiunga la massima altezza consentita.
 
-Il personaggio principale ha a disposizione delle vite, 
+Nello scenario e' inoltre presente un uccello il quale attraversa lo stage orrizontalmente e durante la attraversata, puo' planare verso una determinata posizione per poi continuare il suo percorso. Anche l'uccello puo' essere colpito dall'arpione.
+
+Il giocatore ha a disposizione un certo numero di vite, le quali vengono decurtate in caso di coliisione con una palla o con l'uccello. Nel momento in cui si finiscono le vite, il gioco termina e si registra il punteggio nella leaderboard ( Nel caso sia abbastanza alto da superare quelli gia presenti).
+
+Lo *score* viene aumentato dall'acquisizione di frutti che vengono generati durante la partita, ad ogni frutto viene assegnato un punteggio diverso.
+
+Oltre ai due powerup che influenzano l'arma, ne sono presenti altri due in grado di influire sullo stage, ovvero:
+
+- *Time Freeze:* Ferma tutte le sfere attive e le riattiva dopo un certo periodo di tempo.
+- *Bomba:* Fa esplodere tutte le sfere a patto che non siano gia al terzo stadio ( piu piccolo ), in quel caso vengono ignorate.
+
+A differenza dei *powerups* rivolti all'arma, gli ultimi due citati possono allo stesso tempo semplificare o peggiorare il *gameplay* al giocatore, in quanto il loro vantaggio/svantaggio varia in base al momento in cui vengono raccolti.
 
 
 
