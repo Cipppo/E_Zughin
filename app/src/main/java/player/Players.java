@@ -1,14 +1,17 @@
 package player;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 import stage.utils.*;
-import bonus.Score;
+import menu.utils.PlayerFileReader;
+import menu.utils.PlayerFileWriter;
 
 /**
  * Container class to store all the objects Player
@@ -58,7 +61,7 @@ public class Players {
 			}
 		}
 		this.players[n++] = p;
-		
+		this.Sort();
 	}
 	
 	/**
@@ -93,41 +96,32 @@ public class Players {
 	/**
 	 * Reads data from last saved data textfile to object collection
 	 */
-	public void Read() {
-	    InputStream ciao = filesLoader.load("bestPlayersSaves.txt");
-	    Scanner scan = new Scanner(ciao);
-	    while(scan.hasNext()) {
-	      String line = scan.nextLine();
-	      String[] parts = line.split(";");
-	      String nickname = parts[0].trim();
-	      Score score = new Score();
-	      score.raiseScore(Integer.parseInt(parts[1].trim()));
-	      String date = parts[2].trim();
-	      
-	      this.add(new Player(nickname, score, date));
-	    }
-	    scan.close();
-	    
-	    
-	  }
+	 public void Read() {
+	        try (InputStream ciao = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt")) {
+	            Scanner scan = new Scanner(ciao);
+	            PlayerFileReader.read(scan, this);
+	        } catch (IOException e1) {
+	            InputStream ciao = new ByteArrayInputStream((File.separator + "bestPlayersSaves.txt").getBytes());
+	            Scanner scan = new Scanner(ciao);
+	            PlayerFileReader.read(scan, this);
+	        }
+	        
+	        
+	      }
 	
 	/**
 	 * Saves the object collection in a data textfile
 	 * @throws FileNotFoundException
 	 */
-	public void Save() throws FileNotFoundException {
-	    try (PrintWriter writer = new PrintWriter(new File(new URL(filesLoader.load("bestPlayersSaves.txt").toString()).getFile()))) {
-	      for (int i = 0; i < this.n; i++) {
-	        String line = this.players[i].getNickname() + "; " + Integer.toString(this.players[i].getScore().getScore()) + "; " +
-	            this.players[i].getDate() + ";";
-	        writer.println(line);
-	      }
-	      writer.close();
-	    } catch (MalformedURLException e) {
-	      System.out.println("Loading File");
+	 public void Save() throws FileNotFoundException {
+	        try (PrintWriter writer = new PrintWriter(new File(Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt").toString()))) {
+	          PlayerFileWriter.write(writer, players, n);
+	        } catch (NullPointerException e1) {
+	            PrintWriter writer = new PrintWriter(new File((File.separator + "bestPlayersSaves.txt")));
+	            PlayerFileWriter.write(writer, players, n);
+	        }
+	        
 	    }
-	    
-	}
 	
 	
 }
