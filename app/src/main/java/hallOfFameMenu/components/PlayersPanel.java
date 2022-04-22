@@ -38,15 +38,6 @@ public class PlayersPanel extends JPanel{
 		
 		Players p1 = new Players();
 		p1.Read();
-		
-		/*Player p = new Player("TOTTI");
-		//p.setScore(20000);
-		//Score score = new Score();
-		//score.raiseScore(20000);
-		p.increaseScore(20000);
-		p1.add(p);*/
-		
-		p1.Sort();
 		p1.Save();
 		
 		for(int i = 0; i < p1.get(); i++) {

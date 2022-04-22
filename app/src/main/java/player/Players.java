@@ -130,7 +130,6 @@ public class Players {
                     }
                     writer = new PrintWriter(file);
                 }
-                // PrintWriter writer = new PrintWriter(new File(File.separator + "bestPlayersSaves.txt"));
                 PlayerFileWriter.write(writer, players, n);
             }
             
