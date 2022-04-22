@@ -19,7 +19,6 @@ public class MenuLabel extends JLabel{
 	private int seconds = 0;
 	private Timer timer;
 	private MainFontLoader fontLoader;
-	//private Font gameFont;
 	
 	
 	public MenuLabel(String text, int fontS, Color c) {
@@ -53,6 +52,10 @@ public class MenuLabel extends JLabel{
 	
 	public void setPrimaryColor(Color color) {
 		this.primaryColor = color;
+	}
+	
+	public void setSecondaryColor(Color color) {
+		this.secondaryColor = color;
 	}
 	
 	public void switchBlink() {
