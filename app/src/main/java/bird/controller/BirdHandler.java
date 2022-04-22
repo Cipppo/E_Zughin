@@ -38,27 +38,30 @@ public class BirdHandler extends Thread implements Pausable {
     private BirdMovementUtils movUtils;
     private BirdBoundChecker bc = new BirdBoundChecker(new Pair<Integer, Integer>(0, SIZEX),
                                     new Pair<Integer, Integer>(0, SIZEY));
+    private Boolean terminated = false;
     
     @Override
     public void run() {
-        while (!this.birdDead) {
-            while (!this.pause) {
-                try {
-                    this.createBird();
-                    Thread.sleep(20);
-                    if(this.startPosX == 0) {
-                        movUtils.moveRight();
-                    } else if(this.startPosX == SIZEX - WIDTH) {
-                        movUtils.moveLeft();
+        while(!this.terminated) {
+            while (!this.birdDead) {
+                while (!this.pause) {
+                    try {
+                        this.createBird();
+                        Thread.sleep(20);
+                        if(this.startPosX == 0) {
+                            movUtils.moveRight();
+                        } else if(this.startPosX == SIZEX - WIDTH) {
+                            movUtils.moveLeft();
+                        }
+                        this.actor = Optional.empty();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                    this.actor = Optional.empty();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    Thread.sleep(getTimeToSleep()*1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    try {
+                        Thread.sleep(getTimeToSleep()*1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -141,5 +144,10 @@ public class BirdHandler extends Thread implements Pausable {
     public void resumeAll() {
         this.pause = false;
         movUtils.setPause();        
+    }
+
+    public synchronized void terminate() {
+        this.setBirdDead();
+        this.terminated = true;
     }
 }
