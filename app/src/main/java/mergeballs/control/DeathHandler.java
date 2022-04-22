@@ -29,7 +29,7 @@ public class DeathHandler extends Thread {
         while (!this.stop) {
             try {
                 Thread.sleep(40);
-                if (this.hero.getLifes() < 3) {
+                if (this.hero.getLifes() <= 0) {
                     this.frame.terminator();
                     if (this.askReplay() == 1) {
                         this.stop = true;
