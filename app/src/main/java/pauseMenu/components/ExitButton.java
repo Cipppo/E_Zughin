@@ -7,6 +7,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import mergeballs.control.PauseHandler;
 import mergeballs.gui.VisualInterface;
 
 /**
@@ -23,7 +24,7 @@ public class ExitButton{
 	 * @param pausePanel
 	 * 			the panel that has to be visible.
 	 */
-	public ExitButton(VisualInterface visual, PauseButton pauseButton) {		
+	public ExitButton(VisualInterface visual, PauseHandler pauseHandler) {		
 		JPanel mainPanel = visual.getVisualTest();
 		KeyStroke enterKey = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false);
         mainPanel.getInputMap().put(enterKey, "Enter");
@@ -33,7 +34,7 @@ public class ExitButton{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (true) {
+				if (pauseHandler.getPause()) {
 					System.exit(0);	
 				}
 			}
