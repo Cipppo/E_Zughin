@@ -1,5 +1,6 @@
 package player;
 
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,8 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
-import bonus.Score;
 import menu.utils.PlayerFileReader;
 import menu.utils.PlayerFileWriter;
 
@@ -19,10 +18,9 @@ import menu.utils.PlayerFileWriter;
  */
 public class Players {
 	private final int CMax = 10;	//max of objects to store for the top 10 players
-	private final InputStream input = ClassLoader.getSystemResourceAsStream("/bestPlayer.txt");
 	private Player[] players;		//array of objects
 	int n;
-	//private final String path = System.getProperty("user.home") + File.separator + "bestPlayersSaves.txt";
+	private final String path = System.getProperty("user.home") + File.separator + "bestPlayersSaves.txt";
 	
 	/**
 	 * Constructor without parameters(Default)
@@ -92,29 +90,10 @@ public class Players {
 		}
 	}
 	
-	
-	public void Read() {
-        Scanner scan = new Scanner(input);
-        while(scan.hasNext()) {
-            String line = scan.nextLine();
-            String[] parts = line.split(";");
-            String nickname = parts[0].trim();
-            Score score = new Score();
-            score.raiseScore(Integer.parseInt(parts[1].trim()));
-            String date = parts[2].trim();
-            
-            this.add(new Player(nickname, score, date));
-          }
-          scan.close();
-      }
-	
 	/**
 	 * Reads data from last saved data textfile to object collection
 	 */
-	/**
-     * Reads data from last saved data textfile to object collection
-     */
-    /* public void Read() {
+	public void Read() {
             try (InputStream ciao = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt")) {
                 Scanner scan = new Scanner(ciao);
                 PlayerFileReader.read(scan, this);
@@ -131,7 +110,7 @@ public class Players {
      * Saves the object collection in a data textfile
      * @throws FileNotFoundException
      */
-     /*public void Save() throws FileNotFoundException {
+     public void Save() throws FileNotFoundException {
             try (PrintWriter writer = new PrintWriter(new File(Players.class.getResource(File.separator + "bestPlayersSaves.txt").getFile()))) {
               PlayerFileWriter.write(writer, players, n);
             } catch (FileNotFoundException e1) {
@@ -151,7 +130,7 @@ public class Players {
                 PlayerFileWriter.write(writer, players, n);
             }
             
-        }*/
+        }
 	
 	
 }
