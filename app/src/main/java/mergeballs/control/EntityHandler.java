@@ -68,6 +68,9 @@ public class EntityHandler extends Thread {
         }
     }
 
+    /**
+     * Refresh the positions of all the balls, the hero and the bird
+     */
     private void updateAllPositions() {
         this.frame.updatePosition(this.ballRunner
                                 .getBalls()
@@ -76,6 +79,11 @@ public class EntityHandler extends Thread {
                                 .collect(Collectors.toList()), this.hero.getDirection(), this.bird.getShape());
     }
 
+    /**
+     * Verify if a ball hits an arpion or the Hero.
+     * In the first case, balls will be duplicated and the Arpion will be destroyed.
+     * In the second case, the hero will be hit and loses a life.
+     */
     private void verifyBallHits() {
         ballRunner.getBalls().forEach(t -> {
             for (final var arp : frame.getArpions()) {
@@ -93,6 +101,11 @@ public class EntityHandler extends Thread {
         });
     }
 
+    /**
+     * Verify if bird is hit by an arpion or the bird hits the hero.
+     * In the first case, the bird and the arpion will be destroyed.
+     * In the second case, the hero will lose a life.
+     */
     private void verifyBirdHits() {
         if (!this.bird.getActor().isEmpty()) {
             for (final var arp : frame.getArpions()) {
@@ -110,6 +123,10 @@ public class EntityHandler extends Thread {
         }
     }
 
+    /**
+     * Sets the hero status to hit if it is, and start a one second
+     * timeout for the hero for avoiding multiple hit by an entity.
+     */
     private void setHeroStatus() {
         if(this.hero.getStatus() == HeroStatus.NEUTRAL){
             Timer timer = new Timer();
