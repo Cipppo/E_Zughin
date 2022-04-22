@@ -8,11 +8,11 @@ import javax.swing.JPanel;
 import stage.utils.AddAllLabels;
 import stage.utils.CenterOnDefaultScreen;
 
+/**
+ * The HUD of the game.
+ */
 public class HUDPanel extends JPanel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2412107051429282816L;
 	private final int width = CenterOnDefaultScreen.center().width;
 	private final int heigth = CenterOnDefaultScreen.center().height;
@@ -20,6 +20,9 @@ public class HUDPanel extends JPanel{
 	private final int columns = 7;
 	private JPanel[][] HUDPanel = new JPanel[rows][columns];
 
+	/**
+	 * This constructor creates the grid for the HUD fields.
+	 */
 	public HUDPanel() {	
 		this.setLayout(new GridLayout(rows, columns));
 
@@ -36,6 +39,10 @@ public class HUDPanel extends JPanel{
 
 	}
 
+	/**
+	 * @return
+	 * 		The HUD panel.
+	 */
 	public JPanel[][] getHUDPanel() {
 		return this.HUDPanel;
 	}
