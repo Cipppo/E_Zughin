@@ -92,6 +92,7 @@ public class EntityHandler extends Thread {
     public synchronized void terminate() {
         this.stop = true;
         this.ballRunner.terminate();
+        this.bird.terminate();
     }
 
     private void setHeroStatus() {

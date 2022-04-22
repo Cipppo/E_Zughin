@@ -42,4 +42,9 @@ public class Controller {
         this.entityHandler.start();
         this.pickableHandler.start();
     }
+
+    public void terminator() {
+        this.entityHandler.terminate();
+        this.pickableHandler.terminate();
+    }
 }
