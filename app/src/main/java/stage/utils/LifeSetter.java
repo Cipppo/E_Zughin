@@ -56,11 +56,3 @@ public class LifeSetter extends Thread{
         this.terminated = true;
     }
 }
-
-
-/*
-
-                Thread.sleep(500);
-
-
- */
