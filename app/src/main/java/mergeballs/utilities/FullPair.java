@@ -1,7 +1,7 @@
 package mergeballs.utilities;
 
 /**
- * Models a Pair class usable to store pair X -> Y of a data couple.
+ * Models a Pair class usable to store pair (X,Y) of a data couple.
  */
 
 
