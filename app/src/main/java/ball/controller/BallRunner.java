@@ -23,8 +23,10 @@ public class BallRunner extends Thread implements Pausable {
     private final CopyOnWriteArrayList<BallAgent> balls;
     private final BallBoundChecker checker;
     private boolean stop;
+    private boolean terminate;
 
     public BallRunner(int ballsToGenerate, BallBoundChecker checker) {
+        this.terminate = false;
         this.balls = new CopyOnWriteArrayList<>();
         this.checker = checker;
         this.stop = false;
@@ -38,7 +40,7 @@ public class BallRunner extends Thread implements Pausable {
     public void run() {
         try {
             this.balls.forEach(t -> t.start());
-            while(true) {
+            while(!this.terminate) {
                 if (!this.stop) {
                     this.balls.forEach(t -> {
                         this.checker.checkConstraints(t);
@@ -102,6 +104,11 @@ public class BallRunner extends Thread implements Pausable {
         if (!this.balls.isEmpty()) {
             this.balls.forEach(t -> t.restart());
         }
+    }
+
+    public synchronized void terminate() {
+        this.balls.forEach(t -> t.terminate());
+        this.terminate = true;
     }
 
     public synchronized List<BallAgent> getBalls() {
