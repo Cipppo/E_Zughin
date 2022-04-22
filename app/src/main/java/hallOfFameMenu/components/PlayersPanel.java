@@ -6,7 +6,6 @@ import java.awt.GridBagLayout;
 import java.io.FileNotFoundException;
 
 import javax.swing.JPanel;
-
 import menu.utils.MenuLabel;
 import player.*;
 
@@ -41,7 +40,10 @@ public class PlayersPanel extends JPanel{
 		p1.Read();
 		
 		/*Player p = new Player("TOTTI");
-		p.setScore(20000);
+		//p.setScore(20000);
+		//Score score = new Score();
+		//score.raiseScore(20000);
+		p.increaseScore(20000);
 		p1.add(p);*/
 		
 		p1.Sort();
