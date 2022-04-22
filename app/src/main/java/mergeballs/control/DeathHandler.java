@@ -32,19 +32,21 @@ public class DeathHandler extends Thread {
         while (!this.stop) {
             try {
                 Thread.sleep(40);
-                if (this.hero.getLifes() <= 0) {
+                if (this.hero.getLifes() < 3) {
                     this.frame.terminator();
-                    new EndGame(this.frame.getPlayer(), this.frame.getHero().getLifes());
+                    var player = this.frame.getPlayer();
+                    this.frame.dispose();
+                    var endgameFrame = new EndGame(player, this.frame.getHero().getLifes());
                     if (this.askReplay() == 1) {
                         this.stop = true;
-                        this.frame.dispose();
+                        endgameFrame.dispose();
                         System.exit(0);
                     } else {
-                        //Ultra temp, not working properly
-                        // var play = this.frame.getPlayer();
-                        // this.frame.dispose();
-                        // this.frame = new StageGuiV2(play);
-                        // this.hero = this.frame.getHero();
+                        player.getScore().resetScore();
+                        this.frame.dispose();
+                        endgameFrame.dispose();
+                        this.frame = new StageGuiV2(player);
+                        this.hero.reset();;
                     }
                 }
             } catch (InterruptedException e) {
@@ -57,7 +59,7 @@ public class DeathHandler extends Thread {
 
     private int askReplay() {
         String options[] = {"yes", "no"};
-        return JOptionPane.showOptionDialog(null, "Do you want to play again?",
+        return JOptionPane.showOptionDialog(null, "Do you want to player again?",
                 "GAME OVER",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
     }
