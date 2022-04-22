@@ -109,15 +109,6 @@ public class GunSet{
     }
 
     /**
-     * Resets the Arpions wait time.
-     */
-    public void resetWaitTime(){
-        this.getArpions().forEach(e ->{
-            e.setWaitTime(0);
-        });
-    }
-
-    /**
      * Given a Step number, it searches the Arpion which has made the steps.
      * @param steps the Steps which the Arpion Made.
      * @return Optional<Bullet> if it finds the arpion, Optional.empty otherwhise.

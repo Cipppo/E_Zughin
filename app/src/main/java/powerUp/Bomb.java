@@ -1,6 +1,6 @@
 package powerUp;
 
-import ball.controller.Runner;
+import ball.controller.BallRunner;
 import ball.physics.Dimensions;
 
 /**
@@ -9,9 +9,9 @@ import ball.physics.Dimensions;
  * except the balls with a dimension equal to {@link ball.physics.Dimensions#GRANDSON}.
  */
 public class Bomb implements PowerUp {
-    private final Runner context;
+    private final BallRunner context;
 
-    public Bomb (Runner context) {
+    public Bomb (BallRunner context) {
         this.context = context;
     }
 

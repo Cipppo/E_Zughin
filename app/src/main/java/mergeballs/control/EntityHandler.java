@@ -12,14 +12,14 @@ import pangGuy.character.HitHandler;
 import pangGuy.modularGun.GunSet;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.StepsApplier;
-import ball.controller.Runner;
+import ball.controller.BallRunner;
 import bird.controller.BirdHandler;
 import pangGuy.character.HeroStatus;
 
 public class EntityHandler extends Thread {
     private final BallBoundChecker checker;
     private final UpdateableVisual frame;
-    private final Runner ballRunner;
+    private final BallRunner ballRunner;
     private final GunSet gSet;
     private final StepsApplier stepsConv;
     private final Hero hero;
@@ -30,7 +30,7 @@ public class EntityHandler extends Thread {
         this.frame = frame;
         this.checker = new BallBoundChecker(this.frame.getBounds().getX(),
                                             this.frame.getBounds().getY());
-        this.ballRunner = new Runner(2, this.checker);
+        this.ballRunner = new BallRunner(2, this.checker);
         this.hero = hero;
         this.gSet = hero.getGset();
         this.stepsConv = new StepsApplier(this.frame.getStartPos());
@@ -101,7 +101,7 @@ public class EntityHandler extends Thread {
         return Stream.concat(Stream.of(this.hero, this.ballRunner, this.bird), this.gSet.getArpions().stream()).collect(Collectors.toList());
     }
 
-    public synchronized Runner getBallRunner() {
+    public synchronized BallRunner getBallRunner() {
         return this.ballRunner;
     }
 

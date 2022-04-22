@@ -5,7 +5,7 @@ package mergeballs.gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ball.controller.Runner;
+import ball.controller.BallRunner;
 import bonus.Score;
 import pangGuy.actions.ActionFactory;
 import mergeballs.control.EntityHandler;

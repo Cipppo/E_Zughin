@@ -3,7 +3,7 @@ package powerUp;
 import java.util.Optional;
 import java.util.Random;
 
-import ball.controller.Runner;
+import ball.controller.BallRunner;
 import mergeballs.control.Pausable;
 import pangGuy.gui.HeroComponent;
 import pangGuy.gui.Shape;
@@ -23,7 +23,7 @@ public class PowerUpHandler extends Thread implements Pausable {
     Optional<PowerUpEntity> next;
     private Pair<Integer, Integer> bounds;
 
-    public PowerUpHandler(GunSet gSet, Runner context, Pair<Integer, Integer> bounds){
+    public PowerUpHandler(GunSet gSet, BallRunner context, Pair<Integer, Integer> bounds){
         this.gen = new PowerUpGenerator(gSet, context);
         this.stop = false;
         this.pause = false;

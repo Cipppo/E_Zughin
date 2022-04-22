@@ -17,10 +17,9 @@ public class Controller {
     private final PickableHandler pickableHandler;
     private final PauseHandler pauseHandler;
     
-    public Controller(VisualTest visual, Player player) {
+    public Controller(VisualTest visual, Player player, Hero hero) {
         this.visual = visual;
         
-        Hero hero = new Hero();
         new ActionApplier(this.visual, hero);
 
         this.entityHandler = new EntityHandler(this.visual, hero);

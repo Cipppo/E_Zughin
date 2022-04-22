@@ -30,7 +30,7 @@ public class StickyArpion extends Thread implements PowerUp{
             }
             this.timeElapsed++;
         }
-        this.gSet.resetWaitTime();
+        this.gSet.setWaitTime(0);
         System.out.println("Sticky Arpion: Finished");
         this.gSet.resetGunType(GunTypes.STICKY_ARPION);
         this.timeElapsed = 0;

@@ -122,6 +122,14 @@ public class Hero implements Pausable{
         return this.awake;
     }
 
+    /**
+     * Getter for lifes.
+     * @return the remaining lifes.
+     */
+    public int getLifes(){
+        return this.lives;
+    }
+
     @Override
     public void pauseAll() {
         this.toggleAwake();
