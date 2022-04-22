@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Scanner;
-
+import stage.utils.*;
 import bonus.Score;
 
 /**
@@ -17,6 +19,7 @@ public class Players {
 	
 	private Player[] players;		//array of objects
 	int n;
+	private MainFilesLoader filesLoader; 
 	
 	/**
 	 * Constructor without parameters(Default)
@@ -24,6 +27,7 @@ public class Players {
 	public Players() {
 		this.players = new Player[CMax];
 		this.n = 0;
+		this.filesLoader = new MainFilesLoader();
 	}
 	
 	/**
@@ -90,36 +94,39 @@ public class Players {
 	 * Reads data from last saved data textfile to object collection
 	 */
 	public void Read() {
-		InputStream ciao = Players.class.getResourceAsStream("/bestPlayersSaves.txt");
-		Scanner scan = new Scanner(ciao);
-		while(scan.hasNext()) {
-			String line = scan.nextLine();
-			String[] parts = line.split(";");
-			String nickname = parts[0].trim();
-			Score score = new Score();
-			score.raiseScore(Integer.parseInt(parts[1].trim()));
-			String date = parts[2].trim();
-			
-			this.add(new Player(nickname, score, date));
-		}
-		scan.close();
-		
-		
-	}
+	    InputStream ciao = filesLoader.load("bestPlayersSaves.txt");
+	    Scanner scan = new Scanner(ciao);
+	    while(scan.hasNext()) {
+	      String line = scan.nextLine();
+	      String[] parts = line.split(";");
+	      String nickname = parts[0].trim();
+	      Score score = new Score();
+	      score.raiseScore(Integer.parseInt(parts[1].trim()));
+	      String date = parts[2].trim();
+	      
+	      this.add(new Player(nickname, score, date));
+	    }
+	    scan.close();
+	    
+	    
+	  }
 	
 	/**
 	 * Saves the object collection in a data textfile
 	 * @throws FileNotFoundException
 	 */
 	public void Save() throws FileNotFoundException {
-		PrintWriter writer =  new PrintWriter(new File(Players.class.getResource("/bestPlayersSaves.txt").getFile()));
-		for (int i = 0; i < this.n; i++) {
-			String line = this.players[i].getNickname() + "; " + Integer.toString(this.players[i].getScore().getScore()) + "; " +
-					this.players[i].getDate() + ";";
-			writer.println(line);
-		}
-		writer.close();
-		
+	    try (PrintWriter writer = new PrintWriter(new File(new URL(filesLoader.load("bestPlayersSaves.txt").toString()).getFile()))) {
+	      for (int i = 0; i < this.n; i++) {
+	        String line = this.players[i].getNickname() + "; " + Integer.toString(this.players[i].getScore().getScore()) + "; " +
+	            this.players[i].getDate() + ";";
+	        writer.println(line);
+	      }
+	      writer.close();
+	    } catch (MalformedURLException e) {
+	      System.out.println("Loading File");
+	    }
+	    
 	}
 	
 	
