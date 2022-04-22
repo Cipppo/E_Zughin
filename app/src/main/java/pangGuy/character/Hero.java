@@ -143,4 +143,12 @@ public class Hero implements Pausable{
         this.toggleAwake();
     }
 
+    /**
+     * Resetting position and lives, used when restarting a new game
+     */
+    public void reset() {
+        this.pos = new EntityPos2D(0, 0);
+        this.lives = 3;
+    }
+
 }
