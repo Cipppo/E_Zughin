@@ -13,14 +13,14 @@ import java.io.IOException;
  * <ul>
  * <li>fontFilePath (String): Full path and file name of the font to load. </li>
  * 
- * <li>fontStyle (Integer): The Font Style to use for the loaded font, for </li>
+ * <li>fontStyle (Integer): The Font Style to use for the loaded font, for 
  * example:
  * 
  *      Font.PLAIN
  *      Font.BOLD
  *      Font.ITALIC
  *      Font.BOLDITALIC
- * 
+ * </li>
  * <li>fontSize (Integer): The desired size of font.</li>
  * </ul>
  * this class returns {@link java.awt.Font} Object

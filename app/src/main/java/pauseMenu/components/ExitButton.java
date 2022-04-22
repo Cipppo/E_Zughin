@@ -19,10 +19,10 @@ public class ExitButton{
 	/**
 	 * Constructor that trigger the Exit action is Enter key is pressed.
 	 * 
-	 * @param mainPanel
+	 * @param visual
 	 * 			the panel that will listen for the key to be pressed.
-	 * @param pausePanel
-	 * 			the panel that has to be visible.
+	 * @param pauseHandler
+	 * 			the trigger for the pause.
 	 */
 	public ExitButton(VisualInterface visual, PauseHandler pauseHandler) {		
 		JPanel mainPanel = visual.getVisualTest();
