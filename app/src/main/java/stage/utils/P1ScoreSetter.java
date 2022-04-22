@@ -7,7 +7,10 @@ import stage.components.HUDPanel;
 import java.awt.Font;
 import java.awt.Color;
 
-public class P1ScoreSetter extends Thread {
+/**
+ * This class changes the score field of the HUD when the guy picks up a bonus.
+ */
+public class P1ScoreSetter extends Thread implements HUDFieldSetter{
 
     private Player player;
     private HUDPanel hud;
@@ -29,6 +32,9 @@ public class P1ScoreSetter extends Thread {
         this.playerNameLabel.setText(player.getNickname());
     }
     
+    /**
+     * This thread is dedicated to the edit of the interested field when the score value changes.
+     */
     @Override
     public void run() {
         this.hud.getHUDPanel()[0][0].add(playerNameLabel);
@@ -58,6 +64,10 @@ public class P1ScoreSetter extends Thread {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void terminate() {
         this.terminated = true;
     }

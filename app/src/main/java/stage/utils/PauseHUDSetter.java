@@ -10,7 +10,10 @@ import mergeballs.control.PauseHandler;
 import stage.components.HUDPanel;
 import stage.components.StageNameLabel;
 
-public class PauseHUDSetter extends Thread {
+/**
+ *  When the game is in pause status, this class brings up a menu pause in the HUD.
+ */
+public class PauseHUDSetter extends Thread implements HUDFieldSetter{
     
     private final HUDPanel hud;
     private final PauseHandler pauseHandler;
@@ -27,6 +30,10 @@ public class PauseHUDSetter extends Thread {
         this.pauseHandler = pauseHandler;
     }
     
+    /**
+     * When the game is in pause status, this thread brings up a menu pause in the HUD.
+     * Otherwise when not in pause status, the HUD will go back to the initial status.
+     */
     @Override
     public void run() {
         exitLabel.setFont(gameFont);
@@ -61,6 +68,9 @@ public class PauseHUDSetter extends Thread {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public void terminate() {
         this.terminated = true;
     }

@@ -8,6 +8,9 @@ import java.awt.Color;
 
 import stage.utils.MainFontLoader;
 
+/**
+ * Initial view of the life panel.
+ */
 public class LifeLabel extends JLabel{
     
     /**
@@ -17,6 +20,9 @@ public class LifeLabel extends JLabel{
 	MainFontLoader fontLoader = new MainFontLoader();
 	Font gameFont = fontLoader.load();
     
+	/**
+	 * Sets the initial view of the field.
+	 */
     public LifeLabel() {
         this.setText("LIFES: 3");
 		this.setForeground(Color.white);

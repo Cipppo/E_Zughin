@@ -14,6 +14,7 @@ import pangGuy.utilities.EntityPos2D;
 import player.Player;
 import stage.components.HUDPanel;
 import stage.utils.CenterOnDefaultScreen;
+import stage.utils.HUDFieldSetter;
 import stage.utils.PauseHUDSetter;
 
 public class StageGuiV2 extends JFrame {
@@ -27,7 +28,7 @@ public class StageGuiV2 extends JFrame {
     private JPanel panel = this.visual.getVisualTest();
     private final HUDPanel hud;
     private final HUDHandler hudHandler;
-    private final PauseHUDSetter pauseHUDSetter;
+    private final HUDFieldSetter pauseHUDSetter;
 
     private final DeathHandler deathHandler; 
     private final Hero hero;
