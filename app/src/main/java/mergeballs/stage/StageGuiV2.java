@@ -73,5 +73,10 @@ public class StageGuiV2 extends JFrame {
 
         this.setVisible(true);
     }
-        
+     
+    public void terminator() {
+        this.controller.terminator();
+        this.hudHandler.terminator();
+        this.pauseHUDSetter.terminate();
+    }
 }
