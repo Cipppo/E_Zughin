@@ -11,7 +11,7 @@ import pangGuy.utilities.Directions;
  * DoubleArpion powerup is picked up.
  */
 
-public class GunSet{
+public class GunSet implements GunBag{
 
     private final List<Bullet> arpions;
     private GunTypes currentGun;
@@ -47,28 +47,21 @@ public class GunSet{
         return Optional.empty();
     }
 
-    /**
-     * Setter for the GunType.
-     * @param type the GunType which needs to be set.
-     */
+
+    @Override
     public void setGunType(GunTypes type){
         this.currentGun = type;
     }
 
-    /**
-     * Resets the GunType only if the caller is the actual gunType (Like a sort of mutex).
-     * @param caller the GunType which asks to be resetted.
-     */
+
+    @Override
     public void resetGunType(GunTypes caller){
         if(caller == this.currentGun){
             this.currentGun = GunTypes.ARPION;
         }
     }
 
-    /**
-     * 
-     * @return Optional<Bullet> if there is a gun available, Optional.empty otherwise.
-     */
+    @Override
     public Optional<Bullet> getShootingGun(){
         Optional<Bullet> shootingGun = Optional.empty();
     
@@ -79,10 +72,7 @@ public class GunSet{
         return shootingGun;       
     }
 
-    /**
-     * Sets the Arpion directions in order to lay in the right coords.
-     * @param dir the Direction which needs to be set.
-     */
+    @Override
     public void setDirections(Directions dir){
         for(Bullet i : this.arpions){
             i.changeDir(dir);
@@ -90,29 +80,19 @@ public class GunSet{
         }
     }
 
-    /**
-     * 
-     * @return a List of the two Arpions.
-     */
+    @Override
     public List<Bullet> getArpions(){
         return this.arpions;
     }
 
-    /**
-     * Set the Arpions wait time between the Y_MAX point reach and restore.
-     * @param wait the seconds to be wait.
-     */
+    @Override
     public void setWaitTime(int wait){
         this.getArpions().forEach(e -> {
             e.setWaitTime(wait);
         });
     }
 
-    /**
-     * Given a Step number, it searches the Arpion which has made the steps.
-     * @param steps the Steps which the Arpion Made.
-     * @return Optional<Bullet> if it finds the arpion, Optional.empty otherwhise.
-     */
+    @Override
     public Optional<Bullet> getBulletFromSteps(int steps){
         for(Bullet i : this.arpions){
             if(i.getStepsDone() == steps){
@@ -122,10 +102,7 @@ public class GunSet{
         return Optional.empty();
     }
 
-    /**
-     * Getter fot the GunType
-     * @return the current GunType
-     */
+    @Override
     public GunTypes getGunType(){
         return this.currentGun;
     }
