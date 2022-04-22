@@ -234,7 +234,7 @@ public class MenuControl implements KeyListener{
 						navPanel.getNicknameLabel().enterInput();
 					}else {
 						System.out.println(navPanel.getNicknameLabel().getNickname());
-						new StageGuiV2(new Player("Non una bestemmia"));
+						new StageGuiV2(new Player(navPanel.getNicknameLabel().getNickname()));
 						gui.dispose();	
 					}
 					
