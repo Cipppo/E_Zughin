@@ -14,25 +14,30 @@ public class P1ScoreSetter extends Thread {
     private int actualScore = 0;
     private MainFontLoader fontLoader = new MainFontLoader();
 	private Font gameFont = fontLoader.load();
-    private JLabel label = new JLabel();
+    private JLabel scoreLabel = new JLabel();
+    private JLabel playerNameLabel = new JLabel();
+
 
     public P1ScoreSetter(Player player, HUDPanel hud) {
         this.player = player;
         this.hud = hud;
+        this.scoreLabel.setForeground(Color.WHITE);
+        this.scoreLabel.setFont(gameFont);
+        this.playerNameLabel.setForeground(Color.WHITE);
+        this.playerNameLabel.setFont(gameFont);
+        this.playerNameLabel.setText(player.getNickname());
     }
     
     @Override
     public void run() {
-        label.setForeground(Color.WHITE);
-        label.setFont(gameFont);
-
+        this.hud.getHUDPanel()[0][0].add(playerNameLabel);
         while (true) {
             try {
                 if (this.actualScore != this.player.getScore().getScore()) {
                     this.actualScore = this.player.getScore().getScore();
-                    label.setText("" + this.actualScore);
+                    scoreLabel.setText("" + this.actualScore);
                     this.hud.getHUDPanel()[1][1].removeAll();
-                    this.hud.getHUDPanel()[1][1].add(label);
+                    this.hud.getHUDPanel()[1][1].add(scoreLabel);
                     this.hud.validate();
                     this.hud.repaint();
                 }
