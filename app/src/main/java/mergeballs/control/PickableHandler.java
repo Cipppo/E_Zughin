@@ -10,6 +10,16 @@ import player.Player;
 import powerUp.PowerUpHandler;
 import mergeballs.gui.VisualTest;
 
+/**
+ * This class handles and stores all the active {@link powerUp.Pickable} in game.
+ * Entities of this application are:
+ * <ul> 
+ *      <li>{@link powerUp.PowerUpHandler}</li>
+ *      <li>{@link bonus.BonusHandler}</li>
+ * </ul>
+ * It's an active class, meaning that it's constantly check
+ * if an item is picked up, and if it is, it activates the pickable effect.  
+ */
 public class PickableHandler extends Thread {
     private final HeroComponent hero;
     private final PowerUpHandler powerUp;
