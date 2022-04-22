@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicArrowButton;
 
 import javax.swing.JButton;
-import pangGuy.modularGun.GunSet;
+import pangGuy.modularGun.GunBag;
 import pangGuy.utilities.Pair;
 import powerUp.Bomb;
 import powerUp.DoubleGun;
@@ -28,7 +28,7 @@ public class ControlPanelTest extends JFrame {
     private JButton jb3 = new JButton("HIT");
     private JButton jb4 = new JButton("Hero Hit");
     private GuiTest gui;
-    private GunSet gSet;
+    private GunBag gSet;
     private JLabel label = new JLabel("Status");
 
     private JPanel panel = new JPanel();
@@ -71,9 +71,7 @@ public class ControlPanelTest extends JFrame {
 
         }
 
-
         public void run(){
-            
             try{
                 this.jb.setBackground(Color.green);
                 this.jb.setText("Double Arpion: Active");
@@ -82,14 +80,7 @@ public class ControlPanelTest extends JFrame {
                 this.jb.setText("Double Arpion: not Active");
             }catch(Exception e){
                 System.out.println("\nThread.sleep() Exception: " + e.getMessage());
-            }
-            
+            }   
         }
-
-      
-
     }
-
-
-
 }

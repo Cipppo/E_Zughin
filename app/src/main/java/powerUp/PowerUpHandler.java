@@ -7,9 +7,9 @@ import ball.controller.BallRunner;
 import mergeballs.control.Pausable;
 import pangGuy.gui.HeroComponent;
 import pangGuy.gui.Shape;
-import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Pair;
 import pangGuy.utilities.EntityPos2D;
+import pangGuy.modularGun.GunBag;
 
 public class PowerUpHandler extends Thread implements Pausable {
 
@@ -23,7 +23,7 @@ public class PowerUpHandler extends Thread implements Pausable {
     Optional<PowerUpEntity> next;
     private Pair<Integer, Integer> bounds;
 
-    public PowerUpHandler(GunSet gSet, BallRunner context, Pair<Integer, Integer> bounds){
+    public PowerUpHandler(GunBag gSet, BallRunner context, Pair<Integer, Integer> bounds){
         this.gen = new PowerUpGenerator(gSet, context);
         this.stop = false;
         this.pause = false;

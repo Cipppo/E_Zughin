@@ -4,6 +4,7 @@ import pangGuy.utilities.EntityPos2D;
 import mergeballs.control.Pausable;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
+import pangGuy.modularGun.GunBag;
 
 /**
  * Models the model of the main character.
@@ -13,7 +14,7 @@ public class Hero implements Pausable{
 
     private EntityPos2D pos;
     private Directions direction;
-    private GunSet gSet;
+    private GunBag gSet;
     private HeroStatus status;
     private int lives;
     private boolean awake;
@@ -75,7 +76,7 @@ public class Hero implements Pausable{
      * Getter for the GunSet.
      * @return the GunSet in use.
      */
-    public GunSet getGset(){
+    public GunBag getGset(){
         return this.gSet;
     }
 

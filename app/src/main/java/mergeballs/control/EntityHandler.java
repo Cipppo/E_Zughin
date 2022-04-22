@@ -9,18 +9,18 @@ import ball.controller.BallBoundChecker;
 import ball.controller.IntersectionChecker;
 import pangGuy.character.Hero;
 import pangGuy.character.HitHandler;
-import pangGuy.modularGun.GunSet;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.StepsApplier;
 import ball.controller.BallRunner;
 import bird.controller.BirdHandler;
 import pangGuy.character.HeroStatus;
+import pangGuy.modularGun.GunBag;
 
 public class EntityHandler extends Thread {
     private final BallBoundChecker checker;
     private final UpdateableVisual frame;
     private final BallRunner ballRunner;
-    private final GunSet gSet;
+    private final GunBag gSet;
     private final StepsApplier stepsConv;
     private final Hero hero;
     private final BirdHandler bird;

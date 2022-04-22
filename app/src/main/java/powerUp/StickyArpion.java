@@ -1,17 +1,18 @@
 package powerUp;
 
-import pangGuy.modularGun.GunSet;
+
 import pangGuy.modularGun.GunTypes;
+import pangGuy.modularGun.GunBag;
 
 public class StickyArpion extends Thread implements PowerUp{
 
     private final static int WAIT_SECONDS = 2;
 
-    private final GunSet gSet;
+    private final GunBag gSet;
     private int timeElapsed;
     private int duration;
 
-    public StickyArpion(GunSet gSet){
+    public StickyArpion(GunBag gSet){
         this.gSet = gSet;
         this.timeElapsed = 0;
         this.duration = 15;
