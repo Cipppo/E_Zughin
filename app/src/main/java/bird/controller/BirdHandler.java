@@ -40,6 +40,9 @@ public class BirdHandler extends Thread implements Pausable {
                                     new Pair<Integer, Integer>(0, SIZEY));
     private Boolean terminated = false;
     
+    /**
+     * This thread make the bird move while it's not dead
+     */
     @Override
     public void run() {
         while(!this.terminated) {
