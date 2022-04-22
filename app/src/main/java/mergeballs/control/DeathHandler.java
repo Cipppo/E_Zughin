@@ -1,7 +1,10 @@
 package mergeballs.control;
 
+import java.io.FileNotFoundException;
+
 import javax.swing.JOptionPane;
 
+import endGame.EndGame;
 import mergeballs.stage.StageGuiV2;
 
 import pangGuy.character.Hero;
@@ -31,6 +34,7 @@ public class DeathHandler extends Thread {
                 Thread.sleep(40);
                 if (this.hero.getLifes() <= 0) {
                     this.frame.terminator();
+                    new EndGame(this.frame.getPlayer(), this.frame.getHero().getLifes());
                     if (this.askReplay() == 1) {
                         this.stop = true;
                         this.frame.dispose();
@@ -45,6 +49,8 @@ public class DeathHandler extends Thread {
                 }
             } catch (InterruptedException e) {
                 System.out.println("Thread.sleep() Exception: " + e.getMessage());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
         }
     }
