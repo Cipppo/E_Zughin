@@ -13,6 +13,7 @@ import pangGuy.utilities.EntityPos2D;
 import player.Player;
 import stage.components.HUDPanel;
 import stage.utils.CenterOnDefaultScreen;
+import stage.utils.LifeSetter;
 import stage.utils.P1ScoreSetter;
 import stage.utils.PauseHUDSetter;
 
@@ -29,6 +30,7 @@ public class StageGuiV2 extends JFrame {
     private final HUDPanel hud;
     private final P1ScoreSetter scoresetter;
     private final PauseHUDSetter pauseHUDSetter;
+    private final LifeSetter lifesetter;
     private final DeathHandler deathHandler; 
     
     private final Hero hero = new Hero();
@@ -44,6 +46,9 @@ public class StageGuiV2 extends JFrame {
         
         this.hud = new HUDPanel();
 
+        this.lifesetter = new LifeSetter(this.hud, this.hero);
+        this.lifesetter.start();
+        
         this.scoresetter = new P1ScoreSetter(player, this.hud);
         this.pauseHUDSetter = new PauseHUDSetter(this.hud, this.controller.getPauseHandler());
 
