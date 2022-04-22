@@ -19,18 +19,15 @@ import pangGuy.utilities.Pair;
 
 public interface UpdateableVisual {
     /**
-     * This method will be called after checking all the possibile collisons
+     * * This method will be called after checking all the possibile collisons
      * beetween arpions/hero and a ball. 
      * Calling it, will cause the GUI to receive updated information regarding 
-     * aprions, balls and hero position.
-     * @param position
-     *      a list of spherical position (the balls)
-     * @param dir 
-     *      the direction of the main character
-     * @param pUp
-     *      the powerup which we are gonna display
+     * arpions, balls and hero ballPositions.
+     * @param ballPositions
+     * @param birdDirection
+     * @param birdShape
      */
-    void updatePosition(List<SpherePos2D> position, Directions dir, Optional<BirdShape> bShape);
+    void updatePosition(List<SpherePos2D> ballPositions, Directions birdDirection, Optional<BirdShape> birdShape);
 
     /**
      * Getter for game frame size.
@@ -55,7 +52,7 @@ public interface UpdateableVisual {
     /**
      * 
      * @return
-     *      Hero initial position at the beginning of the game.
+     *      Hero initial ballPositions at the beginning of the game.
      */
     EntityPos2D getStartPos();
 }

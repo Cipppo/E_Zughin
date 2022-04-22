@@ -37,7 +37,7 @@ public interface VisualInterface {
 
     /**
      * Getter for the GUI bounds.
-     * @return a Pair<Integer, Integer> with the GUI bounds inside.
+     * @return a Pair with the GUI bounds inside.
      */
     Pair<Integer, Integer> getBounds();
 
@@ -49,7 +49,8 @@ public interface VisualInterface {
 
     /**
      * Getter for an ArpionComponent.
-     * @return Optional<ArpionComponent> if there is one not busy, Optional.empty otherwhise.
+     * @return {@link java.util.Optional} of a {@link pangGuy.gui.ArpionComponent}
+     *          if there is one not busy, Optional.empty otherwhise.
      */
     Optional<ArpionComponent> getFreeComponent();
 

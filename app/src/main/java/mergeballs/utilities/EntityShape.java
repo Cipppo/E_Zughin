@@ -16,7 +16,7 @@ public interface EntityShape {
     
     /**
      * Getter for the component dimensions in space.
-     * @return a FullPair<Width, Height>
+     * @return a {@link mergeballs.utilities.FullPair} of (width, height)
      */
     FullPair<Integer, Integer> getDimensions();
 
