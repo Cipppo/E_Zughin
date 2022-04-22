@@ -4,6 +4,7 @@ import ball.physics.Dimensions;
 import stage.utils.MainImagesLoader;
 
 import java.util.Map;
+
 import java.util.HashMap;
 
 import java.awt.image.BufferedImage;
@@ -37,11 +38,11 @@ public class ImageLoader {
     private String getFileNameGivenDimension(Dimensions dim) {
         switch (dim) {
             case FATHER:
-                return "ballFather.png";
+                return "sprite/spheres/ballFather.png";
             case SON:
-                return "ballSon.png";
+                return "sprite/spheres/ballSon.png";
             case GRANDSON:
-                return "ballGrandSon.png";
+                return "sprite/spheres/ballGrandSon.png";
             default:
                 throw new IllegalArgumentException();
         }
