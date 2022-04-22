@@ -24,9 +24,11 @@ public class EntityHandler extends Thread {
     private final StepsApplier stepsConv;
     private final Hero hero;
     private final BirdHandler bird;
+    private boolean stop;
 
     
     public EntityHandler(UpdateableVisual frame, Hero hero) {
+        this.stop = false;
         this.frame = frame;
         this.checker = new BallBoundChecker(this.frame.getBounds().getX(),
                                             this.frame.getBounds().getY());
@@ -41,7 +43,7 @@ public class EntityHandler extends Thread {
     public void run() {
         this.ballRunner.start();
         this.bird.start();
-        while(true) {
+        while(!this.stop) {
             try {
                 ballRunner.getBalls()
                 .forEach(t -> {
@@ -85,6 +87,11 @@ public class EntityHandler extends Thread {
                 //Catching Thread Exceptions
             }
         }
+    }
+
+    public synchronized void terminate() {
+        this.stop = true;
+        this.ballRunner.terminate();
     }
 
     private void setHeroStatus() {
