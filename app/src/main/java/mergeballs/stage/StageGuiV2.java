@@ -6,7 +6,9 @@ import javax.swing.JPanel;
 import java.awt.Color;
 
 import mergeballs.control.Controller;
+import mergeballs.control.DeathHandler;
 import mergeballs.gui.VisualTest;
+import pangGuy.character.Hero;
 import pangGuy.utilities.EntityPos2D;
 import player.Player;
 import stage.components.HUDPanel;
@@ -27,12 +29,18 @@ public class StageGuiV2 extends JFrame {
     private final HUDPanel hud;
     private final P1ScoreSetter scoresetter;
     private final PauseHUDSetter pauseHUDSetter;
+    private final DeathHandler deathHandler; 
+    
+    private final Hero hero = new Hero();
     
     private Controller controller;
 
     public StageGuiV2(Player player) {
-        this.controller = new Controller(this.visual, player);
+        this.controller = new Controller(this.visual, player, this.hero);
         this.controller.startAll();
+
+        this.deathHandler = new DeathHandler(this.hero, this);
+        this.deathHandler.start();
         
         this.hud = new HUDPanel();
 
