@@ -52,6 +52,30 @@ Oltre ai due powerup che influenzano l'arma, ne sono presenti altri due in grado
 A differenza dei *powerups* rivolti all'arma, gli ultimi due citati possono allo stesso tempo semplificare o peggiorare il *gameplay* al giocatore, in quanto il loro vantaggio/svantaggio varia in base al momento in cui vengono raccolti.
 
 
+# Capitolo 2
+
+
+## 2.1
+
+
+## 2.2 Design Dettagliato 
+
+
+## Portabilita' del personaggio principale e della sua arma su un nuovo motore grafico.
+
+**Problema** IL personaggio principale ha bisogno di muoversi all interno di uno spazio il quale e' determinato dal motore grafico che puo' essere cambiata a seconda delle esigenze.
+
+**Soluzione** Il Personaggio principale ed il suo arpione sono divisi in *Hero*, *HeroComponent* ed *Arpion*, *ArpionComponent*.
+Sia *Hero* che *Arpion* mantengono le loro posizioni assolute a prescindere da qualsiasi motore grafico si stia usando.
+Nel momento in cui c'e' bisogno di mettere in relazione le due entita' si usa un convertitore *StepsConverter* che converte i passi fatti dal personaggio principale in una coordinata cartesiana.
+Stessa cosa vale per l'arpione, il quale esegue per salire verso l'alto, esegue un certo numero di passi verso l'alto.
+
+### KeyBindings
+
+**Problema** Associare determinati tasti a semplici comandi per il personaggio principale.
+
+**Soluzione** In vista di rendere il personaggio principale il meno possibile dalla interfaccia usata abbiamo deciso di creare un sistema il quale, collegando i tasti al pannello di gioco, questi richiamano semplici azioni che avranno direttamente effetto sulle caratteristiche del personaggio principale, al quale non si delegano azioni che richiedono computazione.
+(e.g. Nell'esecuzione di LeftAction, viene prima estratta la posizione dell'eroe da *Hero* tramite *StepsApplier*, in seguito viene fatto un controllo sulla prossima posizione e, se il controllo passa, si aggiorna il *Component*.
 
 
 
