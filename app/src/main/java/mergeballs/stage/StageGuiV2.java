@@ -48,7 +48,7 @@ public class StageGuiV2 extends JFrame {
         this.pauseHUDSetter = new PauseHUDSetter(this.hud, this.controller.getPauseHandler());
         this.pauseHUDSetter.start();
 
-        this.deathHandler = new DeathHandler(this, hero);
+        this.deathHandler = new DeathHandler(this, this.hero);
         this.deathHandler.start();
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -87,5 +87,9 @@ public class StageGuiV2 extends JFrame {
     //temp
     public Hero getHero() {
         return this.hero;
+    }
+
+    public Controller getController(){
+        return this.controller;
     }
 }
