@@ -33,7 +33,7 @@ public class EndGame extends JFrame{
 	 * @param lives		used for knowing the lives of the player
 	 * @throws FileNotFoundException
 	 */
-	public EndGame(Player player, boolean win) throws FileNotFoundException {
+	public EndGame(Player player, boolean win, int check) throws FileNotFoundException {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(width*70/100, heigth*70/100);
 		this.setLayout(new BorderLayout());
@@ -52,11 +52,14 @@ public class EndGame extends JFrame{
 			//this.player.increaseScore(this.lives * 200);	//add 200 extra points for each lives 
 						//add the player to players container and saving his data for the
 			this.lastPanel.showWinningPanel(this.player);
+			if (check == 1) {
+				this.players = new Players();
+				this.players.Read();
+				this.players.add(this.player);
+				this.players.Save();	
+			}
 		}else {												//otherwise losing case
-			this.players = new Players();
-			this.players.Read();
-			this.players.add(this.player);
-			this.players.Save();	
+			
 			this.lastPanel.showLosingPanel();
 		}
 	}

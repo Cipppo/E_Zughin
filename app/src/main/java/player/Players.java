@@ -1,6 +1,6 @@
 package player;
 
-import java.io.ByteArrayInputStream;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -94,14 +94,25 @@ public class Players {
      * Reads data from last saved data textfile to object collection
      */
      public void Read() {
-            try (InputStream input = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt")) {
+           File file = new File(path);
+           Scanner scan;
+		try {
+			scan = new Scanner(file);
+			PlayerFileReader.read(scan, this);
+		} catch (FileNotFoundException e) {
+			InputStream input = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt");
+			Scanner scan2 = new Scanner(input);
+            PlayerFileReader.read(scan2, this);
+		}
+    	 
+    	 	/*try (InputStream input = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt")) {
                 Scanner scan = new Scanner(input);
                 PlayerFileReader.read(scan, this);
             } catch (IOException e1) {
                 InputStream input = new ByteArrayInputStream((path).getBytes());
                 Scanner scan = new Scanner(input);
                 PlayerFileReader.read(scan, this);
-            }
+            }*/
             
     }
     
