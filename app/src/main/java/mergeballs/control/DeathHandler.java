@@ -1,6 +1,5 @@
 package mergeballs.control;
 
-import java.io.FileNotFoundException;
 
 import javax.swing.JOptionPane;
 
@@ -51,8 +50,6 @@ public class DeathHandler extends Thread {
                 }
             } catch (InterruptedException e) {
                 System.out.println("Thread.sleep() Exception: " + e.getMessage());
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             }
         }
     }
