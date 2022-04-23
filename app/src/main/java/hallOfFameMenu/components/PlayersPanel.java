@@ -38,6 +38,10 @@ public class PlayersPanel extends JPanel{
 		
 		Players p1 = new Players();
 		p1.Read();
+		Player player = new Player("MICHI");
+		player.increaseScore(300);
+		p1.add(player);
+		p1.Save();
 		
 		for(int i = 0; i < p1.get(); i++) {
 			String elem = Integer.toString(i+1);
