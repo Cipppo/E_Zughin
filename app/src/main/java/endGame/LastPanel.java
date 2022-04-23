@@ -51,11 +51,16 @@ public class LastPanel extends JPanel{
 	 * Method to use in case of losing to display the game over
 	 */
 	public void showLosingPanel() {
-		label = new MenuLabel("GAME-OVER", 16, Color.BLACK);
+		label = new MenuLabel("GAME", 16, Color.BLACK);
+		MenuLabel label2 = new MenuLabel("OVER", 16, Color.BLACK);
 		label.setSecondaryColor(Color.RED);
 		label.switchBlink();
+		label2.setSecondaryColor(Color.RED);
+		label2.switchBlink();
 		container.fill = GridBagConstraints.CENTER;
 		container.gridy = 0;
 		this.add(label, container);
+		container.gridy = 1;
+		this.add(label2, container);
 	}
 }

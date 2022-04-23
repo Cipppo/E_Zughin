@@ -35,7 +35,7 @@ public class DeathHandler extends Thread {
                     this.frame.terminator();
                     var player = this.frame.getPlayer();
                     this.frame.dispose();
-                    var endgameFrame = new EndGame(player, this.frame.getHero().getLifes());
+                    var endgameFrame = new EndGame(player, false);
                     if (this.askReplay() == 1) {
                         this.stop = true;
                         endgameFrame.dispose();
