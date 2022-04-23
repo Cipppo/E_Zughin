@@ -54,9 +54,7 @@ public class LastPanel extends JPanel{
 		label = new MenuLabel("GAME", 16, Color.BLACK);
 		MenuLabel label2 = new MenuLabel("OVER", 16, Color.BLACK);
 		label.setSecondaryColor(Color.RED);
-		label.switchBlink();
 		label2.setSecondaryColor(Color.RED);
-		label2.switchBlink();
 		container.fill = GridBagConstraints.CENTER;
 		container.gridy = 0;
 		this.add(label, container);
