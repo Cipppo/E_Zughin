@@ -12,17 +12,19 @@ import pangGuy.utilities.Directions;
 import pangGuy.utilities.Pair;
 
 /**
- * Models a controller that stores arpions, the Hero and all their informations.
- * The class that implement this interface will be used by a ball handler, that
- * constantly checks if there are collisons beetween a ball and arpions/hero.
+ * A class that implement this interface, gives the possibility
+ * to call an updatePosition that should delegate the job of refreshing
+ * the current gui with new updated position. Also, this interface
+ * shows to the outside the bounds of the stage, all the arpions 
+ * in game and hero.
  */
 
 public interface UpdateableVisual {
     /**
      * * This method will be called after checking all the possibile collisons
-     * beetween arpions/hero and a ball. 
+     * beetween arpions/hero and a ball, or arpions/hero and the bird. 
      * Calling it, will cause the GUI to receive updated information regarding 
-     * arpions, balls and hero ballPositions.
+     * balls, the bird, the arpions and the hero position and status.
      * @param ballPositions
      * @param birdDirection
      * @param birdShape

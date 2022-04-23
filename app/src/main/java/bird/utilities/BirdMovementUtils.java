@@ -31,8 +31,6 @@ public class BirdMovementUtils {
     private static final int WIDTH = CenterOnDefaultScreen.center().width*3/100;
     private static final int HEIGHT = CenterOnDefaultScreen.center().width*3/100;;
 
-    // private static final int HUD_HEIGHT = CenterOnDefaultScreen.center().height*13/100;
-
     private final BirdActor bird;
     private final BirdMover mover;
     private Boolean moveUp = false;
@@ -118,7 +116,6 @@ public class BirdMovementUtils {
                         break;
                 }
                 Toolkit.getDefaultToolkit().sync();
-                // System.out.println(bird.getShape().getPos());
             }
             Thread.sleep(20);
         } catch (InterruptedException e) {
@@ -133,6 +130,9 @@ public class BirdMovementUtils {
         this.pause = !this.pause;
     }
 
+    /**
+     * Method to set the bird's death.
+     */
     public void setDead() {
         this.birdDead = true;
     }

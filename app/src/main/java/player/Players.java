@@ -1,6 +1,5 @@
 package player;
 
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +17,7 @@ import menu.utils.PlayerFileWriter;
  */
 public class Players {
 	private final int CMax = 10;	//max of objects to store for the top 10 players
+	
 	private Player[] players;		//array of objects
 	int n;
 	private final String path = System.getProperty("user.home") + File.separator + "bestPlayersSaves.txt";
@@ -94,43 +94,40 @@ public class Players {
 	 * Reads data from last saved data textfile to object collection
 	 */
 	public void Read() {
-            try (InputStream ciao = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt")) {
-                Scanner scan = new Scanner(ciao);
-                PlayerFileReader.read(scan, this);
-            } catch (IOException e1) {
-                InputStream ciao = new ByteArrayInputStream((path).getBytes());
-                Scanner scan = new Scanner(ciao);
-                PlayerFileReader.read(scan, this);
-            }
-            
-            
-          }
+        try (InputStream input = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt")) {
+            Scanner scan = new Scanner(input);
+            PlayerFileReader.read(scan, this);
+       } catch (IOException e1) {
+           InputStream ciao = new ByteArrayInputStream((path).getBytes());
+           Scanner scan = new Scanner(ciao);
+           PlayerFileReader.read(scan, this);
+       }
+     }
     
     /**
      * Saves the object collection in a data textfile
      * @throws FileNotFoundException
      */
-     public void Save() throws FileNotFoundException {
-            try (PrintWriter writer = new PrintWriter(new File(Players.class.getResource(File.separator + "bestPlayersSaves.txt").getFile()))) {
-              PlayerFileWriter.write(writer, players, n);
-            } catch (FileNotFoundException e1) {
-                File file = new File(path);
-                PrintWriter writer;
-                if (file.getAbsoluteFile().exists()) {
-                    writer = new PrintWriter(new FileOutputStream(file, true));
-                } else {
-                    try {
-                        file.getParentFile().mkdir();
-                        file.createNewFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    writer = new PrintWriter(file);
+	 public void Save() throws FileNotFoundException {
+         try (PrintWriter writer = new PrintWriter(new File(Players.class.getResource(File.separator + "bestPlayersSaves.txt").getFile()))) {
+           PlayerFileWriter.write(writer, players, n);
+         } catch (FileNotFoundException e1) {
+            File file = new File(path);
+            PrintWriter writer;
+            if (file.getAbsoluteFile().exists()) {
+                writer = new PrintWriter(new FileOutputStream(file, true));
+            } else {
+                try {
+                    file.getParentFile().mkdir();
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                PlayerFileWriter.write(writer, players, n);
+                writer = new PrintWriter(file);
             }
-            
-        }
+             PlayerFileWriter.write(writer, players, n);
+         }
+      }
 	
 	
 }
