@@ -29,7 +29,7 @@ public class EndGame extends JFrame{
 	 * @param lives		used for knowing the lives of the player
 	 * @throws FileNotFoundException
 	 */
-	public EndGame(Player player, int lives) throws FileNotFoundException {
+	public EndGame(Player player, int lives) {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(width*70/100, heigth*70/100);
 		this.setLayout(new BorderLayout());

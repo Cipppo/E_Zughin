@@ -108,26 +108,34 @@ public class Players {
      * Saves the object collection in a data textfile
      * @throws FileNotFoundException
      */
-	 public void Save() throws FileNotFoundException {
+	 public void Save() {
          try (PrintWriter writer = new PrintWriter(new File(Players.class.getResource(File.separator + "bestPlayersSaves.txt").getFile()))) {
            PlayerFileWriter.write(writer, players, n);
          } catch (FileNotFoundException e1) {
-            File file = new File(path);
+            
+        	File file = new File(path);
             PrintWriter writer;
             if (file.getAbsoluteFile().exists()) {
-                writer = new PrintWriter(new FileOutputStream(file, true));
-            } else {
                 try {
-                    file.getParentFile().mkdir();
-                    file.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                writer = new PrintWriter(file);
-            }
-             PlayerFileWriter.write(writer, players, n);
-         }
-      }
+					writer = new PrintWriter(new FileOutputStream(file, true));
+				} catch (FileNotFoundException e) {
+					try {
+	                    file.getParentFile().mkdir();
+	                    file.createNewFile();
+	                } catch (IOException e3) {
+	                    e.printStackTrace();
+	                }
+	                try {
+						writer = new PrintWriter(file);
+						PlayerFileWriter.write(writer, players, n);
+					} catch (FileNotFoundException e2) {
+						System.out.println("NOT LOADING:" + e2);
+					}
+				}
+	                
+	         }
+        }
+	 }
 	
 	
 }
