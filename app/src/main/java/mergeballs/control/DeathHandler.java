@@ -3,6 +3,7 @@ package mergeballs.control;
 
 import javax.swing.JOptionPane;
 
+
 import endGame.EndGame;
 import mergeballs.stage.StageGuiV2;
 
@@ -14,16 +15,10 @@ public class DeathHandler extends Thread {
     private boolean stop;
     private StageGuiV2 frame; //temp, maybe wrap into a type
 
-    public DeathHandler(StageGuiV2 frame){
-        this.hero = this.frame.getHero();
-        this.stop = false;
-        this.frame = frame;
-    }
-
     public DeathHandler(StageGuiV2 frame, Hero hero){
-        this.hero = hero;
         this.stop = false;
         this.frame = frame;
+        this.hero = hero;
     }
 
     @Override
@@ -31,7 +26,7 @@ public class DeathHandler extends Thread {
         while (!this.stop) {
             try {
                 Thread.sleep(40);
-                if (this.hero.getLifes() <= 0) {
+                if (this.hero.getLifes() < 0) {
                     this.frame.terminator();
                     var player = this.frame.getPlayer();
                     this.frame.dispose();
@@ -45,7 +40,18 @@ public class DeathHandler extends Thread {
                         this.frame.dispose();
                         endgameFrame.dispose();
                         this.frame = new StageGuiV2(player);
-                        this.hero.reset();;
+                        this.hero.reset();
+                    }
+                }else{
+                    if(this.frame.getController().getBallRunner().getBalls().size() == 0){
+                        this.frame.terminator();
+                        var player = this.frame.getPlayer();
+                        this.frame.dispose();
+                        var endGameFrame = new EndGame(player, true);
+                        Thread.sleep(4000);
+                        endGameFrame.dispose();
+                        this.frame = new StageGuiV2(player);
+                        this.hero.reset();
                     }
                 }
             } catch (InterruptedException e) {
