@@ -103,8 +103,7 @@ public class Players {
                 PlayerFileReader.read(scan, this);
             }
             
-            
-          }
+    }
     
     /**
      * Saves the object collection in a data textfile
