@@ -18,7 +18,5 @@ public class AddAllLabels {
         panel[0][3].add(new StageNameLabel());
         panel[2][3].add(new StageNumberLabel());
         panel[3][3].add(new LifeLabel());
-        panel[0][5].add(new PlayerTwoLabel());
-        panel[1][6].add(new P2ScoreLabel());
     }
 }
