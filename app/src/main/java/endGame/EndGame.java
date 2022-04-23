@@ -50,12 +50,13 @@ public class EndGame extends JFrame{
 	
 		if (win) {								//lives greater than 0, winning case
 			//this.player.increaseScore(this.lives * 200);	//add 200 extra points for each lives 
+						//add the player to players container and saving his data for the
+			this.lastPanel.showWinningPanel(this.player);
+		}else {												//otherwise losing case
 			this.players = new Players();
 			this.players.Read();
 			this.players.add(this.player);
-			this.players.Save();							//add the player to players container and saving his data for the
-			this.lastPanel.showWinningPanel(this.player);
-		}else {												//otherwise losing case
+			this.players.Save();	
 			this.lastPanel.showLosingPanel();
 		}
 	}
