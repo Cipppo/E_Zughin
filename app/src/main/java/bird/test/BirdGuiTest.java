@@ -5,13 +5,18 @@ import javax.swing.JPanel;
 
 import mergeballs.control.EntityHandler;
 import mergeballs.gui.VisualTest;
+import pangGuy.actions.ActionApplier;
+import pangGuy.actions.ActionFactory;
 import pangGuy.character.Hero;
+import pangGuy.gui.BoundChecker;
 import pangGuy.utilities.EntityPos2D;
+import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
 
 public class BirdGuiTest extends JFrame{
     
-    private final static int WIDTH = CenterOnDefaultScreen.center().width*70/100;
+	private static final long serialVersionUID = -3558174777161143038L;
+	private final static int WIDTH = CenterOnDefaultScreen.center().width*70/100;
     private final static int HEIGHT = CenterOnDefaultScreen.center().height*48/100;
     private static final int STARTX =  WIDTH / 2;
     private static final int STARTY = (HEIGHT ) - 85 ;
@@ -23,6 +28,10 @@ public class BirdGuiTest extends JFrame{
     private final EntityHandler handler = new EntityHandler(this.visual, this.hero);
 
     public BirdGuiTest() {
+        new ActionApplier(this.visual, this.hero);
+        new ActionFactory();
+        new BoundChecker(new Pair<Integer, Integer>(0, visual.getBounds().getX()));
+
         this.setSize(WIDTH, HEIGHT);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
