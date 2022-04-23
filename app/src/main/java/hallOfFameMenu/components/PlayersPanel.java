@@ -3,6 +3,7 @@ package hallOfFameMenu.components;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.io.FileNotFoundException;
 
 import javax.swing.JPanel;
 import menu.utils.MenuLabel;
@@ -18,7 +19,7 @@ public class PlayersPanel extends JPanel{
 	/*
 	 * Constructor without parameters
 	 */
-	public PlayersPanel() {
+	public PlayersPanel() throws FileNotFoundException {
 		super(new GridBagLayout());
 		GridBagConstraints container = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
@@ -38,10 +39,10 @@ public class PlayersPanel extends JPanel{
 		
 		Players p1 = new Players();
 		p1.Read();
-		/*Player player = new Player("MICHI");
-		player.increaseScore(300);
+		Player player = new Player("MICHI");
+		player.increaseScore(3000);
 		p1.add(player);
-		p1.Save();*/
+		p1.Save();
 		
 		for(int i = 0; i < p1.get(); i++) {
 			String elem = Integer.toString(i+1);
