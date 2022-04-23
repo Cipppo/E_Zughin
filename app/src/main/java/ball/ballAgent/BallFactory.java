@@ -5,9 +5,7 @@ import java.util.Random;
 import ball.Boundary;
 import ball.physics.*;
 /**
- * Generator of Various kind of Balls, mostly used by testing cases
- * 
- * TODO: try to remove static maybe, discuss it with collegues;
+ * Generator of Various kind of Balls, 
  */
 public class BallFactory {
 	
@@ -18,6 +16,8 @@ public class BallFactory {
 
 	private static final double EARTH_GRAVITY = 9.81;
 	private static final double MOON_GRAVITY = 1.62;
+
+	private static final double STD_TICK = 0.07;
 	
 	/**
 	 * Creates a ball with a random angle, a random initialVelocity
@@ -31,7 +31,7 @@ public class BallFactory {
         var angle = rand.nextDouble() * (MAX_ANGLE - MIN_ANGLE) + MIN_ANGLE;
         var initialVelocity = rand.nextDouble() * (MAX_VELOCITY - MIN_VELOCITY) + MIN_VELOCITY;
         
-        return completeBall(angle, initialVelocity, pos, EARTH_GRAVITY);
+        return completeBall(angle, initialVelocity, pos, EARTH_GRAVITY, STD_TICK);
 	}
 
 	/**
@@ -45,6 +45,10 @@ public class BallFactory {
 		return randomVelAndAngleBall(pos);
 	}
 
+	/**
+	 * 
+	 * @return a ball with moon gravity
+	 */
 	public static Ball moonBall() {
 		var ball = randomPos();
 		return completeBall(
@@ -53,8 +57,30 @@ public class BallFactory {
 			new SpherePos2D(ball.getPosition().getX(),
 				ball.getPosition().getY(),
 				ball.getPosition().getDimension(),
-				50)
-			, MOON_GRAVITY);
+				ball.getSize()),
+			MOON_GRAVITY,
+			STD_TICK);
+	}
+
+	/**
+	 * This method creates a ball with the specified speed.
+	 * The higher the tick is, the fastest is the ball (Harder Game).
+	 * @param tick
+	 * 			how fast the ball goes.
+	 * 			NOTE: std value is 0.09
+	 * @return
+	 * 		a ball with the specified tickSpeed
+	 */
+	public static Ball speedBall(double tick) {
+		var ball = randomPos();
+		return completeBall(ball.getTrajectory().getAngle(), 
+				ball.getTrajectory().getInitialVelocity(), 
+				new SpherePos2D(ball.getPosition().getX(), 
+						ball.getPosition().getY(), 
+						ball.getPosition().getDimension(), 
+						ball.getSize()),
+				EARTH_GRAVITY, 
+				tick);
 	}
 
 	/**
@@ -68,9 +94,9 @@ public class BallFactory {
 	 * 
 	 * @return a ball with specified parameters.
 	 */
-	public static Ball completeBall(double angle, double initialVelocity, SpherePos2D position, double gravity) {
+	public static Ball completeBall(double angle, double initialVelocity, SpherePos2D position, double gravity, double tick) {
 		Trajectory traj = new Trajectory(angle, initialVelocity);
-		return new Ball(traj, position, gravity);
+		return new Ball(traj, position, gravity, tick);
 	}
 	
 	/**
@@ -95,6 +121,7 @@ public class BallFactory {
 			ball.getTrajectory().getAngle(),
 			ball.getTrajectory().getInitialVelocity(),
 			newPos,
-			EARTH_GRAVITY);
+			EARTH_GRAVITY,
+			STD_TICK);
 	}
 }
