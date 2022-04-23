@@ -1,15 +1,15 @@
 package player;
 
-import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
-import bonus.Score;
+import menu.utils.PlayerFileReader;
+import menu.utils.PlayerFileWriter;
 
 /**
  * Container class to store all the objects Player
@@ -20,7 +20,7 @@ public class Players {
 	
 	private Player[] players;		//array of objects
 	int n;
-	//private final String path = System.getProperty("user.home") + File.separator + "bestPlayersSaves.txt";
+	private final String path = System.getProperty("user.home") + File.separator + "bestPlayersSaves.txt";
 	
 	/**
 	 * Constructor without parameters(Default)
@@ -94,48 +94,40 @@ public class Players {
 	 * Reads data from last saved data textfile to object collection
 	 */
 	public void Read() {
-		final InputStream input = ClassLoader.getSystemResourceAsStream("bestPlayersData");
-        Scanner scan = new Scanner(input);
-		BufferedReader br = new BufferedReader(new InputStreamReader(input));
-		String line;
-        try {
-			while((line = br.readLine()) != null) {
-			    String[] parts = line.split(";");
-			    String nickname = parts[0].trim();
-			    Score score = new Score();
-			    score.raiseScore(Integer.parseInt(parts[1].trim()));
-			    String date = parts[2].trim();
-			    
-			    this.add(new Player(nickname, score, date));
-			  }
-		} catch (NumberFormatException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-          scan.close();
-      }
+        try (InputStream input = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt")) {
+            Scanner scan = new Scanner(input);
+            PlayerFileReader.read(scan, this);
+       } catch (IOException e1) {
+           InputStream ciao = new ByteArrayInputStream((path).getBytes());
+           Scanner scan = new Scanner(ciao);
+           PlayerFileReader.read(scan, this);
+       }
+     }
     
     /**
      * Saves the object collection in a data textfile
      * @throws FileNotFoundException
      */
-     public void Save() {
-    	 	PrintWriter writer;
-			try {
-				writer = new PrintWriter(new File(ClassLoader.getSystemResourceAsStream("bestPlayersData").toString()));
-	    	 	for (int i = 0; i < n; i++) {
-	                String line = players[i].getNickname() + "; " + Integer.toString(players[i].getScore().getScore()) + "; " +
-	                    players[i].getDate() + ";";
-	                writer.println(line);
-	              }
-	            writer.close();
-	            System.out.print("ok");
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.print("not ok");
-			}
-        }
+	 public void Save() throws FileNotFoundException {
+         try (PrintWriter writer = new PrintWriter(new File(Players.class.getResource(File.separator + "bestPlayersSaves.txt").getFile()))) {
+           PlayerFileWriter.write(writer, players, n);
+         } catch (FileNotFoundException e1) {
+            File file = new File(path);
+            PrintWriter writer;
+            if (file.getAbsoluteFile().exists()) {
+                writer = new PrintWriter(new FileOutputStream(file, true));
+            } else {
+                try {
+                    file.getParentFile().mkdir();
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                writer = new PrintWriter(file);
+            }
+             PlayerFileWriter.write(writer, players, n);
+         }
+      }
 	
 	
 }
