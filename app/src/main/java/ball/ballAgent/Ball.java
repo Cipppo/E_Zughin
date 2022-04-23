@@ -15,27 +15,31 @@ public class Ball implements Entity {
     private Time time = new Time(0.0, 0.0);
     private final double gravity;
     private final int size;
+    private final double tickFactor;
     
     /**
      * Constructor used and called only from the factory in this same package.
      * @param trajectory
      * @param position
      * @param gravity
+     * @param tickFactor
+     *          fraction of time of refresh of the ball. Small ticks lead to slower balls.
      */
-    protected Ball(Trajectory trajectory, SpherePos2D position, double gravity) {
+    protected Ball(Trajectory trajectory, SpherePos2D position, double gravity, double tickFactor) {
     	this.trajectory = trajectory;
     	this.actualPosition = position;
     	this.initialPosition = new SpherePos2D(position.getX(), position.getY(), position.getDimension(), position.getDiameter());
     	this.velocity = this.trajectory.getXYVelocity();
     	this.gravity = gravity;
         this.size = this.getPosition().getDiameter();
+        this.tickFactor = tickFactor;
     }
 
     /**
      * Updates the position of the ball, basing the calculations on Projectile Motion'sequations.
      */
     public synchronized void updatePos() {
-        time.inc(0.09);
+        time.inc(tickFactor);
         this.actualPosition.setX(this.initialPosition.getX() +  0.001 * this.velocity.getX() * this.time.getX());
         this.actualPosition.setY(this.initialPosition.getY() - 0.001 * (this.velocity.getY() * this.time.getY() 
                                         - (0.5*gravity*Math.pow(this.time.getY(), 2))));
