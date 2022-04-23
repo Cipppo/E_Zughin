@@ -74,6 +74,5 @@ public class Player {
 		this.score.raiseScore(score);
 	}
 
-
 }
 

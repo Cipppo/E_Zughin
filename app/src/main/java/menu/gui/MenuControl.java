@@ -12,6 +12,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import endGame.EndGame;
 import hallOfFameMenu.components.HoFMainPanel;
 import helpMenu.HelpPanel;
 import menu.components.*;
@@ -202,7 +203,6 @@ public class MenuControl implements KeyListener{
 				if (navStatus == 2) {
 					help.setVisible(true);
 				}
-				//TODO
 			}
 			
 		}
@@ -234,7 +234,6 @@ public class MenuControl implements KeyListener{
 					if (enterStatus < 2) {
 						navPanel.getNicknameLabel().enterInput();
 					}else {
-						System.out.println(navPanel.getNicknameLabel().getNickname());
 						new StageGuiV2(new Player(navPanel.getNicknameLabel().getNickname()));
 						gui.dispose();	
 					}

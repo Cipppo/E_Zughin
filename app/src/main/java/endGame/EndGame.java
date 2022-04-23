@@ -1,9 +1,12 @@
 package endGame;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 import player.*;
 import stage.utils.CenterOnDefaultScreen;
@@ -21,6 +24,7 @@ public class EndGame extends JFrame{
 	private Player player;
 	private Players players;
 	//private int lives;
+	private Timer timer;
 	private LastPanel lastPanel;
 	
 	/**
@@ -41,7 +45,8 @@ public class EndGame extends JFrame{
 		//this.lives = lives;
 		this.lastPanel = new LastPanel();
 		this.add(lastPanel);
-		
+		simpleTimer();
+		timer.start();
 	
 		if (win) {								//lives greater than 0, winning case
 			//this.player.increaseScore(this.lives * 200);	//add 200 extra points for each lives 
@@ -53,5 +58,15 @@ public class EndGame extends JFrame{
 		}else {												//otherwise losing case
 			this.lastPanel.showLosingPanel();
 		}
+	}
+	
+	public void simpleTimer() {
+		timer = new Timer(8000, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	EndGame.this.dispose();
+            	}
+		});
 	}
 }

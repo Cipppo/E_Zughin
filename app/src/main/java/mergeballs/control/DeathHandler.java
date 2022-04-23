@@ -31,14 +31,15 @@ public class DeathHandler extends Thread {
                     var player = this.frame.getPlayer();
                     this.frame.dispose();
                     var endgameFrame = new EndGame(player, false);
+                    new EndGame(player, false); //problema col fatto che endgameframe viene bloccata dal deathHandler
                     if (this.askReplay() == 1) {
                         this.stop = true;
-                        endgameFrame.dispose();
+                        //endgameFrame.dispose();
                         System.exit(0);
                     } else {
                         player.getScore().resetScore();
                         this.frame.dispose();
-                        endgameFrame.dispose();
+                        //endgameFrame.dispose();
                         this.frame = new StageGuiV2(player);
                         this.hero.reset();
                     }
@@ -48,8 +49,9 @@ public class DeathHandler extends Thread {
                         var player = this.frame.getPlayer();
                         this.frame.dispose();
                         var endGameFrame = new EndGame(player, true);
+                        new EndGame(player, true);
                         Thread.sleep(4000);
-                        endGameFrame.dispose();
+                        //endGameFrame.dispose();
                         this.frame = new StageGuiV2(player);
                         this.hero.reset();
                     }
