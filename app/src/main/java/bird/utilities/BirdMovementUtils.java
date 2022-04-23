@@ -82,7 +82,7 @@ public class BirdMovementUtils {
      *      - Down movement: if bird hasn't touched the ground yet.
      *      - Up movement: if bird has already touched ground.
      */
-    public final void moveVertically() {
+    private final void moveVertically() {
         if (bird.getShape().getPos().getY() + HEIGHT <= bc.getYPair().getY() && !moveUp) {
             this.doMovement(BirdDirections.DOWN);
         } else {
