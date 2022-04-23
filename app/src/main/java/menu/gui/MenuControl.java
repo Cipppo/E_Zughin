@@ -77,7 +77,7 @@ public class MenuControl implements KeyListener{
 	}
 	
 	public void incNavStatus() {
-		if (navStatus < 3) {
+		if (navStatus < 2) {
 			navStatus++;
 			changeBlink();
 		}
@@ -129,15 +129,8 @@ public class MenuControl implements KeyListener{
 			break;
 		case 2:
 			navPanel.getHelpLabel().switchBlink();
-			if(navPanel.getHfLabel().getBlink()) {
-				navPanel.getHfLabel().switchBlink();
-			}else {
-				navPanel.getCreditsLabel().switchBlink();
-			}
+			navPanel.getHfLabel().switchBlink();
 			break;
-		case 3:
-			navPanel.getCreditsLabel().switchBlink();
-			navPanel.getHelpLabel().switchBlink();
 		}
 	}
 	

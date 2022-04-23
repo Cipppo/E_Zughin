@@ -16,7 +16,6 @@ public class NavigationPanel extends JPanel {
 	private MenuLabel start = new MenuLabel("START");
 	private MenuLabel hf = new MenuLabel("HALL OF FAME");
 	private MenuLabel help = new MenuLabel("HELP");
-	private MenuLabel credits = new MenuLabel("CREDITS");
 	private NicknameInput nickname = new NicknameInput();
 	
 	
@@ -57,12 +56,6 @@ public class NavigationPanel extends JPanel {
 		//container.gridwidth = 1;
 		super.add(help, container);
 		
-		container.fill = GridBagConstraints.HORIZONTAL;
-		container.gridx = 0;
-		container.gridy = 3;
-		//container.gridwidth = 1;
-		super.add(credits, container);
-		
 		this.setBackground(Color.BLACK);
 	}
 	
@@ -81,10 +74,6 @@ public class NavigationPanel extends JPanel {
 	
 	public MenuLabel getHelpLabel() {
 		return this.help;
-	}
-	
-	public MenuLabel getCreditsLabel() {
-		return this.credits;
 	}
 	
 	public NicknameInput getNicknameLabel() {
