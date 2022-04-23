@@ -123,7 +123,7 @@ public class BirdHandler extends Thread implements Pausable {
      * @return
      *          a random direction for the bird.
      */
-    public BirdDirections randomDirectionChooser() {
+    private final BirdDirections randomDirectionChooser() {
         if(random.nextInt(2) == 0) {
             return BirdDirections.RIGHT;
         } else {
