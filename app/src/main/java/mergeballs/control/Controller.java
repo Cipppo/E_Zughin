@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import ball.controller.BallRunner;
 import bonus.BonusHandler;
 import mergeballs.gui.VisualTest;
 import pangGuy.actions.ActionApplier;
@@ -66,5 +67,9 @@ public class Controller {
     public void terminator() {
         this.entityHandler.terminate();
         this.pickableHandler.terminate();
+    }
+
+    public BallRunner getBallRunner(){
+        return this.entityHandler.getBallRunner();
     }
 }
