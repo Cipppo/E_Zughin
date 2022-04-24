@@ -5,6 +5,12 @@ import ball.physics.SpherePos2D;
 import pangGuy.gui.Shape;
 import ball.Boundary;
 
+/**
+ * This class check if the ball hits a wall (depending on the size of the stage)
+ * and also it checks if a ball hits a {@linkplain mergeballs.utilities.EntityShape}, 
+ * making use of {@link ball.controller.IntersectionChecker}.
+ * 
+ */
 public class BallBoundChecker {
     private final double width;
     private final double height;
