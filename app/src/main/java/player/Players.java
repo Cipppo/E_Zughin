@@ -104,15 +104,6 @@ public class Players {
 			Scanner scan2 = new Scanner(input);
             PlayerFileReader.read(scan2, this);
 		}
-    	 
-    	 	/*try (InputStream input = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt")) {
-                Scanner scan = new Scanner(input);
-                PlayerFileReader.read(scan, this);
-            } catch (IOException e1) {
-                InputStream input = new ByteArrayInputStream((path).getBytes());
-                Scanner scan = new Scanner(input);
-                PlayerFileReader.read(scan, this);
-            }*/
             
     }
     
@@ -135,25 +126,9 @@ public class Players {
 					writer2.write(txtFile);
 		        	writer2.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					System.out.println("IMPOSSIBLE TO SAVE:");
 					e.printStackTrace();
 				} 
-            	
-            	/*File file = new File(path);
-                PrintWriter writer;
-                if (file.getAbsoluteFile().exists()) {
-                    writer = new PrintWriter(new FileOutputStream(file, true));
-                } else {
-                    try {
-                        file.getParentFile().mkdir();
-                        file.createNewFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    writer = new PrintWriter(file);
-                }
-                // PrintWriter writer = new PrintWriter(new File(File.separator + "bestPlayersSaves.txt"));
-                PlayerFileWriter.write(writer, players, n);*/
             }
             
         }

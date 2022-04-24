@@ -1,6 +1,5 @@
 package menu.gui;
 
-<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,14 +12,13 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-
 import hallOfFameMenu.components.HoFMainPanel;
 import helpMenu.HelpPanel;
 import menu.components.*;
 import mergeballs.stage.StageGuiV2;
 import player.Player;
 
-public class MenuControl implements KeyListener{
+public class MenuModel implements KeyListener{
 
 	private JPanel panel;
 	private GridBagConstraints container;
@@ -36,7 +34,7 @@ public class MenuControl implements KeyListener{
 	private final Gui gui;
 	
 	
-	public MenuControl(Gui gui) throws FileNotFoundException{
+	public MenuModel(Gui gui) throws FileNotFoundException{
 		this.gui = gui;
 		panel = new JPanel(new GridBagLayout());
 		container = new GridBagConstraints();
@@ -254,8 +252,5 @@ public class MenuControl implements KeyListener{
 		
 		
 	}
-=======
-public class MenuControl {
->>>>>>> 868f90b (splitting model and control)
 
 }
