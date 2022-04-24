@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.Random;
 
 import ball.controller.BallRunner;
-import mergeballs.control.Pausable;
+import masterControl.control.Pausable;
 import pangGuy.gui.HeroComponent;
 import pangGuy.gui.Shape;
 import pangGuy.utilities.Pair;
