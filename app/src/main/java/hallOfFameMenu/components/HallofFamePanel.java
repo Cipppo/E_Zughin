@@ -13,14 +13,14 @@ import menu.utils.MenuLabel;
  * Class to create the hall of fame panel
  *
  */
-public class HoFMainPanel extends JPanel{
+public class HallofFamePanel extends JPanel{
 	
 	private static final long serialVersionUID = 4822473142531885639L;
 
 	/*
 	 * Constructor without parameters
 	 */
-	public HoFMainPanel() throws FileNotFoundException {
+	public HallofFamePanel() throws FileNotFoundException {
 		super(new GridBagLayout());
 		GridBagConstraints container = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());

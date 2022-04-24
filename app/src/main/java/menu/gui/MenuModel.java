@@ -12,7 +12,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import hallOfFameMenu.components.HoFMainPanel;
+import hallOfFameMenu.components.HallofFamePanel;
 import helpMenu.HelpPanel;
 import menu.components.*;
 import mergeballs.stage.StageGuiV2;
@@ -23,7 +23,7 @@ public class MenuModel implements KeyListener{
 	private JPanel panel;
 	private GridBagConstraints container;
 	private final MenuControl menuControl;
-	private final HoFMainPanel HoF = new HoFMainPanel();
+	private final HallofFamePanel HoF = new HallofFamePanel();
 	private final HelpPanel help = new HelpPanel();
 	private final TopMenuPanel topPanel = new TopMenuPanel();
 	private final NavigationPanel navPanel = new NavigationPanel();

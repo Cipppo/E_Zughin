@@ -63,7 +63,7 @@ public class EndGame extends JFrame{
 	}
 	
 	public void simpleTimer() {
-		timer = new Timer(8000, new ActionListener() {
+		timer = new Timer(6000, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
