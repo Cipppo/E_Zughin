@@ -6,7 +6,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import mergeballs.control.PauseHandler;
+import masterControl.control.PauseHandler;
 import stage.components.HUDPanel;
 import stage.components.StageNameLabel;
 
