@@ -29,8 +29,8 @@ public class EndGame extends JFrame{
 	/**
 	 * Constructor with parameters 
 	 * @param player    used for knowing data about the player and save it in case of winning with high score
-	 * @param win
-	 * @param check
+	 * @param win		used for knowing if is winning case or not
+	 * @param check 	control for not saving multiple time
 	 * @throws FileNotFoundException
 	 */
 	public EndGame(Player player, boolean win, int check) throws FileNotFoundException {
@@ -62,6 +62,9 @@ public class EndGame extends JFrame{
 		}
 	}
 	
+	/**
+	 *  method to dispose the gui after some times
+	 */
 	public void simpleTimer() {
 		timer = new Timer(6000, new ActionListener() {
 
