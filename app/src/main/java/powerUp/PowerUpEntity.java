@@ -3,13 +3,9 @@ package powerUp;
 import pangGuy.gui.Shape;
 
 /**
-<<<<<<< HEAD
  * This class models a {@link powerUp.PowerUp}, but as an
  * entity, meaning that it's a {@link powerUp.Pickable} made
  * of an {@link utilities.EntityShape}.
-=======
- * Models a basic Visual Entity for a powerup.
->>>>>>> feature
  */
 public class PowerUpEntity extends Pickable {
     private final PowerUp powerUp;
