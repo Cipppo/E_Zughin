@@ -16,8 +16,6 @@ public class BallBoundChecker {
 
     /**
      * Check collisions beetween balls and walls.
-     * Expecially in X0 and Y1 there are offsets, due to strange behaviour
-     * of swing graphical interface (and MacOS).
      * 
      * @param t
      *          the ball to check 
