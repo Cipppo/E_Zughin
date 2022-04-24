@@ -29,7 +29,8 @@ public class EndGame extends JFrame{
 	/**
 	 * Constructor with parameters 
 	 * @param player    used for knowing data about the player and save it in case of winning with high score
-	 * @param lives		used for knowing the lives of the player
+	 * @param win
+	 * @param check
 	 * @throws FileNotFoundException
 	 */
 	public EndGame(Player player, boolean win, int check) throws FileNotFoundException {
