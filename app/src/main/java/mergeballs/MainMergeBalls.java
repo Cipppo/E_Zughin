@@ -3,6 +3,9 @@ package mergeballs;
 
 import mergeballs.gui.GuiTest;
 
+/**
+ * Test case without the HUD, and the Control Panel
+ */
 public class MainMergeBalls {
     public static void main(String[] args){
         new GuiTest();
