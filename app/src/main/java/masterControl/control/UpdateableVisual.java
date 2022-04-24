@@ -1,4 +1,4 @@
-package mergeballs.control;
+package masterControl.control;
 
 import java.util.List;
 import java.util.Optional;

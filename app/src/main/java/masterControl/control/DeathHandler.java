@@ -1,4 +1,4 @@
-package mergeballs.control;
+package masterControl.control;
 
 
 import java.io.FileNotFoundException;
@@ -7,8 +7,7 @@ import javax.swing.JOptionPane;
 
 
 import endGame.EndGame;
-import mergeballs.stage.StageGuiV2;
-
+import masterControl.stage.StageGuiV2;
 import pangGuy.character.Hero;
 
 public class DeathHandler extends Thread {

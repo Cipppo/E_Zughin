@@ -1,4 +1,4 @@
-package mergeballs.gui;
+package masterControl.gui;
 
 import pangGuy.gui.HeroComponent;
 import pangGuy.utilities.Directions;

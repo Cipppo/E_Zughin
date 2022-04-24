@@ -1,4 +1,4 @@
-package mergeballs.gui;
+package masterControl.gui;
 
 import javax.swing.JPanel;
 
@@ -16,7 +16,6 @@ import bird.gui.BirdShape;
 import bird.utilities.BirdPNGLoader;
 import bonus.BonusEntity;
 import bonus.BonusImageLoader;
-import mergeballs.utilities.BackgroundImageLoader;
 import pangGuy.gui.ArpionImageLoader;
 import pangGuy.gui.PangGuyImageLoader;
 import pangGuy.gui.Shape;

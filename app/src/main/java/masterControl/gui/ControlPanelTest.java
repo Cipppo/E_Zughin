@@ -1,4 +1,4 @@
-package mergeballs.gui;
+package masterControl.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

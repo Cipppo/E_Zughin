@@ -1,4 +1,4 @@
-package mergeballs.control;
+package masterControl.control;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 import ball.controller.BallRunner;
 import bonus.BonusHandler;
-import mergeballs.gui.VisualTest;
+import masterControl.gui.VisualTest;
 import pangGuy.actions.ActionApplier;
 import pangGuy.character.Hero;
 import player.Player;
@@ -18,9 +18,9 @@ import powerUp.PowerUpHandler;
  * The mentioned sub controllers are:
  * 
  * <ul> 
- *      <li>{@link mergeballs.control.EntityHandler}</li>
- *      <li>{@link mergeballs.control.PickableHandler}</li>
- *      <li>{@link mergeballs.control.PauseHandler}</li>
+ *      <li>{@link masterControl.control.EntityHandler}</li>
+ *      <li>{@link masterControl.control.PickableHandler}</li>
+ *      <li>{@link masterControl.control.PauseHandler}</li>
  * </ul>
  * This class instantiate also the main panel where the hero, arpions, balls, the bird and pickables
  * (bonuses and powerups) are painted (showed).

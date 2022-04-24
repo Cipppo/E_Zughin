@@ -1,4 +1,4 @@
-package mergeballs.control;
+package masterControl.control;
 
 import java.util.List;
 import java.util.Timer;
@@ -141,7 +141,7 @@ public class EntityHandler extends Thread {
     }
 
     /**
-     * Getter for all the controllers under the wrapped type of {@link mergeballs.control.Pausable} 
+     * Getter for all the controllers under the wrapped type of {@link masterControl.control.Pausable} 
      * @return a list of all the pausable controllers
      */
     public synchronized List<Pausable> getPausable() {

@@ -1,14 +1,15 @@
-package mergeballs.stage;
+package masterControl.stage;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import masterControl.control.Controller;
+import masterControl.control.DeathHandler;
+import masterControl.control.HUDHandler;
+import masterControl.gui.VisualTest;
+
 import java.awt.Color;
 
-import mergeballs.control.Controller;
-import mergeballs.control.DeathHandler;
-import mergeballs.control.HUDHandler;
-import mergeballs.gui.VisualTest;
 import pangGuy.character.Hero;
 import pangGuy.utilities.EntityPos2D;
 import player.Player;

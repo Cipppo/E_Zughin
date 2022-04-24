@@ -1,4 +1,4 @@
-package mergeballs.gui;
+package masterControl.gui;
 
 //import java.awt.BorderLayout;
 
@@ -7,8 +7,8 @@ import javax.swing.JPanel;
 
 import ball.controller.BallRunner;
 import bonus.Score;
+import masterControl.control.EntityHandler;
 import pangGuy.actions.ActionFactory;
-import mergeballs.control.EntityHandler;
 import pangGuy.actions.ActionApplier;
 import pangGuy.character.Hero;
 import pangGuy.utilities.Pair;

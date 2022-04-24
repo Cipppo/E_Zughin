@@ -1,4 +1,4 @@
-package mergeballs.utilities;
+package masterControl.gui;
 
 import java.awt.image.BufferedImage;
 

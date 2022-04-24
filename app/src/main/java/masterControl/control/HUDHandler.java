@@ -1,4 +1,4 @@
-package mergeballs.control;
+package masterControl.control;
 
 import pangGuy.character.Hero;
 import player.Player;

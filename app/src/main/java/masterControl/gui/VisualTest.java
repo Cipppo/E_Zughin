@@ -1,4 +1,4 @@
-package mergeballs.gui;
+package masterControl.gui;
 
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.HeroComponent;
@@ -13,7 +13,7 @@ import java.util.List;
 import ball.physics.SpherePos2D;
 import bird.gui.BirdShape;
 import bonus.BonusEntity;
-import mergeballs.control.UpdateableVisual;
+import masterControl.control.UpdateableVisual;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.gui.Shape;
 

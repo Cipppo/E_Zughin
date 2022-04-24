@@ -1,8 +1,8 @@
-package mergeballs.control;
+package masterControl.control;
 
 import java.util.List;
 
-import mergeballs.gui.VisualInterface;
+import masterControl.gui.VisualInterface;
 import pauseMenu.components.ExitButton;
 import pauseMenu.components.PauseButton;
 

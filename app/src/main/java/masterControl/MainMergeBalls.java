@@ -1,7 +1,7 @@
-package mergeballs;
+package masterControl;
 
 
-import mergeballs.gui.GuiTest;
+import masterControl.gui.GuiTest;
 
 /**
  * Test case without the HUD, and the Control Panel

@@ -1,14 +1,14 @@
-package mergeballs.control;
+package masterControl.control;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import bonus.BonusHandler;
+import masterControl.gui.VisualTest;
 import pangGuy.gui.HeroComponent;
 import player.Player;
 import powerUp.PowerUpHandler;
-import mergeballs.gui.VisualTest;
 
 /**
  * This class handles and stores all the active {@link powerUp.Pickable} in game.

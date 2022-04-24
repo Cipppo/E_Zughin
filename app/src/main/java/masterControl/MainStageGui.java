@@ -1,6 +1,6 @@
-package mergeballs;
+package masterControl;
 
-import mergeballs.stage.StageGuiV2;
+import masterControl.stage.StageGuiV2;
 import player.Player;
 
 public class MainStageGui {
