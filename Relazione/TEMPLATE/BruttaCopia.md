@@ -77,7 +77,14 @@ Stessa cosa vale per l'arpione, il quale esegue per salire verso l'alto, esegue 
 **Soluzione** In vista di rendere il personaggio principale il meno possibile dalla interfaccia usata abbiamo deciso di creare un sistema il quale, collegando i tasti al pannello di gioco, questi richiamano semplici azioni che avranno direttamente effetto sulle caratteristiche del personaggio principale, al quale non si delegano azioni che richiedono computazione.
 (e.g. Nell'esecuzione di LeftAction, viene prima estratta la posizione dell'eroe da *Hero* tramite *StepsApplier*, in seguito viene fatto un controllo sulla prossima posizione e, se il controllo passa, si aggiorna il *Component*.
 
+### Gestione del caso in cui il personaggio principale viene colpito da un'entita'
 
+**Problema** Il personaggio principale deve accorgersi di essere stato colpito.
+
+**Soluzione** La riflessione di *Hero* sull'interfaccia grafica, ovvero *HeroComponent*, utilizza un'interfaccia *EntityShape* la quale immagazzina la posizione nell'interfaccia e le dimensioni dell'entita' in gioco.
+Utilizzando un controller appropriato, il cui unico scopo e' controllare le possibili collisioni tra le entita', si mette in relazione la *Shape* del personaggio principale con la *Shape* delle sfere.
+In caso avvenga una collisione, si comunica l'evento ad *Hero* il quale procedera' a diminuire le vite disponibili e si fara' duplicare la sfera che ha colpito il personaggio principale.
+La gestione dell'evento e' equivalente nel caso in cui si collida con l'entita' uccello, l'unica differenza e' che il nemico muore invece che duplicarsi.
 
 
 
