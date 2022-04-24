@@ -9,22 +9,16 @@ import javax.swing.JPanel;
 import menu.utils.MenuLabel;
 import menu.utils.NicknameInput;
 
-/**
- * Class to create the navigation panel
- *
- */
 public class NavigationPanel extends JPanel {
 
 	private static final long serialVersionUID = 4264611596965143016L;
-	private MenuLabel s1 = new MenuLabel("_");									//components of the panel
+	private MenuLabel s1 = new MenuLabel("_");
 	private MenuLabel start = new MenuLabel("START");
 	private MenuLabel hf = new MenuLabel("HALL OF FAME");
 	private MenuLabel help = new MenuLabel("HELP");
 	private NicknameInput nickname = new NicknameInput();
 	
-	/**
-	 * Constructor without parameters
-	 */
+	
 	public NavigationPanel() {
 		super(new GridBagLayout());
 		GridBagConstraints container = new GridBagConstraints();
@@ -65,43 +59,23 @@ public class NavigationPanel extends JPanel {
 		this.setBackground(Color.BLACK);
 	}
 	
-	/**
-	 * get method
-	 * @return StartLabel
-	 */
+	
 	public MenuLabel getStartLabel() {
 		return this.start;
 	}
 	
-	/**
-	 * get method
-	 * @return S1Label
-	 */
 	public MenuLabel getS1Label() {
 		return this.s1;
 	}
 	
-	/**
-	 * get method
-	 * @return HallofFameLabel
-	 */
 	public MenuLabel getHfLabel() {
 		return this.hf;
 	}
 	
-	
-	/**
-	 * get method
-	 * @return HelpLabel
-	 */
 	public MenuLabel getHelpLabel() {
 		return this.help;
 	}
 	
-	/**
-	 * get method
-	 * @return NicknameLabel
-	 */
 	public NicknameInput getNicknameLabel() {
 		return nickname;
 	}

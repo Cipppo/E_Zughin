@@ -17,13 +17,9 @@ import masterControl.stage.StageGuiV2;
 import menu.components.*;
 import player.Player;
 
-/***
- * class to model the gui
- *
- */
 public class MenuModel implements KeyListener{
 
-	private JPanel panel; 												//components of the gui
+	private JPanel panel;
 	private GridBagConstraints container;
 	private final MenuControl menuControl;
 	private final HallofFamePanel HoF = new HallofFamePanel();
@@ -35,12 +31,7 @@ public class MenuModel implements KeyListener{
 	private EnterAction enterAction;
 	private final Gui gui;
 	
-
-	/**
-	 * Constructor with parameter
-	 * @param gui
-	 * @throws FileNotFoundException
-	 */
+	
 	public MenuModel(Gui gui) {
 		menuControl = new MenuControl(this);
 		this.gui = gui;
@@ -82,9 +73,6 @@ public class MenuModel implements KeyListener{
     	panel.addKeyListener(this);
 	}
 	
-	/**
-	 * method for restarting the start menu
-	 */
 	public void restartMenu() {
 		menuControl.setEnterStatus(0);
 		if (menuControl.getNavStatus() == 0) {
@@ -108,9 +96,6 @@ public class MenuModel implements KeyListener{
 		}
 	}
 	
-	/**
-	 * method to swap the selection of the navigation panel
-	 */
 	public void changeBlink() {
 		switch (menuControl.getNavStatus()) {
 		case 0:
@@ -132,9 +117,6 @@ public class MenuModel implements KeyListener{
 		}
 	}
 	
-	/**
-	 * method to execute a enter action
-	 */
 	public void exEntAct() {
 		if (menuControl.getNavStatus() == 0) {
 			navPanel.getStartLabel().setText("INSERT NAME:");
@@ -155,11 +137,6 @@ public class MenuModel implements KeyListener{
 		}
 	}
 	
-	/**
-	 * method to execute a generic action
-	 * @param i button pressed code
-	 * @param c button pressed char
-	 */
 	public void exActList(int i, char c) {
 		if (menuControl.getNavStatus() == 0) {
 			if (i == 10) {
@@ -183,15 +160,13 @@ public class MenuModel implements KeyListener{
 		}
 	}
 	
-	/**
-	 * Method for listening the up action
-	 */
+	
 	public class UpAction extends AbstractAction{
 
 		private static final long serialVersionUID = -5289279790210346730L;
 
 		/**
-		 * send it to the control
+		 * 
 		 */
 
 		@Override
@@ -200,16 +175,12 @@ public class MenuModel implements KeyListener{
 		}
 	}
 	
-	/**
-	 * Method for listening the down action
-	 *
-	 */
 	public class DownAction extends AbstractAction{
 
 		private static final long serialVersionUID = 4937003853622850512L;
 
 		/**
-		 * send it to the control
+		 * 
 		 */
 
 		@Override
@@ -219,16 +190,12 @@ public class MenuModel implements KeyListener{
 		
 	}
 	
-	/**
-	 * Method for listening the enter action
-	 *
-	 */
 	public class EnterAction extends AbstractAction{
 
 		private static final long serialVersionUID = 553356973218250398L;
 
 		/**
-		 * send it to the control
+		 * 
 		 */
 
 		@Override
@@ -253,9 +220,6 @@ public class MenuModel implements KeyListener{
 		
 	}
 
-	/**
-	 * Method for listening a generic button push
-	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		menuControl.keyAct(e.getKeyCode(), e.getKeyChar());

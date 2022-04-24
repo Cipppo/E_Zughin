@@ -15,9 +15,8 @@ public class HallofFamePanel extends JPanel{
 	
 	private static final long serialVersionUID = 4822473142531885639L;
 
-	/**
+	/*
 	 * Constructor without parameters
-	 * @throws FileNotFoundException
 	 */
 	public HallofFamePanel() {
 		super(new GridBagLayout());

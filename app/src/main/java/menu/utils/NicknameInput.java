@@ -2,37 +2,34 @@ package menu.utils;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
-/**
- * class to crate and manage the nickname label
- *
- */
 public class NicknameInput extends JPanel{
 
 	private static final long serialVersionUID = -3550165270008975447L;
 	private String nickname;
 	private int check;
+	private int seconds = 0;
+	private Timer timer;
 	private MenuLabel nick;
 	
-	/**
-	 * constructor without parameters
-	 */
 	public NicknameInput() {
 		nickname = "";
 		check = -1;
-		nick = new MenuLabel("", 4, Color.GREEN);
+		nick = new MenuLabel("", 4);
 		nick.setText(nickname);
 		this.setLayout(new BorderLayout());
 		this.add(nick, BorderLayout.CENTER);
 		this.setBackground(Color.black);
+		simpleTimer();
+		timer.start();
 		
 	}
 	
-	/**
-	 * initialize the text the first enter input
-	 */
 	public void enterInput() {
 		if (check == -1) {
 			nickname = "  ";
@@ -41,12 +38,7 @@ public class NicknameInput extends JPanel{
 		check++;
 		
 	}
-	
-	
-	/**
-	 * add a char to the label
-	 * @param c char
-	 */
+		
 	public void addChar(char c) {
 		String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		String car = "" + c;
@@ -58,9 +50,6 @@ public class NicknameInput extends JPanel{
 		}
 	}
 	
-	/**
-	 * delete a char from the label
-	 */
 	public void deleteChar() {
 		if (nickname.length() > 2) {
 			//nickname = nickname.substring(0, nickname.length()-2) + "-";
@@ -69,12 +58,30 @@ public class NicknameInput extends JPanel{
 		}
 	}
 	
-	/**
-	 * get the label content
-	 * @return nickname
-	 */
 	public String getNickname() {
 		return this.nickname.substring(2);
+	}
+	
+	public void simpleTimer() {
+		timer = new Timer(500, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                seconds++;
+                if (seconds % 2 == 0) {
+                	nick.setForeground(Color.GREEN);
+    			}else {
+    				nick.setForeground(Color.GREEN);
+    			}
+                
+                
+                if(seconds >= 1000) {
+                	//seconds = 0;
+                	timer.stop();
+                }
+            }
+
+        });
 	}
 }
 	

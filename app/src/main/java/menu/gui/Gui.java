@@ -5,20 +5,15 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import stage.utils.CenterOnDefaultScreen;
 
-/**
- * Class to start the initial gui
- */
 public class Gui extends JFrame {
 	
-	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 5959162590670099057L;
 	private final int width = CenterOnDefaultScreen.center().width;
 	private final int heigth = CenterOnDefaultScreen.center().height;
 
-	/**
-	 * Constructor without parameters
-	 * @throws FileNotFoundException
-	 */
 	public Gui() {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
