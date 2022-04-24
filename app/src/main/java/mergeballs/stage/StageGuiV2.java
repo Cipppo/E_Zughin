@@ -18,7 +18,11 @@ import stage.utils.HUDFieldSetter;
 import stage.utils.PauseHUDSetter;
 
 public class StageGuiV2 extends JFrame {
-    private final int width = CenterOnDefaultScreen.center().width*70/100;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final int width = CenterOnDefaultScreen.center().width*70/100;
 	private final int heigth = CenterOnDefaultScreen.center().height*60/100;
     private final int panelHeight = heigth - 200;
     private final int STARTX = width / 2;
