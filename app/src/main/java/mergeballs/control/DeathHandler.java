@@ -32,7 +32,7 @@ public class DeathHandler extends Thread {
                     this.frame.terminator();
                     var player = this.frame.getPlayer();
                     this.frame.dispose();
-                    var endgameFrame = new EndGame(player, false, 0);
+                    new EndGame(player, false, 0);
                     new EndGame(player, false, 1); //problema col fatto che endgameframe viene bloccata dal deathHandler
                     if (this.askReplay() == 1) {
                         this.stop = true;
@@ -50,7 +50,7 @@ public class DeathHandler extends Thread {
                         this.frame.terminator();
                         var player = this.frame.getPlayer();
                         this.frame.dispose();
-                        var endGameFrame = new EndGame(player, true, 0);
+                        new EndGame(player, true, 0);
                         new EndGame(player, true, 1);
                         Thread.sleep(4000);
                         //endGameFrame.dispose();
