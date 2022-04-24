@@ -1,19 +1,26 @@
 package ball.utils;
 
-public class Pair<T> {
-    private T x;
-    private T y;
+import mergeballs.utilities.FullPair;
 
-    public Pair(T x, T y) {
+/**
+ * Utility Pair for storing and modify two values of different type.
+ */
+public class SettablePair<T, E> implements FullPair<T, E> {
+    private T x;
+    private E y;
+
+    public SettablePair(T x, E y) {
         this.x = x;
         this.y = y;
     }
 
+    @Override
     public T getX() {
         return this.x;
     }
 
-    public T getY() {
+    @Override
+    public E getY() {
         return this.y;
     }
 
@@ -21,7 +28,7 @@ public class Pair<T> {
         this.x = value;
     }
 
-    public void setY(T value) {
+    public void setY(E value) {
         this.y = value;
     }
 

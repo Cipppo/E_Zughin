@@ -18,12 +18,12 @@ public class Gui extends JFrame {
 	public Gui() throws FileNotFoundException {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		this.setSize(width*70/100, heigth*70/100);
+		this.setSize(width*70/100, heigth*60/100);
 		this.setLayout(new BorderLayout());
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		
-		new MenuControl(this);
+		new MenuModel(this);
 		
 		this.setVisible(true);
 	}

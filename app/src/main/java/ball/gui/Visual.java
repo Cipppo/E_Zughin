@@ -14,6 +14,9 @@ import ball.physics.SpherePos2D;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.gui.Shape;
 
+/**
+ * Local testing gui, for visualising balls.
+ */
 public class Visual extends JFrame implements Updateable {
 	private static final long serialVersionUID = 1L;
 
