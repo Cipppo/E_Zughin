@@ -83,10 +83,7 @@ public class PlayersPanel extends JPanel{
 			container.ipadx = 120;
 			this.add(new MenuLabel(p.get(i).getDate(), 3),  container);
 		}
-<<<<<<< HEAD
 		
 		this.setBackground(Color.black);
-=======
->>>>>>> 0dcd86f (last javadoc)
 	}
 }

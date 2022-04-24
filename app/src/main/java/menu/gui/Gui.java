@@ -15,15 +15,11 @@ public class Gui extends JFrame {
 	private final int width = CenterOnDefaultScreen.center().width;
 	private final int heigth = CenterOnDefaultScreen.center().height;
 
-<<<<<<< HEAD
-	public Gui() {
-=======
 	/**
 	 * Constructor without parameters
 	 * @throws FileNotFoundException
 	 */
-	public Gui() throws FileNotFoundException {
->>>>>>> 0dcd86f (last javadoc)
+	public Gui() {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.setSize(width*70/100, heigth*60/100);

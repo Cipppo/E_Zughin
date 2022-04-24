@@ -35,17 +35,13 @@ public class MenuModel implements KeyListener{
 	private EnterAction enterAction;
 	private final Gui gui;
 	
-<<<<<<< HEAD
-	
-	public MenuModel(Gui gui) {
-=======
+
 	/**
 	 * Constructor with parameter
 	 * @param gui
 	 * @throws FileNotFoundException
 	 */
-	public MenuModel(Gui gui) throws FileNotFoundException{
->>>>>>> 0dcd86f (last javadoc)
+	public MenuModel(Gui gui) {
 		menuControl = new MenuControl(this);
 		this.gui = gui;
 		panel = new JPanel(new GridBagLayout());
