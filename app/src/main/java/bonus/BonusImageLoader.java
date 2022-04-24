@@ -6,12 +6,17 @@ import java.util.List;
 
 import stage.utils.MainImagesLoader;
 
+/**
+ * Image Loader for the bonuses.
+ */
 public class BonusImageLoader {
     
     private List<BufferedImage> entries;
     private MainImagesLoader loader;
 
-
+    /**
+     * Creates a new ImageLoader
+     */
     public BonusImageLoader(){
         this.loader = new MainImagesLoader();
         this.entries = new ArrayList<>(List.of(
@@ -28,9 +33,12 @@ public class BonusImageLoader {
         ));
     }
 
-
+    /**
+     * Given a score, it returns the associated sprite
+     * @param bonus the bonus which asks the sprite.
+     * @return  the Sprite of the bonus.
+     */
     public BufferedImage getSprite(BonusEntity bonus){
-        //System.out.println("Bonus Score: " + bonus.getPoints() + "/ 100: " + bonus.getPoints() / 100);
         return this.entries.get((bonus.getPoints() / 100) - 1);
     }
 
