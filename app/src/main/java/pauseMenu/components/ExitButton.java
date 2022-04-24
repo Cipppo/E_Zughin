@@ -7,8 +7,8 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import mergeballs.control.PauseHandler;
-import mergeballs.gui.VisualInterface;
+import masterControl.control.PauseHandler;
+import masterControl.gui.VisualInterface;
 
 /**
  * While the PauseMenu is triggered, if Enter key is pressed, the game will end.

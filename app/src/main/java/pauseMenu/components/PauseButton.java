@@ -8,9 +8,9 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import mergeballs.control.Pausable;
-import mergeballs.control.PauseHandler;
-import mergeballs.gui.VisualInterface;
+import masterControl.control.Pausable;
+import masterControl.control.PauseHandler;
+import masterControl.gui.VisualInterface;
 
 /**
  * Pressing the Esc key, if the pause param is set to false, the PausePanel will be
