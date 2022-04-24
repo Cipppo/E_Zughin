@@ -20,7 +20,7 @@ public class BonusHandler extends Thread implements Pausable {
 
     /**
      * Creates a new BonusHandler 
-     * @param bounds the window <XMAX, YMAX>
+     * @param bounds the window XMAX, YMAX
      */
     public BonusHandler(Pair<Integer, Integer> bounds) {
         this.gen = new BonusGenerator(bounds);
@@ -35,7 +35,6 @@ public class BonusHandler extends Thread implements Pausable {
             try {
                 if (!this.pause) {
                     this.next = Optional.of(gen.generateNextBonus());
-                    //System.out.println("Fruit Spawned" + " X: " + this.next.get().getShape().toString());
                     Thread.sleep(SPAWN_TIME * 1000);
                 } else {
                     Thread.sleep(30);
@@ -48,7 +47,7 @@ public class BonusHandler extends Thread implements Pausable {
 
     /**
      * Returns the actual bonus, if available
-     * @return Optional<BonusEntity> if available, Optional.empty otherwise.
+     * @return Optional.of(BonusEntity) if available, Optional.empty otherwise.
      */
     public synchronized Optional<BonusEntity> getBonus(){
         if(!this.next.isEmpty()){
