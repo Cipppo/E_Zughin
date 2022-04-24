@@ -13,9 +13,10 @@ import pangGuy.character.Hero;
 
 public class DeathHandler extends Thread {
     
-    private Hero hero;
+    private final Hero hero;
     private boolean stop;
     private StageGuiV2 frame; //temp, maybe wrap into a type
+    private EndGame endFrame;
 
     public DeathHandler(StageGuiV2 frame, Hero hero){
         this.stop = false;
@@ -33,17 +34,16 @@ public class DeathHandler extends Thread {
                     var player = this.frame.getPlayer();
                     this.frame.dispose();
                     new EndGame(player, false, 0);
-                    new EndGame(player, false, 1); //problema col fatto che endgameframe viene bloccata dal deathHandler
+                    this.endFrame = new EndGame(player, false, 1); //problema col fatto che endgameframe viene bloccata dal deathHandler
                     if (this.askReplay() == 1) {
-                        this.stop = true;
-                        //endgameFrame.dispose();
                         System.exit(0);
                     } else {
                         player.getScore().resetScore();
                         this.frame.dispose();
-                        //endgameFrame.dispose();
+                        this.endFrame.dispose();
                         this.frame = new StageGuiV2(player);
                         this.hero.reset();
+                        this.stop = true;
                     }
                 }else{
                     if(this.frame.getController().getBallRunner().getBalls().size() == 0){
@@ -51,18 +51,18 @@ public class DeathHandler extends Thread {
                         var player = this.frame.getPlayer();
                         this.frame.dispose();
                         new EndGame(player, true, 0);
-                        new EndGame(player, true, 1);
+                        this.endFrame = new EndGame(player, true, 1);
                         Thread.sleep(4000);
-                        //endGameFrame.dispose();
+                        //this.endFrame.dispose();
                         this.frame = new StageGuiV2(player);
                         this.hero.reset();
+                        this.stop = true;
                     }
                 }
             } catch (InterruptedException e) {
                 System.out.println("Thread.sleep() Exception: " + e.getMessage());
             } catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("File to save not found: " + e.getMessage());
 			}
         }
     }
