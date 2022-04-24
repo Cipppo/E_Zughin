@@ -32,9 +32,8 @@ public class DeathHandler extends Thread {
                 if (this.hero.getLifes() < 0) {
                     this.frame.terminator();
                     var player = this.frame.getPlayer();
-                    this.frame.dispose();
                     new EndGame(player, false, 0);
-                    this.endFrame = new EndGame(player, false, 1); //problema col fatto che endgameframe viene bloccata dal deathHandler
+                    this.endFrame = new EndGame(player, false, 1);
                     if (this.askReplay() == 1) {
                         System.exit(0);
                     } else {
@@ -45,15 +44,15 @@ public class DeathHandler extends Thread {
                         this.hero.reset();
                         this.stop = true;
                     }
-                }else{
-                    if(this.frame.getController().getBallRunner().getBalls().size() == 0){
+                } else {
+                    if (this.frame.getController().getBallRunner().getBalls().size() == 0) {
                         this.frame.terminator();
                         var player = this.frame.getPlayer();
                         this.frame.dispose();
                         new EndGame(player, true, 0);
                         this.endFrame = new EndGame(player, true, 1);
                         Thread.sleep(4000);
-                        //this.endFrame.dispose();
+                        this.endFrame.dispose();
                         this.frame = new StageGuiV2(player);
                         this.hero.reset();
                         this.stop = true;
