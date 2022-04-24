@@ -69,7 +69,7 @@ public class DeathHandler extends Thread {
 
     private int askReplay() {
         String options[] = {"yes", "no"};
-        return JOptionPane.showOptionDialog(null, "Do you want to player again?",
+        return JOptionPane.showOptionDialog(null, "Do you want to play again?",
                 "GAME OVER",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
     }
