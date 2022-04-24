@@ -1,8 +1,5 @@
 package masterControl.control;
 
-
-import java.io.FileNotFoundException;
-
 import javax.swing.JOptionPane;
 
 
@@ -59,9 +56,7 @@ public class DeathHandler extends Thread {
                 }
             } catch (InterruptedException e) {
                 System.out.println("Thread.sleep() Exception: " + e.getMessage());
-            } catch (FileNotFoundException e) {
-				System.out.println("File to save not found: " + e.getMessage());
-			}
+            }
         }
     }
 
