@@ -14,8 +14,8 @@ import javax.swing.KeyStroke;
 
 import hallOfFameMenu.components.HallofFamePanel;
 import helpMenu.HelpPanel;
+import masterControl.stage.StageGuiV2;
 import menu.components.*;
-import mergeballs.stage.StageGuiV2;
 import player.Player;
 
 public class MenuModel implements KeyListener{
