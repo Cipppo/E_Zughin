@@ -37,3 +37,4 @@ bin/
 .settings/
 app/.classpath
 .DS_Store
+bestPlayersSaves.txt
