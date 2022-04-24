@@ -10,8 +10,7 @@ import java.util.HashMap;
 import java.awt.image.BufferedImage;
 
 /**
- * this class loads the image of given ball (maybe try to disassemble for multiuse),
- * and chaches the result of the loading;
+ * This class loads ball images from a specific location (resources/sprite/spheres/).
  */
 public class BallImageLoader {
 
