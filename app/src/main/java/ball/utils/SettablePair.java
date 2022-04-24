@@ -5,11 +5,11 @@ import mergeballs.utilities.FullPair;
 /**
  * Utility Pair for storing and modify two values of different type.
  */
-public class Pair<T, E> implements FullPair<T, E> {
+public class SettablePair<T, E> implements FullPair<T, E> {
     private T x;
     private E y;
 
-    public Pair(T x, E y) {
+    public SettablePair(T x, E y) {
         this.x = x;
         this.y = y;
     }
