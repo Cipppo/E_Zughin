@@ -17,10 +17,10 @@ public class PowerupImageLoader {
     public PowerupImageLoader(){
         this.loader = new MainImagesLoader();
         this.entries = new ArrayList<>(List.of(
-            this.loader.load("Bomb.png"), 
-            this.loader.load("TimeFreeze.png"), 
-            this.loader.load("DoubleArpionPowerup.png"), 
-            this.loader.load("StickyArpionPowerup.png")
+            this.loader.load("sprite/Powerups/Bomb.png"), 
+            this.loader.load("sprite/Powerups/TimeFreeze.png"), 
+            this.loader.load("sprite/Powerups/DoubleArpionPowerup.png"), 
+            this.loader.load("sprite/Powerups/StickyArpionPowerup.png")
         ));
     }
 

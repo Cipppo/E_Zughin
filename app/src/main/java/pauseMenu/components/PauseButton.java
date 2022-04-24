@@ -8,16 +8,13 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import mergeballs.control.Pausable;
-import mergeballs.control.PauseHandler;
-import mergeballs.gui.VisualInterface;
+import masterControl.control.Pausable;
+import masterControl.control.PauseHandler;
+import masterControl.gui.VisualInterface;
 
 /**
  * Pressing the Esc key, if the pause param is set to false, the PausePanel will be
  * set to visible and the objects in the main panel will be paused and viceversa.
- * 
- * @param pause
- *          variable to check if the games is in pause status or not.
  */
 public class PauseButton {
     
@@ -26,10 +23,10 @@ public class PauseButton {
      * 
      * @param visual
      *          panel that listen for the Esc input.
-     * @param pausePanel
-     *          the pause panel.
-     * @param bird
-     *          the bird object.
+     * @param pausables
+     *          List of all pausables controllers to be paused.
+     * @param pauseHandler
+     *          the trigger for the pause.
      */
     public PauseButton(VisualInterface visual, List<Pausable> pausables, PauseHandler pauseHandler) {
 

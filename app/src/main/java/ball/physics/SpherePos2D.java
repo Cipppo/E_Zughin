@@ -1,4 +1,7 @@
 package ball.physics;
+
+import utilities.Pos2D;
+
 /**
  * Modeling a sphere that occupies a place in 2 dimensional space
  * with the specified {@link ball.physics.Dimensions}, and a 

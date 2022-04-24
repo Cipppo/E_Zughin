@@ -10,7 +10,7 @@ import stage.utils.MainFontLoader;
 public class PlayerTwoLabel extends JLabel{
     
     /**
-	 * 
+	 * Player 2 will arrive soon.
 	 */
 	private static final long serialVersionUID = 7671139190971480369L;
 	MainFontLoader fontLoader = new MainFontLoader();

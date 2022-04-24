@@ -51,3 +51,4 @@ app/.classpath
 *fdb_latexmk
 *.fls 
 
+bestPlayersSaves.txt

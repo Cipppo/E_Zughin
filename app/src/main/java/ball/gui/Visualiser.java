@@ -8,20 +8,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 /**
- * This makes the BallAgent communicate with the Visual
- * When implementing GUI with collegues, remove CONTROL PANEL
- * Its purpose it's only for Testing reasons.
+ * This makes the BallAgent communicate with the Visual.
+ * This was the skeleton for {@linkplain masterControl.control.EntityHandler} and
+ * for {@link ball.controller.BallRunner}
+ * and now its purpose is only for Testing reasons.
  */
 public class Visualiser extends Thread {
     private final Visual frame;
-    /**
-     * Very useful for handling java.util.ConcurrentModificationException
-     */
+    
+    //Very useful for handling java.util.ConcurrentModificationException
     private final CopyOnWriteArrayList<BallAgent> balls;
 
     private boolean stop;
     private final BallBoundChecker checker;
-    
     
     public Visualiser(int ballsToGenerate) {
         this.frame = new Visual();
@@ -65,8 +64,8 @@ public class Visualiser extends Thread {
     public synchronized List<BallAgent> getBalls() {
     	return this.balls;
     }
-    //Maybe try to create an ad Hoc exception
-    //Need to clean this mess
+
+
     public synchronized void duplicatation(BallAgent ball) {
         if (!this.balls.isEmpty()) {
             this.stop = true;

@@ -11,17 +11,16 @@ import java.awt.Toolkit;
 
 /**
  * Utility that choose the bird's moovements considering its position.
- * @param SIZEX
- *          width of the stage
- * @param SIZEY
- *          height of the stage
- * @param WIDTH
- *          width of the bird
- * @param HEIGHT
- *          height of the bird
- * @param HUD_HEIGHT
- *          height of the HUD, defining the ground level
+ * The Parameters are:
+ * <ul> 
+ *      <li>SIZEX: width of the stage</li>
+ *      <li>WIDTH: width of the bird</li>
+ *      <li>HEIGHT: height of the bird</li>
+ *      <li>HUD_HEIGHT: height of the HUD, defining the ground level</li>
+ * </ul>
  */
+
+ 
 public class BirdMovementUtils {
 
     private static final int SPEED = 5;
@@ -31,8 +30,6 @@ public class BirdMovementUtils {
 
     private static final int WIDTH = CenterOnDefaultScreen.center().width*3/100;
     private static final int HEIGHT = CenterOnDefaultScreen.center().width*3/100;;
-
-    // private static final int HUD_HEIGHT = CenterOnDefaultScreen.center().height*13/100;
 
     private final BirdActor bird;
     private final BirdMover mover;
@@ -50,8 +47,6 @@ public class BirdMovementUtils {
      * 
      * @param bird
      *          the bird to move.
-     * @param panel
-     *          the panel to repaint.
      * @param mover
      *          the mover utility.
      */                                
@@ -87,7 +82,7 @@ public class BirdMovementUtils {
      *      - Down movement: if bird hasn't touched the ground yet.
      *      - Up movement: if bird has already touched ground.
      */
-    public final void moveVertically() {
+    private final void moveVertically() {
         if (bird.getShape().getPos().getY() + HEIGHT <= bc.getYPair().getY() && !moveUp) {
             this.doMovement(BirdDirections.DOWN);
         } else {
@@ -121,7 +116,6 @@ public class BirdMovementUtils {
                         break;
                 }
                 Toolkit.getDefaultToolkit().sync();
-                // System.out.println(bird.getShape().getPos());
             }
             Thread.sleep(20);
         } catch (InterruptedException e) {
@@ -136,6 +130,9 @@ public class BirdMovementUtils {
         this.pause = !this.pause;
     }
 
+    /**
+     * Method to set the bird's death.
+     */
     public void setDead() {
         this.birdDead = true;
     }

@@ -1,8 +1,8 @@
 package stage.utils;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
@@ -21,18 +21,14 @@ public class MainImagesLoader {
 	 * 			the image.
 	 */
 	public BufferedImage load(String resourceName) {
+		final InputStream imgUrl = ClassLoader.getSystemResourceAsStream(resourceName);
 		BufferedImage image = null;
-		SecondaryImagesLoader imagesLoader = new SecondaryImagesLoader();
 		
-		
-		try (var imageIn = MainImagesLoader.class.getResourceAsStream(File.separator + resourceName)) {
-			image = ImageIO.read(new File(imageIn.toString()));
-			return image;
-		} catch (IOException e1) {
-			System.out.println("IOException: Image not found in bin directory, taking it from resources");
-			return imagesLoader.load(resourceName);
-		} catch (NullPointerException e2) {
-			return imagesLoader.load(resourceName);
+		try {
+			image = ImageIO.read(imgUrl);
+		} catch (IOException e) {
+			System.out.println("Could not load image");
 		}
+		return image;
 	}
 }

@@ -1,7 +1,7 @@
 package pangGuy.modularGun;
 
 
-import mergeballs.control.Pausable;
+import masterControl.control.Pausable;
 import pangGuy.utilities.Directions;
 
 
@@ -19,9 +19,8 @@ public interface Bullet extends Pausable{
 
     /**
      * Locks the bullet to an XPos.
-     * @param xPos the position where the Bullet has to be lock.
      */
-    void lock();
+    void lock(); 
 
     /**
      * Unlocks the Bullet.

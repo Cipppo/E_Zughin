@@ -1,12 +1,12 @@
 package player;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
-
-import bonus.Score;
+import menu.utils.PlayerFileReader;
 
 /**
  * Container class to store all the objects Player
@@ -17,6 +17,7 @@ public class Players {
 	
 	private Player[] players;		//array of objects
 	int n;
+	private final String path = System.getProperty("user.dir") + File.separator + "bestPlayersSaves.txt";
 	
 	/**
 	 * Constructor without parameters(Default)
@@ -54,7 +55,7 @@ public class Players {
 			}
 		}
 		this.players[n++] = p;
-		
+		this.Sort();
 	}
 	
 	/**
@@ -87,40 +88,45 @@ public class Players {
 	}
 	
 	/**
-	 * Reads data from last saved data textfile to object collection
-	 */
-	public void Read() {
-		InputStream ciao = Players.class.getResourceAsStream("/bestPlayersSaves.txt");
-		Scanner scan = new Scanner(ciao);
-		while(scan.hasNext()) {
-			String line = scan.nextLine();
-			String[] parts = line.split(";");
-			String nickname = parts[0].trim();
-			Score score = new Score();
-			score.raiseScore(Integer.parseInt(parts[1].trim()));
-			String date = parts[2].trim();
-			
-			this.add(new Player(nickname, score, date));
+     * Reads data from last saved data textfile to object collection.
+	 * If the file does not exist in the same directory of the jar file, one will be created.
+     */
+     public void Read() {
+		File file = new File(path);
+		Scanner scan;
+		if (file.getAbsoluteFile().exists()) {
+			try {
+				scan = new Scanner(file);
+				PlayerFileReader.read(scan, this);
+			} catch (FileNotFoundException e) {
+				System.out.println("Can't load file");
+			}
+		} else {
+			try {
+				file.getParentFile().mkdirs();
+				file.createNewFile();
+			} catch (IOException e) {
+				System.out.println("Can't create file");
+			}
 		}
-		scan.close();
-		
-		
-	}
-	
-	/**
-	 * Saves the object collection in a data textfile
-	 * @throws FileNotFoundException
-	 */
-	public void Save() throws FileNotFoundException {
-		PrintWriter writer =  new PrintWriter(new File(Players.class.getResource("/bestPlayersSaves.txt").getFile()));
-		for (int i = 0; i < this.n; i++) {
-			String line = this.players[i].getNickname() + "; " + Integer.toString(this.players[i].getScore().getScore()) + "; " +
-					this.players[i].getDate() + ";";
-			writer.println(line);
-		}
-		writer.close();
-		
-	}
-	
-	
+    }
+    
+    /**
+     * Saves the object collection in a data textfile that has to be in the same directory of the jar file.
+     */
+     public void Save() {
+		try {
+			FileWriter writer2 = new FileWriter(path);
+			String txtFile = "";
+			for (int i = 0; i < n; i++) {
+				String line = players[i].getNickname() + "; " + Integer.toString(players[i].getScore().getScore()) + "; " +
+					players[i].getDate() + ";";
+				txtFile += line + "\n";
+			}
+			writer2.write(txtFile);
+			writer2.close();
+		} catch (IOException e) {
+			System.out.println("Can't write on file");
+		}     
+	}	
 }

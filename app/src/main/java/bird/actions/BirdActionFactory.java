@@ -4,54 +4,68 @@ import bird.gui.BirdMover;
 import bird.utilities.BirdDirections;
 import pangGuy.utilities.EntityPos2D;
 
+/**
+ * A factory which models the main character Actions.
+ */
 public class BirdActionFactory {
 
     private static final int SPEED = 5;
 
-
-    private class rightAction {
+    /**
+     * The action which permits the bird to move Right.
+     */
+    private class RightAction {
         
-        public rightAction(BirdMover m){
+        public RightAction(BirdMover m){
             m.move(new EntityPos2D(m.getCurrentPos().getX() + SPEED, m.getCurrentPos().getY()), BirdDirections.RIGHT);            
         }
 
     }
 
-    private class leftAction{
+    /**
+     * The action which permits the bird to move Left.
+     */
+    private class LeftAction{
 
-        public leftAction(BirdMover m) {
+        public LeftAction(BirdMover m) {
             m.move(new EntityPos2D(m.getCurrentPos().getX() - SPEED, m.getCurrentPos().getY()), BirdDirections.LEFT);            
         }
     }
 
-    private class downAction{
+    /**
+     * The action which permits the bird to move Down.
+     */
+    private class DownAction{
 
-        public downAction(BirdMover m) {
+        public DownAction(BirdMover m) {
             m.move(new EntityPos2D(m.getCurrentPos().getX(), m.getCurrentPos().getY() + SPEED), BirdDirections.DOWN);
         }
     }
 
-    private class upAction{
+    /**
+     * The action which permits the bird to move Up.
+     */
+    private class UpAction{
 
-        public upAction(BirdMover m) {
+        public UpAction(BirdMover m) {
             m.move(new EntityPos2D(m.getCurrentPos().getX(), m.getCurrentPos().getY() - SPEED), BirdDirections.UP);
         }
     }
 
-    public rightAction getRightAction(BirdMover a){
-        return new rightAction(a);
+    public RightAction getRightAction(BirdMover m){
+        return new RightAction(m);
     }
 
-    public leftAction getLeftAction(BirdMover a){
-        return new leftAction(a);
+    public LeftAction getLeftAction(BirdMover m){
+        return new LeftAction(m);
     }
 
-    public downAction getDownAction(BirdMover a) {
-        return new downAction(a);
+    public DownAction getDownAction(BirdMover m) {
+        return new DownAction(m);
     }
 
-    public upAction getUpAction(BirdMover a) {
-        return new upAction(a);
+    public UpAction getUpAction(BirdMover m) {
+        return new UpAction(m);
     }
     
 }

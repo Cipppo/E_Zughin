@@ -7,7 +7,7 @@ import ball.physics.*;
  *      - A trajectory
  *      - A two dimensional position
  */
-public class Ball implements Entity {
+public class Ball {
     private Trajectory trajectory;
     private SpherePos2D actualPosition;
     private SpherePos2D initialPosition;
@@ -15,27 +15,31 @@ public class Ball implements Entity {
     private Time time = new Time(0.0, 0.0);
     private final double gravity;
     private final int size;
+    private final double tickFactor;
     
     /**
      * Constructor used and called only from the factory in this same package.
      * @param trajectory
      * @param position
      * @param gravity
+     * @param tickFactor
+     *          fraction of time of refresh of the ball. Small ticks lead to slower balls.
      */
-    protected Ball(Trajectory trajectory, SpherePos2D position, double gravity) {
+    protected Ball(Trajectory trajectory, SpherePos2D position, double gravity, double tickFactor) {
     	this.trajectory = trajectory;
     	this.actualPosition = position;
     	this.initialPosition = new SpherePos2D(position.getX(), position.getY(), position.getDimension(), position.getDiameter());
     	this.velocity = this.trajectory.getXYVelocity();
     	this.gravity = gravity;
         this.size = this.getPosition().getDiameter();
+        this.tickFactor = tickFactor;
     }
 
     /**
      * Updates the position of the ball, basing the calculations on Projectile Motion'sequations.
      */
     public synchronized void updatePos() {
-        time.inc(0.09);
+        time.inc(tickFactor);
         this.actualPosition.setX(this.initialPosition.getX() +  0.001 * this.velocity.getX() * this.time.getX());
         this.actualPosition.setY(this.initialPosition.getY() - 0.001 * (this.velocity.getY() * this.time.getY() 
                                         - (0.5*gravity*Math.pow(this.time.getY(), 2))));
@@ -43,19 +47,13 @@ public class Ball implements Entity {
 
     /**
      * Whenever the ball hits a wall, this method will be called.
-     * It's necessary to pass as argument a postion (double beetween -1 and 1)
-     * because floating point precision cause bad bugs when displaying 
-     * the ball bouncing in wall. In {@link ball.controller.BallBoundChecker#checkConstraints(BallAgent)}
-     * there are small variations in X1 and Y1 axis and thanks to those values, when hitting the wall
-     * the transition in the other direction is smoother.
-     * 
-     * NOTE: In MacOS Y1 limit is below the frame of the gui, and for avoiding seeing the ball
-     * disappear under the Y1 boundary, i've added a bigger offset than X1.
+     * Sets new position and changes the horizontal/vertical velocity
+     * depending on which side of the stage the ball hit.
      * 
      * @param position
      *          the position that the ball need to occupy in this moment.
      * @param bound
-     *          Y or X boundary, needed by this method to determinate wich velocity 
+     *          Y or X boundary (stage walls), needed by this method to determinate wich velocity 
      *              (Horizontal or Vertical) to invert.
      */
     public synchronized void applyConstraints(double position, Boundary bound) {
@@ -69,12 +67,11 @@ public class Ball implements Entity {
             this.velocity.vx = -this.velocity.vx;
         }
     }
-    @Override
+    
     public synchronized SpherePos2D getPosition() {
         return this.actualPosition;
     }
 
-    @Override
     public int getSize() {
         return this.size;
     }

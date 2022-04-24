@@ -2,8 +2,8 @@ package bird.gui;
 
 import java.awt.Rectangle;
 import bird.utilities.BirdDirections;
-import mergeballs.utilities.EntityShape;
 import pangGuy.utilities.Pair;
+import utilities.EntityShape;
 import pangGuy.utilities.EntityPos2D;
 
 /**

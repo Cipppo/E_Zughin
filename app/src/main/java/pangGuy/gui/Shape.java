@@ -2,10 +2,10 @@ package pangGuy.gui;
 
 import java.awt.Rectangle;
 
-import mergeballs.utilities.EntityShape;
 import pangGuy.utilities.EntityPos2D;
-import mergeballs.utilities.FullPair;
 import pangGuy.utilities.Pair;
+import utilities.EntityShape;
+import utilities.FullPair;
 
 /**
  * It stores the position in a 2D space of a 2D entity.

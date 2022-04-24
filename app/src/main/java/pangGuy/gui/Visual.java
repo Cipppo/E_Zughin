@@ -3,8 +3,9 @@ package pangGuy.gui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import mergeballs.gui.VisualInterface;
-import mergeballs.gui.VisualPanelTest;
+
+import masterControl.gui.VisualInterface;
+import masterControl.gui.VisualPanelTest;
 import pangGuy.utilities.Pair;
 import pangGuy.modularGun.Status;
 import pangGuy.utilities.Directions;

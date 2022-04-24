@@ -2,7 +2,7 @@ package bonus;
 
 import java.util.Optional;
 
-import mergeballs.control.Pausable;
+import masterControl.control.Pausable;
 import pangGuy.gui.HeroComponent;
 import pangGuy.utilities.Pair;
 

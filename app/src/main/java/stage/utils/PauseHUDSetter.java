@@ -6,11 +6,14 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import mergeballs.control.PauseHandler;
+import masterControl.control.PauseHandler;
 import stage.components.HUDPanel;
 import stage.components.StageNameLabel;
 
-public class PauseHUDSetter extends Thread {
+/**
+ *  When the game is in pause status, this class brings up a menu pause in the HUD.
+ */
+public class PauseHUDSetter extends Thread implements HUDFieldSetter{
     
     private final HUDPanel hud;
     private final PauseHandler pauseHandler;
@@ -20,12 +23,17 @@ public class PauseHUDSetter extends Thread {
 	private final JLabel exitLabel = new JLabel("ENTER: EXIT", SwingConstants.CENTER);
     private final JLabel StageNameLabel = new StageNameLabel();
     private Boolean stageNameVisible = true;
+    private Boolean terminated = false;
 
     public PauseHUDSetter(HUDPanel hud, PauseHandler pauseHandler) {
         this.hud = hud;
         this.pauseHandler = pauseHandler;
     }
     
+    /**
+     * When the game is in pause status, this thread brings up a menu pause in the HUD.
+     * Otherwise when not in pause status, the HUD will go back to the initial status.
+     */
     @Override
     public void run() {
         exitLabel.setFont(gameFont);
@@ -35,7 +43,7 @@ public class PauseHUDSetter extends Thread {
 		resumeLabel.setForeground(Color.GREEN);
 		exitLabel.setForeground(Color.GREEN);
 
-        while (true) {
+        while (!this.terminated) {
             try {
                 if (this.pauseHandler.getPause() && this.stageNameVisible) {
                     this.hud.getHUDPanel()[0][3].removeAll();
@@ -58,5 +66,12 @@ public class PauseHUDSetter extends Thread {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void terminate() {
+        this.terminated = true;
     }
 }

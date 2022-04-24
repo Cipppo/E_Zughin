@@ -1,6 +1,6 @@
 package pangGuy.utilities;
 
-import ball.physics.Pos2D;
+import utilities.Pos2D;
 
 public class EntityPos2D extends Pos2D<Integer>{
 

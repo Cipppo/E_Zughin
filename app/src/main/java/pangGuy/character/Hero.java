@@ -1,9 +1,10 @@
 package pangGuy.character;
 
 import pangGuy.utilities.EntityPos2D;
-import mergeballs.control.Pausable;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
+import masterControl.control.Pausable;
+import pangGuy.modularGun.GunBag;
 
 /**
  * Models the model of the main character.
@@ -13,7 +14,7 @@ public class Hero implements Pausable{
 
     private EntityPos2D pos;
     private Directions direction;
-    private GunSet gSet;
+    private GunBag gSet;
     private HeroStatus status;
     private int lives;
     private boolean awake;
@@ -75,7 +76,7 @@ public class Hero implements Pausable{
      * Getter for the GunSet.
      * @return the GunSet in use.
      */
-    public GunSet getGset(){
+    public GunBag getGset(){
         return this.gSet;
     }
 
@@ -83,8 +84,10 @@ public class Hero implements Pausable{
      * The method is called whenever a ball hits the main character, it cut off one life.
      */
     public void hit(){
-        this.lives--;
-        System.out.println("Lifes: " + this.lives);
+        if (this.isAwake()){
+            this.lives--;
+            System.out.println("Lifes: " + this.lives);
+        }
     }
 
     /**
@@ -122,6 +125,14 @@ public class Hero implements Pausable{
         return this.awake;
     }
 
+    /**
+     * Getter for lifes.
+     * @return the remaining lifes.
+     */
+    public int getLifes(){
+        return this.lives;
+    }
+
     @Override
     public void pauseAll() {
         this.toggleAwake();
@@ -130,6 +141,14 @@ public class Hero implements Pausable{
     @Override
     public void resumeAll() {
         this.toggleAwake();
+    }
+
+    /**
+     * Resetting position and lives, used when restarting a new game
+     */
+    public void reset() {
+        this.pos = new EntityPos2D(0, 0);
+        this.lives = 3;
     }
 
 }

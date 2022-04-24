@@ -1,6 +1,6 @@
 package pangGuy.utilities;
 
-import mergeballs.utilities.FullPair;
+import utilities.FullPair;
 
 public class Pair<T, E> implements FullPair<T, E>{
 

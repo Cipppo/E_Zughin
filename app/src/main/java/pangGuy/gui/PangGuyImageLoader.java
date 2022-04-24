@@ -58,18 +58,18 @@ public class PangGuyImageLoader {
         List<String> temp = new ArrayList<>();
         switch(dir){
             case RIGHT:
-                temp.add("ResizedStillRight.png");
-                temp.add("WalkingRight1.png");
-                temp.add("WalkingRight2.png");
-                temp.add("PrepShootingRight.png");
-                temp.add("DeathRight.png");
+                temp.add("sprite/Guy/ResizedStillRight.png");
+                temp.add("sprite/Guy/WalkingRight1.png");
+                temp.add("sprite/Guy/WalkingRight2.png");
+                temp.add("sprite/Guy/PrepShootingRight.png");
+                temp.add("sprite/Guy/DeathRight.png");
                 break;
             case LEFT:
-                temp.add("ResizedStillLeft.png");
-                temp.add("WalkingLeft1.png");
-                temp.add("WalkingLeft2.png");
-                temp.add("PrepShootingLeft.png");
-                temp.add("DeathLeft.png");
+                temp.add("sprite/Guy/ResizedStillLeft.png");
+                temp.add("sprite/Guy/WalkingLeft1.png");
+                temp.add("sprite/Guy/WalkingLeft2.png");
+                temp.add("sprite/Guy/PrepShootingLeft.png");
+                temp.add("sprite/Guy/DeathLeft.png");
         }
         return temp;
     }

@@ -1,15 +1,14 @@
 package powerUp;
 
 import java.util.Random;
-
-import ball.controller.Runner;
-import pangGuy.modularGun.GunSet;
+import pangGuy.modularGun.GunBag;
+import ball.controller.BallRunner;
 
 public class PowerUpGenerator {
-    private GunSet gSet;
-    private Runner context;
+    private GunBag gSet;
+    private BallRunner context;
 
-    public PowerUpGenerator(GunSet gSet, Runner context){
+    public PowerUpGenerator(GunBag gSet, BallRunner context){
         this.gSet = gSet;
         this.context = context;
     }

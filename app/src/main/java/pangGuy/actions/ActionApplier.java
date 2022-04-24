@@ -2,7 +2,8 @@ package pangGuy.actions;
 
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-import mergeballs.gui.VisualInterface;
+
+import masterControl.gui.VisualInterface;
 import pangGuy.gui.BoundChecker;
 import pangGuy.character.Hero;
 import pangGuy.utilities.Pair;
