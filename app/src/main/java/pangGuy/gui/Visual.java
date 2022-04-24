@@ -123,7 +123,6 @@ public class Visual implements VisualInterface{
 
     @Override
     public VisualPanelTest getVisualTest() {
-        // TODO Auto-generated method stub
         return null;
     }
 }

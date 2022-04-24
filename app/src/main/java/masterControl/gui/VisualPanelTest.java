@@ -24,7 +24,7 @@ import pangGuy.utilities.Directions;
 import powerUp.PowerUpEntity;
 import powerUp.PowerupImageLoader;
 
-@SuppressWarnings("unused")
+
 public class VisualPanelTest extends JPanel {
 
     /**
