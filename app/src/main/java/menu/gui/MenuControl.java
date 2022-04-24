@@ -12,7 +12,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import endGame.EndGame;
+
 import hallOfFameMenu.components.HoFMainPanel;
 import helpMenu.HelpPanel;
 import menu.components.*;
