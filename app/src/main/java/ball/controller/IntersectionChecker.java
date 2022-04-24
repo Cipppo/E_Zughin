@@ -1,7 +1,7 @@
 package ball.controller;
 
 import ball.physics.SpherePos2D;
-import ball.utils.Pair;
+import ball.utils.SettablePair;
 import mergeballs.utilities.EntityShape;
 
 /**
@@ -19,10 +19,10 @@ public class IntersectionChecker {
     public static boolean isBallCollision(SpherePos2D ball, EntityShape rect) {
         var rectWidht = rect.getDimensions().getX();
         var rectHeight = rect.getDimensions().getY();
-        Pair<Integer, Integer> rectCenter = new Pair<Integer, Integer>(rect.getPos().getX() + (int)(0.5*rectWidht),
+        SettablePair<Integer, Integer> rectCenter = new SettablePair<Integer, Integer>(rect.getPos().getX() + (int)(0.5*rectWidht),
                                                     rect.getPos().getY() + (int)(0.5*rectHeight));
-        Pair<Integer, Integer> ballCenter = new Pair<Integer, Integer>((int)(ball.getX() + (ball.getDiameter() / 2)), (int)(ball.getY() + (ball.getDiameter() / 2) ));
-        Pair<Integer, Integer> circleDistance = new Pair<Integer, Integer>(0,0);
+        SettablePair<Integer, Integer> ballCenter = new SettablePair<Integer, Integer>((int)(ball.getX() + (ball.getDiameter() / 2)), (int)(ball.getY() + (ball.getDiameter() / 2) ));
+        SettablePair<Integer, Integer> circleDistance = new SettablePair<Integer, Integer>(0,0);
         
         circleDistance.setX(Math.abs(ballCenter.getX() - rectCenter.getX()));
         circleDistance.setY(Math.abs(ballCenter.getY() - rectCenter.getY()));
