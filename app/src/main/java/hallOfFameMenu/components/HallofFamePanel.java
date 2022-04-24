@@ -3,8 +3,6 @@ package hallOfFameMenu.components;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.io.FileNotFoundException;
-
 import javax.swing.JPanel;
 
 import menu.utils.MenuLabel;
@@ -20,7 +18,7 @@ public class HallofFamePanel extends JPanel{
 	/*
 	 * Constructor without parameters
 	 */
-	public HallofFamePanel() throws FileNotFoundException {
+	public HallofFamePanel() {
 		super(new GridBagLayout());
 		GridBagConstraints container = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());

@@ -6,7 +6,6 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.FileNotFoundException;
 
 import javax.swing.AbstractAction;
 import javax.swing.JPanel;
@@ -33,7 +32,7 @@ public class MenuModel implements KeyListener{
 	private final Gui gui;
 	
 	
-	public MenuModel(Gui gui) throws FileNotFoundException{
+	public MenuModel(Gui gui) {
 		menuControl = new MenuControl(this);
 		this.gui = gui;
 		panel = new JPanel(new GridBagLayout());
