@@ -7,7 +7,7 @@ import ball.Boundary;
 
 /**
  * This class check if the ball hits a wall (depending on the size of the stage)
- * and also it checks if a ball hits a {@linkplain mergeballs.utilities.EntityShape}, 
+ * and also it checks if a ball hits a {@linkplain utilities.EntityShape}, 
  * making use of {@link ball.controller.IntersectionChecker}.
  * 
  */

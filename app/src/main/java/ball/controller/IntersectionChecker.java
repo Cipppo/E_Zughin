@@ -2,7 +2,7 @@ package ball.controller;
 
 import ball.physics.SpherePos2D;
 import ball.utils.SettablePair;
-import mergeballs.utilities.EntityShape;
+import utilities.EntityShape;
 
 /**
  * Utility class used for checking shapes collisions (intersections).
@@ -11,9 +11,9 @@ public class IntersectionChecker {
 	
     /**
      * Determine if a Given {@link ball.physics.SpherePos2D} interesects 
-     * with a {@link mergeballs.utilities.EntityShape}.
+     * with a {@link utilities.EntityShape}.
      * @param ball described by {@link ball.physics.SpherePos2D}.
-     * @param rect described as a {@link mergeballs.utilities.EntityShape}.
+     * @param rect described as a {@link utilities.EntityShape}.
      * @return true if they intersect, false othrewise.
      */
     public static boolean isBallCollision(SpherePos2D ball, EntityShape rect) {
@@ -46,10 +46,10 @@ public class IntersectionChecker {
     }
 
     /**
-     * Determine if two {@link mergeballs.utilities.EntityShape} (two rectangles), overlap each other.
-     * @param a the first rectangle ({@link mergeballs.utilities.EntityShape})
-     * @param b the second rectangle ({@link mergeballs.utilities.EntityShape})
-     * @return true if the two {@link mergeballs.utilities.EntityShape} overlap each other, false otherwise.
+     * Determine if two {@link utilities.EntityShape} (two rectangles), overlap each other.
+     * @param a the first rectangle ({@link utilities.EntityShape})
+     * @param b the second rectangle ({@link utilities.EntityShape})
+     * @return true if the two {@link utilities.EntityShape} overlap each other, false otherwise.
      *         
      */
     public static boolean checkShapeCollsion(EntityShape a, EntityShape b) {
@@ -66,7 +66,7 @@ public class IntersectionChecker {
     }
 
     /**
-     * Determine if two {@link mergeballs.utilities.EntityShape}
+     * Determine if two {@link utilities.EntityShape}
      * having the same Y coordinate, overlap each other.
      * @param hero
      * @param item

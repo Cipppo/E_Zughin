@@ -5,7 +5,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.List;
 
 import ball.ballAgent.BallAgent;
-import mergeballs.control.Pausable;
+import masterControl.control.Pausable;
 import pangGuy.gui.Shape;
 
 /**
