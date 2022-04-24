@@ -7,6 +7,9 @@ import endGame.EndGame;
 import masterControl.stage.StageGuiV2;
 import pangGuy.character.Hero;
 
+/**
+ * Controller for the Death event
+ */
 public class DeathHandler extends Thread {
     
     private final Hero hero;
@@ -14,12 +17,20 @@ public class DeathHandler extends Thread {
     private StageGuiV2 frame; //temp, maybe wrap into a type
     private EndGame endFrame;
 
+    /**
+     * Creates a new DeathHandler.
+     * @param frame the game frame
+     * @param hero the game Hero
+     */
     public DeathHandler(StageGuiV2 frame, Hero hero){
         this.stop = false;
         this.frame = frame;
         this.hero = hero;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void run(){
         while (!this.stop) {
@@ -60,6 +71,10 @@ public class DeathHandler extends Thread {
         }
     }
 
+    /**
+     * Spawns a new DialogBox which asks to the player if he wants to play again.
+     * @return the Dialog response.
+     */
     private int askReplay() {
         String options[] = {"yes", "no"};
         return JOptionPane.showOptionDialog(null, "Do you want to play again?",
