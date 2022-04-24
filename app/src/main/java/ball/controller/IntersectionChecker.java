@@ -4,15 +4,25 @@ import ball.physics.SpherePos2D;
 import ball.utils.Pair;
 import mergeballs.utilities.EntityShape;
 
+/**
+ * Utility class used for checking shapes collisions (intersections).
+ */
 public class IntersectionChecker {
 	
+    /**
+     * Determine if a Given {@link ball.physics.SpherePos2D} interesects 
+     * with a {@link mergeballs.utilities.EntityShape}.
+     * @param ball described by {@link ball.physics.SpherePos2D}.
+     * @param rect described as a {@link mergeballs.utilities.EntityShape}.
+     * @return true if they intersect, false othrewise.
+     */
     public static boolean isBallCollision(SpherePos2D ball, EntityShape rect) {
         var rectWidht = rect.getDimensions().getX();
         var rectHeight = rect.getDimensions().getY();
-        Pair<Integer> rectCenter = new Pair<Integer>(rect.getPos().getX() + (int)(0.5*rectWidht),
+        Pair<Integer, Integer> rectCenter = new Pair<Integer, Integer>(rect.getPos().getX() + (int)(0.5*rectWidht),
                                                     rect.getPos().getY() + (int)(0.5*rectHeight));
-        Pair<Integer> ballCenter = new Pair<Integer>((int)(ball.getX() + (ball.getDiameter() / 2)), (int)(ball.getY() + (ball.getDiameter() / 2) ));
-        Pair<Integer> circleDistance = new Pair<Integer>(0,0);
+        Pair<Integer, Integer> ballCenter = new Pair<Integer, Integer>((int)(ball.getX() + (ball.getDiameter() / 2)), (int)(ball.getY() + (ball.getDiameter() / 2) ));
+        Pair<Integer, Integer> circleDistance = new Pair<Integer, Integer>(0,0);
         
         circleDistance.setX(Math.abs(ballCenter.getX() - rectCenter.getX()));
         circleDistance.setY(Math.abs(ballCenter.getY() - rectCenter.getY()));
@@ -35,6 +45,13 @@ public class IntersectionChecker {
         return (cornerDistance_sq <= (Math.pow(ball.getDiameter() / 2, 2)));
     }
 
+    /**
+     * Determine if two {@link mergeballs.utilities.EntityShape} (two rectangles), overlap each other.
+     * @param a the first rectangle ({@link mergeballs.utilities.EntityShape})
+     * @param b the second rectangle ({@link mergeballs.utilities.EntityShape})
+     * @return true if the two {@link mergeballs.utilities.EntityShape} overlap each other, false otherwise.
+     *         
+     */
     public static boolean checkShapeCollsion(EntityShape a, EntityShape b) {
         var aPos = a.getPos();
         var bPos = b.getPos();
@@ -48,6 +65,13 @@ public class IntersectionChecker {
         return true;
     }
 
+    /**
+     * Determine if two {@link mergeballs.utilities.EntityShape}
+     * having the same Y coordinate, overlap each other.
+     * @param hero
+     * @param item
+     * @return true if the item is picked up by the hero, false otherwise.
+     */
     public static boolean checkItemPickUp(EntityShape hero, EntityShape item) {
         //System.out.println("Hero: " + hero.getPos() + "item: " + item.getPos());
         return (hero.getPos().getX() < item.getPos().getX() && checkX(hero, item)) 
