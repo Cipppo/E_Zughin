@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 /**
  * This makes the BallAgent communicate with the Visual.
- * This was the skeleton for {@linkplain mergeballs.control.EntityHandler} and
+ * This was the skeleton for {@linkplain masterControl.control.EntityHandler} and
  * for {@link ball.controller.BallRunner}
  * and now its purpose is only for Testing reasons.
  */

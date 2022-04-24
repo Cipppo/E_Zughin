@@ -1,6 +1,6 @@
 package ball.utils;
 
-import mergeballs.utilities.FullPair;
+import utilities.FullPair;
 
 /**
  * Utility Pair for storing and modify two values of different type.

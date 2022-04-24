@@ -6,7 +6,7 @@ import pangGuy.gui.Shape;
 import java.util.List;
 import java.awt.Dimension;
 /**
-* This interface is the first draft of {@linkplain mergeballs.control.UpdateableVisual}
+* This interface is the first draft of {@linkplain masterControl.control.UpdateableVisual}
  */
 public interface Updateable {
     /**
