@@ -8,13 +8,19 @@ import javax.swing.JPanel;
 
 import menu.utils.MenuLabel;
 
+/**
+ * Class to create the top menu panel
+ *
+ */
 public class TopMenuPanel extends JPanel{
 
 	private static final long serialVersionUID = 4006611678235036671L;
-	private MenuLabel title= new MenuLabel("PANG", 10, Color.MAGENTA);
-	private MenuLabel subtitle = new MenuLabel("ARCADE RETRO-GAME", 7, Color.MAGENTA);
+	private MenuLabel title= new MenuLabel("PANG", 10, Color.MAGENTA);  					//title label
+	private MenuLabel subtitle = new MenuLabel("ARCADE RETRO-GAME", 7, Color.MAGENTA);		//subtitle label
 	
-	
+	/**
+	 * Constructor without parameters
+	 */
 	public TopMenuPanel() {
 		super(new GridBagLayout());
 		GridBagConstraints container = new GridBagConstraints();
