@@ -5,11 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
 import java.util.Scanner;
 import menu.utils.PlayerFileReader;
-import menu.utils.PlayerFileWriter;
 
 /**
  * Container class to store all the objects Player
@@ -20,7 +17,7 @@ public class Players {
 	
 	private Player[] players;		//array of objects
 	int n;
-	private final String path = System.getProperty("user.home") + File.separator + "bestPlayersSaves.txt";
+	private final String path = System.getProperty("user.dir") + File.separator + "bestPlayersSaves.txt";
 	
 	/**
 	 * Constructor without parameters(Default)
@@ -91,72 +88,45 @@ public class Players {
 	}
 	
 	/**
-     * Reads data from last saved data textfile to object collection
+     * Reads data from last saved data textfile to object collection.
+	 * If the file does not exist in the same directory of the jar file, one will be created.
      */
      public void Read() {
-           File file = new File(path);
-           Scanner scan;
-		try {
-			scan = new Scanner(file);
-			PlayerFileReader.read(scan, this);
-		} catch (FileNotFoundException e) {
-			InputStream input = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt");
-			Scanner scan2 = new Scanner(input);
-            PlayerFileReader.read(scan2, this);
+		File file = new File(path);
+		Scanner scan;
+		if (file.getAbsoluteFile().exists()) {
+			try {
+				scan = new Scanner(file);
+				PlayerFileReader.read(scan, this);
+			} catch (FileNotFoundException e) {
+				System.out.println("Can't load file");
+			}
+		} else {
+			try {
+				file.getParentFile().mkdirs();
+				file.createNewFile();
+			} catch (IOException e) {
+				System.out.println("Can't create file");
+			}
 		}
-    	 
-    	 	/*try (InputStream input = Players.class.getResourceAsStream(File.separator + "bestPlayersSaves.txt")) {
-                Scanner scan = new Scanner(input);
-                PlayerFileReader.read(scan, this);
-            } catch (IOException e1) {
-                InputStream input = new ByteArrayInputStream((path).getBytes());
-                Scanner scan = new Scanner(input);
-                PlayerFileReader.read(scan, this);
-            }*/
-            
     }
     
     /**
-     * Saves the object collection in a data textfile
-     * @throws FileNotFoundException
+     * Saves the object collection in a data textfile that has to be in the same directory of the jar file.
      */
-     public void Save() throws FileNotFoundException {
-            try (PrintWriter writer = new PrintWriter(new File(Players.class.getResource(File.separator + "bestPlayersSaves.txt").getFile()))) {
-              PlayerFileWriter.write(writer, players, n);
-            } catch (FileNotFoundException e1) {
-                try {
-					FileWriter writer2 = new FileWriter(path);
-					String txtFile = "";
-					for (int i = 0; i < n; i++) {
-			            String line = players[i].getNickname() + "; " + Integer.toString(players[i].getScore().getScore()) + "; " +
-			                players[i].getDate() + ";";
-			            txtFile += line + "\n";
-					}
-					writer2.write(txtFile);
-		        	writer2.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
-            	
-            	/*File file = new File(path);
-                PrintWriter writer;
-                if (file.getAbsoluteFile().exists()) {
-                    writer = new PrintWriter(new FileOutputStream(file, true));
-                } else {
-                    try {
-                        file.getParentFile().mkdir();
-                        file.createNewFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    writer = new PrintWriter(file);
-                }
-                // PrintWriter writer = new PrintWriter(new File(File.separator + "bestPlayersSaves.txt"));
-                PlayerFileWriter.write(writer, players, n);*/
-            }
-            
-        }
-	
-	
+     public void Save() {
+		try {
+			FileWriter writer2 = new FileWriter(path);
+			String txtFile = "";
+			for (int i = 0; i < n; i++) {
+				String line = players[i].getNickname() + "; " + Integer.toString(players[i].getScore().getScore()) + "; " +
+					players[i].getDate() + ";";
+				txtFile += line + "\n";
+			}
+			writer2.write(txtFile);
+			writer2.close();
+		} catch (IOException e) {
+			System.out.println("Can't write on file");
+		}     
+	}	
 }
