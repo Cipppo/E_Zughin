@@ -22,12 +22,11 @@ public class MenuModel implements KeyListener{
 
 	private JPanel panel;
 	private GridBagConstraints container;
+	private final MenuControl menuControl;
 	private final HoFMainPanel HoF = new HoFMainPanel();
 	private final HelpPanel help = new HelpPanel();
 	private final TopMenuPanel topPanel = new TopMenuPanel();
 	private final NavigationPanel navPanel = new NavigationPanel();
-	private int navStatus;
-	private int enterStatus = 0;
 	private UpAction upAction;
 	private DownAction downAction;
 	private EnterAction enterAction;
@@ -35,6 +34,7 @@ public class MenuModel implements KeyListener{
 	
 	
 	public MenuModel(Gui gui) throws FileNotFoundException{
+		menuControl = new MenuControl(this);
 		this.gui = gui;
 		panel = new JPanel(new GridBagLayout());
 		container = new GridBagConstraints();
@@ -57,8 +57,6 @@ public class MenuModel implements KeyListener{
 		container.gridwidth = 1;
 		panel.add(navPanel,container);
 		
-		navStatus = 0;
-		
 		panel.setBackground(Color.BLACK);
 		gui.add(panel);
 		
@@ -76,23 +74,9 @@ public class MenuModel implements KeyListener{
     	panel.addKeyListener(this);
 	}
 	
-	public void incNavStatus() {
-		if (navStatus < 2) {
-			navStatus++;
-			changeBlink();
-		}
-	}
-	
-	public void decNavStatus() {
-		if (navStatus > 0) {
-			navStatus--;
-			changeBlink();
-		}
-	}
-	
 	public void restartMenu() {
-		enterStatus = 0;
-		if (navStatus == 0) {
+		menuControl.setEnterStatus(0);
+		if (menuControl.getNavStatus() == 0) {
 			navPanel.getS1Label().setVisible(false);
 			navPanel.getNicknameLabel().setVisible(false);
 			navPanel.getStartLabel().setText("START");
@@ -100,7 +84,7 @@ public class MenuModel implements KeyListener{
 		}else {
 			topPanel.setVisible(true);
 			navPanel.setVisible(true);
-			switch (navStatus) {
+			switch (menuControl.getNavStatus()) {
 			case 1:
 				HoF.setVisible(false);
 				break;
@@ -114,7 +98,7 @@ public class MenuModel implements KeyListener{
 	}
 	
 	public void changeBlink() {
-		switch (navStatus) {
+		switch (menuControl.getNavStatus()) {
 		case 0:
 			navPanel.getStartLabel().switchBlink();
 			navPanel.getHfLabel().switchBlink();
@@ -134,6 +118,49 @@ public class MenuModel implements KeyListener{
 		}
 	}
 	
+	public void exEntAct() {
+		if (menuControl.getNavStatus() == 0) {
+			navPanel.getStartLabel().setText("INSERT NAME:");
+			navPanel.getNicknameLabel().setVisible(true);
+			navPanel.getS1Label().setVisible(true);
+			if (menuControl.getEnterStatus() == 1) {
+				navPanel.getStartLabel().switchBlink();
+			}
+		}else {
+			topPanel.setVisible(false);
+			navPanel.setVisible(false);
+			if (menuControl.getNavStatus() == 1) {
+				HoF.setVisible(true);
+			}else 
+			if (menuControl.getNavStatus() == 2) {
+				help.setVisible(true);
+			}
+		}
+	}
+	
+	public void exActList(int i, char c) {
+		if (menuControl.getNavStatus() == 0) {
+			if (i == 10) {
+				if (menuControl.getEnterStatus() < 2) {
+					navPanel.getNicknameLabel().enterInput();
+				}else {
+					new StageGuiV2(new Player(navPanel.getNicknameLabel().getNickname()));
+					gui.dispose();	
+				}
+				
+			}else
+			if(i == 8){
+				navPanel.getNicknameLabel().deleteChar();
+			}else {
+				navPanel.getNicknameLabel().addChar(c);
+			}
+		}else {
+			if (i == 27) {
+				restartMenu();
+			}
+		}
+	}
+	
 	
 	public class UpAction extends AbstractAction{
 
@@ -145,12 +172,7 @@ public class MenuModel implements KeyListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (enterStatus > 0) {
-				restartMenu();
-			}else {
-				decNavStatus();
-			}
-			
+			menuControl.UpAct();
 		}
 	}
 	
@@ -164,13 +186,7 @@ public class MenuModel implements KeyListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (enterStatus > 0) {
-				restartMenu();
-			}else {
-				incNavStatus();
-			}
-			
-			
+			menuControl.DownAct();
 		}
 		
 	}
@@ -185,25 +201,7 @@ public class MenuModel implements KeyListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			enterStatus++;
-			if (navStatus == 0) {
-				navPanel.getStartLabel().setText("INSERT NAME:");
-				navPanel.getNicknameLabel().setVisible(true);
-				navPanel.getS1Label().setVisible(true);
-				if (enterStatus == 1) {
-					navPanel.getStartLabel().switchBlink();
-				}
-			}else {
-				topPanel.setVisible(false);
-				navPanel.setVisible(false);
-				if (navStatus == 1) {
-					HoF.setVisible(true);
-				}else 
-				if (navStatus == 2) {
-					help.setVisible(true);
-				}
-			}
-			
+			menuControl.EnterAct();
 		}
 		
 	}
@@ -225,31 +223,7 @@ public class MenuModel implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (enterStatus > 0) {
-			int check = e.getKeyCode();
-			if (navStatus == 0) {
-				if (check == 10) {
-					//enterStatus++;
-					if (enterStatus < 2) {
-						navPanel.getNicknameLabel().enterInput();
-					}else {
-						new StageGuiV2(new Player(navPanel.getNicknameLabel().getNickname()));
-						gui.dispose();	
-					}
-					
-				}else
-				if(check == 8){
-					navPanel.getNicknameLabel().deleteChar();
-				}else {
-					navPanel.getNicknameLabel().addChar(e.getKeyChar());
-				}
-			}else {
-				if (check == 27) {
-					restartMenu();
-				}
-			}
-		}
-		
+		menuControl.keyAct(e.getKeyCode(), e.getKeyChar());
 		
 	}
 
