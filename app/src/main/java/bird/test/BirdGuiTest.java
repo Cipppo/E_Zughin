@@ -3,8 +3,8 @@ package bird.test;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import mergeballs.control.EntityHandler;
-import mergeballs.gui.VisualTest;
+import masterControl.control.EntityHandler;
+import masterControl.gui.VisualTest;
 import pangGuy.actions.ActionApplier;
 import pangGuy.actions.ActionFactory;
 import pangGuy.character.Hero;

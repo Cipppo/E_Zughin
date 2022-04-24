@@ -9,7 +9,7 @@ import bird.gui.BirdMover;
 import bird.gui.BirdShape;
 import bird.utilities.BirdDirections;
 import bird.utilities.BirdMovementUtils;
-import mergeballs.control.Pausable;
+import masterControl.control.Pausable;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 import stage.utils.CenterOnDefaultScreen;
