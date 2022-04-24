@@ -7,10 +7,17 @@ import javax.swing.JPanel;
 
 import menu.utils.MenuLabel;
 
+/**
+ * Class to create the help panel
+ *
+ */
 public class HelpPanel extends JPanel{
 
 	private static final long serialVersionUID = 250843957477488551L;
 	
+	/**
+	 * Constructor without parameters
+	 */
 	public HelpPanel() {
 		super(new GridBagLayout());
 		GridBagConstraints container = new GridBagConstraints();

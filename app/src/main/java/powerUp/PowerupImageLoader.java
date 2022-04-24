@@ -6,7 +6,9 @@ import java.util.Optional;
 
 import stage.utils.MainImagesLoader;
 
-//mport java.util.ArrayList;
+/**
+ * Models a ImageLoader for the powerups.
+ */
 import java.awt.image.BufferedImage;
 
 public class PowerupImageLoader {
@@ -14,6 +16,9 @@ public class PowerupImageLoader {
     private List<BufferedImage> entries;
     private MainImagesLoader loader;
 
+    /**
+     * Returns a new PowerupImageLoader
+     */
     public PowerupImageLoader(){
         this.loader = new MainImagesLoader();
         this.entries = new ArrayList<>(List.of(
@@ -24,6 +29,11 @@ public class PowerupImageLoader {
         ));
     }
 
+    /**
+     * Given a powerup, returns his sprite.
+     * @param powerup the powerup which asks the sprite.
+     * @return the Powerup's sprite.
+     */
     public Optional<BufferedImage> getPowUpSprite(PowerUp powerup){
         if(powerup instanceof Bomb){
             return Optional.of(this.entries.get(0));

@@ -5,6 +5,9 @@ import pangGuy.gui.Shape;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.Pair;
 
+/**
+ * Generates a Random Bonus at a Random Position
+ */
 public class BonusGenerator {
 
     private static final int BONUS_WIDTH = 20;
@@ -13,6 +16,10 @@ public class BonusGenerator {
     private final int baseScore = 100;
     private final Pair<Integer, Integer> bounds;
 
+    /**
+     * Creates a BonusGenerator.
+     * @param bounds the window Bounds
+     */
     public BonusGenerator(Pair<Integer, Integer> bounds){
         this.bounds = bounds;
     }
@@ -35,6 +42,10 @@ public class BonusGenerator {
         return new Shape(this.generateRandomPos(), BONUS_WIDTH, BONUS_HEIGHT);
     }
 
+    /**
+     * Generates a random bonus at a random position.
+     * @return
+     */
     public BonusEntity generateNextBonus(){
         return new BonusEntity(this.generateNextScore(), generateRandomShape());
     }

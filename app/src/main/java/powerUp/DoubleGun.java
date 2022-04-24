@@ -4,12 +4,19 @@ package powerUp;
 import pangGuy.modularGun.GunBag;
 import pangGuy.modularGun.GunTypes;
 
+/**
+ * Models a DoubleGun powerup
+ */
 public class DoubleGun extends Thread implements PowerUp{
 
     private final GunBag gSet;
     private int timeElapsed;
     private int duration;
 
+    /**
+     * Returns a new DoubleGun
+     * @param gSet the Hero's gunSet
+     */
     public DoubleGun(GunBag gSet){
         this.gSet = gSet;
         this.timeElapsed = 0;

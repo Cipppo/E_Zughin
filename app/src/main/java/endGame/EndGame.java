@@ -3,7 +3,6 @@ package endGame;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -29,11 +28,10 @@ public class EndGame extends JFrame{
 	/**
 	 * Constructor with parameters 
 	 * @param player    used for knowing data about the player and save it in case of winning with high score
-	 * @param win
-	 * @param check
-	 * @throws FileNotFoundException
+	 * @param win		used for knowing if is winning case or not
+	 * @param check 	control for not saving multiple time
 	 */
-	public EndGame(Player player, boolean win, int check) throws FileNotFoundException {
+	public EndGame(Player player, boolean win, int check) {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(width*70/100, heigth*60/100);
 		this.setLayout(new BorderLayout());
@@ -62,6 +60,9 @@ public class EndGame extends JFrame{
 		}
 	}
 	
+	/**
+	 *  method to dispose the gui after some times
+	 */
 	public void simpleTimer() {
 		timer = new Timer(6000, new ActionListener() {
 

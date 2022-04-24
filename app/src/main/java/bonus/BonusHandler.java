@@ -6,6 +6,9 @@ import masterControl.control.Pausable;
 import pangGuy.gui.HeroComponent;
 import pangGuy.utilities.Pair;
 
+/**
+ * Controller which manages the Bonus Spawn
+ */
 public class BonusHandler extends Thread implements Pausable {
 
     private static final int SPAWN_TIME = 5;
@@ -15,6 +18,10 @@ public class BonusHandler extends Thread implements Pausable {
     private boolean pause;
     Optional<BonusEntity> next;
 
+    /**
+     * Creates a new BonusHandler 
+     * @param bounds the window XMAX, YMAX
+     */
     public BonusHandler(Pair<Integer, Integer> bounds) {
         this.gen = new BonusGenerator(bounds);
         this.next = Optional.empty();
@@ -28,7 +35,6 @@ public class BonusHandler extends Thread implements Pausable {
             try {
                 if (!this.pause) {
                     this.next = Optional.of(gen.generateNextBonus());
-                    //System.out.println("Fruit Spawned" + " X: " + this.next.get().getShape().toString());
                     Thread.sleep(SPAWN_TIME * 1000);
                 } else {
                     Thread.sleep(30);
@@ -39,6 +45,10 @@ public class BonusHandler extends Thread implements Pausable {
         }
     }
 
+    /**
+     * Returns the actual bonus, if available
+     * @return Optional.of(BonusEntity) if available, Optional.empty otherwise.
+     */
     public synchronized Optional<BonusEntity> getBonus(){
         if(!this.next.isEmpty()){
             return this.next;
@@ -54,20 +64,32 @@ public class BonusHandler extends Thread implements Pausable {
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public synchronized void pauseAll() {
         this.pause = true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public synchronized void resumeAll() {
         this.pause = false;
     }
 
+    /**
+     * Resets the actual Bonus making it disappear.
+     */
     public synchronized void resetBonus(){
         this.next = Optional.empty();
     }
 
+    /**
+     * Terminates the Thread.
+     */
     public void terminate(){
         this.stop = true;
     }
