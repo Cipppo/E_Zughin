@@ -1,9 +1,9 @@
 package pangGuy.modularGun;
 
+import masterControl.gui.VisualInterface;
 import pangGuy.character.Hero;
 import pangGuy.gui.ArpionComponent;
 import pangGuy.gui.BoundChecker;
-import mergeballs.gui.VisualInterface;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.StepsApplier;
 

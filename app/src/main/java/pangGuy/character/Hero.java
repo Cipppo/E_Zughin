@@ -1,9 +1,9 @@
 package pangGuy.character;
 
 import pangGuy.utilities.EntityPos2D;
-import mergeballs.control.Pausable;
 import pangGuy.modularGun.GunSet;
 import pangGuy.utilities.Directions;
+import masterControl.control.Pausable;
 import pangGuy.modularGun.GunBag;
 
 /**

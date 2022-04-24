@@ -2,13 +2,14 @@ package pangGuy.actions;
 
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
+
+import masterControl.gui.VisualInterface;
 import pangGuy.modularGun.Trigger;
 import pangGuy.utilities.Directions;
 import pangGuy.utilities.EntityPos2D;
 import pangGuy.utilities.StepsApplier;
 import pangGuy.gui.BoundChecker;
 import pangGuy.character.Hero;
-import mergeballs.gui.VisualInterface;
 
 /**
  * A factory which models the main character Actions.

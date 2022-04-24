@@ -1,7 +1,7 @@
 package pangGuy.modularGun;
 
 
-import mergeballs.control.Pausable;
+import masterControl.control.Pausable;
 import pangGuy.utilities.Directions;
 
 
