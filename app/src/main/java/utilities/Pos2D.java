@@ -1,4 +1,4 @@
-package ball.physics;
+package utilities;
 
 /**
  * Modeling a generic two dimensional position in space.

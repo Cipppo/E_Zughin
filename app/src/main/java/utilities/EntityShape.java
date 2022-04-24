@@ -1,4 +1,4 @@
-package mergeballs.utilities;
+package utilities;
 
 import pangGuy.utilities.EntityPos2D;
 /**
@@ -16,7 +16,7 @@ public interface EntityShape {
     
     /**
      * Getter for the component dimensions in space.
-     * @return a {@link mergeballs.utilities.FullPair} of (width, height)
+     * @return a {@link utilities.FullPair} of (width, height)
      */
     FullPair<Integer, Integer> getDimensions();
 
