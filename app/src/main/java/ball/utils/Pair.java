@@ -2,6 +2,9 @@ package ball.utils;
 
 import mergeballs.utilities.FullPair;
 
+/**
+ * Utility Pair for storing and modify two values of different type.
+ */
 public class Pair<T, E> implements FullPair<T, E> {
     private T x;
     private E y;
@@ -11,10 +14,12 @@ public class Pair<T, E> implements FullPair<T, E> {
         this.y = y;
     }
 
+    @Override
     public T getX() {
         return this.x;
     }
 
+    @Override
     public E getY() {
         return this.y;
     }
