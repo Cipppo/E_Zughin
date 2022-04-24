@@ -88,3 +88,20 @@ La gestione dell'evento e' equivalente nel caso in cui si collida con l'entita' 
 
 
 
+### Armi del personaggio principale
+
+## Problema: 
+Assegnare al personaggio principale una collezione di armi.
+
+## Soluzione:
+Il personaggio principale e' stato dotato di un arma *gunBag* la quale puo' sparare dei proiettili, *Bullet*.
+Il punto forte di questa progettazione e' l'alto potenziale di estendibilita' delle interfacce *Bullet* e *GunBag*, in questo modo e' possibile dare al personaggio principale un altro tipo di arma andando a reimplementare le interfacce sopra citate.
+L'unico punto debole di questa implementazione e' l'utilizzo di una *enum* per modelizzare le tipologie di Powerups in quanto l'Arpione non e' di fatto estendibile.
+
+
+### Testing Automatico
+
+Per quanto riguarda il personaggio principale, sono stati svolti principalmente in maniera "visiva" seguendo passo passo lo sviluppo del personaggio.
+I primi test svolti erano effettuati sulla corretta gestione dei movimenti comandati tramite input da tastiera.
+Con l'implementazione dei *powerups* e dell'Arpione, e' stato costruito un controller ad hoc il quale agiva direttamente sulle specifiche degli attori in gioco in modo da simulare i gli effetti dei *powerups*.
+Per quanto rifguarda le interazioni con gli altri attori (*Uccello* e *Sfere*) sono stati usati dei *log* appositi in grado di farci il modo in cui gli eventi si manifestavano.
