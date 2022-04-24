@@ -24,7 +24,11 @@ public class ActionFactory {
      */
     private class RightAction extends AbstractAction{
         
-        private final VisualInterface v;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private final VisualInterface v;
         private final Hero h;
         private final BoundChecker bc;
         
@@ -64,7 +68,11 @@ public class ActionFactory {
      */
     private class LeftAction extends AbstractAction{
 
-        private final VisualInterface v;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private final VisualInterface v;
         private final Hero h;
         private final BoundChecker bc;
 
@@ -104,7 +112,9 @@ public class ActionFactory {
      */
     private class ShootAction extends AbstractAction{
 
-        private final VisualInterface v;
+        
+		private static final long serialVersionUID = 1L;
+		private final VisualInterface v;
         private final Hero h;
         private final BoundChecker bc;
 
