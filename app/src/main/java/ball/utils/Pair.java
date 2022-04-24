@@ -1,10 +1,12 @@
 package ball.utils;
 
-public class Pair<T> {
-    private T x;
-    private T y;
+import mergeballs.utilities.FullPair;
 
-    public Pair(T x, T y) {
+public class Pair<T, E> implements FullPair<T, E> {
+    private T x;
+    private E y;
+
+    public Pair(T x, E y) {
         this.x = x;
         this.y = y;
     }
@@ -13,7 +15,7 @@ public class Pair<T> {
         return this.x;
     }
 
-    public T getY() {
+    public E getY() {
         return this.y;
     }
 
@@ -21,7 +23,7 @@ public class Pair<T> {
         this.x = value;
     }
 
-    public void setY(T value) {
+    public void setY(E value) {
         this.y = value;
     }
 
