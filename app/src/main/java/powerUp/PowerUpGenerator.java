@@ -4,10 +4,18 @@ import java.util.Random;
 import pangGuy.modularGun.GunBag;
 import ball.controller.BallRunner;
 
+/**
+ * Generates one random powerup at a random position.
+ */
 public class PowerUpGenerator {
     private GunBag gSet;
     private BallRunner context;
 
+    /**
+     * Creates a new PowerUpgenerator.
+     * @param gSet the Hero's gunSet.
+     * @param context the active BallRunner.
+     */
     public PowerUpGenerator(GunBag gSet, BallRunner context){
         this.gSet = gSet;
         this.context = context;
@@ -18,6 +26,10 @@ public class PowerUpGenerator {
         return rand.nextInt(4);
     }
 
+    /**
+     * Generates a random PowerUp.
+     * @return a random PowerUp.
+     */
     public PowerUp getRandomPowerUp() {
         var num = this.getRandomInt();
         switch (num) {
