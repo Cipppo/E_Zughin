@@ -7,7 +7,7 @@ import ball.physics.*;
  *      - A trajectory
  *      - A two dimensional position
  */
-public class Ball implements Entity {
+public class Ball {
     private Trajectory trajectory;
     private SpherePos2D actualPosition;
     private SpherePos2D initialPosition;
@@ -67,12 +67,11 @@ public class Ball implements Entity {
             this.velocity.vx = -this.velocity.vx;
         }
     }
-    @Override
+    
     public synchronized SpherePos2D getPosition() {
         return this.actualPosition;
     }
 
-    @Override
     public int getSize() {
         return this.size;
     }
