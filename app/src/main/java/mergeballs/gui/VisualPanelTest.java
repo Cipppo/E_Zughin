@@ -28,7 +28,11 @@ import powerUp.PowerupImageLoader;
 @SuppressWarnings("unused")
 public class VisualPanelTest extends JPanel {
 
-    private List<SpherePos2D> ballPositions;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<SpherePos2D> ballPositions;
     private List<Shape> shapes;
     private Shape hShape;
     private Optional<BirdShape> bShape;

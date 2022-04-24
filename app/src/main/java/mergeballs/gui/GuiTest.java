@@ -21,7 +21,11 @@ import pangGuy.utilities.EntityPos2D;
 
 @SuppressWarnings("unused")
 public class GuiTest extends JFrame {
-    private final static int WIDTH = CenterOnDefaultScreen.center().width*70/100;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final static int WIDTH = CenterOnDefaultScreen.center().width*70/100;
     private final static int HEIGHT = CenterOnDefaultScreen.center().height*70/100;
     private static final int STARTX =  WIDTH / 2;
     private static final int STARTY = (HEIGHT ) - 85 ;

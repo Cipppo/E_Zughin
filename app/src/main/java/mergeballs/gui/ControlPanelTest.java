@@ -20,7 +20,11 @@ import pangGuy.gui.Shape;
 @SuppressWarnings("unused")
 public class ControlPanelTest extends JFrame {
     
-    private static final int SIZEX = 300;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final int SIZEX = 300;
     private static final int SIZEY = 300;
 
     private JButton jb = new JButton("Double Arpion: not Active");
