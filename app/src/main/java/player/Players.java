@@ -4,6 +4,7 @@ package player;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -124,7 +125,22 @@ public class Players {
             try (PrintWriter writer = new PrintWriter(new File(Players.class.getResource(File.separator + "bestPlayersSaves.txt").getFile()))) {
               PlayerFileWriter.write(writer, players, n);
             } catch (FileNotFoundException e1) {
-                File file = new File(path);
+                try {
+					FileWriter writer2 = new FileWriter(path);
+					String txtFile = "";
+					for (int i = 0; i < n; i++) {
+			            String line = players[i].getNickname() + "; " + Integer.toString(players[i].getScore().getScore()) + "; " +
+			                players[i].getDate() + ";";
+			            txtFile += line + "\n";
+					}
+					writer2.write(txtFile);
+		        	writer2.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+            	
+            	/*File file = new File(path);
                 PrintWriter writer;
                 if (file.getAbsoluteFile().exists()) {
                     writer = new PrintWriter(new FileOutputStream(file, true));
@@ -138,7 +154,7 @@ public class Players {
                     writer = new PrintWriter(file);
                 }
                 // PrintWriter writer = new PrintWriter(new File(File.separator + "bestPlayersSaves.txt"));
-                PlayerFileWriter.write(writer, players, n);
+                PlayerFileWriter.write(writer, players, n);*/
             }
             
         }
