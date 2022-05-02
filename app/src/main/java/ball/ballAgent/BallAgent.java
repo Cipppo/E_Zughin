@@ -45,7 +45,7 @@ public class BallAgent extends Thread {
     }
 
     public synchronized void terminate() {
-        this.stop = false;
+        this.stop = true;
     }
 
     public synchronized SpherePos2D getBallPosition() {
